@@ -7925,7 +7925,6 @@ partial molar volume
                 </xsd:element>
                 <xsd:element name="otherMethod" type="xsd:string"/>
             </xsd:choice>
-            <xsd:element name="cats"/>
             <xsd:element name="solute">
                 <xsd:annotation>
                     <xsd:documentation>EAP: Solute component</xsd:documentation>
