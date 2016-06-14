@@ -439,17 +439,17 @@
             </xsd:element>
             <xsd:element name="chemical" type="tml:chemicalType" minOccurs="0" maxOccurs="unbounded">
                 <xsd:annotation>
-                    <xsd:documentation>Identification information about all chemicals referenced in the data</xsd:documentation>
+                    <xsd:documentation>Elements of chemicals referenced in the data</xsd:documentation>
                 </xsd:annotation>
             </xsd:element>
             <xsd:element name="system" type="tml:systemType" minOccurs="0" maxOccurs="unbounded">
                 <xsd:annotation>
-                    <xsd:documentation>Information relating the chemical make-up to the final system</xsd:documentation>
+                    <xsd:documentation>Elements relating the chemical make-up to the final system</xsd:documentation>
                 </xsd:annotation>
             </xsd:element>
             <xsd:element name="phase" type="tml:phaseType" minOccurs="0" maxOccurs="unbounded">
                 <xsd:annotation>
-                    <xsd:documentation>Characterization of the phase or phases observed</xsd:documentation>
+                    <xsd:documentation>Elements of Phase or phases observed</xsd:documentation>
                 </xsd:annotation>
             </xsd:element>
             <xsd:element name="dataset" type="tml:datasetType" minOccurs="0" maxOccurs="unbounded">
@@ -2467,7 +2467,7 @@
     </xsd:complexType>
     <xsd:simpleType name="crystalLatticeType">
         <xsd:annotation>
-            <xsd:documentation>Crystal Lattice Type</xsd:documentation>
+            <xsd:documentation/>
         </xsd:annotation>
         <xsd:restriction base="xsd:string">
             <xsd:enumeration value="Cubic"/>
@@ -3758,27 +3758,48 @@ think this may need phase</xsd:documentation>
                             <xsd:element name="spectralHemisphericalEmittance"
                                 type="tml:spectralHemisphericalEmittanceType">
                                 <xsd:annotation>
-                                    <xsd:documentation>EAP: measurement/calculation details- spectral hemispherical emittance</xsd:documentation>
+                                    <xsd:documentation>EAP: measurement/calculation details- spectral hemispherical emittance
+
+Emittance: Ratio of radiant exitance of a thermal radiator to that of a full radiator (black body) at the same temperature IUPAC Gold Book)
+
+
+This measurement is for a known wavelength, integrated over all angles to the surface of the material.</xsd:documentation>
                                 </xsd:annotation>
                             </xsd:element>
                             <!-- example unit:	dimensionless	-->
                             <xsd:element name="spectralNormalEmittance"
                                 type="tml:spectralNormalEmittanceType">
                                 <xsd:annotation>
-                                    <xsd:documentation>EAP: measurement/calculation details- spectral normal emittance</xsd:documentation>
+                                    <xsd:documentation>EAP: measurement/calculation details- spectral normal emittance
+
+
+Emittance: Ratio of radiant exitance of a thermal radiator to that of a full radiator (black body) at the same temperature.  (IUPAC Gold Book)
+
+This measurement is for a known wavelength, at an angle orthogonal to the surface of the material.</xsd:documentation>
                                 </xsd:annotation>
                             </xsd:element>
                             <!-- example unit:	dimensionless	-->
                             <xsd:element name="totalHemisphericalEmittance"
                                 type="tml:totalHemisphericalEmittanceType">
                                 <xsd:annotation>
-                                    <xsd:documentation>EAP: measurement/calculation details-  total hemispherical emittance</xsd:documentation>
+                                    <xsd:documentation>EAP: measurement/calculation details-  total hemispherical emittance
+
+Emittance: Ratio of radiant exitance of a thermal radiator to 
+that of a full radiator (black body) at the same temperature.   (IUPAC Gold Book) 
+
+This property is integrated over  over the whole wavelength range, and over all an angles relative to the surface.
+
+</xsd:documentation>
                                 </xsd:annotation>
                             </xsd:element>
                             <xsd:element name="totalNormalEmittance"
                                 type="tml:totalNormalEmittanceType">
                                 <xsd:annotation>
-                                    <xsd:documentation>EAP: measurement/calculation details-  total normal emittance</xsd:documentation>
+                                    <xsd:documentation>EAP: measurement/calculation details-  total normal emittance
+
+Emittance: Ratio of radiant exitance of a thermal radiator to that of a full radiator (black body) at the same temperature (IUPAC Gold Book)
+
+This property is integrated over  over the whole wavelength range, at an angle orthogonal to the surface.</xsd:documentation>
                                 </xsd:annotation>
                             </xsd:element>
                         </xsd:choice>
@@ -3814,7 +3835,11 @@ think this may need phase</xsd:documentation>
                         <xsd:choice>
                             <!-- Properties -->
                             <xsd:element name="phaseTransitionTemperature"
-                                type="tml:transitionTemperatureType"/>
+                                type="tml:transitionTemperatureType">
+                                <xsd:annotation>
+                                    <xsd:documentation>A temperature associated with a transition which the moalr gibbs energy or chemical potential and its (n-1)th-order derivatives are condinuous, whereas the nth-order derivatives with respect to temperature and pressure are discontinuous at the transition point. (modified definition of nth order phase transition from IUPAC gold book)</xsd:documentation>
+                                </xsd:annotation>
+                            </xsd:element>
                             <!-- example unit:	Kelvin 			-->
                             <!-- example unit:	dimensionless	-->
                             <!-- example unit:	m^3/m^3			-->
@@ -3881,37 +3906,57 @@ think this may need phase</xsd:documentation>
                             <!-- Properties -->
                             <xsd:element name="latticeParameterA" type="tml:latticeParameterType">
                                 <xsd:annotation>
-                                    <xsd:documentation>EAP: measurement/calculation details- lattice paramter a</xsd:documentation>
+                                    <xsd:documentation>EAP: measurement/calculation details- lattice paramter a
+
+International Tables for Crystallography A(2006) table 1.1.1--Lengths of basis vectors, length s of cell edges, Lattice or cell parameter(s)
+
+
+IUPAP: a translation vector which maps the crystal lattice onto itsself.</xsd:documentation>
                                 </xsd:annotation>
                             </xsd:element>
                             <!-- example unit:	kX 				-->
                             <xsd:element name="latticeParameterB" type="tml:latticeParameterType">
                                 <xsd:annotation>
-                                    <xsd:documentation>EAP: measurement/calculation details- lattice parameter b</xsd:documentation>
+                                    <xsd:documentation>EAP: measurement/calculation details- lattice parameter b
+
+
+International Tables for Crystallography A(2006) table 1.1.1--Lengths of basis vectors, length s of cell edges, Lattice or cell parameter(s)
+
+IUPAP: a translation vector which maps the crystal lattice onto itsself.</xsd:documentation>
                                 </xsd:annotation>
                             </xsd:element>
                             <!-- example unit:	kX 				-->
                             <xsd:element name="latticeParameterC" type="tml:latticeParameterType">
                                 <xsd:annotation>
-                                    <xsd:documentation>EAP: measurement/calculation details- lattice parameter c</xsd:documentation>
+                                    <xsd:documentation>EAP: measurement/calculation details- lattice parameter c
+
+International Tables for Crystallography A(2006) table 1.1.1--Lengths of basis vectors, length s of cell edges, Lattice or cell parameter(s)
+
+IUPAP: a translation vector which maps the crystal lattice onto itsself.</xsd:documentation>
                                 </xsd:annotation>
                             </xsd:element>
                             <!-- example unit:	kX 				-->
                             <xsd:element name="LatticeAngleAlpha" type="tml:latticeAngleType">
                                 <xsd:annotation>
-                                    <xsd:documentation>EAP: measurement/calculation details- lattice angel alpha</xsd:documentation>
+                                    <xsd:documentation>EAP: measurement/calculation details- lattice angel alpha
+
+International Tables for Crystallography A(2006) table 1.1.1--interaxial (lattice) angle b^c</xsd:documentation>
                                 </xsd:annotation>
                             </xsd:element>
                             <!-- example unit:	rad 			-->
                             <xsd:element name="LatticeAngleBeta" type="tml:latticeAngleType">
                                 <xsd:annotation>
-                                    <xsd:documentation>EAP: measurement/calculation details- lattice parameter beta</xsd:documentation>
+                                    <xsd:documentation>EAP: measurement/calculation details- lattice parameter beta
+
+International Tables for Crystallography A(2006) table 1.1.1--interaxial (lattice) angle c^a</xsd:documentation>
                                 </xsd:annotation>
                             </xsd:element>
                             <!-- example unit:	rad 			-->
                             <xsd:element name="LatticeAngleGamma" type="tml:latticeAngleType">
                                 <xsd:annotation>
-                                    <xsd:documentation>EAP: measurement/calculation details- lattice parameter gamma</xsd:documentation>
+                                    <xsd:documentation>EAP: measurement/calculation details- lattice parameter gamma
+
+International Tables for Crystallography A(2006) table 1.1.1--interaxial (lattice) angle a^b</xsd:documentation>
                                 </xsd:annotation>
                             </xsd:element>
                             <!-- example unit:	rad 			-->
@@ -5336,7 +5381,10 @@ molar enthalpy function, molar gibbs energy function, standard molar gibbs energ
     </xsd:complexType>
     <xsd:complexType name="magneticPermeabilityType">
         <xsd:annotation>
-            <xsd:documentation>EAP: used for magnetic permeability</xsd:documentation>
+            <xsd:documentation>EAP: used for magnetic permeability  
+
+IUPAC: Permeatbility of vacuuum multiplied by the relative permeability, aka H (volume) magnetization, M 
+</xsd:documentation>
         </xsd:annotation>
         <xsd:sequence>
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
@@ -6450,7 +6498,9 @@ IUPAC: Quantity characterizing the deviation of the solvent from ideal behaviour
     </xsd:complexType>
     <xsd:complexType name="relativeMagneticPermeabilityType">
         <xsd:annotation>
-            <xsd:documentation>EAP: used for relative magnetic permeability</xsd:documentation>
+            <xsd:documentation>EAP: used for relative magnetic permeability
+
+Ratio of magnetic permeabiltiy over the magnetic permeabiltiy in a vacuum</xsd:documentation>
         </xsd:annotation>
         <xsd:sequence>
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
@@ -7615,34 +7665,32 @@ relative partial molar volume,
     <!--Null/number definitions-->
     <xsd:complexType name="phaseTransitionType">
         <xsd:choice minOccurs="0" maxOccurs="unbounded">
-            <xsd:element name="normalMelting" type="tml:phaseTransitionDefinitionType"> </xsd:element>
-            <xsd:element name="normalBoiling" type="tml:phaseTransitionDefinitionType"> </xsd:element>
-            <xsd:element name="sublimation" type="tml:phaseTransitionDefinitionType"> </xsd:element>
-            <xsd:element name="liquidus" type="tml:phaseTransitionDefinitionType"> </xsd:element>
-            <xsd:element name="solidus" type="tml:phaseTransitionDefinitionType"> </xsd:element>
-            <xsd:element name="solvus" type="tml:phaseTransitionDefinitionType"> </xsd:element>
-            <xsd:element name="eutecticTransformation" type="tml:phaseTransitionDefinitionType"> </xsd:element>
-            <xsd:element name="eutectoidTransformation" type="tml:phaseTransitionDefinitionType"> </xsd:element>
-            <xsd:element name="peritecticTransformation" type="tml:phaseTransitionDefinitionType"> </xsd:element>
-            <xsd:element name="peritectoidTransformation" type="tml:phaseTransitionDefinitionType"> </xsd:element>
-            <xsd:element name="monotecticTransformation" type="tml:phaseTransitionDefinitionType"> </xsd:element>
-            <xsd:element name="monotectoidTransformation" type="tml:phaseTransitionDefinitionType"> </xsd:element>
-            <xsd:element name="invariantReactionTransition" type="tml:phaseTransitionDefinitionType"
-                > </xsd:element>
-            <xsd:element name="orderingTransition" type="tml:phaseTransitionDefinitionType"> </xsd:element>
-            <xsd:element name="lambdaSuperconductiveTransition"
-                type="tml:phaseTransitionDefinitionType"> </xsd:element>
-            <xsd:element name="shearTransition" type="tml:phaseTransitionDefinitionType"> </xsd:element>
-            <xsd:element name="glassTransitition" type="tml:phaseTransitionDefinitionType"> </xsd:element>
-            <xsd:element name="magneticTransition" type="tml:phaseTransitionDefinitionType"> </xsd:element>
-            <xsd:element name="secondOrderPhaseTransition" type="tml:phaseTransitionDefinitionType"> </xsd:element>
-            <xsd:element name="firstOrderPhaseTransition" type="tml:phaseTransitionDefinitionType">
+            <xsd:element name="normalMelting" type="tml:phaseBoundaryType"> </xsd:element>
+            <xsd:element name="normalBoiling" type="tml:phaseBoundaryType"> </xsd:element>
+            <xsd:element name="sublimation" type="tml:phaseBoundaryType"> </xsd:element>
+            <xsd:element name="liquidus" type="tml:phaseBoundaryType"> </xsd:element>
+            <xsd:element name="solidus" type="tml:phaseBoundaryType"> </xsd:element>
+            <xsd:element name="solvus" type="tml:phaseBoundaryType"> </xsd:element>
+            <xsd:element name="eutecticTransformation" type="tml:phaseBoundaryType"> </xsd:element>
+            <xsd:element name="eutectoidTransformation" type="tml:phaseBoundaryType"> </xsd:element>
+            <xsd:element name="peritecticTransformation" type="tml:phaseBoundaryType"> </xsd:element>
+            <xsd:element name="peritectoidTransformation" type="tml:phaseBoundaryType"> </xsd:element>
+            <xsd:element name="monotecticTransformation" type="tml:phaseBoundaryType"> </xsd:element>
+            <xsd:element name="monotectoidTransformation" type="tml:phaseBoundaryType"> </xsd:element>
+            <xsd:element name="invariantReactionTransition" type="tml:phaseBoundaryType"> </xsd:element>
+            <xsd:element name="orderingTransition" type="tml:phaseBoundaryType"> </xsd:element>
+            <xsd:element name="lambdaSuperconductiveTransition" type="tml:phaseBoundaryType"> </xsd:element>
+            <xsd:element name="shearTransition" type="tml:phaseBoundaryType"> </xsd:element>
+            <xsd:element name="glassTransitition" type="tml:phaseBoundaryType"> </xsd:element>
+            <xsd:element name="magneticTransition" type="tml:phaseBoundaryType"> </xsd:element>
+            <xsd:element name="secondOrderPhaseTransition" type="tml:phaseBoundaryType"> </xsd:element>
+            <xsd:element name="firstOrderPhaseTransition" type="tml:phaseBoundaryType">
             </xsd:element>
         </xsd:choice>
     </xsd:complexType>
-    <xsd:complexType name="phaseTransitionDefinitionType">
+    <xsd:complexType name="phaseBoundaryType">
         <xsd:sequence>
-            <xsd:element name="involvedPhases">
+            <xsd:element name="phaseField">
                 <xsd:annotation>
                     <xsd:documentation>EAP: list of n>1 phases involved in transformation</xsd:documentation>
                 </xsd:annotation>
@@ -7662,7 +7710,7 @@ relative partial molar volume,
             </xsd:element>
             <xsd:element minOccurs="0" name="zeroPhaseFraction">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: list of phase(s) with fraction approaching zero, note: 0 phases indicated binary invariant reaction where no zero phase fields are identified.</xsd:documentation>
+                    <xsd:documentation>EAP: list of phase(s) with fraction decreasing/increasing from zero</xsd:documentation>
                 </xsd:annotation>
                 <xsd:complexType>
                     <xsd:sequence>
