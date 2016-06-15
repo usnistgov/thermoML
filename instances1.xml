@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataReport xmlns="http://www.iupac.org/namespaces/ThermoML"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://www.iupac.org/namespaces/ThermoML file:/N:/Pfeif/working/ThermoML/thermoML/ThermoML-draft%20v.pfeif.4.xsd">
+    <citation id="50">
+        <TRCRefID>
+            <yearPub>0</yearPub>
+            <author1>author10</author1>
+            <author2>author20</author2>
+            <authorN>0</authorN>
+        </TRCRefID>
+        <documentType>book</documentType>
+        <sourceType>Original</sourceType>
+        <documentOrigin>documentOrigin0</documentOrigin>
+        <author>author0</author>
+        <namePublication>namePublication0</namePublication>
+        <yearPublished>2006</yearPublished>
+        <date>2006-05-04</date>
+        <title>title0</title>
+        <abstract>abstract0</abstract>
+        <keyword>keyword0</keyword>
+        <language>Chinese</language>
+        <DOI>DOI0</DOI>
+        <URL>URL0</URL>
+        <CASCitation>CASCitation0</CASCitation>
+        <IDNum>IDNum0</IDNum>
+        <location>location0</location>
+        <volume>volume0</volume>
+        <pages>pages0</pages>
+        <journal>
+            <ISSN>ISSN0</ISSN>
+            <issue>issue0</issue>
+            <CODEN>CODEN0</CODEN>
+        </journal>
+    </citation>
+    <chemical id="50">
+        <RegNum>
+            <CASRNum>0</CASRNum>
+            <organizaitonNumber>0</organizaitonNumber>
+            <organizationName>organizationName0</organizationName>
+        </RegNum>
+        <PubChemID>0</PubChemID>
+        <standardInChI>standardInChI0</standardInChI>
+        <standardInChIKey>standardInChIKey0</standardInChIKey>
+        <organizationID>
+            <organizationIdentifier>organizationIdentifier0</organizationIdentifier>
+            <organization>organization0</organization>
+        </organizationID>
+        <CASName>CASName0</CASName>
+        <IUPACName>IUPACName0</IUPACName>
+        <commonName>commonName0</commonName>
+        <formulaMolecular>formulaMolecular0</formulaMolecular>
+        <SMILES>SMILES0</SMILES>
+        <polymer>
+            <numberAvgMolMass>0</numberAvgMolMass>
+            <peakAvgMolMass>0</peakAvgMolMass>
+            <viscosityAvgMolMass>0</viscosityAvgMolMass>
+            <massAvgMolMass>0</massAvgMolMass>
+            <zAvgMolMass>0</zAvgMolMass>
+            <molarMassDispersity>0</molarMassDispersity>
+            <degOfPolymerizationDispersity>0</degOfPolymerizationDispersity>
+        </polymer>
+        <speciationState>equilibrium</speciationState>
+    </chemical>
+    <system id="id1">
+        <reaction>
+            <participant>
+                <chemical ref="50"/>
+                <stoichiometricCoef>0</stoichiometricCoef>
+                <phase ref="50"/>
+            </participant>
+            <auxiliarySubstance>
+                <otherFunction>otherFunction0</otherFunction>
+                <system ref="50"/>
+                <phase ref="50"/>
+            </auxiliarySubstance>
+            <solvent>
+                <system ref="50"/>
+                <phase ref="50"/>
+            </solvent>
+            <electronNumber>0</electronNumber>
+            <reactionType>Combustion with oxygen</reactionType>
+        </reaction>
+    </system>
+    <phase id="50">
+        <singlephase compositionBasis="number of molecules">
+            <type>Crystal</type>
+            <metastable>false</metastable>
+            <name>name0</name>
+            <crystalLattice>Cubic</crystalLattice>
+            <spaceGroup>C2/c</spaceGroup>
+            <wyckoffSequence>wyckoffSequence0</wyckoffSequence>
+            <strukturbericht>A1</strukturbericht>
+            <pearsonSymbol>cF112</pearsonSymbol>
+            <prototype>A14C3</prototype>
+            <magneticState>Non-magnetic</magneticState>
+            <superconductive>false</superconductive>
+            <stoichiometricCoef>
+                <component>
+                    <chemical ref="50"/>
+                    <amount>0</amount>
+                </component>
+            </stoichiometricCoef>
+        </singlephase>
+    </phase>
+    <dataset>
+        <citation ref="50"/>
+        <system ref="50"/>
+        <phase ref="50"/>
+        <variable>
+            <temperature>
+                <label>label0</label>
+                <units>K</units>
+                <scale>ITS-90</scale>
+                <method>Platinum resistance thermometer</method>
+            </temperature>
+        </variable>
+        <constantVariable>
+            <magneticFieldStrength>
+                <label>label1</label>
+                <units>A/m</units>
+                <method>Inductive pick up coils</method>
+            </magneticFieldStrength>
+        </constantVariable>
+        <property>
+            <criticals>
+                <lowerConsolutePressure>
+                    <label>label2</label>
+                    <units>kPa</units>
+                    <method>Manometer</method>
+                </lowerConsolutePressure>
+                <criticalEvaluation>
+                    <multiPropertyList>multiPropertyList0</multiPropertyList>
+                    <description>description0</description>
+                    <citation ref="50"/>
+                </criticalEvaluation>
+            </criticals>
+        </property>
+        <point>
+            <phase ref="50"/>
+            <process ref="50"/>
+            <var>
+                <value>0</value>
+                <uncertainty>
+                    <other>
+                        <value>0</value>
+                    </other>
+                </uncertainty>
+            </var>
+        </point>
+        <expPurpose>Principal objective of the work</expPurpose>
+        <compiler>compiler0</compiler>
+        <contributor>contributor0</contributor>
+        <date>
+        </date>
+    </dataset>
+</dataReport>

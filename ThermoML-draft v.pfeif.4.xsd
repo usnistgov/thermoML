@@ -2638,7 +2638,7 @@ Related to the Critical Point. IUPAC: The temperature and pressure at which the 
                             </xsd:element>
                             <!-- example unit: Pascal  -->
                         </xsd:choice>
-                        <xsd:choice>
+                        <xsd:choice minOccurs="1">
                             <xsd:element name="method">
                                 <xsd:simpleType>
                                     <!-- methods  -->
