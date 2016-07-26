@@ -7992,7 +7992,7 @@ partial molar volume
             </xsd:element>
         </xsd:sequence>
     </xsd:complexType>
-    <xsd:complexType name="NEWpointType">
+    <xsd:complexType name="newPointType">
         <xsd:sequence>
             <xsd:element name="phase" minOccurs="0">
                 <xsd:complexType>
@@ -8013,6 +8013,53 @@ partial molar volume
                         <xsd:element name="ratioMeasurement" type="tml:referenceDescriptionType"/>
                         <xsd:element name="ratioDifferenceMeasurement"
                             type="tml:referenceDescriptionType"/>
+                    </xsd:choice>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="newPointType2">
+        <xsd:sequence>
+            <xsd:element name="phase" minOccurs="0">
+                <xsd:complexType>
+                    <xsd:attribute name="ref" type="xsd:positiveInteger" use="required"/>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="process" minOccurs="0">
+                <xsd:complexType>
+                    <xsd:attribute name="ref" type="xsd:positiveInteger" use="required"/>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="measurementRepresentation">
+                <xsd:complexType>
+                    <xsd:choice>
+                        <xsd:element name="directMeasurement" type="tml:directMeasurementType"/>
+                        <xsd:element name="singleReferenceState">
+                            <xsd:complexType>
+                                <xsd:choice>
+                                    <xsd:element name="sameCompositionDifferentVariables"
+                                        type="tml:staticRefState"/>
+                                    <xsd:element name="pureComponentDifferentVariables"
+                                        type="tml:staticRefState"/>
+                                    <xsd:element
+                                        name="referencePhaseInEquilibriumWithPrimaryPhaseAtSameVariables"
+                                        type="tml:dynamicRefState"/>
+                                </xsd:choice>
+                            </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="shiftingRefState">
+                            <xsd:complexType>
+                                <xsd:choice>
+                                    <xsd:element name="sameCompositionDifferentVariables"
+                                        type="tml:dynamicRefState"/>
+                                    <xsd:element name="pureComponentDifferentVariables"
+                                        type="tml:dynamicRefState"/>
+                                    <xsd:element
+                                        name="referencePhaseInEquilibriumWithPrimaryPhaseAtSameVariables"
+                                        type="tml:dynamicRefState"/>
+                                </xsd:choice>
+                            </xsd:complexType>
+                        </xsd:element>
                     </xsd:choice>
                 </xsd:complexType>
             </xsd:element>
@@ -8101,54 +8148,184 @@ partial molar volume
             <xsd:element name="referenceStateData" type="tml:referenceDetailsStatic"/>
         </xsd:choice>
     </xsd:complexType>
-    <xsd:complexType name="referenceDetailsStatic">
+    <xsd:complexType name="staticRefState">
         <xsd:choice>
-            <xsd:element name="pureRefComponent">
+            <xsd:element name="differenceMeasurement">
                 <xsd:complexType>
-                    <xsd:attribute name="id"/>
+                    <xsd:choice>
+                        <xsd:element name="pureRefComponent">
+                            <xsd:complexType>
+                                <xsd:attribute name="id"/>
+                            </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="refPhase">
+                            <xsd:complexType>
+                                <xsd:attribute name="id"/>
+                            </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="refTemperature" type="tml:temperatureType"/>
+                        <xsd:element name="refPressure" type="tml:pressureType"/>
+                        <xsd:element name="refMagneticFieldStrength"
+                            type="tml:magneticFieldStrengthType"/>
+                        <xsd:element name="refMagneticFieldDensity"
+                            type="tml:magneticFieldDensityType"/>
+                    </xsd:choice>
                 </xsd:complexType>
             </xsd:element>
-            <xsd:element name="refPhase">
+            <xsd:element name="ratioMeasurement">
                 <xsd:complexType>
-                    <xsd:attribute name="id"/>
+                    <xsd:choice>
+                        <xsd:element name="pureRefComponent">
+                            <xsd:complexType>
+                                <xsd:attribute name="id"/>
+                            </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="refPhase">
+                            <xsd:complexType>
+                                <xsd:attribute name="id"/>
+                            </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="refTemperature" type="tml:temperatureType"/>
+                        <xsd:element name="refPressure" type="tml:pressureType"/>
+                        <xsd:element name="refMagneticFieldStrength"
+                            type="tml:magneticFieldStrengthType"/>
+                        <xsd:element name="refMagneticFieldDensity"
+                            type="tml:magneticFieldDensityType"/>
+                    </xsd:choice>
                 </xsd:complexType>
             </xsd:element>
-            <xsd:element name="refTemperature" type="tml:temperatureType"/>
-            <xsd:element name="refPressure" type="tml:pressureType"/>
-            <xsd:element name="refMagneticFieldStrength" type="tml:magneticFieldStrengthType"/>
-            <xsd:element name="refMagneticFieldDensity" type="tml:magneticFieldDensityType"/>
+            <xsd:element name="ratioDifferenceMeasurement">
+                <xsd:complexType>
+                    <xsd:choice>
+                        <xsd:element name="pureRefComponent">
+                            <xsd:complexType>
+                                <xsd:attribute name="id"/>
+                            </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="refPhase">
+                            <xsd:complexType>
+                                <xsd:attribute name="id"/>
+                            </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="refTemperature" type="tml:temperatureType"/>
+                        <xsd:element name="refPressure" type="tml:pressureType"/>
+                        <xsd:element name="refMagneticFieldStrength"
+                            type="tml:magneticFieldStrengthType"/>
+                        <xsd:element name="refMagneticFieldDensity"
+                            type="tml:magneticFieldDensityType"/>
+                    </xsd:choice>
+                </xsd:complexType>
+            </xsd:element>
         </xsd:choice>
     </xsd:complexType>
-    <xsd:complexType name="referenceDetailsInDataset">
+    <xsd:complexType name="dynamicRefState">
         <xsd:choice>
-            <xsd:element name="refTemperature">
+            <xsd:element name="differenceMeasurement">
                 <xsd:complexType>
-                    <xsd:attribute name="newAttribute"/>
+                    <xsd:choice>
+                        <xsd:element name="refPhase">
+                            <xsd:complexType>
+                                <xsd:attribute name="id"/>
+                            </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="refTemperature">
+                            <xsd:complexType>
+                                <xsd:attribute name="id"/>
+                            </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="refPressure">
+                            <xsd:complexType>
+                                <xsd:attribute name="newAttribute"/>
+                            </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="refMagneticFieldStrength">
+                            <xsd:complexType>
+                                <xsd:attribute name="newAttribute"/>
+                            </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="refMagneticFieldDensity">
+                            <xsd:complexType>
+                                <xsd:attribute name="newAttribute"/>
+                            </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="pureRefComponent">
+                            <xsd:complexType>
+                                <xsd:attribute name="id"/>
+                            </xsd:complexType>
+                        </xsd:element>
+                    </xsd:choice>
                 </xsd:complexType>
             </xsd:element>
-            <xsd:element name="refPressure">
+            <xsd:element name="ratioMeasurement">
                 <xsd:complexType>
-                    <xsd:attribute name="newAttribute"/>
+                    <xsd:choice>
+                        <xsd:element name="refPhase">
+                            <xsd:complexType>
+                                <xsd:attribute name="id"/>
+                            </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="refTemperature">
+                            <xsd:complexType>
+                                <xsd:attribute name="id"/>
+                            </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="refPressure">
+                            <xsd:complexType>
+                                <xsd:attribute name="newAttribute"/>
+                            </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="refMagneticFieldStrength">
+                            <xsd:complexType>
+                                <xsd:attribute name="newAttribute"/>
+                            </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="refMagneticFieldDensity">
+                            <xsd:complexType>
+                                <xsd:attribute name="newAttribute"/>
+                            </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="pureRefComponent">
+                            <xsd:complexType>
+                                <xsd:attribute name="id"/>
+                            </xsd:complexType>
+                        </xsd:element>
+                    </xsd:choice>
                 </xsd:complexType>
             </xsd:element>
-            <xsd:element name="refMagneticFieldStrength">
+            <xsd:element name="ratioDifferenceMeasurement">
                 <xsd:complexType>
-                    <xsd:attribute name="newAttribute"/>
-                </xsd:complexType>
-            </xsd:element>
-            <xsd:element name="refMagneticFieldDensity">
-                <xsd:complexType>
-                    <xsd:attribute name="newAttribute"/>
-                </xsd:complexType>
-            </xsd:element>
-            <xsd:element name="refPhase">
-                <xsd:complexType>
-                    <xsd:attribute name="id"/>
-                </xsd:complexType>
-            </xsd:element>
-            <xsd:element name="pureRefComponent">
-                <xsd:complexType>
-                    <xsd:attribute name="id"/>
+                    <xsd:choice>
+                        <xsd:element name="refPhase">
+                            <xsd:complexType>
+                                <xsd:attribute name="id"/>
+                            </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="refTemperature">
+                            <xsd:complexType>
+                                <xsd:attribute name="id"/>
+                            </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="refPressure">
+                            <xsd:complexType>
+                                <xsd:attribute name="newAttribute"/>
+                            </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="refMagneticFieldStrength">
+                            <xsd:complexType>
+                                <xsd:attribute name="newAttribute"/>
+                            </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="refMagneticFieldDensity">
+                            <xsd:complexType>
+                                <xsd:attribute name="newAttribute"/>
+                            </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="pureRefComponent">
+                            <xsd:complexType>
+                                <xsd:attribute name="id"/>
+                            </xsd:complexType>
+                        </xsd:element>
+                    </xsd:choice>
                 </xsd:complexType>
             </xsd:element>
         </xsd:choice>
