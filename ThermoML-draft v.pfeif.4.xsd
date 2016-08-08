@@ -491,17 +491,16 @@
                         </xsd:element>
                         <xsd:element name="dataType" maxOccurs="unbounded">
                             <xsd:annotation>
-                                <xsd:documentation>description of data source/creation method ( i.e. experimental, calcluated from equation, first principals calculation, smoothed data, etc.)</xsd:documentation>
+                                <xsd:documentation>description of data source/creation method ( i.e. experimental, calcluated from fitted equation, from simulation, calculation, smoothed data, etc.)</xsd:documentation>
                             </xsd:annotation>
                             <xsd:simpleType>
                                 <xsd:restriction base="xsd:string">
                                     <xsd:enumeration value="Values direct from experiment"/>
                                     <xsd:enumeration value="Values from smoothed experimental data"/>
                                     <xsd:enumeration value="Values from calculated from fit curve"/>
-                                    <xsd:enumeration
-                                        value="Values from first principals calcualtion"/>
+                                    <xsd:enumeration value="Values from modelling/simulations"/>
                                     <xsd:enumeration value="Interpolated values"/>
-                                    <xsd:enumeration value="extrapolated Values"/>
+                                    <xsd:enumeration value="Extrapolated from experimental values"/>
                                 </xsd:restriction>
                             </xsd:simpleType>
                         </xsd:element>
@@ -648,7 +647,7 @@
             </xsd:element>
             <xsd:element name="DOI" type="xsd:string" minOccurs="0">
                 <xsd:annotation>
-                    <xsd:documentation>DOI</xsd:documentation>
+                    <xsd:documentation>digital object identifier</xsd:documentation>
                 </xsd:annotation>
             </xsd:element>
             <xsd:element name="URL" type="xsd:string" minOccurs="0">
@@ -773,7 +772,7 @@
         <xsd:sequence>
             <xsd:element name="RegNum" minOccurs="0">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: Registery chemical identifier (Organizational or CASRN)</xsd:documentation>
+                    <xsd:documentation>EAP: Registery chemical identifier (Organizational or CASRN-Chemical Abstract Service Registry Number)</xsd:documentation>
                 </xsd:annotation>
                 <xsd:complexType>
                     <xsd:sequence>
@@ -821,7 +820,11 @@
                     </xsd:sequence>
                 </xsd:complexType>
             </xsd:element>
-            <xsd:element name="CASName" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="CASName" type="xsd:string" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>name as given by the chemical abstract service</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
             <xsd:element name="IUPACName" type="xsd:string" minOccurs="0">
                 <xsd:annotation>
                     <xsd:appinfo>IUPAC name, string</xsd:appinfo>
@@ -902,6 +905,16 @@
                         <xsd:sequence>
                             <xsd:element name="ECNumber" type="xsd:string" minOccurs="0"/>
                             <xsd:element name="PDBIdentifier" type="xsd:string" minOccurs="0"/>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+                <xsd:element name="isotope">
+                    <xsd:complexType>
+                        <xsd:annotation>
+                            <xsd:documentation>isotope specific information</xsd:documentation>
+                        </xsd:annotation>
+                        <xsd:sequence>
+                            <xsd:element name="atomicMass" type="xsd:integer"/>
                         </xsd:sequence>
                     </xsd:complexType>
                 </xsd:element>
@@ -1591,9 +1604,12 @@
                 </xsd:simpleType>
             </xsd:element>
             <xsd:element name="status" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>information pertaining to the sample (not described, unknown, from previous paper)</xsd:documentation>
+                </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:annotation>
-                        <xsd:documentation>The sample status</xsd:documentation>
+                        <xsd:documentation/>
                     </xsd:annotation>
                     <xsd:restriction base="xsd:string">
                         <xsd:enumeration value="unknown"/>
@@ -1718,6 +1734,9 @@
                 </xsd:complexType>
             </xsd:element>
             <xsd:element minOccurs="1" name="materialForm">
+                <xsd:annotation>
+                    <xsd:documentation>physical description of specimen (for metals and ceramics)</xsd:documentation>
+                </xsd:annotation>
                 <xsd:complexType>
                     <xsd:choice>
                         <xsd:element name="materialForm" minOccurs="1" maxOccurs="1"
@@ -1744,9 +1763,68 @@
                         </xsd:element>
                         <xsd:element default="0" minOccurs="0" name="singleCrystal"
                             type="xsd:boolean"/>
-                        <xsd:element name="grainSize" type="tml:valueType" maxOccurs="1"
-                            minOccurs="0"/>
+                        <xsd:element name="microstructureFeature" maxOccurs="unbounded"
+                            minOccurs="0">
+                            <xsd:annotation>
+                                <xsd:documentation>grain size as measured, if two selected allows for bimodal values to be captured. ref is for phase.</xsd:documentation>
+                            </xsd:annotation>
+                            <xsd:complexType>
+                                <xsd:choice>
+                                    <xsd:element default="unknown" minOccurs="0"
+                                        name="grainMorphology">
+                                        <xsd:annotation>
+                                            <xsd:documentation>grain morphology--not a complex description. (i.e. elongated grains, bimodal gs distribution, unknown, equiaxed, equiaxed) </xsd:documentation>
+                                        </xsd:annotation>
+                                        <xsd:simpleType>
+                                            <xsd:restriction base="xsd:string">
+                                                <xsd:enumeration value="equiaxed grains"/>
+                                                <xsd:enumeration value="lamellar grains "/>
+                                                <xsd:enumeration value="chinese script grains"/>
+                                                <xsd:enumeration value="elongated/pancake grains"/>
+                                                <xsd:enumeration value="unknown"/>
+                                            </xsd:restriction>
+                                        </xsd:simpleType>
+                                    </xsd:element>
+                                    <xsd:element default="unknown" minOccurs="0" name="texture">
+                                        <xsd:simpleType>
+                                            <xsd:restriction base="xsd:string"/>
+                                        </xsd:simpleType>
+                                    </xsd:element>
+                                    <xsd:element minOccurs="0" name="grainSize" type="tml:valueType"/>
+                                    <xsd:element minOccurs="0" name="aspectRatio"
+                                        type="tml:valueType">
+                                        <xsd:annotation>
+                                            <xsd:documentation>in case of elongated grains, the aspect ratio can be captured</xsd:documentation>
+                                        </xsd:annotation>
+                                    </xsd:element>
+                                </xsd:choice>
+                                <xsd:attribute name="ref"/>
+                            </xsd:complexType>
+                        </xsd:element>
                     </xsd:choice>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="impurities">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="element">
+                            <xsd:complexType>
+                                <xsd:attribute name="ref"/>
+                            </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="units">
+                            <xsd:simpleType>
+                                <xsd:restriction base="xsd:string">
+                                    <xsd:enumeration value="atomic fraction"/>
+                                    <xsd:enumeration value="atomic percent"/>
+                                    <xsd:enumeration value="atomic ppm"/>
+                                    <xsd:enumeration value="weight fraction"/>
+                                    <xsd:enumeration value="weight percent"/>
+                                    <xsd:enumeration value="weight ppm"/>
+                                </xsd:restriction>
+                            </xsd:simpleType>
+                        </xsd:element>
+                    </xsd:sequence>
                 </xsd:complexType>
             </xsd:element>
         </xsd:sequence>
@@ -1767,17 +1845,18 @@
                             </xsd:annotation>
                             <xsd:simpleType>
                                 <xsd:restriction base="xsd:string">
-                                    <xsd:enumeration value="Crystal"/>
-                                    <xsd:enumeration value="Glass"/>
-                                    <xsd:enumeration value="Unknown Solid"/>
-                                    <xsd:enumeration value="Liquid"/>
-                                    <xsd:enumeration value="Gas"/>
-                                    <xsd:enumeration value="Unknown/Supercritical Fluid"/>
-                                    <xsd:enumeration value="Inert media at 1 atm"/>
-                                    <xsd:enumeration value="Cholesteric liquid crystal"/>
-                                    <xsd:enumeration value="Nematic liquid crystal"/>
-                                    <xsd:enumeration value="Smectic liquid crystal"/>
-                                    <xsd:enumeration value="Unknown-type Liquid crystal"/>
+                                    <xsd:enumeration value="crystal"/>
+                                    <xsd:enumeration value="gas"/>
+                                    <xsd:enumeration value="glass"/>
+                                    <xsd:enumeration value="liquid"/>
+                                    <xsd:enumeration value="quasicrystal"/>
+                                    <xsd:enumeration value="unknown solid"/>
+                                    <xsd:enumeration value="unknown/supercritical fluid"/>
+                                    <xsd:enumeration value="inert media at 1 atm"/>
+                                    <xsd:enumeration value="cholesteric liquid crystal"/>
+                                    <xsd:enumeration value="nematic liquid crystal"/>
+                                    <xsd:enumeration value="smectic liquid crystal"/>
+                                    <xsd:enumeration value="unknown-type liquid crystal"/>
                                 </xsd:restriction>
                             </xsd:simpleType>
                         </xsd:element>
