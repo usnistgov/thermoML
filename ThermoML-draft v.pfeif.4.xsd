@@ -2467,15 +2467,7 @@
                 </xsd:annotation>
                 <xsd:complexType>
                     <xsd:sequence>
-                        <xsd:element name="conditions">
-                            <xsd:complexType>
-                                <xsd:complexContent>
-                                    <xsd:extension base="tml:variableType">
-                                        <xsd:attribute name="ref"/>
-                                    </xsd:extension>
-                                </xsd:complexContent>
-                            </xsd:complexType>
-                        </xsd:element>
+                        <xsd:element name="conditions"/>
                         <xsd:element name="phase" minOccurs="0">
                             <xsd:complexType>
                                 <xsd:attribute name="ref" type="xsd:positiveInteger" use="required"
