@@ -453,10 +453,19 @@
                     <xsd:documentation>Elements of chemicals referenced in the data</xsd:documentation>
                 </xsd:annotation>
             </xsd:element>
-            <xsd:element name="system" type="tml:systemType" minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="system" minOccurs="0" maxOccurs="unbounded">
                 <xsd:annotation>
                     <xsd:documentation>Elements relating the chemical make-up to the final system</xsd:documentation>
                 </xsd:annotation>
+                <xsd:complexType>
+                    <xsd:complexContent>
+                        <xsd:extension base="tml:systemType">
+                            <xsd:sequence>
+                                <xsd:element name="materialName" type="xsd:string"/>
+                            </xsd:sequence>
+                        </xsd:extension>
+                    </xsd:complexContent>
+                </xsd:complexType>
             </xsd:element>
             <xsd:element name="phase" type="tml:phaseType" minOccurs="0" maxOccurs="unbounded">
                 <xsd:annotation>
@@ -2713,7 +2722,8 @@ IUPAC: Quantity characterizing the deviation of the solvent from ideal behaviour
                                     </xsd:annotation>
                                 </xsd:element>
                                 <!-- example unit:  dimensionless? 			-->
-                                <xsd:element name="electroChemicalCellPotential" type="tml:emfType"/>
+                                <xsd:element name="electroChemicalCellPotential" type="tml:emfType"
+                                />
                             </xsd:choice>
                             <xsd:choice>
                                 <xsd:element name="method">
@@ -2727,7 +2737,8 @@ IUPAC: Quantity characterizing the deviation of the solvent from ideal behaviour
                                             <xsd:enumeration value="Differential ebulliometry"/>
                                             <xsd:enumeration value="Isopiestic method"/>
                                             <xsd:enumeration value="Mass-spectrometry"/>
-                                            <xsd:enumeration value="Potential difference of an electrochemical cell"/>
+                                            <xsd:enumeration
+                                                value="Potential difference of an electrochemical cell"/>
                                             <xsd:enumeration value="NMR spectrometry"/>
                                             <xsd:enumeration value="Spectroscopy"/>
                                             <xsd:enumeration value="Static method"/>
@@ -4269,7 +4280,7 @@ International Tables for Crystallography A(2006) table 1.1.1--interaxial (lattic
                     </xsd:complexType>
                 </xsd:element>
             </xsd:choice>
-            <xsd:element name="preopertyRepresentation" default="Direct measurement, x = x1"
+            <xsd:element name="propertyRepresentation" default="Direct measurement, x = x1"
                 minOccurs="1">
                 <xsd:annotation>
                     <xsd:documentation>Representation of measurement (i.e. direct measurement, relative difference, ratio, ratio of difference difference, etc..)</xsd:documentation>
@@ -4288,7 +4299,6 @@ International Tables for Crystallography A(2006) table 1.1.1--interaxial (lattic
                     </xsd:restriction>
                 </xsd:simpleType>
             </xsd:element>
-            <xsd:element name="propRep" type="tml:propRepType"> </xsd:element>
         </xsd:sequence>
     </xsd:complexType>
     <xsd:complexType name="pointType">
@@ -4323,18 +4333,16 @@ International Tables for Crystallography A(2006) table 1.1.1--interaxial (lattic
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="dimensionless">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
                         <xsd:enumeration value="dimensionless"/>
-                        <xsd:enumeration value="mol/kg"/>
-                        <xsd:enumeration value="mol/m3"/>
                     </xsd:restriction>
                 </xsd:simpleType>
             </xsd:element>
             <xsd:choice minOccurs="0" maxOccurs="unbounded">
-                <xsd:element name="method">
+                <xsd:element name="sensor">
                     <xsd:annotation>
                         <xsd:documentation>EAP: Standard method(s) of measurement</xsd:documentation>
                     </xsd:annotation>
@@ -4351,7 +4359,11 @@ International Tables for Crystallography A(2006) table 1.1.1--interaxial (lattic
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
             <xsd:element name="component" minOccurs="1" maxOccurs="1">
                 <xsd:annotation>
@@ -4380,7 +4392,7 @@ International Tables for Crystallography A(2006) table 1.1.1--interaxial (lattic
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="dimensionless">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -4399,7 +4411,11 @@ International Tables for Crystallography A(2006) table 1.1.1--interaxial (lattic
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
             <xsd:element maxOccurs="unbounded" name="solvent">
                 <xsd:annotation>
@@ -4428,7 +4444,7 @@ International Tables for Crystallography A(2006) table 1.1.1--interaxial (lattic
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="dimensionless">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -4459,7 +4475,11 @@ International Tables for Crystallography A(2006) table 1.1.1--interaxial (lattic
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
         </xsd:sequence>
     </xsd:complexType>
@@ -4505,7 +4525,11 @@ International Tables for Crystallography A(2006) table 1.1.1--interaxial (lattic
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
             <xsd:element name="component" minOccurs="1" maxOccurs="1">
                 <xsd:annotation>
@@ -4516,14 +4540,17 @@ International Tables for Crystallography A(2006) table 1.1.1--interaxial (lattic
                     <xsd:attribute name="ref" type="xsd:positiveInteger" use="required"/>
                 </xsd:complexType>
             </xsd:element>
-            <xsd:element name="phase" minOccurs="0">
-                <xsd:annotation>
-                    <xsd:documentation>EAP: phase linked to property</xsd:documentation>
-                </xsd:annotation>
-                <xsd:complexType>
-                    <xsd:attribute name="ref" type="xsd:positiveInteger" use="required"/>
-                </xsd:complexType>
-            </xsd:element>
+            <xsd:choice>
+                <xsd:element name="phase" minOccurs="1">
+                    <xsd:annotation>
+                        <xsd:documentation>EAP: phase linked to property</xsd:documentation>
+                    </xsd:annotation>
+                    <xsd:complexType>
+                        <xsd:attribute name="ref" type="xsd:positiveInteger" use="required"/>
+                    </xsd:complexType>
+                </xsd:element>
+                <xsd:element name="bulkComposition" type="xsd:boolean"/>
+            </xsd:choice>
         </xsd:sequence>
     </xsd:complexType>
     <xsd:complexType name="compositionRatioType">
@@ -4535,7 +4562,7 @@ International Tables for Crystallography A(2006) table 1.1.1--interaxial (lattic
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="dimensionless">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -4552,7 +4579,11 @@ International Tables for Crystallography A(2006) table 1.1.1--interaxial (lattic
                         <xsd:restriction base="xsd:string"> </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
             <xsd:element name="solute">
                 <xsd:annotation>
@@ -4580,7 +4611,7 @@ International Tables for Crystallography A(2006) table 1.1.1--interaxial (lattic
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="dimensionless">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -4589,9 +4620,9 @@ International Tables for Crystallography A(2006) table 1.1.1--interaxial (lattic
                 </xsd:simpleType>
             </xsd:element>
             <xsd:choice minOccurs="0" maxOccurs="unbounded">
-                <xsd:element name="method">
+                <xsd:element name="sensor">
                     <xsd:annotation>
-                        <xsd:documentation>EAP: Standard method(s) of measurement</xsd:documentation>
+                        <xsd:documentation>sensor used for measurement</xsd:documentation>
                     </xsd:annotation>
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
@@ -4603,7 +4634,11 @@ International Tables for Crystallography A(2006) table 1.1.1--interaxial (lattic
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
         </xsd:sequence>
     </xsd:complexType>
@@ -4616,7 +4651,7 @@ International Tables for Crystallography A(2006) table 1.1.1--interaxial (lattic
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="dimensionless">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -4625,9 +4660,9 @@ International Tables for Crystallography A(2006) table 1.1.1--interaxial (lattic
                 </xsd:simpleType>
             </xsd:element>
             <xsd:choice minOccurs="0" maxOccurs="unbounded">
-                <xsd:element name="method">
+                <xsd:element name="sensor">
                     <xsd:annotation>
-                        <xsd:documentation>EAP: Standard method(s) of measurement</xsd:documentation>
+                        <xsd:documentation>sensor used for measurement</xsd:documentation>
                     </xsd:annotation>
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
@@ -4638,7 +4673,11 @@ International Tables for Crystallography A(2006) table 1.1.1--interaxial (lattic
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
         </xsd:sequence>
     </xsd:complexType>
@@ -4650,7 +4689,7 @@ International Tables for Crystallography A(2006) table 1.1.1--interaxial (lattic
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="1/K">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -4684,7 +4723,7 @@ International Tables for Crystallography A(2006) table 1.1.1--interaxial (lattic
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="dimensionless">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -4704,7 +4743,11 @@ International Tables for Crystallography A(2006) table 1.1.1--interaxial (lattic
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
         </xsd:sequence>
     </xsd:complexType>
@@ -4716,7 +4759,7 @@ International Tables for Crystallography A(2006) table 1.1.1--interaxial (lattic
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="m^2/s">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -4747,7 +4790,11 @@ International Tables for Crystallography A(2006) table 1.1.1--interaxial (lattic
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
             <xsd:element name="component" minOccurs="1" maxOccurs="1">
                 <xsd:annotation>
@@ -4776,7 +4823,7 @@ International Tables for Crystallography A(2006) table 1.1.1--interaxial (lattic
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="S/m">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -4800,7 +4847,11 @@ International Tables for Crystallography A(2006) table 1.1.1--interaxial (lattic
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
         </xsd:sequence>
     </xsd:complexType>
@@ -4812,7 +4863,7 @@ International Tables for Crystallography A(2006) table 1.1.1--interaxial (lattic
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="Ohm m">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -4845,7 +4896,11 @@ International Tables for Crystallography A(2006) table 1.1.1--interaxial (lattic
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
         </xsd:sequence>
     </xsd:complexType>
@@ -4871,7 +4926,7 @@ Van't Hoff enthalpy of transition, </xsd:documentation>
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="J/mol">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -4916,7 +4971,11 @@ Van't Hoff enthalpy of transition, </xsd:documentation>
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
         </xsd:sequence>
     </xsd:complexType>
@@ -4928,7 +4987,7 @@ Van't Hoff enthalpy of transition, </xsd:documentation>
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="J">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -4978,7 +5037,7 @@ Van't Hoff enthalpy of transition, </xsd:documentation>
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="J/K/mol">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -5023,7 +5082,11 @@ Van't Hoff enthalpy of transition, </xsd:documentation>
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
         </xsd:sequence>
     </xsd:complexType>
@@ -5035,7 +5098,7 @@ Van't Hoff enthalpy of transition, </xsd:documentation>
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="1/Pa/s">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -5058,7 +5121,11 @@ Van't Hoff enthalpy of transition, </xsd:documentation>
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
         </xsd:sequence>
     </xsd:complexType>
@@ -5067,7 +5134,7 @@ Van't Hoff enthalpy of transition, </xsd:documentation>
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="dimensionless">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -5117,7 +5184,7 @@ Van't Hoff enthalpy of transition, </xsd:documentation>
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="dimensionless">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -5126,7 +5193,11 @@ Van't Hoff enthalpy of transition, </xsd:documentation>
                 </xsd:simpleType>
             </xsd:element>
             <xsd:choice minOccurs="0" maxOccurs="unbounded">
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
             <xsd:element name="component" minOccurs="1" maxOccurs="1">
                 <xsd:annotation>
@@ -5169,7 +5240,7 @@ molar enthalpy function, molar gibbs energy function, standard molar gibbs energ
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="J/K/g">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -5214,7 +5285,11 @@ molar enthalpy function, molar gibbs energy function, standard molar gibbs energ
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
         </xsd:sequence>
     </xsd:complexType>
@@ -5226,7 +5301,7 @@ molar enthalpy function, molar gibbs energy function, standard molar gibbs energ
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="J/kg/K">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -5263,7 +5338,11 @@ molar enthalpy function, molar gibbs energy function, standard molar gibbs energ
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
         </xsd:sequence>
     </xsd:complexType>
@@ -5275,7 +5354,7 @@ molar enthalpy function, molar gibbs energy function, standard molar gibbs energ
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="dimensionless">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -5295,7 +5374,11 @@ molar enthalpy function, molar gibbs energy function, standard molar gibbs energ
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
         </xsd:sequence>
     </xsd:complexType>
@@ -5323,7 +5406,11 @@ molar enthalpy function, molar gibbs energy function, standard molar gibbs energ
                         <xsd:restriction base="xsd:string"> </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
         </xsd:sequence>
     </xsd:complexType>
@@ -5335,7 +5422,7 @@ molar enthalpy function, molar gibbs energy function, standard molar gibbs energ
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="Pa kg/mol">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -5357,7 +5444,11 @@ molar enthalpy function, molar gibbs energy function, standard molar gibbs energ
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
         </xsd:sequence>
     </xsd:complexType>
@@ -5369,7 +5460,7 @@ molar enthalpy function, molar gibbs energy function, standard molar gibbs energ
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="Pa m^3/mol">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -5391,7 +5482,11 @@ molar enthalpy function, molar gibbs energy function, standard molar gibbs energ
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
         </xsd:sequence>
     </xsd:complexType>
@@ -5402,16 +5497,13 @@ molar enthalpy function, molar gibbs energy function, standard molar gibbs energ
         </xsd:annotation>
         <xsd:sequence>
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
-            <xsd:element name="units" default="mol/kg">
+            <xsd:element name="units" default="dimensionless">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
-                        <xsd:enumeration value="mol/kg"/>
-                        <xsd:enumeration value="mol/m3"/>
-                        <xsd:enumeration value="mol/cm3"/>
-                        <xsd:enumeration value="mol/g"/>
+                        <xsd:enumeration value="dimensionless"/>
                     </xsd:restriction>
                 </xsd:simpleType>
             </xsd:element>
@@ -5426,7 +5518,11 @@ molar enthalpy function, molar gibbs energy function, standard molar gibbs energ
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
             <xsd:element name="component" minOccurs="1" maxOccurs="1">
                 <xsd:annotation>
@@ -5456,7 +5552,7 @@ molar enthalpy function, molar gibbs energy function, standard molar gibbs energ
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="dimensionless">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -5475,7 +5571,11 @@ molar enthalpy function, molar gibbs energy function, standard molar gibbs energ
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
             <xsd:element name="component" minOccurs="1" maxOccurs="1">
                 <xsd:annotation>
@@ -5504,7 +5604,7 @@ molar enthalpy function, molar gibbs energy function, standard molar gibbs energ
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="K/Pa">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -5525,7 +5625,11 @@ molar enthalpy function, molar gibbs energy function, standard molar gibbs energ
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
         </xsd:sequence>
     </xsd:complexType>
@@ -5537,7 +5641,7 @@ molar enthalpy function, molar gibbs energy function, standard molar gibbs energ
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="m^2/s">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -5567,7 +5671,11 @@ molar enthalpy function, molar gibbs energy function, standard molar gibbs energ
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
         </xsd:sequence>
     </xsd:complexType>
@@ -5579,7 +5687,7 @@ molar enthalpy function, molar gibbs energy function, standard molar gibbs energ
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="rad">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -5599,7 +5707,11 @@ molar enthalpy function, molar gibbs energy function, standard molar gibbs energ
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
         </xsd:sequence>
     </xsd:complexType>
@@ -5611,7 +5723,7 @@ molar enthalpy function, molar gibbs energy function, standard molar gibbs energ
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="nm">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -5635,7 +5747,11 @@ molar enthalpy function, molar gibbs energy function, standard molar gibbs energ
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
         </xsd:sequence>
     </xsd:complexType>
@@ -5647,7 +5763,7 @@ molar enthalpy function, molar gibbs energy function, standard molar gibbs energ
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="m/m/K">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -5657,9 +5773,9 @@ molar enthalpy function, molar gibbs energy function, standard molar gibbs energ
                 </xsd:simpleType>
             </xsd:element>
             <xsd:choice minOccurs="0" maxOccurs="unbounded">
-                <xsd:element name="method">
+                <xsd:element name="sensor">
                     <xsd:annotation>
-                        <xsd:documentation>EAP: Standard method(s) of measurement</xsd:documentation>
+                        <xsd:documentation>sensor used for measurement</xsd:documentation>
                     </xsd:annotation>
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
@@ -5671,7 +5787,11 @@ molar enthalpy function, molar gibbs energy function, standard molar gibbs energ
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
         </xsd:sequence>
     </xsd:complexType>
@@ -5680,7 +5800,7 @@ molar enthalpy function, molar gibbs energy function, standard molar gibbs energ
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="Tesla">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -5708,7 +5828,11 @@ molar enthalpy function, molar gibbs energy function, standard molar gibbs energ
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
         </xsd:sequence>
     </xsd:complexType>
@@ -5717,7 +5841,7 @@ molar enthalpy function, molar gibbs energy function, standard molar gibbs energ
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="A/m">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -5729,7 +5853,7 @@ molar enthalpy function, molar gibbs energy function, standard molar gibbs energ
             <xsd:choice minOccurs="0" maxOccurs="unbounded">
                 <xsd:element name="sensor">
                     <xsd:annotation>
-                        <xsd:documentation>EAP: Standard method(s) of measurement</xsd:documentation>
+                        <xsd:documentation>sensor used for measurement</xsd:documentation>
                     </xsd:annotation>
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
@@ -5744,7 +5868,11 @@ molar enthalpy function, molar gibbs energy function, standard molar gibbs energ
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
         </xsd:sequence>
     </xsd:complexType>
@@ -5759,7 +5887,7 @@ IUPAC: Permeatbility of vacuuum multiplied by the relative permeability, aka H (
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="H/m">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -5784,7 +5912,11 @@ IUPAC: Permeatbility of vacuuum multiplied by the relative permeability, aka H (
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
         </xsd:sequence>
     </xsd:complexType>
@@ -5796,7 +5928,7 @@ IUPAC: Permeatbility of vacuuum multiplied by the relative permeability, aka H (
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="dimensionless">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -5813,7 +5945,11 @@ IUPAC: Permeatbility of vacuuum multiplied by the relative permeability, aka H (
                         <xsd:restriction base="xsd:string"> </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
             <xsd:element name="component">
                 <xsd:annotation>
@@ -5834,7 +5970,7 @@ IUPAC: Permeatbility of vacuuum multiplied by the relative permeability, aka H (
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="kg/m^3">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -5881,7 +6017,11 @@ IUPAC: Permeatbility of vacuuum multiplied by the relative permeability, aka H (
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
         </xsd:sequence>
     </xsd:complexType>
@@ -5894,7 +6034,7 @@ IUPAC: Permeatbility of vacuuum multiplied by the relative permeability, aka H (
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="kg/m3">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -5915,7 +6055,11 @@ IUPAC: Permeatbility of vacuuum multiplied by the relative permeability, aka H (
                         <xsd:restriction base="xsd:string"> </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
             <xsd:element name="solute">
                 <xsd:annotation>
@@ -5973,7 +6117,7 @@ IUPAC: Permeatbility of vacuuum multiplied by the relative permeability, aka H (
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="mol/kg">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -5993,7 +6137,11 @@ IUPAC: Permeatbility of vacuuum multiplied by the relative permeability, aka H (
                         <xsd:restriction base="xsd:string"> </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
             <xsd:element name="solute">
                 <xsd:annotation>
@@ -6021,7 +6169,7 @@ IUPAC: Permeatbility of vacuuum multiplied by the relative permeability, aka H (
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="S m^2/mol">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -6041,11 +6189,14 @@ IUPAC: Permeatbility of vacuuum multiplied by the relative permeability, aka H (
                             <xsd:enumeration value="Direct cell with electrodes"/>
                             <xsd:enumeration
                                 value="Voltage change across transformer (no electrode)"/>
-                            <xsd:enumeration value="S cm^2/mol"/>
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
             <xsd:element name="solute">
                 <xsd:annotation>
@@ -6071,7 +6222,7 @@ IUPAC: Permeatbility of vacuuum multiplied by the relative permeability, aka H (
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="mol/m^3">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -6112,7 +6263,11 @@ IUPAC: Permeatbility of vacuuum multiplied by the relative permeability, aka H (
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
         </xsd:sequence>
     </xsd:complexType>
@@ -6125,7 +6280,7 @@ IUPAC: Permeatbility of vacuuum multiplied by the relative permeability, aka H (
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="m^3/kg">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -6188,7 +6343,11 @@ IUPAC: Permeatbility of vacuuum multiplied by the relative permeability, aka H (
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
         </xsd:sequence>
     </xsd:complexType>
@@ -6220,7 +6379,11 @@ IUPAC: Permeatbility of vacuuum multiplied by the relative permeability, aka H (
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
             <xsd:element name="component">
                 <xsd:annotation>
@@ -6238,7 +6401,7 @@ IUPAC: Permeatbility of vacuuum multiplied by the relative permeability, aka H (
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="m^3/mol">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -6272,7 +6435,7 @@ IUPAC: Permeatbility of vacuuum multiplied by the relative permeability, aka H (
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="m^3/mol">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -6323,7 +6486,11 @@ IUPAC: Permeatbility of vacuuum multiplied by the relative permeability, aka H (
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
         </xsd:sequence>
     </xsd:complexType>
@@ -6335,7 +6502,7 @@ IUPAC: Permeatbility of vacuuum multiplied by the relative permeability, aka H (
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="dimensionless">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -6352,7 +6519,11 @@ IUPAC: Permeatbility of vacuuum multiplied by the relative permeability, aka H (
                         <xsd:restriction base="xsd:string"> </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
             <xsd:element name="component">
                 <xsd:annotation>
@@ -6375,7 +6546,7 @@ IUPAC: Quantity characterizing the deviation of the solvent from ideal behaviour
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="dimensionless">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -6394,7 +6565,11 @@ IUPAC: Quantity characterizing the deviation of the solvent from ideal behaviour
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
             <xsd:element name="solute">
                 <xsd:annotation>
@@ -6422,7 +6597,7 @@ IUPAC: Quantity characterizing the deviation of the solvent from ideal behaviour
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="dimensionless">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -6431,7 +6606,7 @@ IUPAC: Quantity characterizing the deviation of the solvent from ideal behaviour
                 </xsd:simpleType>
             </xsd:element>
             <xsd:choice minOccurs="0" maxOccurs="unbounded">
-                <xsd:element name="method">
+                <xsd:element name="sensor">
                     <xsd:annotation>
                         <xsd:documentation>EAP: Standard method(s) of measurement</xsd:documentation>
                     </xsd:annotation>
@@ -6441,7 +6616,11 @@ IUPAC: Quantity characterizing the deviation of the solvent from ideal behaviour
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
             <xsd:element name="component">
                 <xsd:annotation>
@@ -6462,7 +6641,7 @@ IUPAC: Quantity characterizing the deviation of the solvent from ideal behaviour
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="dimensionless">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -6489,7 +6668,11 @@ IUPAC: Quantity characterizing the deviation of the solvent from ideal behaviour
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
         </xsd:sequence>
     </xsd:complexType>
@@ -6501,7 +6684,7 @@ IUPAC: Quantity characterizing the deviation of the solvent from ideal behaviour
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="kPa">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -6528,7 +6711,11 @@ IUPAC: Quantity characterizing the deviation of the solvent from ideal behaviour
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
             <xsd:element name="component">
                 <xsd:annotation>
@@ -6549,7 +6736,7 @@ IUPAC: Quantity characterizing the deviation of the solvent from ideal behaviour
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="F/m">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -6577,7 +6764,11 @@ IUPAC: Quantity characterizing the deviation of the solvent from ideal behaviour
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
         </xsd:sequence>
     </xsd:complexType>
@@ -6589,7 +6780,7 @@ IUPAC: Quantity characterizing the deviation of the solvent from ideal behaviour
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="K">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -6677,7 +6868,7 @@ IUPAC: Quantity characterizing the deviation of the solvent from ideal behaviour
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="dimensionless">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -6700,7 +6891,11 @@ IUPAC: Quantity characterizing the deviation of the solvent from ideal behaviour
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
             <xsd:element name="phase" minOccurs="0">
                 <xsd:annotation>
@@ -6733,7 +6928,7 @@ IUPAC: Quantity characterizing the deviation of the solvent from ideal behaviour
             <xsd:choice minOccurs="0" maxOccurs="unbounded">
                 <xsd:element name="sensor">
                     <xsd:annotation>
-                        <xsd:documentation>EAP: Standard method(s) of measurement</xsd:documentation>
+                        <xsd:documentation>sensor used for measurement</xsd:documentation>
                     </xsd:annotation>
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
@@ -6747,7 +6942,11 @@ IUPAC: Quantity characterizing the deviation of the solvent from ideal behaviour
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
         </xsd:sequence>
     </xsd:complexType>
@@ -6759,7 +6958,7 @@ IUPAC: Quantity characterizing the deviation of the solvent from ideal behaviour
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="J/kPa/mol">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -6782,7 +6981,11 @@ IUPAC: Quantity characterizing the deviation of the solvent from ideal behaviour
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
         </xsd:sequence>
     </xsd:complexType>
@@ -6794,7 +6997,7 @@ IUPAC: Quantity characterizing the deviation of the solvent from ideal behaviour
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="dimensionless">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -6815,7 +7018,11 @@ IUPAC: Quantity characterizing the deviation of the solvent from ideal behaviour
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
         </xsd:sequence>
     </xsd:complexType>
@@ -6827,7 +7034,7 @@ IUPAC: Quantity characterizing the deviation of the solvent from ideal behaviour
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="dimensionless">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -6836,9 +7043,9 @@ IUPAC: Quantity characterizing the deviation of the solvent from ideal behaviour
                 </xsd:simpleType>
             </xsd:element>
             <xsd:choice minOccurs="0" maxOccurs="unbounded">
-                <xsd:element name="method">
+                <xsd:element name="sensor">
                     <xsd:annotation>
-                        <xsd:documentation>EAP: Standard method(s) of measurement</xsd:documentation>
+                        <xsd:documentation>sensor used for measurement</xsd:documentation>
                     </xsd:annotation>
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
@@ -6850,7 +7057,11 @@ IUPAC: Quantity characterizing the deviation of the solvent from ideal behaviour
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
         </xsd:sequence>
     </xsd:complexType>
@@ -6864,7 +7075,7 @@ Ratio of magnetic permeabiltiy over the magnetic permeabiltiy in a vacuum</xsd:d
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="dimensionless">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -6889,7 +7100,11 @@ Ratio of magnetic permeabiltiy over the magnetic permeabiltiy in a vacuum</xsd:d
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
         </xsd:sequence>
     </xsd:complexType>
@@ -6905,7 +7120,7 @@ relative partial molar volume,
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="m^3/mol">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -6956,7 +7171,11 @@ relative partial molar volume,
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
             <xsd:element name="solute">
                 <xsd:annotation>
@@ -6984,7 +7203,7 @@ relative partial molar volume,
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="dimensionless">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -7015,7 +7234,11 @@ relative partial molar volume,
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
         </xsd:sequence>
     </xsd:complexType>
@@ -7027,7 +7250,7 @@ relative partial molar volume,
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="dimensionless">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -7036,9 +7259,9 @@ relative partial molar volume,
                 </xsd:simpleType>
             </xsd:element>
             <xsd:choice minOccurs="0" maxOccurs="unbounded">
-                <xsd:element name="method">
+                <xsd:element name="sensor">
                     <xsd:annotation>
-                        <xsd:documentation>EAP: Standard method(s) of measurement</xsd:documentation>
+                        <xsd:documentation>sensor used for measurement</xsd:documentation>
                     </xsd:annotation>
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
@@ -7050,7 +7273,11 @@ relative partial molar volume,
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
         </xsd:sequence>
     </xsd:complexType>
@@ -7062,7 +7289,7 @@ relative partial molar volume,
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="m^3/mol">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -7086,7 +7313,11 @@ relative partial molar volume,
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
             <xsd:element name="component" minOccurs="1" maxOccurs="1">
                 <xsd:annotation>
@@ -7107,7 +7338,7 @@ relative partial molar volume,
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="m/s">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -7138,7 +7369,11 @@ relative partial molar volume,
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
         </xsd:sequence>
     </xsd:complexType>
@@ -7150,7 +7385,7 @@ relative partial molar volume,
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="m3/kg">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -7191,7 +7426,11 @@ relative partial molar volume,
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
         </xsd:sequence>
     </xsd:complexType>
@@ -7204,7 +7443,7 @@ relative partial molar volume,
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="dimensionless">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -7232,7 +7471,11 @@ relative partial molar volume,
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
         </xsd:sequence>
     </xsd:complexType>
@@ -7245,7 +7488,7 @@ relative partial molar volume,
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="dimensionless">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -7273,7 +7516,11 @@ relative partial molar volume,
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
         </xsd:sequence>
     </xsd:complexType>
@@ -7285,7 +7532,7 @@ relative partial molar volume,
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="N/m">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -7313,7 +7560,11 @@ relative partial molar volume,
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
         </xsd:sequence>
     </xsd:complexType>
@@ -7359,11 +7610,11 @@ relative partial molar volume,
             </xsd:element>
             <xsd:choice minOccurs="0" maxOccurs="unbounded">
                 <xsd:annotation>
-                    <xsd:documentation>Note: if method is determined by radiance, it represents radiance temperature, if wavelength is reported in table, it is teh wavelength used during pyrometry.</xsd:documentation>
+                    <xsd:documentation>Note: if method is determined by radiance, it represents radiance temperature, if wavelength is reported in table, it is the wavelength used during pyrometry.</xsd:documentation>
                 </xsd:annotation>
                 <xsd:element name="sensor">
                     <xsd:annotation>
-                        <xsd:documentation>EAP: Standard method(s) of measurement</xsd:documentation>
+                        <xsd:documentation>sensor used for measurement</xsd:documentation>
                     </xsd:annotation>
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
@@ -7383,7 +7634,11 @@ relative partial molar volume,
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
         </xsd:sequence>
     </xsd:complexType>
@@ -7395,7 +7650,7 @@ relative partial molar volume,
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="W/m/K">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -7436,7 +7691,11 @@ relative partial molar volume,
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
         </xsd:sequence>
     </xsd:complexType>
@@ -7448,7 +7707,7 @@ relative partial molar volume,
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="m^2/s">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -7478,7 +7737,11 @@ relative partial molar volume,
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
         </xsd:sequence>
     </xsd:complexType>
@@ -7490,7 +7753,7 @@ relative partial molar volume,
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="m/m/K">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -7500,9 +7763,9 @@ relative partial molar volume,
                 </xsd:simpleType>
             </xsd:element>
             <xsd:choice minOccurs="0" maxOccurs="unbounded">
-                <xsd:element name="method">
+                <xsd:element name="sensor">
                     <xsd:annotation>
-                        <xsd:documentation>EAP: Standard method(s) of measurement</xsd:documentation>
+                        <xsd:documentation>sensor used for measurement</xsd:documentation>
                     </xsd:annotation>
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
@@ -7519,7 +7782,11 @@ relative partial molar volume,
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
         </xsd:sequence>
     </xsd:complexType>
@@ -7531,7 +7798,7 @@ relative partial molar volume,
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="Pa/K">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -7542,15 +7809,19 @@ relative partial molar volume,
                 </xsd:simpleType>
             </xsd:element>
             <xsd:choice minOccurs="0" maxOccurs="unbounded">
-                <xsd:element name="method">
+                <xsd:element name="sensor">
                     <xsd:annotation>
-                        <xsd:documentation>EAP: Standard method(s) of measurement</xsd:documentation>
+                        <xsd:documentation>sensor used for measurement</xsd:documentation>
                     </xsd:annotation>
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string"> </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
         </xsd:sequence>
     </xsd:complexType>
@@ -7562,7 +7833,7 @@ relative partial molar volume,
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="m^6/mol^2">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -7586,7 +7857,11 @@ relative partial molar volume,
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
             <xsd:element name="component" minOccurs="1" maxOccurs="1">
                 <xsd:annotation>
@@ -7608,7 +7883,7 @@ relative partial molar volume,
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="dimensionless">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -7630,7 +7905,11 @@ relative partial molar volume,
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
         </xsd:sequence>
     </xsd:complexType>
@@ -7643,7 +7922,7 @@ relative partial molar volume,
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="dimensionless">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -7665,7 +7944,11 @@ relative partial molar volume,
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
         </xsd:sequence>
     </xsd:complexType>
@@ -7722,7 +8005,11 @@ relative partial molar volume,
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
         </xsd:sequence>
     </xsd:complexType>
@@ -7735,7 +8022,7 @@ relative partial molar volume,
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="dimensionless">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -7744,7 +8031,19 @@ relative partial molar volume,
                 </xsd:simpleType>
             </xsd:element>
             <xsd:choice minOccurs="0" maxOccurs="unbounded">
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="sensor">
+                    <xsd:annotation>
+                        <xsd:documentation>EAP: Standard method(s) of measurement</xsd:documentation>
+                    </xsd:annotation>
+                    <xsd:simpleType>
+                        <xsd:restriction base="xsd:string"> </xsd:restriction>
+                    </xsd:simpleType>
+                </xsd:element>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
         </xsd:sequence>
     </xsd:complexType>
@@ -7756,7 +8055,7 @@ relative partial molar volume,
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="Pa s">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -7790,7 +8089,11 @@ relative partial molar volume,
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
         </xsd:sequence>
     </xsd:complexType>
@@ -7802,7 +8105,7 @@ relative partial molar volume,
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="dimensionless">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -7819,7 +8122,11 @@ relative partial molar volume,
                         <xsd:restriction base="xsd:string"> </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
         </xsd:sequence>
     </xsd:complexType>
@@ -7831,7 +8138,7 @@ relative partial molar volume,
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="dimensionless">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -7848,7 +8155,11 @@ relative partial molar volume,
                         <xsd:restriction base="xsd:string"> </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
             <xsd:element name="solute">
                 <xsd:annotation>
@@ -7873,7 +8184,7 @@ relative partial molar volume,
             <xsd:element name="label" type="xsd:double" minOccurs="0"/>
             <xsd:element name="units" default="nm">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -7893,7 +8204,11 @@ relative partial molar volume,
                         <xsd:restriction base="xsd:string"> </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
         </xsd:sequence>
     </xsd:complexType>
@@ -8107,7 +8422,7 @@ partial molar volume
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="m^3/mol">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -8158,7 +8473,11 @@ partial molar volume
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
             <xsd:element name="component">
                 <xsd:annotation>
@@ -8176,7 +8495,7 @@ partial molar volume
             <xsd:element name="label" type="xsd:double" minOccurs="0"/>
             <xsd:element name="units" default="Hz">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -8208,7 +8527,7 @@ partial molar volume
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="J/mol">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -8253,7 +8572,11 @@ partial molar volume
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
             <xsd:element name="solute">
                 <xsd:annotation>
@@ -8281,7 +8604,7 @@ partial molar volume
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="J/mol">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -8326,7 +8649,11 @@ partial molar volume
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
             <xsd:element name="component" minOccurs="1" maxOccurs="1">
                 <xsd:annotation>
@@ -8520,7 +8847,7 @@ partial molar volume
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="kJ/mol">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -8532,7 +8859,7 @@ partial molar volume
                 </xsd:simpleType>
             </xsd:element>
             <xsd:choice minOccurs="0" maxOccurs="unbounded">
-                <xsd:element name="method">
+                <xsd:element name="sensor">
                     <xsd:annotation>
                         <xsd:documentation>EAP: Standard method(s) of measurement</xsd:documentation>
                     </xsd:annotation>
@@ -8547,7 +8874,11 @@ partial molar volume
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
         </xsd:sequence>
     </xsd:complexType>
@@ -8559,7 +8890,7 @@ partial molar volume
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="kJ/mol/K">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -8571,7 +8902,7 @@ partial molar volume
                 </xsd:simpleType>
             </xsd:element>
             <xsd:choice minOccurs="0" maxOccurs="unbounded">
-                <xsd:element name="method">
+                <xsd:element name="sensor">
                     <xsd:annotation>
                         <xsd:documentation>EAP: Standard method(s) of measurement</xsd:documentation>
                     </xsd:annotation>
@@ -8586,7 +8917,11 @@ partial molar volume
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
         </xsd:sequence>
     </xsd:complexType>
@@ -8597,7 +8932,7 @@ partial molar volume
         <xsd:sequence>
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:choice minOccurs="0" maxOccurs="unbounded">
-                <xsd:element name="method">
+                <xsd:element name="sensor">
                     <xsd:annotation>
                         <xsd:documentation>EAP: Standard method(s) of measurement</xsd:documentation>
                     </xsd:annotation>
@@ -8614,12 +8949,16 @@ partial molar volume
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
             <xsd:sequence>
                 <xsd:element name="units" default="dimensionless">
                     <xsd:annotation>
-                        <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                        <xsd:documentation>units associated with of measurand</xsd:documentation>
                     </xsd:annotation>
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
@@ -8694,6 +9033,10 @@ partial molar volume
         </xsd:sequence>
     </xsd:complexType>
     <xsd:complexType name="emfType">
+        <xsd:annotation>
+            <xsd:documentation>Note: reaction information for cell is found in system
+</xsd:documentation>
+        </xsd:annotation>
         <xsd:sequence>
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:choice minOccurs="0" maxOccurs="unbounded">
@@ -8708,11 +9051,15 @@ partial molar volume
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string"/>
+                <xsd:element name="otherSensor" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
             <xsd:element name="units" default="mV">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of property</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -8723,7 +9070,6 @@ partial molar volume
                     </xsd:restriction>
                 </xsd:simpleType>
             </xsd:element>
-            <xsd:element name="reaction" type="tml:electrochemicalReactionType"/>
         </xsd:sequence>
     </xsd:complexType>
     <xsd:complexType name="electrochemicalReactionType">
