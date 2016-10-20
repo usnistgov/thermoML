@@ -814,6 +814,27 @@
                 </xsd:annotation>
             </xsd:element>
             <xsd:choice minOccurs="0">
+                <xsd:element name="ion">
+                    <xsd:complexType>
+                        <xsd:annotation>
+                            <xsd:documentation>Ion-specific information</xsd:documentation>
+                        </xsd:annotation>
+                        <xsd:sequence>
+                            <xsd:element name="charge" type="xsd:integer"/>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+                <xsd:element name="biomaterial">
+                    <xsd:complexType>
+                        <xsd:annotation>
+                            <xsd:documentation>Bio species information</xsd:documentation>
+                        </xsd:annotation>
+                        <xsd:sequence>
+                            <xsd:element name="ECNumber" type="xsd:string" minOccurs="0"/>
+                            <xsd:element name="PDBIdentifier" type="xsd:string" minOccurs="0"/>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
                 <xsd:element name="polymer">
                     <xsd:complexType>
                         <xsd:annotation>
@@ -851,202 +872,6 @@
                         </xsd:sequence>
                     </xsd:complexType>
                 </xsd:element>
-                <xsd:element name="ion">
-                    <xsd:complexType>
-                        <xsd:annotation>
-                            <xsd:documentation>Ion-specific information</xsd:documentation>
-                        </xsd:annotation>
-                        <xsd:sequence>
-                            <xsd:element name="charge" type="xsd:integer"/>
-                        </xsd:sequence>
-                    </xsd:complexType>
-                </xsd:element>
-                <xsd:element name="biomaterial">
-                    <xsd:complexType>
-                        <xsd:annotation>
-                            <xsd:documentation>Bio species information</xsd:documentation>
-                        </xsd:annotation>
-                        <xsd:sequence>
-                            <xsd:element name="ECNumber" type="xsd:string" minOccurs="0"/>
-                            <xsd:element name="PDBIdentifier" type="xsd:string" minOccurs="0"/>
-                        </xsd:sequence>
-                    </xsd:complexType>
-                </xsd:element>
-                <xsd:element name="alloy">
-                    <xsd:complexType>
-                        <xsd:choice>
-                            <xsd:element minOccurs="1" name="ASME">
-                                <xsd:annotation>
-                                    <xsd:documentation>other classes of elemnts e.g. halide, etc.</xsd:documentation>
-                                </xsd:annotation>
-                                <xsd:simpleType>
-                                    <xsd:restriction base="xsd:string">
-                                        <xsd:enumeration value="halide"/>
-                                    </xsd:restriction>
-                                </xsd:simpleType>
-                            </xsd:element>
-                            <xsd:element minOccurs="1" name="ASTM">
-                                <xsd:annotation>
-                                    <xsd:documentation>other classes of elemnts e.g. halide, etc.</xsd:documentation>
-                                </xsd:annotation>
-                                <xsd:complexType>
-                                    <xsd:sequence>
-                                        <xsd:element name="firstLetter">
-                                            <xsd:annotation>
-                                                <xsd:documentation>letter indicates material system</xsd:documentation>
-                                            </xsd:annotation>
-                                            <xsd:simpleType>
-                                                <xsd:restriction base="xsd:string">
-                                                  <xsd:pattern value="[A-Z]"/>
-                                                </xsd:restriction>
-                                            </xsd:simpleType>
-                                        </xsd:element>
-                                        <xsd:element name="sequentialNumber">
-                                            <xsd:annotation>
-                                                <xsd:documentation>number associated with alloy</xsd:documentation>
-                                            </xsd:annotation>
-                                            <xsd:simpleType>
-                                                <xsd:restriction base="xsd:integer">
-                                                  <xsd:minInclusive value="1"/>
-                                                  <xsd:maxInclusive value="9999"/>
-                                                </xsd:restriction>
-                                            </xsd:simpleType>
-                                        </xsd:element>
-                                        <xsd:element name="grade">
-                                            <xsd:annotation>
-                                                <xsd:documentation>chemical composition descriptor</xsd:documentation>
-                                            </xsd:annotation>
-                                            <xsd:simpleType>
-                                                <xsd:restriction base="xsd:string">
-                                                  <xsd:pattern value="([a-zA-Z0-9])*"/>
-                                                </xsd:restriction>
-                                            </xsd:simpleType>
-                                        </xsd:element>
-                                        <xsd:element name="standardYear" type="xsd:gYear">
-                                            <xsd:annotation>
-                                                <xsd:documentation>typically indicated as (XXXX) as the year of standard associated with the ASTM standard</xsd:documentation>
-                                            </xsd:annotation>
-                                        </xsd:element>
-                                        <xsd:element name="type">
-                                            <xsd:annotation>
-                                                <xsd:documentation>deoxidation practice
-</xsd:documentation>
-                                            </xsd:annotation>
-                                            <xsd:simpleType>
-                                                <xsd:restriction base="xsd:string">
-                                                  <xsd:pattern value="([a-zA-Z0-9])*"/>
-                                                </xsd:restriction>
-                                            </xsd:simpleType>
-                                        </xsd:element>
-                                        <xsd:element name="class">
-                                            <xsd:annotation>
-                                                <xsd:documentation>other characteristis (surface finish, strength level etc.)</xsd:documentation>
-                                            </xsd:annotation>
-                                            <xsd:simpleType>
-                                                <xsd:restriction base="xsd:string">
-                                                  <xsd:pattern value="([a-zA-Z0-9])*"/>
-                                                </xsd:restriction>
-                                            </xsd:simpleType>
-                                        </xsd:element>
-                                    </xsd:sequence>
-                                </xsd:complexType>
-                            </xsd:element>
-                            <xsd:element name="AFNOR">
-                                <xsd:complexType>
-                                    <xsd:sequence>
-                                        <xsd:element name="firstLetter">
-                                            <xsd:annotation>
-                                                <xsd:documentation>letter indicates material system</xsd:documentation>
-                                            </xsd:annotation>
-                                            <xsd:simpleType>
-                                                <xsd:restriction base="xsd:string">
-                                                  <xsd:enumeration value="A"/>
-                                                  <xsd:enumeration value="EN"/>
-
-                                                  <xsd:enumeration value="NF A"/>
-                                                </xsd:restriction>
-                                            </xsd:simpleType>
-                                        </xsd:element>
-                                        <xsd:element name="firstNumber">
-                                            <xsd:annotation>
-                                                <xsd:documentation>number associated with alloy</xsd:documentation>
-                                            </xsd:annotation>
-                                            <xsd:simpleType>
-                                                <xsd:restriction base="xsd:integer">
-                                                  <xsd:pattern value="([a-zA-Z0-9])*"/>
-                                                </xsd:restriction>
-                                            </xsd:simpleType>
-                                        </xsd:element>
-                                        <xsd:element name="secondNumber">
-                                            <xsd:annotation>
-                                                <xsd:documentation>number associated with alloy</xsd:documentation>
-                                            </xsd:annotation>
-                                            <xsd:simpleType>
-                                                <xsd:restriction base="xsd:integer">
-                                                  <xsd:pattern value="([a-zA-Z0-9])*"/>
-                                                </xsd:restriction>
-                                            </xsd:simpleType>
-                                        </xsd:element>
-                                    </xsd:sequence>
-                                </xsd:complexType>
-                            </xsd:element>
-                            <xsd:element name="ANSI"/>
-                            <xsd:element name="BSI"/>
-                            <xsd:element minOccurs="1" name="DINType">
-                                <xsd:annotation>
-                                    <xsd:documentation>other classes of elemnts e.g. halide, etc.</xsd:documentation>
-                                </xsd:annotation>
-                                <xsd:simpleType>
-                                    <xsd:restriction base="xsd:string">
-                                        <xsd:enumeration value="halide"/>
-                                    </xsd:restriction>
-                                </xsd:simpleType>
-                            </xsd:element>
-                            <xsd:element minOccurs="1" name="DINNumber">
-                                <xsd:annotation>
-                                    <xsd:documentation>other classes of elemnts e.g. halide, etc.</xsd:documentation>
-                                </xsd:annotation>
-                                <xsd:simpleType>
-                                    <xsd:restriction base="xsd:string">
-                                        <xsd:enumeration value="halide"/>
-                                    </xsd:restriction>
-                                </xsd:simpleType>
-                            </xsd:element>
-                            <xsd:element name="IEC"/>
-                            <xsd:element name="ISO"/>
-                            <xsd:element minOccurs="1" name="MIL">
-                                <xsd:annotation>
-                                    <xsd:documentation>other classes of elemnts e.g. halide, etc.</xsd:documentation>
-                                </xsd:annotation>
-                                <xsd:simpleType>
-                                    <xsd:restriction base="xsd:string">
-                                        <xsd:enumeration value="halide"/>
-                                    </xsd:restriction>
-                                </xsd:simpleType>
-                            </xsd:element>
-                            <xsd:element minOccurs="1" name="UNS">
-                                <xsd:annotation>
-                                    <xsd:documentation>other classes of elemnts e.g. halide, etc.</xsd:documentation>
-                                </xsd:annotation>
-                                <xsd:simpleType>
-                                    <xsd:restriction base="xsd:string">
-                                        <xsd:enumeration value="halide"/>
-                                    </xsd:restriction>
-                                </xsd:simpleType>
-                            </xsd:element>
-                            <xsd:element minOccurs="1" name="TradeName">
-                                <xsd:annotation>
-                                    <xsd:documentation>other classes of elemnts e.g. halide, etc.</xsd:documentation>
-                                </xsd:annotation>
-                                <xsd:simpleType>
-                                    <xsd:restriction base="xsd:string">
-                                        <xsd:enumeration value="halide"/>
-                                    </xsd:restriction>
-                                </xsd:simpleType>
-                            </xsd:element>
-                        </xsd:choice>
-                    </xsd:complexType>
-                </xsd:element>
             </xsd:choice>
             <xsd:element name="speciationState" minOccurs="0">
                 <xsd:simpleType>
@@ -1082,6 +907,182 @@
     </xsd:complexType>
     <xsd:complexType name="multiComponentType">
         <xsd:sequence>
+            <xsd:element name="alloyName" minOccurs="0">
+                <xsd:complexType>
+                    <xsd:choice>
+                        <xsd:element minOccurs="1" name="ASMEName">
+                            <xsd:annotation>
+                                <xsd:documentation>other classes of elemnts e.g. halide, etc.</xsd:documentation>
+                            </xsd:annotation>
+                            <xsd:simpleType>
+                                <xsd:restriction base="xsd:string">
+                                    <xsd:enumeration value="halide"/>
+                                    <xsd:pattern value="([a-zA-Z0-9])*"/>
+                                </xsd:restriction>
+                            </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element minOccurs="1" name="ASTMName">
+                            <xsd:annotation>
+                                <xsd:documentation>other classes of elemnts e.g. halide, etc.</xsd:documentation>
+                            </xsd:annotation>
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:element name="firstLetter">
+                                        <xsd:annotation>
+                                            <xsd:documentation>letter indicates material system</xsd:documentation>
+                                        </xsd:annotation>
+                                        <xsd:simpleType>
+                                            <xsd:restriction base="xsd:string">
+                                                <xsd:pattern value="[A-Z]"/>
+                                            </xsd:restriction>
+                                        </xsd:simpleType>
+                                    </xsd:element>
+                                    <xsd:element name="sequentialNumber">
+                                        <xsd:annotation>
+                                            <xsd:documentation>number associated with alloy</xsd:documentation>
+                                        </xsd:annotation>
+                                        <xsd:simpleType>
+                                            <xsd:restriction base="xsd:integer">
+                                                <xsd:minInclusive value="1"/>
+                                                <xsd:maxInclusive value="9999"/>
+                                            </xsd:restriction>
+                                        </xsd:simpleType>
+                                    </xsd:element>
+                                    <xsd:element name="grade">
+                                        <xsd:annotation>
+                                            <xsd:documentation>chemical composition descriptor</xsd:documentation>
+                                        </xsd:annotation>
+                                        <xsd:simpleType>
+                                            <xsd:restriction base="xsd:string">
+                                                <xsd:pattern value="([a-zA-Z0-9])*"/>
+                                            </xsd:restriction>
+                                        </xsd:simpleType>
+                                    </xsd:element>
+                                    <xsd:element name="standardYear" type="xsd:gYear">
+                                        <xsd:annotation>
+                                            <xsd:documentation>typically indicated as (XXXX) as the year of standard associated with the ASTM standard</xsd:documentation>
+                                        </xsd:annotation>
+                                    </xsd:element>
+                                    <xsd:element name="type">
+                                        <xsd:annotation>
+                                            <xsd:documentation>deoxidation practice
+</xsd:documentation>
+                                        </xsd:annotation>
+                                        <xsd:simpleType>
+                                            <xsd:restriction base="xsd:string">
+                                                <xsd:pattern value="([a-zA-Z0-9])*"/>
+                                            </xsd:restriction>
+                                        </xsd:simpleType>
+                                    </xsd:element>
+                                    <xsd:element name="class">
+                                        <xsd:annotation>
+                                            <xsd:documentation>other characteristis (surface finish, strength level etc.)</xsd:documentation>
+                                        </xsd:annotation>
+                                        <xsd:simpleType>
+                                            <xsd:restriction base="xsd:string">
+                                                <xsd:pattern value="([a-zA-Z0-9])*"/>
+                                            </xsd:restriction>
+                                        </xsd:simpleType>
+                                    </xsd:element>
+                                </xsd:sequence>
+                            </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="AFNORName">
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:element name="firstLetter">
+                                        <xsd:annotation>
+                                            <xsd:documentation>letter indicates material system</xsd:documentation>
+                                        </xsd:annotation>
+                                        <xsd:simpleType>
+                                            <xsd:restriction base="xsd:string">
+                                                <xsd:enumeration value="A"/>
+                                                <xsd:enumeration value="EN"/>
+
+                                                <xsd:enumeration value="NF A"/>
+                                            </xsd:restriction>
+                                        </xsd:simpleType>
+                                    </xsd:element>
+                                    <xsd:element name="firstNumber">
+                                        <xsd:annotation>
+                                            <xsd:documentation>number associated with alloy</xsd:documentation>
+                                        </xsd:annotation>
+                                        <xsd:simpleType>
+                                            <xsd:restriction base="xsd:string">
+                                                <xsd:pattern value="([a-zA-Z0-9])*"/>
+                                            </xsd:restriction>
+                                        </xsd:simpleType>
+                                    </xsd:element>
+                                    <xsd:element name="secondNumber">
+                                        <xsd:annotation>
+                                            <xsd:documentation>number associated with alloy</xsd:documentation>
+                                        </xsd:annotation>
+                                        <xsd:simpleType>
+                                            <xsd:restriction base="xsd:string">
+                                                <xsd:pattern value="([a-zA-Z0-9])*"/>
+                                            </xsd:restriction>
+                                        </xsd:simpleType>
+                                    </xsd:element>
+                                </xsd:sequence>
+                            </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="ANSIName" type="xsd:string"/>
+                        <xsd:element name="BSIName" type="xsd:string"/>
+                        <xsd:element minOccurs="1" name="DINTypeName">
+                            <xsd:annotation>
+                                <xsd:documentation>other classes of elemnts e.g. halide, etc.</xsd:documentation>
+                            </xsd:annotation>
+                            <xsd:simpleType>
+                                <xsd:restriction base="xsd:string">
+                                    <xsd:enumeration value="halide"/>
+                                </xsd:restriction>
+                            </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element minOccurs="1" name="DINNumber">
+                            <xsd:annotation>
+                                <xsd:documentation>other classes of elemnts e.g. halide, etc.</xsd:documentation>
+                            </xsd:annotation>
+                            <xsd:simpleType>
+                                <xsd:restriction base="xsd:string">
+                                    <xsd:enumeration value="halide"/>
+                                </xsd:restriction>
+                            </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="IECName" type="xsd:string"/>
+                        <xsd:element name="ISOName" type="xsd:string"/>
+                        <xsd:element minOccurs="1" name="MILName">
+                            <xsd:annotation>
+                                <xsd:documentation>other classes of elemnts e.g. halide, etc.</xsd:documentation>
+                            </xsd:annotation>
+                            <xsd:simpleType>
+                                <xsd:restriction base="xsd:string">
+                                    <xsd:enumeration value="halide"/>
+                                </xsd:restriction>
+                            </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element minOccurs="1" name="UNSName">
+                            <xsd:annotation>
+                                <xsd:documentation>other classes of elemnts e.g. halide, etc.</xsd:documentation>
+                            </xsd:annotation>
+                            <xsd:simpleType>
+                                <xsd:restriction base="xsd:string">
+                                    <xsd:enumeration value="halide"/>
+                                </xsd:restriction>
+                            </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element minOccurs="1" name="TradeName">
+                            <xsd:annotation>
+                                <xsd:documentation>other classes of elemnts e.g. halide, etc.</xsd:documentation>
+                            </xsd:annotation>
+                            <xsd:simpleType>
+                                <xsd:restriction base="xsd:string">
+                                    <xsd:enumeration value="halide"/>
+                                </xsd:restriction>
+                            </xsd:simpleType>
+                        </xsd:element>
+                    </xsd:choice>
+                </xsd:complexType>
+            </xsd:element>
             <xsd:element name="component" maxOccurs="unbounded">
                 <xsd:complexType>
                     <xsd:sequence>
@@ -1711,7 +1712,7 @@
                         <xsd:element default="0" minOccurs="0" name="singleCrystal"
                             type="xsd:boolean"/>
                         <xsd:element name="microstructuralFeatures" maxOccurs="unbounded"
-                            minOccurs="0">
+                            minOccurs="1">
                             <xsd:annotation>
                                 <xsd:documentation>grain size as measured, if two selected allows for bimodal values to be captured. ref is for phase.</xsd:documentation>
                             </xsd:annotation>
@@ -1755,7 +1756,6 @@
                                         </xsd:annotation>
                                     </xsd:element>
                                 </xsd:sequence>
-                                <xsd:attribute name="ref"/>
                             </xsd:complexType>
                         </xsd:element>
                     </xsd:sequence>
@@ -2861,10 +2861,34 @@
     <!-- ******************* -->
     <xsd:complexType name="variableType">
         <xsd:sequence>
-            <xsd:element minOccurs="1" name="referenceState" type="xsd:boolean" default="0">
-                <xsd:annotation>
-                    <xsd:documentation>Boolean indicator to identify reference conditions from non-reference conditions</xsd:documentation>
-                </xsd:annotation>
+            <xsd:element name="reference">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element minOccurs="1" name="ref">
+                            <xsd:annotation>
+                                <xsd:documentation/>
+                            </xsd:annotation>
+                            <xsd:complexType>
+                                <xsd:attribute name="ref"/>
+                            </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element default="0" name="refInt" type="xsd:integer">
+                            <xsd:annotation>
+                                <xsd:documentation>Integer indicator to identify reference conditions from non-reference conditions</xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element name="refComponent" minOccurs="0" maxOccurs="1">
+                            <xsd:annotation>
+                                <xsd:documentation>component linked to condition (used for reference to another component, i.e. compared to helium or alumina)
+</xsd:documentation>
+                            </xsd:annotation>
+                            <xsd:complexType>
+                                <xsd:attribute name="ref" type="xsd:positiveInteger" use="required"
+                                />
+                            </xsd:complexType>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
             </xsd:element>
             <xsd:choice>
                 <xsd:element name="temperature" type="tml:temperatureType"/>
@@ -4513,10 +4537,9 @@ International Tables for Crystallography A(2006) table 1.1.1--interaxial (lattic
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
                         <xsd:enumeration value="Direct representation, x = x1"/>
+                        <xsd:enumeration value="Difference with reference state, x =  x_1 - x_ref "/>
                         <xsd:enumeration
-                            value="Difference with reference state, x =  x_1 - x_refState "/>
-                        <xsd:enumeration
-                            value="Mean between two conditions representation, x = ( x_state1 - x_refState )/ 2"/>
+                            value="Mean between two conditions representation, x = ( x - x_ref)/ 2"/>
                         <xsd:enumeration
                             value="Ratio of difference with reference state, x = x1 / x_ref - 1 "/>
                         <xsd:enumeration
@@ -4567,7 +4590,7 @@ International Tables for Crystallography A(2006) table 1.1.1--interaxial (lattic
                 </xsd:simpleType>
             </xsd:element>
             <xsd:choice minOccurs="0" maxOccurs="unbounded">
-                <xsd:element name="sensor">
+                <xsd:element name="method">
                     <xsd:annotation>
                         <xsd:documentation>EAP: Standard method(s) of measurement</xsd:documentation>
                     </xsd:annotation>
@@ -4584,9 +4607,9 @@ International Tables for Crystallography A(2006) table 1.1.1--interaxial (lattic
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -4636,9 +4659,9 @@ International Tables for Crystallography A(2006) table 1.1.1--interaxial (lattic
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -4700,9 +4723,9 @@ International Tables for Crystallography A(2006) table 1.1.1--interaxial (lattic
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -4712,6 +4735,14 @@ International Tables for Crystallography A(2006) table 1.1.1--interaxial (lattic
         <!-- Restrict units to composition units, add relative to concepts for solutions a ratio measurements -->
         <xsd:sequence>
             <xsd:element name="label" type="xsd:string" minOccurs="0" default="dimensionless"/>
+            <xsd:element name="component" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>key-key ref to component measured</xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                    <xsd:attribute name="ref" type="xsd:positiveInteger" use="required"/>
+                </xsd:complexType>
+            </xsd:element>
             <xsd:element name="units">
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -4724,7 +4755,7 @@ International Tables for Crystallography A(2006) table 1.1.1--interaxial (lattic
                 </xsd:simpleType>
             </xsd:element>
             <xsd:choice minOccurs="0" maxOccurs="unbounded">
-                <xsd:element name="sensor">
+                <xsd:element name="method">
                     <xsd:annotation>
                         <xsd:documentation>EAP: Standard method(s) of measurement</xsd:documentation>
                     </xsd:annotation>
@@ -4750,31 +4781,31 @@ International Tables for Crystallography A(2006) table 1.1.1--interaxial (lattic
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
-            <xsd:element name="component" minOccurs="1" maxOccurs="1">
-                <xsd:annotation>
-                    <xsd:documentation>EAP: component linked to property
-</xsd:documentation>
-                </xsd:annotation>
-                <xsd:complexType>
-                    <xsd:attribute name="ref" type="xsd:positiveInteger" use="required"/>
-                </xsd:complexType>
-            </xsd:element>
             <xsd:choice>
                 <xsd:element name="phase" minOccurs="1">
                     <xsd:annotation>
-                        <xsd:documentation>EAP: phase linked to property</xsd:documentation>
+                        <xsd:documentation>phase to which the measurand was conducted on</xsd:documentation>
                     </xsd:annotation>
                     <xsd:complexType>
                         <xsd:attribute name="ref" type="xsd:positiveInteger" use="required"/>
                     </xsd:complexType>
                 </xsd:element>
-                <xsd:element name="bulkComposition" type="xsd:boolean"/>
+                <xsd:element name="bulkComposition" type="xsd:boolean">
+                    <xsd:annotation>
+                        <xsd:documentation>boolean to indicate composition was measured for multiple phasees (i.e. a larger area)</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+                <xsd:element name="nominalComposition" type="xsd:boolean">
+                    <xsd:annotation>
+                        <xsd:documentation>boolean to indicate assumed composition (i.e. mixed a large amount and assumed homogenous content)</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
             </xsd:choice>
         </xsd:sequence>
     </xsd:complexType>
@@ -4804,9 +4835,9 @@ International Tables for Crystallography A(2006) table 1.1.1--interaxial (lattic
                         <xsd:restriction base="xsd:string"> </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -4845,9 +4876,9 @@ International Tables for Crystallography A(2006) table 1.1.1--interaxial (lattic
                 </xsd:simpleType>
             </xsd:element>
             <xsd:choice minOccurs="0" maxOccurs="unbounded">
-                <xsd:element name="sensor">
+                <xsd:element name="method">
                     <xsd:annotation>
-                        <xsd:documentation>sensor used for measurement</xsd:documentation>
+                        <xsd:documentation>method used for measurement</xsd:documentation>
                     </xsd:annotation>
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
@@ -4859,9 +4890,9 @@ International Tables for Crystallography A(2006) table 1.1.1--interaxial (lattic
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -4885,9 +4916,9 @@ International Tables for Crystallography A(2006) table 1.1.1--interaxial (lattic
                 </xsd:simpleType>
             </xsd:element>
             <xsd:choice minOccurs="0" maxOccurs="unbounded">
-                <xsd:element name="sensor">
+                <xsd:element name="method">
                     <xsd:annotation>
-                        <xsd:documentation>sensor used for measurement</xsd:documentation>
+                        <xsd:documentation>method used for measurement</xsd:documentation>
                     </xsd:annotation>
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
@@ -4898,9 +4929,9 @@ International Tables for Crystallography A(2006) table 1.1.1--interaxial (lattic
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -4968,9 +4999,9 @@ International Tables for Crystallography A(2006) table 1.1.1--interaxial (lattic
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -5015,9 +5046,9 @@ International Tables for Crystallography A(2006) table 1.1.1--interaxial (lattic
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -5072,9 +5103,9 @@ International Tables for Crystallography A(2006) table 1.1.1--interaxial (lattic
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -5121,9 +5152,9 @@ International Tables for Crystallography A(2006) table 1.1.1--interaxial (lattic
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -5196,9 +5227,9 @@ Van't Hoff enthalpy of transition, </xsd:documentation>
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -5307,9 +5338,9 @@ Van't Hoff enthalpy of transition, </xsd:documentation>
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -5346,9 +5377,9 @@ Van't Hoff enthalpy of transition, </xsd:documentation>
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -5418,9 +5449,9 @@ Van't Hoff enthalpy of transition, </xsd:documentation>
                 </xsd:simpleType>
             </xsd:element>
             <xsd:choice minOccurs="0" maxOccurs="unbounded">
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -5510,9 +5541,9 @@ molar enthalpy function, molar gibbs energy function, standard molar gibbs energ
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -5563,9 +5594,9 @@ molar enthalpy function, molar gibbs energy function, standard molar gibbs energ
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -5599,9 +5630,9 @@ molar enthalpy function, molar gibbs energy function, standard molar gibbs energ
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -5623,7 +5654,7 @@ molar enthalpy function, molar gibbs energy function, standard molar gibbs energ
                 </xsd:simpleType>
             </xsd:element>
             <xsd:choice minOccurs="0" maxOccurs="unbounded">
-                <xsd:element name="sensor">
+                <xsd:element name="method">
                     <xsd:annotation>
                         <xsd:documentation>EAP: Standard method(s) of measurement</xsd:documentation>
                     </xsd:annotation>
@@ -5631,9 +5662,9 @@ molar enthalpy function, molar gibbs energy function, standard molar gibbs energ
                         <xsd:restriction base="xsd:string"> </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -5669,9 +5700,9 @@ molar enthalpy function, molar gibbs energy function, standard molar gibbs energ
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -5707,9 +5738,9 @@ molar enthalpy function, molar gibbs energy function, standard molar gibbs energ
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -5743,9 +5774,9 @@ molar enthalpy function, molar gibbs energy function, standard molar gibbs energ
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -5796,9 +5827,9 @@ molar enthalpy function, molar gibbs energy function, standard molar gibbs energ
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -5850,9 +5881,9 @@ molar enthalpy function, molar gibbs energy function, standard molar gibbs energ
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -5896,9 +5927,9 @@ molar enthalpy function, molar gibbs energy function, standard molar gibbs energ
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -5932,9 +5963,9 @@ molar enthalpy function, molar gibbs energy function, standard molar gibbs energ
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -5972,9 +6003,9 @@ molar enthalpy function, molar gibbs energy function, standard molar gibbs energ
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -5998,9 +6029,9 @@ molar enthalpy function, molar gibbs energy function, standard molar gibbs energ
                 </xsd:simpleType>
             </xsd:element>
             <xsd:choice minOccurs="0" maxOccurs="unbounded">
-                <xsd:element name="sensor">
+                <xsd:element name="method">
                     <xsd:annotation>
-                        <xsd:documentation>sensor used for measurement</xsd:documentation>
+                        <xsd:documentation>method used for measurement</xsd:documentation>
                     </xsd:annotation>
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
@@ -6012,9 +6043,9 @@ molar enthalpy function, molar gibbs energy function, standard molar gibbs energ
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -6036,7 +6067,7 @@ molar enthalpy function, molar gibbs energy function, standard molar gibbs energ
                 </xsd:simpleType>
             </xsd:element>
             <xsd:choice minOccurs="0" maxOccurs="unbounded">
-                <xsd:element name="sensor">
+                <xsd:element name="method">
                     <xsd:annotation>
                         <xsd:documentation>EAP: Standard method(s) of measurement</xsd:documentation>
                     </xsd:annotation>
@@ -6053,9 +6084,9 @@ molar enthalpy function, molar gibbs energy function, standard molar gibbs energ
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -6076,9 +6107,9 @@ molar enthalpy function, molar gibbs energy function, standard molar gibbs energ
                 </xsd:simpleType>
             </xsd:element>
             <xsd:choice minOccurs="0" maxOccurs="unbounded">
-                <xsd:element name="sensor">
+                <xsd:element name="method">
                     <xsd:annotation>
-                        <xsd:documentation>sensor used for measurement</xsd:documentation>
+                        <xsd:documentation>method used for measurement</xsd:documentation>
                     </xsd:annotation>
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
@@ -6093,9 +6124,9 @@ molar enthalpy function, molar gibbs energy function, standard molar gibbs energ
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -6137,9 +6168,9 @@ IUPAC: Permeatbility of vacuuum multiplied by the relative permeability, aka H (
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -6170,9 +6201,9 @@ IUPAC: Permeatbility of vacuuum multiplied by the relative permeability, aka H (
                         <xsd:restriction base="xsd:string"> </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -6205,7 +6236,7 @@ IUPAC: Permeatbility of vacuuum multiplied by the relative permeability, aka H (
                 </xsd:simpleType>
             </xsd:element>
             <xsd:choice minOccurs="0" maxOccurs="unbounded">
-                <xsd:element name="sensor">
+                <xsd:element name="method">
                     <xsd:annotation>
                         <xsd:documentation>EAP: Standard method(s) of measurement</xsd:documentation>
                     </xsd:annotation>
@@ -6242,9 +6273,9 @@ IUPAC: Permeatbility of vacuuum multiplied by the relative permeability, aka H (
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -6280,9 +6311,9 @@ IUPAC: Permeatbility of vacuuum multiplied by the relative permeability, aka H (
                         <xsd:restriction base="xsd:string"> </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -6362,9 +6393,9 @@ IUPAC: Permeatbility of vacuuum multiplied by the relative permeability, aka H (
                         <xsd:restriction base="xsd:string"> </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -6417,9 +6448,9 @@ IUPAC: Permeatbility of vacuuum multiplied by the relative permeability, aka H (
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -6458,7 +6489,7 @@ IUPAC: Permeatbility of vacuuum multiplied by the relative permeability, aka H (
                 </xsd:simpleType>
             </xsd:element>
             <xsd:choice minOccurs="0" maxOccurs="unbounded">
-                <xsd:element name="sensor">
+                <xsd:element name="method">
                     <xsd:annotation>
                         <xsd:documentation>EAP: Standard method(s) of measurement</xsd:documentation>
                     </xsd:annotation>
@@ -6488,9 +6519,9 @@ IUPAC: Permeatbility of vacuuum multiplied by the relative permeability, aka H (
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -6568,9 +6599,9 @@ IUPAC: Permeatbility of vacuuum multiplied by the relative permeability, aka H (
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -6604,9 +6635,9 @@ IUPAC: Permeatbility of vacuuum multiplied by the relative permeability, aka H (
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -6711,9 +6742,9 @@ IUPAC: Permeatbility of vacuuum multiplied by the relative permeability, aka H (
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -6744,9 +6775,9 @@ IUPAC: Permeatbility of vacuuum multiplied by the relative permeability, aka H (
                         <xsd:restriction base="xsd:string"> </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -6790,9 +6821,9 @@ IUPAC: Quantity characterizing the deviation of the solvent from ideal behaviour
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -6831,7 +6862,7 @@ IUPAC: Quantity characterizing the deviation of the solvent from ideal behaviour
                 </xsd:simpleType>
             </xsd:element>
             <xsd:choice minOccurs="0" maxOccurs="unbounded">
-                <xsd:element name="sensor">
+                <xsd:element name="method">
                     <xsd:annotation>
                         <xsd:documentation>EAP: Standard method(s) of measurement</xsd:documentation>
                     </xsd:annotation>
@@ -6841,9 +6872,9 @@ IUPAC: Quantity characterizing the deviation of the solvent from ideal behaviour
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -6893,9 +6924,9 @@ IUPAC: Quantity characterizing the deviation of the solvent from ideal behaviour
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -6936,9 +6967,9 @@ IUPAC: Quantity characterizing the deviation of the solvent from ideal behaviour
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -6989,9 +7020,9 @@ IUPAC: Quantity characterizing the deviation of the solvent from ideal behaviour
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -7102,7 +7133,7 @@ IUPAC: Quantity characterizing the deviation of the solvent from ideal behaviour
                 </xsd:simpleType>
             </xsd:element>
             <xsd:choice minOccurs="0" maxOccurs="unbounded">
-                <xsd:element name="sensor">
+                <xsd:element name="method">
                     <xsd:annotation>
                         <xsd:documentation>EAP: Standard method(s) of measurement</xsd:documentation>
                     </xsd:annotation>
@@ -7116,9 +7147,9 @@ IUPAC: Quantity characterizing the deviation of the solvent from ideal behaviour
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -7151,9 +7182,9 @@ IUPAC: Quantity characterizing the deviation of the solvent from ideal behaviour
                 </xsd:simpleType>
             </xsd:element>
             <xsd:choice minOccurs="0" maxOccurs="unbounded">
-                <xsd:element name="sensor">
+                <xsd:element name="method">
                     <xsd:annotation>
-                        <xsd:documentation>sensor used for measurement</xsd:documentation>
+                        <xsd:documentation>method used for measurement</xsd:documentation>
                     </xsd:annotation>
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
@@ -7167,9 +7198,9 @@ IUPAC: Quantity characterizing the deviation of the solvent from ideal behaviour
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -7206,9 +7237,9 @@ IUPAC: Quantity characterizing the deviation of the solvent from ideal behaviour
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -7243,9 +7274,9 @@ IUPAC: Quantity characterizing the deviation of the solvent from ideal behaviour
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -7268,9 +7299,9 @@ IUPAC: Quantity characterizing the deviation of the solvent from ideal behaviour
                 </xsd:simpleType>
             </xsd:element>
             <xsd:choice minOccurs="0" maxOccurs="unbounded">
-                <xsd:element name="sensor">
+                <xsd:element name="method">
                     <xsd:annotation>
-                        <xsd:documentation>sensor used for measurement</xsd:documentation>
+                        <xsd:documentation>method used for measurement</xsd:documentation>
                     </xsd:annotation>
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
@@ -7282,9 +7313,9 @@ IUPAC: Quantity characterizing the deviation of the solvent from ideal behaviour
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -7321,13 +7352,13 @@ Ratio of magnetic permeabiltiy over the magnetic permeabiltiy in a vacuum</xsd:d
                             <xsd:enumeration value="Optical magnetometer"/>
                             <xsd:enumeration value="Torque magnetometer"/>
                             <xsd:enumeration value="SQUID"/>
-                            <xsd:enumeration value="Hall effect sensor"/>
+                            <xsd:enumeration value="Hall effect method"/>
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -7396,9 +7427,9 @@ relative partial molar volume,
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -7459,9 +7490,9 @@ relative partial molar volume,
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -7484,9 +7515,9 @@ relative partial molar volume,
                 </xsd:simpleType>
             </xsd:element>
             <xsd:choice minOccurs="0" maxOccurs="unbounded">
-                <xsd:element name="sensor">
+                <xsd:element name="method">
                     <xsd:annotation>
-                        <xsd:documentation>sensor used for measurement</xsd:documentation>
+                        <xsd:documentation>method used for measurement</xsd:documentation>
                     </xsd:annotation>
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
@@ -7498,9 +7529,9 @@ relative partial molar volume,
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -7538,9 +7569,9 @@ relative partial molar volume,
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -7594,9 +7625,9 @@ relative partial molar volume,
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -7651,9 +7682,9 @@ relative partial molar volume,
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -7696,9 +7727,9 @@ relative partial molar volume,
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -7741,9 +7772,9 @@ relative partial molar volume,
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -7785,9 +7816,9 @@ relative partial molar volume,
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -7837,13 +7868,14 @@ relative partial molar volume,
                 <xsd:annotation>
                     <xsd:documentation>Note: if method is determined by radiance, it represents radiance temperature, if wavelength is reported in table, it is the wavelength used during pyrometry.</xsd:documentation>
                 </xsd:annotation>
-                <xsd:element name="sensor">
+                <xsd:element name="method">
                     <xsd:annotation>
-                        <xsd:documentation>sensor used for measurement</xsd:documentation>
+                        <xsd:documentation>method used for measurement</xsd:documentation>
                     </xsd:annotation>
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
                             <xsd:enumeration value="Platinum resistance thermometer"/>
+                            <xsd:enumeration value="Thermistor"/>
                             <xsd:enumeration value="Thermocouple"/>
                             <xsd:enumeration value="Thermocouple J -Fe/Constantan"/>
                             <xsd:enumeration value="Thermocouple K -Chromel/Alumel"/>
@@ -7859,9 +7891,9 @@ relative partial molar volume,
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -7916,9 +7948,9 @@ relative partial molar volume,
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -7962,9 +7994,9 @@ relative partial molar volume,
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -7988,9 +8020,9 @@ relative partial molar volume,
                 </xsd:simpleType>
             </xsd:element>
             <xsd:choice minOccurs="0" maxOccurs="unbounded">
-                <xsd:element name="sensor">
+                <xsd:element name="method">
                     <xsd:annotation>
-                        <xsd:documentation>sensor used for measurement</xsd:documentation>
+                        <xsd:documentation>method used for measurement</xsd:documentation>
                     </xsd:annotation>
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
@@ -8007,9 +8039,9 @@ relative partial molar volume,
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -8034,17 +8066,17 @@ relative partial molar volume,
                 </xsd:simpleType>
             </xsd:element>
             <xsd:choice minOccurs="0" maxOccurs="unbounded">
-                <xsd:element name="sensor">
+                <xsd:element name="method">
                     <xsd:annotation>
-                        <xsd:documentation>sensor used for measurement</xsd:documentation>
+                        <xsd:documentation>method used for measurement</xsd:documentation>
                     </xsd:annotation>
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string"> </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -8082,9 +8114,9 @@ relative partial molar volume,
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -8130,9 +8162,9 @@ relative partial molar volume,
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -8169,9 +8201,9 @@ relative partial molar volume,
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -8226,13 +8258,25 @@ relative partial molar volume,
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
                             <xsd:enumeration value="Platinum resistance thermometer"/>
+                            <xsd:enumeration value="Thermistor"/>
+                            <xsd:enumeration value="Thermocouple"/>
+                            <xsd:enumeration value="Thermocouple J -Fe/Constantan"/>
+                            <xsd:enumeration value="Thermocouple K -Chromel/Alumel"/>
+                            <xsd:enumeration value="Thermocouple E -Chromel/Constantan"/>
+                            <xsd:enumeration value="Thermocouple T -Cu/Constantin"/>
+                            <xsd:enumeration value="Thermocouple N -Nicrosil/Nisil"/>
+                            <xsd:enumeration value="Thermocouple B -Pt/Pt-30%Rh"/>
+                            <xsd:enumeration value="Thermocouple S -Pt/Pt-10%Rh"/>
+                            <xsd:enumeration value="Thermocouple R -Pt/Pt-13%Rh"/>
+                            <xsd:enumeration value="Thermocouple U -Cu/Cu-Ni"/>
                             <xsd:enumeration value="Optical pyrometer"/>
+                            <xsd:enumeration value="determiend by radiance (Radiance Temperature)"/>
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -8256,7 +8300,7 @@ relative partial molar volume,
                 </xsd:simpleType>
             </xsd:element>
             <xsd:choice minOccurs="0" maxOccurs="unbounded">
-                <xsd:element name="sensor">
+                <xsd:element name="method">
                     <xsd:annotation>
                         <xsd:documentation>EAP: Standard method(s) of measurement</xsd:documentation>
                     </xsd:annotation>
@@ -8264,9 +8308,9 @@ relative partial molar volume,
                         <xsd:restriction base="xsd:string"> </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -8314,9 +8358,9 @@ relative partial molar volume,
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -8347,9 +8391,9 @@ relative partial molar volume,
                         <xsd:restriction base="xsd:string"> </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -8380,9 +8424,9 @@ relative partial molar volume,
                         <xsd:restriction base="xsd:string"> </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -8421,7 +8465,7 @@ relative partial molar volume,
                 </xsd:simpleType>
             </xsd:element>
             <xsd:choice minOccurs="0" maxOccurs="unbounded">
-                <xsd:element name="sensor">
+                <xsd:element name="method">
                     <xsd:annotation>
                         <xsd:documentation>EAP: Standard method(s) of measurement</xsd:documentation>
                     </xsd:annotation>
@@ -8429,9 +8473,9 @@ relative partial molar volume,
                         <xsd:restriction base="xsd:string"> </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -8698,9 +8742,9 @@ partial molar volume
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -8797,9 +8841,9 @@ partial molar volume
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -8874,11 +8918,13 @@ partial molar volume
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otehrMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" name="instrumentDetails"
+                    type="tml:instrumentType"/>
             </xsd:choice>
             <xsd:element name="component" minOccurs="1" maxOccurs="1">
                 <xsd:annotation>
@@ -9099,7 +9145,7 @@ partial molar volume
                 </xsd:simpleType>
             </xsd:element>
             <xsd:choice minOccurs="0" maxOccurs="unbounded">
-                <xsd:element name="sensor">
+                <xsd:element name="method">
                     <xsd:annotation>
                         <xsd:documentation>EAP: Standard method(s) of measurement</xsd:documentation>
                     </xsd:annotation>
@@ -9114,9 +9160,9 @@ partial molar volume
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -9142,7 +9188,7 @@ partial molar volume
                 </xsd:simpleType>
             </xsd:element>
             <xsd:choice minOccurs="0" maxOccurs="unbounded">
-                <xsd:element name="sensor">
+                <xsd:element name="method">
                     <xsd:annotation>
                         <xsd:documentation>EAP: Standard method(s) of measurement</xsd:documentation>
                     </xsd:annotation>
@@ -9157,9 +9203,15 @@ partial molar volume
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" name="instrumentDetails"
+                    type="tml:instrumentType">
+                    <xsd:annotation>
+                        <xsd:documentation>entirely open structure for strings to describe innstrument location, type, brand, model etc.</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
@@ -9172,7 +9224,7 @@ partial molar volume
         <xsd:sequence>
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:choice minOccurs="0" maxOccurs="unbounded">
-                <xsd:element name="sensor">
+                <xsd:element name="method">
                     <xsd:annotation>
                         <xsd:documentation>EAP: Standard method(s) of measurement</xsd:documentation>
                     </xsd:annotation>
@@ -9189,11 +9241,13 @@ partial molar volume
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" name="instrumentDetails"
+                    type="tml:instrumentType"/>
             </xsd:choice>
             <xsd:sequence>
                 <xsd:element name="units" default="dimensionless">
@@ -9215,6 +9269,7 @@ partial molar volume
     </xsd:complexType>
     <xsd:complexType name="propRepType">
         <xsd:sequence>
+            <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="propertyRepresentation" default="Direct value, x = x1" minOccurs="1">
                 <xsd:annotation>
                     <xsd:documentation>Representation of measurement (i.e. direct measurement, relative difference, ratio, ratio of difference difference, etc..)</xsd:documentation>
@@ -9291,11 +9346,13 @@ partial molar volume
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                <xsd:element name="otherSensor" type="xsd:string">
+                <xsd:element name="otherMethod" type="xsd:string">
                     <xsd:annotation>
-                        <xsd:documentation>input for string-text of a sensor that is not listed in ThermoML</xsd:documentation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" name="instrumentDetails"
+                    type="tml:instrumentType"/>
             </xsd:choice>
             <xsd:element name="units" default="mV">
                 <xsd:annotation>
@@ -9315,6 +9372,7 @@ partial molar volume
     <xsd:complexType name="electrochemicalReactionType">
 
         <xsd:sequence>
+            <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="participant" maxOccurs="unbounded">
                 <xsd:annotation>
                     <xsd:documentation>participating elements/compounds in reaction</xsd:documentation>
@@ -9439,6 +9497,67 @@ partial molar volume
                 </xsd:complexType>
             </xsd:element>
             <xsd:element name="electronNumber" type="xsd:integer" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="instrumentType">
+        <xsd:sequence>
+            <xsd:element name="label" type="xsd:string" minOccurs="0"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="instruments">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element minOccurs="0" name="instrumentType" type="xsd:string">
+                            <xsd:annotation>
+                                <xsd:documentation>instrument name i.e. Scanning Electron Microscope, Potentiometer, Atomic Force Microscope</xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element minOccurs="0" name="instrumentAcronym" type="xsd:string">
+                            <xsd:annotation>
+                                <xsd:documentation>instrument acronym commonly used or searched for i.e. SEM, TEM, AFM</xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element minOccurs="0" name="model" type="xsd:string">
+                            <xsd:annotation>
+                                <xsd:documentation>instrument model or model number</xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element minOccurs="0" name="brand" type="xsd:string">
+                            <xsd:annotation>
+                                <xsd:documentation>brand of instrument</xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element minOccurs="0" name="customized" type="xsd:boolean">
+                            <xsd:annotation>
+                                <xsd:documentation>boolean to indicate whether the instrument has been modified.</xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element minOccurs="0" name="manufacturer" type="xsd:string">
+                            <xsd:annotation>
+                                <xsd:documentation>company that manufactures the instrument</xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="location">
+                <xsd:annotation>
+                    <xsd:documentation>location where the instrument resides</xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element minOccurs="0" name="country" type="xsd:string"/>
+                        <xsd:element minOccurs="0" name="region" type="xsd:string"/>
+                        <xsd:element minOccurs="0" name="provence" type="xsd:string"/>
+                        <xsd:element minOccurs="0" name="state" type="xsd:string"/>
+                        <xsd:element minOccurs="0" name="city" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="organization" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>organization that used the instrument in the study.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="organizationAcronym" type="xsd:string"/>
         </xsd:sequence>
     </xsd:complexType>
 </xsd:schema>
