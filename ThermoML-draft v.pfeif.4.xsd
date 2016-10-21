@@ -453,6 +453,12 @@
                     <xsd:documentation>Elements of chemicals referenced in the data</xsd:documentation>
                 </xsd:annotation>
             </xsd:element>
+            <xsd:element name="phase" type="tml:phaseType" minOccurs="0" maxOccurs="unbounded">
+                <xsd:annotation>
+                    <xsd:documentation>Elements of Phase or phases observed</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="region" type="tml:phaseFieldType" minOccurs="0"/>
             <xsd:element name="system" minOccurs="0" maxOccurs="unbounded">
                 <xsd:annotation>
                     <xsd:documentation>Elements relating the chemical make-up to the final system</xsd:documentation>
@@ -462,11 +468,6 @@
                         <xsd:extension base="tml:systemType"> </xsd:extension>
                     </xsd:complexContent>
                 </xsd:complexType>
-            </xsd:element>
-            <xsd:element name="phase" type="tml:phaseType" minOccurs="0" maxOccurs="unbounded">
-                <xsd:annotation>
-                    <xsd:documentation>Elements of Phase or phases observed</xsd:documentation>
-                </xsd:annotation>
             </xsd:element>
             <xsd:element name="dataset" type="tml:datasetType" minOccurs="0" maxOccurs="unbounded">
                 <xsd:annotation>
@@ -894,10 +895,26 @@
     <!-- ******************* -->
     <xsd:complexType name="systemType">
         <xsd:choice>
-            <xsd:element name="multiComponent" type="tml:multiComponentType"/>
-            <xsd:element name="process" type="tml:processType" minOccurs="1"/>
-            <xsd:element name="reaction" type="tml:reactionType"/>
-            <xsd:element name="sample" type="tml:sampleType"/>
+            <xsd:element name="multiComponent" type="tml:multiComponentType">
+                <xsd:annotation>
+                    <xsd:documentation>Components in system (i.e. methanol and water, graphite, iron and nickel.)</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="process" type="tml:processType" minOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>Any processing done to specimens prior to testing</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="reaction" type="tml:reactionType">
+                <xsd:annotation>
+                    <xsd:documentation>reaction information (participants, buffers, reaction IDs, etc.)</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="sample" type="tml:sampleType">
+                <xsd:annotation>
+                    <xsd:documentation>physical specimen details and characterization</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
         </xsd:choice>
         <xsd:attribute name="id">
             <xsd:annotation>
@@ -1649,7 +1666,136 @@
                     </xsd:complexType>
                 </xsd:element>
             </xsd:choice>
+            <xsd:element name="componentCharacterization" minOccurs="0" maxOccurs="unbounded">
+                <xsd:annotation>
+                    <xsd:documentation>Component information of the sample from impuritiy information</xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:choice>
+                            <xsd:annotation>
+                                <xsd:documentation>known chemical/ component/ impurity</xsd:documentation>
+                            </xsd:annotation>
+                            <xsd:element name="chemical" minOccurs="1">
+                                <xsd:annotation>
+                                    <xsd:documentation>known chemical/component impurity</xsd:documentation>
+                                </xsd:annotation>
+                                <xsd:complexType>
+                                    <xsd:attribute name="id"/>
+                                </xsd:complexType>
+                            </xsd:element>
+                            <xsd:element name="unknown" minOccurs="1">
+                                <xsd:annotation>
+                                    <xsd:documentation>unknown (i.e. specimen only defined 95% pure, therefore 5% is unknown) </xsd:documentation>
+                                </xsd:annotation>
+                            </xsd:element>
+                            <xsd:element minOccurs="1" name="class">
+                                <xsd:annotation>
+                                    <xsd:documentation>other classes of elemnts e.g. halide, etc.</xsd:documentation>
+                                </xsd:annotation>
+                                <xsd:simpleType>
+                                    <xsd:restriction base="xsd:string">
+                                        <xsd:enumeration value="halide"/>
+                                    </xsd:restriction>
+                                </xsd:simpleType>
+                            </xsd:element>
+                            <xsd:element name="otherClass" type="xsd:string" minOccurs="1">
+                                <xsd:annotation>
+                                    <xsd:documentation>used when generic "halide impurities" are quantified rather than specific halides.</xsd:documentation>
+                                </xsd:annotation>
+                            </xsd:element>
+                        </xsd:choice>
+                        <xsd:choice>
+                            <xsd:annotation>
+                                <xsd:documentation>amount of component (purity, chemnical composition range, etc.)</xsd:documentation>
+                            </xsd:annotation>
+                            <xsd:element name="value" type="tml:numberOrNullType" minOccurs="1">
+                                <xsd:annotation>
+                                    <xsd:documentation>amount of component</xsd:documentation>
+                                </xsd:annotation>
+                            </xsd:element>
+                            <xsd:sequence minOccurs="1">
+                                <xsd:element name="low" type="tml:numberOrNullType" minOccurs="1">
+                                    <xsd:annotation>
+                                        <xsd:documentation>lower limit of tolerance</xsd:documentation>
+                                    </xsd:annotation>
+                                </xsd:element>
+                                <xsd:element name="high" type="tml:numberOrNullType" minOccurs="1">
+                                    <xsd:annotation>
+                                        <xsd:documentation>upper limit of tolerance</xsd:documentation>
+                                    </xsd:annotation>
+                                </xsd:element>
+                            </xsd:sequence>
+                        </xsd:choice>
+                        <xsd:element default="unstated percent" name="units">
+                            <xsd:annotation>
+                                <xsd:documentation>units to describe amount of impurity
+</xsd:documentation>
+                            </xsd:annotation>
+                            <xsd:simpleType>
+                                <xsd:restriction base="xsd:string">
+                                    <xsd:enumeration value="mass percent"/>
+                                    <xsd:enumeration value="mass percent halide impurity"/>
+                                    <xsd:enumeration value="mass percent water"/>
+                                    <xsd:enumeration value="mole percent"/>
+                                    <xsd:enumeration value="mole percent halide impurity"/>
+                                    <xsd:enumeration value="mole percent water"/>
+                                    <xsd:enumeration value="volume percent"/>
+                                    <xsd:enumeration value="unstated percent"/>
+                                    <xsd:enumeration value="a"/>
+                                </xsd:restriction>
+                            </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:choice>
+                            <xsd:element name="analyticalMethod" minOccurs="1" maxOccurs="1">
+                                <xsd:annotation>
+                                    <xsd:documentation>Analytical method used to quantify impurities</xsd:documentation>
+                                </xsd:annotation>
+                                <xsd:simpleType>
+                                    <xsd:annotation>
+                                        <xsd:documentation>Analytical method used to measure purity.</xsd:documentation>
+                                    </xsd:annotation>
+                                    <xsd:restriction base="xsd:string">
+                                        <xsd:enumeration value="Chemical analysis"/>
+                                        <xsd:enumeration
+                                            value="Difference between bubble and dew temperatures"/>
+                                        <xsd:enumeration value="Density"/>
+                                        <xsd:enumeration value="DSC"/>
+                                        <xsd:enumeration value="Estimation"/>
+                                        <xsd:enumeration value="Gas chromatography"/>
+                                        <xsd:enumeration
+                                            value="Fraction melting in an adiabatic calorimeter"/>
+                                        <xsd:enumeration value="Mass spectrometry"/>
+                                        <xsd:enumeration value="NMR (proton)"/>
+                                        <xsd:enumeration value="NMR (other)"/>
+                                        <xsd:enumeration value="Not known"/>
+                                        <xsd:enumeration value="Spectroscopy"/>
+                                        <xsd:enumeration
+                                            value="Thermal analysis using temperature-time measurement"/>
+                                        <xsd:enumeration value="Acid-base titration"/>
+                                        <xsd:enumeration value="Other types of titration"/>
+                                        <xsd:enumeration value="Mass loss on drying"/>
+                                        <xsd:enumeration value="Karl Fischer titration"/>
+                                        <xsd:enumeration value="HPLC"/>
+                                        <xsd:enumeration value="Ion chromatography"/>
+                                        <xsd:enumeration value="Ion-selective electrode"/>
+                                        <xsd:enumeration value="CO2 yield in combustion products"/>
+                                        <xsd:enumeration value="Other"/>
+                                        <xsd:enumeration value="Estimated by the compiler"/>
+                                        <xsd:enumeration value="Stated by supplier"/>
+                                    </xsd:restriction>
+                                </xsd:simpleType>
+                            </xsd:element>
+                            <xsd:element name="otherAnalyticalMethod" type="xsd:string"
+                                minOccurs="1" maxOccurs="1"/>
+                        </xsd:choice>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
             <xsd:element name="source" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>source of material (i.e. Alfa Aesar, Goodfellow, etc.)</xsd:documentation>
+                </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:annotation>
                         <xsd:documentation>Source(s) of the sample</xsd:documentation>
@@ -1761,129 +1907,6 @@
                     </xsd:sequence>
                 </xsd:complexType>
             </xsd:element>
-            <xsd:element name="components" minOccurs="0" maxOccurs="unbounded">
-                <xsd:annotation>
-                    <xsd:documentation>Component information of the sample from impuritiy information</xsd:documentation>
-                </xsd:annotation>
-                <xsd:complexType>
-                    <xsd:sequence>
-                        <xsd:choice>
-                            <xsd:annotation>
-                                <xsd:documentation>known chemical/ component/ impurity</xsd:documentation>
-                            </xsd:annotation>
-                            <xsd:element name="chemical" minOccurs="1">
-                                <xsd:annotation>
-                                    <xsd:documentation>known chemical/component impurity</xsd:documentation>
-                                </xsd:annotation>
-                                <xsd:complexType>
-                                    <xsd:attribute name="id"/>
-                                </xsd:complexType>
-                            </xsd:element>
-                            <xsd:element name="unknown" minOccurs="1">
-                                <xsd:annotation>
-                                    <xsd:documentation>unknown (i.e. specimen only defined 95% pure, therefore 5% is unknown) </xsd:documentation>
-                                </xsd:annotation>
-                            </xsd:element>
-                            <xsd:element minOccurs="1" name="class">
-                                <xsd:annotation>
-                                    <xsd:documentation>other classes of elemnts e.g. halide, etc.</xsd:documentation>
-                                </xsd:annotation>
-                                <xsd:simpleType>
-                                    <xsd:restriction base="xsd:string">
-                                        <xsd:enumeration value="halide"/>
-                                    </xsd:restriction>
-                                </xsd:simpleType>
-                            </xsd:element>
-                            <xsd:element name="otherClass" type="xsd:string" minOccurs="1">
-                                <xsd:annotation>
-                                    <xsd:documentation>used when generic "halide impurities" are quantified rather than specific halides.</xsd:documentation>
-                                </xsd:annotation>
-                            </xsd:element>
-                        </xsd:choice>
-                        <xsd:choice>
-                            <xsd:element name="value" type="tml:numberOrNullType" minOccurs="1">
-                                <xsd:annotation>
-                                    <xsd:documentation>amount of component</xsd:documentation>
-                                </xsd:annotation>
-                            </xsd:element>
-                            <xsd:sequence minOccurs="1">
-                                <xsd:element name="low" type="tml:numberOrNullType" minOccurs="1">
-                                    <xsd:annotation>
-                                        <xsd:documentation>lower limit of tolerance</xsd:documentation>
-                                    </xsd:annotation>
-                                </xsd:element>
-                                <xsd:element name="high" type="tml:numberOrNullType" minOccurs="1">
-                                    <xsd:annotation>
-                                        <xsd:documentation>upper limit of tolerance</xsd:documentation>
-                                    </xsd:annotation>
-                                </xsd:element>
-                            </xsd:sequence>
-                        </xsd:choice>
-                        <xsd:element default="unstated percent" name="units">
-                            <xsd:annotation>
-                                <xsd:documentation>units to describe amount of impurity
-</xsd:documentation>
-                            </xsd:annotation>
-                            <xsd:simpleType>
-                                <xsd:restriction base="xsd:string">
-                                    <xsd:enumeration value="mass percent"/>
-                                    <xsd:enumeration value="mass percent halide impurity"/>
-                                    <xsd:enumeration value="mass percent water"/>
-                                    <xsd:enumeration value="mole percent"/>
-                                    <xsd:enumeration value="mole percent halide impurity"/>
-                                    <xsd:enumeration value="mole percent water"/>
-                                    <xsd:enumeration value="volume percent"/>
-                                    <xsd:enumeration value="unstated percent"/>
-                                    <xsd:enumeration value="a"/>
-                                </xsd:restriction>
-                            </xsd:simpleType>
-                        </xsd:element>
-                        <xsd:choice>
-                            <xsd:element name="analyticalMethod" minOccurs="1" maxOccurs="1">
-                                <xsd:annotation>
-                                    <xsd:documentation>Analytical method used to quantify impurities</xsd:documentation>
-                                </xsd:annotation>
-                                <xsd:simpleType>
-                                    <xsd:annotation>
-                                        <xsd:documentation>Analytical method used to measure purity.</xsd:documentation>
-                                    </xsd:annotation>
-                                    <xsd:restriction base="xsd:string">
-                                        <xsd:enumeration value="Chemical analysis"/>
-                                        <xsd:enumeration
-                                            value="Difference between bubble and dew temperatures"/>
-                                        <xsd:enumeration value="Density"/>
-                                        <xsd:enumeration value="DSC"/>
-                                        <xsd:enumeration value="Estimation"/>
-                                        <xsd:enumeration value="Gas chromatography"/>
-                                        <xsd:enumeration
-                                            value="Fraction melting in an adiabatic calorimeter"/>
-                                        <xsd:enumeration value="Mass spectrometry"/>
-                                        <xsd:enumeration value="NMR (proton)"/>
-                                        <xsd:enumeration value="NMR (other)"/>
-                                        <xsd:enumeration value="Not known"/>
-                                        <xsd:enumeration value="Spectroscopy"/>
-                                        <xsd:enumeration
-                                            value="Thermal analysis using temperature-time measurement"/>
-                                        <xsd:enumeration value="Acid-base titration"/>
-                                        <xsd:enumeration value="Other types of titration"/>
-                                        <xsd:enumeration value="Mass loss on drying"/>
-                                        <xsd:enumeration value="Karl Fischer titration"/>
-                                        <xsd:enumeration value="HPLC"/>
-                                        <xsd:enumeration value="Ion chromatography"/>
-                                        <xsd:enumeration value="Ion-selective electrode"/>
-                                        <xsd:enumeration value="CO2 yield in combustion products"/>
-                                        <xsd:enumeration value="Other"/>
-                                        <xsd:enumeration value="Estimated by the compiler"/>
-                                        <xsd:enumeration value="Stated by supplier"/>
-                                    </xsd:restriction>
-                                </xsd:simpleType>
-                            </xsd:element>
-                            <xsd:element name="otherAnalyticalMethod" type="xsd:string"
-                                minOccurs="1" maxOccurs="1"/>
-                        </xsd:choice>
-                    </xsd:sequence>
-                </xsd:complexType>
-            </xsd:element>
         </xsd:sequence>
     </xsd:complexType>
 
@@ -1891,7 +1914,7 @@
     <!-- Phase definition -->
     <!-- **************** -->
     <xsd:complexType name="phaseType">
-        <xsd:choice>
+        <xsd:sequence>
             <xsd:element name="singlephase">
                 <xsd:annotation>
                     <xsd:documentation>The description of a single, possibly substitutant, phase</xsd:documentation>
@@ -2651,22 +2674,7 @@
                     </xsd:attribute>
                 </xsd:complexType>
             </xsd:element>
-            <xsd:element name="multiphase">
-                <xsd:annotation>
-                    <xsd:documentation>Several phases that coexist</xsd:documentation>
-                </xsd:annotation>
-                <xsd:complexType>
-                    <xsd:sequence>
-                        <xsd:element name="phase" minOccurs="2" maxOccurs="unbounded">
-                            <xsd:complexType>
-                                <xsd:attribute name="ref" type="xsd:positiveInteger" use="required"
-                                />
-                            </xsd:complexType>
-                        </xsd:element>
-                    </xsd:sequence>
-                </xsd:complexType>
-            </xsd:element>
-        </xsd:choice>
+        </xsd:sequence>
         <xsd:attribute name="id" type="xsd:positiveInteger" use="required">
             <xsd:annotation>
                 <xsd:documentation>Index to link phase to data</xsd:documentation>
@@ -2709,9 +2717,9 @@
                     <xsd:attribute name="ref" type="xsd:positiveInteger" use="required"/>
                 </xsd:complexType>
             </xsd:element>
-            <xsd:element name="phase" minOccurs="1" maxOccurs="1">
+            <xsd:element name="region" minOccurs="1" maxOccurs="1">
                 <xsd:annotation>
-                    <xsd:documentation>phase of material for which the property describes</xsd:documentation>
+                    <xsd:documentation>phase(s) present in material for which the property describes</xsd:documentation>
                 </xsd:annotation>
                 <xsd:complexType>
                     <xsd:attribute name="ref" type="xsd:positiveInteger" use="required"/>
@@ -2728,28 +2736,34 @@
                                 <xsd:documentation>conditions, method of determination information, unit information for value</xsd:documentation>
                             </xsd:annotation>
                         </xsd:element>
-                        <xsd:element name="phase" minOccurs="0">
-                            <xsd:annotation>
-                                <xsd:documentation>phase of material for which the fixed condition describes</xsd:documentation>
-                            </xsd:annotation>
+                        <xsd:element name="point">
                             <xsd:complexType>
-                                <xsd:attribute name="ref" type="xsd:positiveInteger" use="required"
-                                />
+                                <xsd:sequence>
+                                    <xsd:element name="region" minOccurs="0">
+                                        <xsd:annotation>
+                                            <xsd:documentation>phase(s) of material for which the fixed condition describes</xsd:documentation>
+                                        </xsd:annotation>
+                                        <xsd:complexType>
+                                            <xsd:attribute name="ref" type="xsd:positiveInteger"
+                                                use="required"/>
+                                        </xsd:complexType>
+                                    </xsd:element>
+                                    <xsd:element name="process" minOccurs="0">
+                                        <xsd:annotation>
+                                            <xsd:documentation>any processing that has been done between where purity was descirbed and the condition at which is represented</xsd:documentation>
+                                        </xsd:annotation>
+                                        <xsd:complexType>
+                                            <xsd:attribute name="ref" type="xsd:positiveInteger"
+                                                use="required"/>
+                                        </xsd:complexType>
+                                    </xsd:element>
+                                    <xsd:element name="var" type="tml:valueType" maxOccurs="1">
+                                        <xsd:annotation>
+                                            <xsd:documentation>variable value for the selected condition</xsd:documentation>
+                                        </xsd:annotation>
+                                    </xsd:element>
+                                </xsd:sequence>
                             </xsd:complexType>
-                        </xsd:element>
-                        <xsd:element name="process" minOccurs="0">
-                            <xsd:annotation>
-                                <xsd:documentation>any processing that has been done between where purity was descirbed and the condition at which is represented</xsd:documentation>
-                            </xsd:annotation>
-                            <xsd:complexType>
-                                <xsd:attribute name="ref" type="xsd:positiveInteger" use="required"
-                                />
-                            </xsd:complexType>
-                        </xsd:element>
-                        <xsd:element name="var" type="tml:valueType" maxOccurs="1">
-                            <xsd:annotation>
-                                <xsd:documentation>variable value for the selected condition</xsd:documentation>
-                            </xsd:annotation>
                         </xsd:element>
                         <xsd:element name="crucibleMaterial" minOccurs="0">
                             <xsd:annotation>
@@ -2899,7 +2913,17 @@
                 <xsd:element name="molarDensity" type="tml:molarDensityType"/>
                 <xsd:element name="composition" type="tml:compositionType"/>
                 <!--added  variables-->
-                <xsd:element name="phaseVolumeFraction" type="tml:phaseVolumeFractionType"/>
+                <xsd:element name="phaseVolumeFraction">
+                    <xsd:complexType>
+                        <xsd:complexContent>
+                            <xsd:extension base="tml:phaseVolumeFractionType">
+                                <xsd:sequence>
+                                    <xsd:element name="newElement"/>
+                                </xsd:sequence>
+                            </xsd:extension>
+                        </xsd:complexContent>
+                    </xsd:complexType>
+                </xsd:element>
                 <xsd:element name="waveLength" type="tml:waveLengthType"/>
                 <xsd:element name="heatingRate" type="tml:heatingRateType"/>
             </xsd:choice>
@@ -4551,12 +4575,18 @@ International Tables for Crystallography A(2006) table 1.1.1--interaxial (lattic
     </xsd:complexType>
     <xsd:complexType name="pointType">
         <xsd:sequence>
-            <xsd:element name="phase" minOccurs="0">
+            <xsd:element name="region" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>phase(s) of material for which the condition or property describes</xsd:documentation>
+                </xsd:annotation>
                 <xsd:complexType>
                     <xsd:attribute name="ref" type="xsd:positiveInteger" use="required"/>
                 </xsd:complexType>
             </xsd:element>
             <xsd:element name="process" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>any additional processing that has occured to the specimen prior to testing for this point.</xsd:documentation>
+                </xsd:annotation>
                 <xsd:complexType>
                     <xsd:attribute name="ref" type="xsd:positiveInteger" use="required"/>
                 </xsd:complexType>
@@ -8605,38 +8635,37 @@ relative partial molar volume,
     <!--Null/number definitions-->
     <xsd:complexType name="phaseTransitionType">
         <xsd:choice minOccurs="0" maxOccurs="unbounded">
-            <xsd:element name="normalMelting" type="tml:phaseBoundaryType"> </xsd:element>
-            <xsd:element name="normalBoiling" type="tml:phaseBoundaryType"> </xsd:element>
-            <xsd:element name="sublimation" type="tml:phaseBoundaryType"> </xsd:element>
-            <xsd:element name="liquidus" type="tml:phaseBoundaryType"> </xsd:element>
-            <xsd:element name="solidus" type="tml:phaseBoundaryType"> </xsd:element>
-            <xsd:element name="solvus" type="tml:phaseBoundaryType"> </xsd:element>
-            <xsd:element name="eutecticTransformation" type="tml:phaseBoundaryType"> </xsd:element>
-            <xsd:element name="eutectoidTransformation" type="tml:phaseBoundaryType"> </xsd:element>
-            <xsd:element name="peritecticTransformation" type="tml:phaseBoundaryType"> </xsd:element>
-            <xsd:element name="peritectoidTransformation" type="tml:phaseBoundaryType"> </xsd:element>
-            <xsd:element name="monotecticTransformation" type="tml:phaseBoundaryType"> </xsd:element>
-            <xsd:element name="monotectoidTransformation" type="tml:phaseBoundaryType"> </xsd:element>
-            <xsd:element name="invariantReactionTransition" type="tml:phaseBoundaryType"> </xsd:element>
-            <xsd:element name="orderingTransition" type="tml:phaseBoundaryType"> </xsd:element>
-            <xsd:element name="lambdaSuperconductiveTransition" type="tml:phaseBoundaryType"> </xsd:element>
-            <xsd:element name="shearTransition" type="tml:phaseBoundaryType"> </xsd:element>
-            <xsd:element name="glassTransitition" type="tml:phaseBoundaryType"> </xsd:element>
-            <xsd:element name="magneticTransition" type="tml:phaseBoundaryType"> </xsd:element>
-            <xsd:element name="secondOrderPhaseTransition" type="tml:phaseBoundaryType"> </xsd:element>
-            <xsd:element name="firstOrderPhaseTransition" type="tml:phaseBoundaryType">
-            </xsd:element>
+            <xsd:element name="normalMelting" type="tml:phaseFieldType"> </xsd:element>
+            <xsd:element name="normalBoiling" type="tml:phaseFieldType"> </xsd:element>
+            <xsd:element name="sublimation" type="tml:phaseFieldType"> </xsd:element>
+            <xsd:element name="liquidus" type="tml:phaseFieldType"> </xsd:element>
+            <xsd:element name="solidus" type="tml:phaseFieldType"> </xsd:element>
+            <xsd:element name="solvus" type="tml:phaseFieldType"> </xsd:element>
+            <xsd:element name="eutecticTransformation" type="tml:phaseFieldType"> </xsd:element>
+            <xsd:element name="eutectoidTransformation" type="tml:phaseFieldType"> </xsd:element>
+            <xsd:element name="peritecticTransformation" type="tml:phaseFieldType"> </xsd:element>
+            <xsd:element name="peritectoidTransformation" type="tml:phaseFieldType"> </xsd:element>
+            <xsd:element name="monotecticTransformation" type="tml:phaseFieldType"> </xsd:element>
+            <xsd:element name="monotectoidTransformation" type="tml:phaseFieldType"> </xsd:element>
+            <xsd:element name="invariantReactionTransition" type="tml:phaseFieldType"> </xsd:element>
+            <xsd:element name="orderingTransition" type="tml:phaseFieldType"> </xsd:element>
+            <xsd:element name="lambdaSuperconductiveTransition" type="tml:phaseFieldType"> </xsd:element>
+            <xsd:element name="shearTransition" type="tml:phaseFieldType"> </xsd:element>
+            <xsd:element name="glassTransitition" type="tml:phaseFieldType"> </xsd:element>
+            <xsd:element name="magneticTransition" type="tml:phaseFieldType"> </xsd:element>
+            <xsd:element name="secondOrderPhaseTransition" type="tml:phaseFieldType"> </xsd:element>
+            <xsd:element name="firstOrderPhaseTransition" type="tml:phaseFieldType"> </xsd:element>
         </xsd:choice>
     </xsd:complexType>
-    <xsd:complexType name="phaseBoundaryType">
+    <xsd:complexType name="phaseFieldType">
         <xsd:sequence>
             <xsd:element name="phaseField">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: list of n>1 phases involved in transformation</xsd:documentation>
+                    <xsd:documentation>list of n>1 phases present</xsd:documentation>
                 </xsd:annotation>
                 <xsd:complexType>
                     <xsd:sequence>
-                        <xsd:element name="phase" minOccurs="2" maxOccurs="unbounded">
+                        <xsd:element name="phase" minOccurs="1" maxOccurs="unbounded">
                             <xsd:annotation>
                                 <xsd:documentation>ref: phase(s)</xsd:documentation>
                             </xsd:annotation>
@@ -8650,7 +8679,7 @@ relative partial molar volume,
             </xsd:element>
             <xsd:element minOccurs="0" name="zeroPhaseFraction">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: list of phase(s) with fraction decreasing/increasing from zero</xsd:documentation>
+                    <xsd:documentation>for boundaries--list of phase(s) with fraction decreasing/increasing from zero</xsd:documentation>
                 </xsd:annotation>
                 <xsd:complexType>
                     <xsd:sequence>
@@ -8667,6 +8696,11 @@ relative partial molar volume,
                 </xsd:complexType>
             </xsd:element>
         </xsd:sequence>
+        <xsd:attribute name="id">
+            <xsd:annotation>
+                <xsd:documentation>Index for region (i.e. phases present)</xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
     </xsd:complexType>
     <xsd:simpleType name="numberOrNullType">
         <xsd:union memberTypes="xsd:double tml:nullEnumerationType"> </xsd:union>
@@ -9327,178 +9361,6 @@ partial molar volume
             </xsd:element>
         </xsd:sequence>
     </xsd:complexType>
-    <xsd:complexType name="emfType">
-        <xsd:annotation>
-            <xsd:documentation>Note: reaction information for cell is found in system
-</xsd:documentation>
-        </xsd:annotation>
-        <xsd:sequence>
-            <xsd:element name="label" type="xsd:string" minOccurs="0"/>
-            <xsd:choice minOccurs="0" maxOccurs="unbounded">
-                <xsd:element name="method">
-                    <xsd:annotation>
-                        <xsd:documentation>EAP: Standard method(s) of measurement</xsd:documentation>
-                    </xsd:annotation>
-                    <xsd:simpleType>
-                        <xsd:restriction base="xsd:string">
-                            <xsd:enumeration value="Potentiometer"/>
-                            <xsd:enumeration value="Other"/>
-                        </xsd:restriction>
-                    </xsd:simpleType>
-                </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string">
-                    <xsd:annotation>
-                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
-                    </xsd:annotation>
-                </xsd:element>
-                <xsd:element maxOccurs="unbounded" minOccurs="0" name="instrumentDetails"
-                    type="tml:instrumentType"/>
-            </xsd:choice>
-            <xsd:element name="units" default="mV">
-                <xsd:annotation>
-                    <xsd:documentation>units associated with of measurand</xsd:documentation>
-                </xsd:annotation>
-                <xsd:simpleType>
-                    <xsd:restriction base="xsd:string">
-                        <xsd:enumeration value="V"/>
-                        <xsd:enumeration value="mV"/>
-                        <xsd:enumeration value="uV"/>
-                        <xsd:enumeration value="nV"/>
-                    </xsd:restriction>
-                </xsd:simpleType>
-            </xsd:element>
-        </xsd:sequence>
-    </xsd:complexType>
-    <xsd:complexType name="electrochemicalReactionType">
-
-        <xsd:sequence>
-            <xsd:element name="label" type="xsd:string" minOccurs="0"/>
-            <xsd:element name="participant" maxOccurs="unbounded">
-                <xsd:annotation>
-                    <xsd:documentation>participating elements/compounds in reaction</xsd:documentation>
-                </xsd:annotation>
-                <xsd:complexType>
-                    <xsd:sequence>
-                        <xsd:choice>
-                            <xsd:element name="chemical">
-                                <xsd:annotation>
-                                    <xsd:documentation>link for common identification of participant to a known chemical species</xsd:documentation>
-                                </xsd:annotation>
-                                <xsd:complexType>
-                                    <xsd:attribute name="ref" type="xsd:positiveInteger"
-                                        use="required"/>
-                                </xsd:complexType>
-                            </xsd:element>
-                            <xsd:element name="system">
-                                <xsd:annotation>
-                                    <xsd:documentation>link for common identification of components in the system</xsd:documentation>
-                                </xsd:annotation>
-                                <xsd:complexType>
-                                    <xsd:attribute name="ref" type="xsd:positiveInteger"
-                                        use="required"/>
-                                </xsd:complexType>
-                            </xsd:element>
-                        </xsd:choice>
-                        <xsd:element name="stoichiometricCoef" type="xsd:float" minOccurs="0"/>
-                        <xsd:element name="phase" minOccurs="0">
-                            <xsd:annotation>
-                                <xsd:documentation>phase of participant chemical/compounds</xsd:documentation>
-                            </xsd:annotation>
-                            <xsd:complexType>
-                                <xsd:attribute name="ref" type="xsd:positiveInteger" use="required"
-                                />
-                            </xsd:complexType>
-                        </xsd:element>
-                    </xsd:sequence>
-                </xsd:complexType>
-            </xsd:element>
-            <xsd:element name="solvent" minOccurs="0" maxOccurs="unbounded">
-                <xsd:complexType>
-                    <xsd:sequence>
-                        <xsd:choice>
-                            <xsd:element name="chemical">
-                                <xsd:annotation>
-                                    <xsd:documentation>link for common identification of participant to a known chemical species</xsd:documentation>
-                                </xsd:annotation>
-                                <xsd:complexType>
-                                    <xsd:attribute name="ref" type="xsd:positiveInteger"
-                                        use="required"/>
-                                </xsd:complexType>
-                            </xsd:element>
-                            <xsd:element name="system">
-                                <xsd:annotation>
-                                    <xsd:documentation>link for common identification of components in the system</xsd:documentation>
-                                </xsd:annotation>
-                                <xsd:complexType>
-                                    <xsd:attribute name="ref" type="xsd:positiveInteger"
-                                        use="required"/>
-                                </xsd:complexType>
-                            </xsd:element>
-                        </xsd:choice>
-                        <xsd:element name="phase" minOccurs="0">
-                            <xsd:complexType>
-                                <xsd:attribute name="ref" type="xsd:positiveInteger" use="required"
-                                />
-                            </xsd:complexType>
-                        </xsd:element>
-                    </xsd:sequence>
-                </xsd:complexType>
-            </xsd:element>
-            <xsd:element name="auxiliarySubstance" minOccurs="0" maxOccurs="unbounded">
-                <xsd:complexType>
-                    <xsd:sequence>
-                        <xsd:choice minOccurs="0">
-                            <xsd:element name="function">
-                                <xsd:annotation>
-                                    <xsd:documentation>Purpose of auxillary substance (cofactor, buffer, catalyst, etc.)</xsd:documentation>
-                                </xsd:annotation>
-                                <xsd:simpleType>
-                                    <xsd:restriction base="xsd:string">
-                                        <xsd:enumeration value="Cofactor"/>
-                                        <xsd:enumeration value="Buffer"/>
-                                        <xsd:enumeration value="Inert"/>
-                                        <xsd:enumeration value="Catalyst"/>
-                                    </xsd:restriction>
-                                </xsd:simpleType>
-                            </xsd:element>
-                            <xsd:element name="otherFunction" type="xsd:string">
-                                <xsd:annotation>
-                                    <xsd:documentation>string for idenficiation of function of subastance if not listed in standard funcitons.</xsd:documentation>
-                                </xsd:annotation>
-                            </xsd:element>
-                        </xsd:choice>
-                        <xsd:choice>
-                            <xsd:element name="chemical">
-                                <xsd:annotation>
-                                    <xsd:documentation>link for common identification of participant to a known chemical species</xsd:documentation>
-                                </xsd:annotation>
-                                <xsd:complexType>
-                                    <xsd:attribute name="ref" type="xsd:positiveInteger"
-                                        use="required"/>
-                                </xsd:complexType>
-                            </xsd:element>
-                            <xsd:element name="system">
-                                <xsd:annotation>
-                                    <xsd:documentation>link for common identification of components in the system</xsd:documentation>
-                                </xsd:annotation>
-                                <xsd:complexType>
-                                    <xsd:attribute name="ref" type="xsd:positiveInteger"
-                                        use="required"/>
-                                </xsd:complexType>
-                            </xsd:element>
-                        </xsd:choice>
-                        <xsd:element name="phase" minOccurs="0">
-                            <xsd:complexType>
-                                <xsd:attribute name="ref" type="xsd:positiveInteger" use="required"
-                                />
-                            </xsd:complexType>
-                        </xsd:element>
-                    </xsd:sequence>
-                </xsd:complexType>
-            </xsd:element>
-            <xsd:element name="electronNumber" type="xsd:integer" minOccurs="0"/>
-        </xsd:sequence>
-    </xsd:complexType>
     <xsd:complexType name="instrumentType">
         <xsd:sequence>
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
@@ -9558,6 +9420,178 @@ partial molar volume
                 </xsd:annotation>
             </xsd:element>
             <xsd:element minOccurs="0" name="organizationAcronym" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="emfType">
+        <xsd:annotation>
+            <xsd:documentation>Note: reaction information for cell is found in system
+</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element minOccurs="0" name="label" type="xsd:string"/>
+            <xsd:choice maxOccurs="unbounded" minOccurs="0">
+                <xsd:element name="method">
+                    <xsd:annotation>
+                        <xsd:documentation>EAP: Standard method(s) of measurement</xsd:documentation>
+                    </xsd:annotation>
+                    <xsd:simpleType>
+                        <xsd:restriction base="xsd:string">
+                            <xsd:enumeration value="Potentiometer"/>
+                            <xsd:enumeration value="Other"/>
+                        </xsd:restriction>
+                    </xsd:simpleType>
+                </xsd:element>
+                <xsd:element name="otherMethod" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" name="instrumentDetails"
+                    type="tml:instrumentType"/>
+            </xsd:choice>
+            <xsd:element default="mV" name="units">
+                <xsd:annotation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
+                </xsd:annotation>
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:enumeration value="V"/>
+                        <xsd:enumeration value="mV"/>
+                        <xsd:enumeration value="uV"/>
+                        <xsd:enumeration value="nV"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="electrochemicalReactionType">
+
+        <xsd:sequence>
+            <xsd:element minOccurs="0" name="label" type="xsd:string"/>
+            <xsd:element maxOccurs="unbounded" name="participant">
+                <xsd:annotation>
+                    <xsd:documentation>participating elements/compounds in reaction</xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:choice>
+                            <xsd:element name="chemical">
+                                <xsd:annotation>
+                                    <xsd:documentation>link for common identification of participant to a known chemical species</xsd:documentation>
+                                </xsd:annotation>
+                                <xsd:complexType>
+                                    <xsd:attribute name="ref" type="xsd:positiveInteger"
+                                        use="required"/>
+                                </xsd:complexType>
+                            </xsd:element>
+                            <xsd:element name="system">
+                                <xsd:annotation>
+                                    <xsd:documentation>link for common identification of components in the system</xsd:documentation>
+                                </xsd:annotation>
+                                <xsd:complexType>
+                                    <xsd:attribute name="ref" type="xsd:positiveInteger"
+                                        use="required"/>
+                                </xsd:complexType>
+                            </xsd:element>
+                        </xsd:choice>
+                        <xsd:element minOccurs="0" name="stoichiometricCoef" type="xsd:float"/>
+                        <xsd:element minOccurs="0" name="phase">
+                            <xsd:annotation>
+                                <xsd:documentation>phase of participant chemical/compounds</xsd:documentation>
+                            </xsd:annotation>
+                            <xsd:complexType>
+                                <xsd:attribute name="ref" type="xsd:positiveInteger" use="required"
+                                />
+                            </xsd:complexType>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="solvent">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:choice>
+                            <xsd:element name="chemical">
+                                <xsd:annotation>
+                                    <xsd:documentation>link for common identification of participant to a known chemical species</xsd:documentation>
+                                </xsd:annotation>
+                                <xsd:complexType>
+                                    <xsd:attribute name="ref" type="xsd:positiveInteger"
+                                        use="required"/>
+                                </xsd:complexType>
+                            </xsd:element>
+                            <xsd:element name="system">
+                                <xsd:annotation>
+                                    <xsd:documentation>link for common identification of components in the system</xsd:documentation>
+                                </xsd:annotation>
+                                <xsd:complexType>
+                                    <xsd:attribute name="ref" type="xsd:positiveInteger"
+                                        use="required"/>
+                                </xsd:complexType>
+                            </xsd:element>
+                        </xsd:choice>
+                        <xsd:element minOccurs="0" name="phase">
+                            <xsd:complexType>
+                                <xsd:attribute name="ref" type="xsd:positiveInteger" use="required"
+                                />
+                            </xsd:complexType>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="auxiliarySubstance">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:choice minOccurs="0">
+                            <xsd:element name="function">
+                                <xsd:annotation>
+                                    <xsd:documentation>Purpose of auxillary substance (cofactor, buffer, catalyst, etc.)</xsd:documentation>
+                                </xsd:annotation>
+                                <xsd:simpleType>
+                                    <xsd:restriction base="xsd:string">
+                                        <xsd:enumeration value="Cofactor"/>
+                                        <xsd:enumeration value="Buffer"/>
+                                        <xsd:enumeration value="Inert"/>
+                                        <xsd:enumeration value="Catalyst"/>
+                                    </xsd:restriction>
+                                </xsd:simpleType>
+                            </xsd:element>
+                            <xsd:element name="otherFunction" type="xsd:string">
+                                <xsd:annotation>
+                                    <xsd:documentation>string for idenficiation of function of subastance if not listed in standard funcitons.</xsd:documentation>
+                                </xsd:annotation>
+                            </xsd:element>
+                        </xsd:choice>
+                        <xsd:choice>
+                            <xsd:element name="chemical">
+                                <xsd:annotation>
+                                    <xsd:documentation>link for common identification of participant to a known chemical species</xsd:documentation>
+                                </xsd:annotation>
+                                <xsd:complexType>
+                                    <xsd:attribute name="ref" type="xsd:positiveInteger"
+                                        use="required"/>
+                                </xsd:complexType>
+                            </xsd:element>
+                            <xsd:element name="system">
+                                <xsd:annotation>
+                                    <xsd:documentation>link for common identification of components in the system</xsd:documentation>
+                                </xsd:annotation>
+                                <xsd:complexType>
+                                    <xsd:attribute name="ref" type="xsd:positiveInteger"
+                                        use="required"/>
+                                </xsd:complexType>
+                            </xsd:element>
+                        </xsd:choice>
+                        <xsd:element minOccurs="0" name="phase">
+                            <xsd:complexType>
+                                <xsd:attribute name="ref" type="xsd:positiveInteger" use="required"
+                                />
+                            </xsd:complexType>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="electronNumber" type="xsd:integer"/>
         </xsd:sequence>
     </xsd:complexType>
 </xsd:schema>
