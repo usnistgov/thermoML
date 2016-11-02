@@ -443,23 +443,28 @@
             <xsd:documentation>Type information for root container</xsd:documentation>
         </xsd:annotation>
         <xsd:sequence>
-            <xsd:element name="citation" type="tml:citationType" minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="citation" type="tml:citationType" minOccurs="1" maxOccurs="unbounded">
                 <xsd:annotation>
                     <xsd:documentation>Elements to convey provenance about communicated data</xsd:documentation>
                 </xsd:annotation>
             </xsd:element>
-            <xsd:element name="chemical" type="tml:chemicalType" minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="chemical" type="tml:chemicalType" minOccurs="1" maxOccurs="unbounded">
                 <xsd:annotation>
                     <xsd:documentation>Elements of chemicals referenced in the data</xsd:documentation>
                 </xsd:annotation>
             </xsd:element>
-            <xsd:element name="phase" type="tml:phaseType" minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="phase" type="tml:phaseType" minOccurs="1" maxOccurs="unbounded">
                 <xsd:annotation>
-                    <xsd:documentation>Elements of Phase or phases observed</xsd:documentation>
+                    <xsd:documentation>Elements to identify phases (Strukturberict, etc.)</xsd:documentation>
                 </xsd:annotation>
             </xsd:element>
-            <xsd:element name="region" type="tml:phaseFieldType" minOccurs="0"/>
-            <xsd:element name="system" minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="phaseField" type="tml:phaseFieldType" minOccurs="1"
+                maxOccurs="unbounded">
+                <xsd:annotation>
+                    <xsd:documentation>region</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="system" minOccurs="1" maxOccurs="unbounded">
                 <xsd:annotation>
                     <xsd:documentation>Elements relating the chemical make-up to the final system</xsd:documentation>
                 </xsd:annotation>
@@ -469,7 +474,7 @@
                     </xsd:complexContent>
                 </xsd:complexType>
             </xsd:element>
-            <xsd:element name="dataset" type="tml:datasetType" minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="dataset" type="tml:datasetType" minOccurs="1" maxOccurs="unbounded">
                 <xsd:annotation>
                     <xsd:documentation>The measurements of a system reported in a citation</xsd:documentation>
                 </xsd:annotation>
@@ -900,7 +905,7 @@
                     <xsd:documentation>Components in system (i.e. methanol and water, graphite, iron and nickel.)</xsd:documentation>
                 </xsd:annotation>
             </xsd:element>
-            <xsd:element name="process" type="tml:processType" minOccurs="1">
+            <xsd:element name="processing" type="tml:processType" minOccurs="1">
                 <xsd:annotation>
                     <xsd:documentation>Any processing done to specimens prior to testing</xsd:documentation>
                 </xsd:annotation>
@@ -2717,31 +2722,25 @@
                     <xsd:attribute name="ref" type="xsd:positiveInteger" use="required"/>
                 </xsd:complexType>
             </xsd:element>
-            <xsd:element name="region" minOccurs="1" maxOccurs="1">
-                <xsd:annotation>
-                    <xsd:documentation>phase(s) present in material for which the property describes</xsd:documentation>
-                </xsd:annotation>
-                <xsd:complexType>
-                    <xsd:attribute name="ref" type="xsd:positiveInteger" use="required"/>
-                </xsd:complexType>
-            </xsd:element>
-            <xsd:element name="fixedConditions" minOccurs="0" maxOccurs="unbounded">
-                <xsd:annotation>
-                    <xsd:documentation>Condition Info (T,P, etc.) in header of table</xsd:documentation>
-                </xsd:annotation>
+            <xsd:element name="referenceStates">
                 <xsd:complexType>
                     <xsd:sequence>
-                        <xsd:element name="conditions" type="tml:variableType">
-                            <xsd:annotation>
-                                <xsd:documentation>conditions, method of determination information, unit information for value</xsd:documentation>
-                            </xsd:annotation>
-                        </xsd:element>
-                        <xsd:element name="point">
+                        <xsd:element maxOccurs="unbounded" name="reference">
                             <xsd:complexType>
                                 <xsd:sequence>
-                                    <xsd:element name="region" minOccurs="0">
+                                    <xsd:element name="refComponent" minOccurs="1" maxOccurs="1">
                                         <xsd:annotation>
-                                            <xsd:documentation>phase(s) of material for which the fixed condition describes</xsd:documentation>
+                                            <xsd:documentation>component linked to condition (used for reference to another component, i.e. compared to helium or alumina)
+</xsd:documentation>
+                                        </xsd:annotation>
+                                        <xsd:complexType>
+                                            <xsd:attribute name="ref" type="xsd:positiveInteger"
+                                                use="required"/>
+                                        </xsd:complexType>
+                                    </xsd:element>
+                                    <xsd:element name="phaseField" minOccurs="1">
+                                        <xsd:annotation>
+                                            <xsd:documentation>phase for reference</xsd:documentation>
                                         </xsd:annotation>
                                         <xsd:complexType>
                                             <xsd:attribute name="ref" type="xsd:positiveInteger"
@@ -2757,13 +2756,28 @@
                                                 use="required"/>
                                         </xsd:complexType>
                                     </xsd:element>
-                                    <xsd:element name="var" type="tml:valueType" maxOccurs="1">
-                                        <xsd:annotation>
-                                            <xsd:documentation>variable value for the selected condition</xsd:documentation>
-                                        </xsd:annotation>
-                                    </xsd:element>
                                 </xsd:sequence>
+                                <xsd:attribute name="id" type="xsd:positiveInteger"/>
                             </xsd:complexType>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="fixedConditions" minOccurs="0" maxOccurs="unbounded">
+                <xsd:annotation>
+                    <xsd:documentation>Condition Info (T,P, etc.) in header of table</xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="conditions" type="tml:variableType">
+                            <xsd:annotation>
+                                <xsd:documentation>conditions, method of determination information, unit information for value</xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element name="var" type="tml:valueType" maxOccurs="1">
+                            <xsd:annotation>
+                                <xsd:documentation>variable value for the selected condition</xsd:documentation>
+                            </xsd:annotation>
                         </xsd:element>
                         <xsd:element name="crucibleMaterial" minOccurs="0">
                             <xsd:annotation>
@@ -2875,33 +2889,9 @@
     <!-- ******************* -->
     <xsd:complexType name="variableType">
         <xsd:sequence>
-            <xsd:element name="reference">
+            <xsd:element name="reference" minOccurs="0">
                 <xsd:complexType>
-                    <xsd:sequence>
-                        <xsd:element minOccurs="1" name="ref">
-                            <xsd:annotation>
-                                <xsd:documentation/>
-                            </xsd:annotation>
-                            <xsd:complexType>
-                                <xsd:attribute name="ref"/>
-                            </xsd:complexType>
-                        </xsd:element>
-                        <xsd:element default="0" name="refInt" type="xsd:integer">
-                            <xsd:annotation>
-                                <xsd:documentation>Integer indicator to identify reference conditions from non-reference conditions</xsd:documentation>
-                            </xsd:annotation>
-                        </xsd:element>
-                        <xsd:element name="refComponent" minOccurs="0" maxOccurs="1">
-                            <xsd:annotation>
-                                <xsd:documentation>component linked to condition (used for reference to another component, i.e. compared to helium or alumina)
-</xsd:documentation>
-                            </xsd:annotation>
-                            <xsd:complexType>
-                                <xsd:attribute name="ref" type="xsd:positiveInteger" use="required"
-                                />
-                            </xsd:complexType>
-                        </xsd:element>
-                    </xsd:sequence>
+                    <xsd:attribute name="ref"/>
                 </xsd:complexType>
             </xsd:element>
             <xsd:choice>
@@ -2913,17 +2903,7 @@
                 <xsd:element name="molarDensity" type="tml:molarDensityType"/>
                 <xsd:element name="composition" type="tml:compositionType"/>
                 <!--added  variables-->
-                <xsd:element name="phaseVolumeFraction">
-                    <xsd:complexType>
-                        <xsd:complexContent>
-                            <xsd:extension base="tml:phaseVolumeFractionType">
-                                <xsd:sequence>
-                                    <xsd:element name="newElement"/>
-                                </xsd:sequence>
-                            </xsd:extension>
-                        </xsd:complexContent>
-                    </xsd:complexType>
-                </xsd:element>
+                <xsd:element name="phaseVolumeFraction" type="tml:phaseVolumeFractionType"> </xsd:element>
                 <xsd:element name="waveLength" type="tml:waveLengthType"/>
                 <xsd:element name="heatingRate" type="tml:heatingRateType"/>
             </xsd:choice>
@@ -4571,11 +4551,13 @@ International Tables for Crystallography A(2006) table 1.1.1--interaxial (lattic
                     </xsd:restriction>
                 </xsd:simpleType>
             </xsd:element>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="instrumentDetails"
+                type="tml:instrumentType"/>
         </xsd:sequence>
     </xsd:complexType>
     <xsd:complexType name="pointType">
         <xsd:sequence>
-            <xsd:element name="region" minOccurs="0">
+            <xsd:element name="phaseField" minOccurs="0">
                 <xsd:annotation>
                     <xsd:documentation>phase(s) of material for which the condition or property describes</xsd:documentation>
                 </xsd:annotation>
@@ -4658,6 +4640,73 @@ International Tables for Crystallography A(2006) table 1.1.1--interaxial (lattic
                 </xsd:annotation>
                 <xsd:complexType>
                     <xsd:attribute name="ref" type="xsd:positiveInteger" use="required"/>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="apparentOrExcessEnergyType">
+        <xsd:annotation>
+            <xsd:documentation>EAP: used for apparent molar enthalpy, apparent molar gibbs energy, excess molar enthalpy molar enthalpy of mixing, molar enthalpy of dilution</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="label" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="units" default="J/mol">
+                <xsd:annotation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
+                </xsd:annotation>
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:enumeration value="J/mol"/>
+                        <xsd:enumeration value="J/g"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+            <xsd:choice minOccurs="0" maxOccurs="unbounded">
+                <xsd:element name="method">
+                    <xsd:annotation>
+                        <xsd:documentation>EAP: Standard method(s) of measurement</xsd:documentation>
+                    </xsd:annotation>
+                    <xsd:simpleType>
+                        <xsd:restriction base="xsd:string">
+                            <xsd:enumeration value="AC calorimetry"/>
+                            <xsd:enumeration value="Closed cup calorimetry"/>
+                            <xsd:enumeration value="Drop calorimetry"/>
+                            <xsd:enumeration value="Drop ice or diphenyl ether calorimetry"/>
+                            <xsd:enumeration value="DSC"/>
+                            <xsd:enumeration value="DTA"/>
+                            <xsd:enumeration value="Flow calorimeter"/>
+                            <xsd:enumeration value="Large scale scanning calorimetry"/>
+                            <xsd:enumeration value="Laser pulse heating method"/>
+                            <xsd:enumeration value="Open cup calorimetry"/>
+                            <xsd:enumeration value="Resistive pulse heating"/>
+                            <xsd:enumeration value="Resistive pulse heating-millisecond"/>
+                            <xsd:enumeration value="Resistive pulse heating-microsecond"/>
+                            <xsd:enumeration value="Small adiabatic calorimetry"/>
+                            <xsd:enumeration value="Thin film calorimetry"/>
+                            <xsd:enumeration value="Vacuum adiabatic calorimetry"/>
+                        </xsd:restriction>
+                    </xsd:simpleType>
+                </xsd:element>
+                <xsd:element name="otherMethod" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+            </xsd:choice>
+            <xsd:element name="solute">
+                <xsd:annotation>
+                    <xsd:documentation>EAP: Solute component</xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                    <xsd:attribute name="ref" type="xsd:positiveInteger"/>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element maxOccurs="unbounded" name="solvent">
+                <xsd:annotation>
+                    <xsd:documentation>EAP: solvent components</xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                    <xsd:attribute name="ref" type="xsd:positiveInteger"/>
                 </xsd:complexType>
             </xsd:element>
         </xsd:sequence>
@@ -4980,8 +5029,6 @@ International Tables for Crystallography A(2006) table 1.1.1--interaxial (lattic
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
                         <xsd:enumeration value="1/K"/>
-                        <xsd:enumeration value="1/F"/>
-                        <xsd:enumeration value="1/R"/>
                     </xsd:restriction>
                 </xsd:simpleType>
             </xsd:element>
@@ -5050,9 +5097,6 @@ International Tables for Crystallography A(2006) table 1.1.1--interaxial (lattic
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
                         <xsd:enumeration value="m^2/s"/>
-                        <xsd:enumeration value="10^-8 m^2/s"/>
-                        <xsd:enumeration value="10^-9 m^2/s"/>
-                        <xsd:enumeration value="10^-10 m^2/s"/>
                     </xsd:restriction>
                 </xsd:simpleType>
             </xsd:element>
@@ -5114,8 +5158,6 @@ International Tables for Crystallography A(2006) table 1.1.1--interaxial (lattic
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
                         <xsd:enumeration value="S/m"/>
-                        <xsd:enumeration value="milliS/cm"/>
-                        <xsd:enumeration value="microS/cm"/>
                     </xsd:restriction>
                 </xsd:simpleType>
             </xsd:element>
@@ -5154,9 +5196,6 @@ International Tables for Crystallography A(2006) table 1.1.1--interaxial (lattic
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
                         <xsd:enumeration value="Ohm m"/>
-                        <xsd:enumeration value="microOhm m"/>
-                        <xsd:enumeration value="Ohm cm"/>
-                        <xsd:enumeration value="microOhm cm"/>
                     </xsd:restriction>
                 </xsd:simpleType>
             </xsd:element>
@@ -5216,18 +5255,8 @@ Van't Hoff enthalpy of transition, </xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
-                        <xsd:enumeration value="kJ/mol"/>
                         <xsd:enumeration value="J/mol"/>
-                        <xsd:enumeration value="kJ/g"/>
                         <xsd:enumeration value="J/g"/>
-                        <xsd:enumeration value="kcal/mol"/>
-                        <xsd:enumeration value="cal/mol"/>
-                        <xsd:enumeration value="kcal/g"/>
-                        <xsd:enumeration value="cal/g"/>
-                        <xsd:enumeration value="cal(Interational Table)/g"/>
-                        <xsd:enumeration value="kcal(Interational Table)/mol"/>
-                        <xsd:enumeration value="btu/lb"/>
-                        <xsd:enumeration value="btu/lb-mol"/>
                     </xsd:restriction>
                 </xsd:simpleType>
             </xsd:element>
@@ -5278,9 +5307,6 @@ Van't Hoff enthalpy of transition, </xsd:documentation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
                         <xsd:enumeration value="J"/>
-                        <xsd:enumeration value="cal"/>
-                        <xsd:enumeration value="cal(IT)"/>
-                        <xsd:enumeration value="btu"/>
                     </xsd:restriction>
                 </xsd:simpleType>
             </xsd:element>
@@ -5327,18 +5353,8 @@ Van't Hoff enthalpy of transition, </xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
-                        <xsd:enumeration value="kJ/K/mol"/>
                         <xsd:enumeration value="J/K/mol"/>
-                        <xsd:enumeration value="kJ/K/g"/>
                         <xsd:enumeration value="J/K/g"/>
-                        <xsd:enumeration value="kcal/K/mol"/>
-                        <xsd:enumeration value="cal/K/mol"/>
-                        <xsd:enumeration value="kcal/K/g"/>
-                        <xsd:enumeration value="cal/K/g"/>
-                        <xsd:enumeration value="cal(Interational Table)/K/g"/>
-                        <xsd:enumeration value="kcal(Interational Table)/K/mol"/>
-                        <xsd:enumeration value="btu/K/lb"/>
-                        <xsd:enumeration value="btu/K/lb-mol"/>
                     </xsd:restriction>
                 </xsd:simpleType>
             </xsd:element>
@@ -5530,18 +5546,8 @@ molar enthalpy function, molar gibbs energy function, standard molar gibbs energ
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
-                        <xsd:enumeration value="kJ/K/g"/>
                         <xsd:enumeration value="J/K/g"/>
-                        <xsd:enumeration value="kcal/K/g"/>
-                        <xsd:enumeration value="cal/K/g"/>
-                        <xsd:enumeration value="cal(Interational Table)/K/g"/>
                         <xsd:enumeration value="J/K/mol"/>
-                        <xsd:enumeration value="kJ/K/mol"/>
-                        <xsd:enumeration value="kcal/K/mol"/>
-                        <xsd:enumeration value="cal/K/mol"/>
-                        <xsd:enumeration value="kcal(Interational Table)/K/mol"/>
-                        <xsd:enumeration value="btu/K/lb"/>
-                        <xsd:enumeration value="btu/K/lb-mol"/>
                     </xsd:restriction>
                 </xsd:simpleType>
             </xsd:element>
@@ -5585,22 +5591,14 @@ molar enthalpy function, molar gibbs energy function, standard molar gibbs energ
         </xsd:annotation>
         <xsd:sequence>
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
-            <xsd:element name="units" default="J/kg/K">
+            <xsd:element name="units" default="J/g/K">
                 <xsd:annotation>
                     <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
-                        <xsd:enumeration value="mJ/mol/K"/>
                         <xsd:enumeration value="J/mol/K"/>
                         <xsd:enumeration value="J/g/K"/>
-                        <xsd:enumeration value="J/kg/K"/>
-                        <xsd:enumeration value="cal/mol/K"/>
-                        <xsd:enumeration value="cal/g/K"/>
-                        <xsd:enumeration value="cal(IT)/mol/K"/>
-                        <xsd:enumeration value="cal(IT)/g/K"/>
-                        <xsd:enumeration value="Btu/R/lb"/>
-                        <xsd:enumeration value="Btu/R/lb-mol"/>
                     </xsd:restriction>
                 </xsd:simpleType>
             </xsd:element>
@@ -5678,8 +5676,6 @@ molar enthalpy function, molar gibbs energy function, standard molar gibbs energ
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
                         <xsd:enumeration value="K/s"/>
-                        <xsd:enumeration value="K/min"/>
-                        <xsd:enumeration value="K/hr"/>
                     </xsd:restriction>
                 </xsd:simpleType>
             </xsd:element>
@@ -5706,15 +5702,13 @@ molar enthalpy function, molar gibbs energy function, standard molar gibbs energ
         </xsd:annotation>
         <xsd:sequence>
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
-            <xsd:element name="units" default="Pa kg/mol">
+            <xsd:element name="units" default="Pa g/mol">
                 <xsd:annotation>
                     <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
-                        <xsd:enumeration value="Pa kg/mol"/>
-                        <xsd:enumeration value="kPa kg/mol"/>
-                        <xsd:enumeration value="atm kg/mol"/>
+                        <xsd:enumeration value="Pa g/mol"/>
                     </xsd:restriction>
                 </xsd:simpleType>
             </xsd:element>
@@ -5751,8 +5745,6 @@ molar enthalpy function, molar gibbs energy function, standard molar gibbs energ
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
                         <xsd:enumeration value="Pa m^3/mol"/>
-                        <xsd:enumeration value="kPa L/mol"/>
-                        <xsd:enumeration value="atm L/mol"/>
                     </xsd:restriction>
                 </xsd:simpleType>
             </xsd:element>
@@ -5895,8 +5887,6 @@ molar enthalpy function, molar gibbs energy function, standard molar gibbs energ
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
                         <xsd:enumeration value="K/Pa"/>
-                        <xsd:enumeration value="K/kPa"/>
-                        <xsd:enumeration value="K/atm"/>
                     </xsd:restriction>
                 </xsd:simpleType>
             </xsd:element>
@@ -5931,9 +5921,6 @@ molar enthalpy function, molar gibbs energy function, standard molar gibbs energ
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
-                        <xsd:enumeration value="centistroke"/>
-                        <xsd:enumeration value="cm^2/s"/>
-                        <xsd:enumeration value="mm^2/s"/>
                         <xsd:enumeration value="m^2/s"/>
                     </xsd:restriction>
                 </xsd:simpleType>
@@ -5978,7 +5965,6 @@ molar enthalpy function, molar gibbs energy function, standard molar gibbs energ
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
                         <xsd:enumeration value="rad"/>
-                        <xsd:enumeration value="deg"/>
                     </xsd:restriction>
                 </xsd:simpleType>
             </xsd:element>
@@ -6013,9 +5999,6 @@ molar enthalpy function, molar gibbs energy function, standard molar gibbs energ
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
-                        <xsd:enumeration value="Ang"/>
-                        <xsd:enumeration value="kx"/>
-                        <xsd:enumeration value="micron"/>
                         <xsd:enumeration value="nm"/>
                     </xsd:restriction>
                 </xsd:simpleType>
@@ -6054,7 +6037,6 @@ molar enthalpy function, molar gibbs energy function, standard molar gibbs energ
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
                         <xsd:enumeration value="m/m/K"/>
-                        <xsd:enumeration value="micron/m/K"/>
                     </xsd:restriction>
                 </xsd:simpleType>
             </xsd:element>
@@ -6132,7 +6114,6 @@ molar enthalpy function, molar gibbs energy function, standard molar gibbs energ
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
                         <xsd:enumeration value="A/m"/>
-                        <xsd:enumeration value="Oersted"/>
                     </xsd:restriction>
                 </xsd:simpleType>
             </xsd:element>
@@ -6254,14 +6235,13 @@ IUPAC: Permeatbility of vacuuum multiplied by the relative permeability, aka H (
         </xsd:annotation>
         <xsd:sequence>
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
-            <xsd:element name="units" default="kg/m^3">
+            <xsd:element name="units" default="g/m^3">
                 <xsd:annotation>
                     <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
-                        <xsd:enumeration value="kg/m^3"/>
-                        <xsd:enumeration value="g/cm^3"/>
+                        <xsd:enumeration value="g/m^3"/>
                     </xsd:restriction>
                 </xsd:simpleType>
             </xsd:element>
@@ -6318,17 +6298,13 @@ IUPAC: Permeatbility of vacuuum multiplied by the relative permeability, aka H (
         </xsd:annotation>
         <xsd:sequence>
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
-            <xsd:element name="units" default="kg/m3">
+            <xsd:element name="units" default="g/m3">
                 <xsd:annotation>
                     <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
-                        <xsd:enumeration value="kg/m3"/>
-                        <xsd:enumeration value="kg/cm3"/>
-                        <xsd:enumeration value="kg/mm3"/>
                         <xsd:enumeration value="g/m3"/>
-                        <xsd:enumeration value="g/mm3"/>
                     </xsd:restriction>
                 </xsd:simpleType>
             </xsd:element>
@@ -6401,15 +6377,13 @@ IUPAC: Permeatbility of vacuuum multiplied by the relative permeability, aka H (
         </xsd:annotation>
         <xsd:sequence>
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
-            <xsd:element name="units" default="mol/kg">
+            <xsd:element name="units" default="mol/g">
                 <xsd:annotation>
                     <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
-                        <xsd:enumeration value="mol/kg"/>
                         <xsd:enumeration value="mol/g"/>
-                        <xsd:enumeration value="mol/lb"/>
                         <!--unsure-->
                     </xsd:restriction>
                 </xsd:simpleType>
@@ -6460,7 +6434,6 @@ IUPAC: Permeatbility of vacuuum multiplied by the relative permeability, aka H (
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
                         <xsd:enumeration value="S m^2/mol"/>
-                        <xsd:enumeration value="S cm^2/mol"/>
                     </xsd:restriction>
                 </xsd:simpleType>
             </xsd:element>
@@ -6513,8 +6486,6 @@ IUPAC: Permeatbility of vacuuum multiplied by the relative permeability, aka H (
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
                         <xsd:enumeration value="mol/m^3"/>
-                        <xsd:enumeration value="lb_mole/ft^3"/>
-                        <xsd:enumeration value="mol/dm^3"/>
                     </xsd:restriction>
                 </xsd:simpleType>
             </xsd:element>
@@ -6571,8 +6542,6 @@ IUPAC: Permeatbility of vacuuum multiplied by the relative permeability, aka H (
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
                         <xsd:enumeration value="m^3/kg"/>
-                        <xsd:enumeration value="cm^3/g"/>
-                        <xsd:enumeration value="ft^3/lb"/>
                     </xsd:restriction>
                 </xsd:simpleType>
             </xsd:element>
@@ -6649,7 +6618,6 @@ IUPAC: Permeatbility of vacuuum multiplied by the relative permeability, aka H (
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
-                        <xsd:enumeration value="mol/m^3"/>
                         <xsd:enumeration value="mol/dm^3"/>
                     </xsd:restriction>
                 </xsd:simpleType>
@@ -6692,10 +6660,6 @@ IUPAC: Permeatbility of vacuuum multiplied by the relative permeability, aka H (
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
                         <xsd:enumeration value="m^3/mol"/>
-                        <xsd:enumeration value="dm^3/mol"/>
-                        <xsd:enumeration value="cm^3/mol"/>
-                        <xsd:enumeration value="mm^3/mol"/>
-                        <xsd:enumeration value="ft^3/lb- mol"/>
                     </xsd:restriction>
                 </xsd:simpleType>
             </xsd:element>
@@ -6968,13 +6932,13 @@ IUPAC: Quantity characterizing the deviation of the solvent from ideal behaviour
         </xsd:annotation>
         <xsd:sequence>
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
-            <xsd:element name="units" default="kPa">
+            <xsd:element name="units" default="Pa">
                 <xsd:annotation>
                     <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
-                        <xsd:enumeration value="kPa"/>
+                        <xsd:enumeration value="Pa"/>
                         <xsd:enumeration value="mmHg"/>
                         <xsd:enumeration value="F"/>
                     </xsd:restriction>
@@ -7027,9 +6991,6 @@ IUPAC: Quantity characterizing the deviation of the solvent from ideal behaviour
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
                         <xsd:enumeration value="F/m"/>
-                        <xsd:enumeration value="F/dm"/>
-                        <xsd:enumeration value="F/cm"/>
-                        <xsd:enumeration value="F/mm"/>
                     </xsd:restriction>
                 </xsd:simpleType>
             </xsd:element>
@@ -7070,10 +7031,7 @@ IUPAC: Quantity characterizing the deviation of the solvent from ideal behaviour
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
-                        <xsd:enumeration value="C"/>
                         <xsd:enumeration value="K"/>
-                        <xsd:enumeration value="F"/>
-                        <xsd:enumeration value="R"/>
                     </xsd:restriction>
                 </xsd:simpleType>
             </xsd:element>
@@ -7199,13 +7157,13 @@ IUPAC: Quantity characterizing the deviation of the solvent from ideal behaviour
         </xsd:annotation>
         <xsd:sequence>
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
-            <xsd:element name="units" default="kPa">
+            <xsd:element name="units" default="Pa">
                 <xsd:annotation>
                     <xsd:documentation>EAP: measured unit of variable/property</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
-                        <xsd:enumeration value="kPa"/>
+                        <xsd:enumeration value="Pa"/>
                         <xsd:enumeration value="mmHg"/>
                         <xsd:enumeration value="F"/>
                     </xsd:restriction>
@@ -7242,17 +7200,13 @@ IUPAC: Quantity characterizing the deviation of the solvent from ideal behaviour
         </xsd:annotation>
         <xsd:sequence>
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
-            <xsd:element name="units" default="J/kPa/mol">
+            <xsd:element name="units" default="J/Pa/mol">
                 <xsd:annotation>
                     <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
                         <xsd:enumeration value="J/Pa/mol"/>
-                        <xsd:enumeration value="J/kPa/mol"/>
-                        <xsd:enumeration value="J/atm/mol"/>
-                        <xsd:enumeration value="cm^3/mol"/>
-                        <xsd:enumeration value="mm^3/mol"/>
                     </xsd:restriction>
                 </xsd:simpleType>
             </xsd:element>
@@ -7580,10 +7534,6 @@ relative partial molar volume,
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
                         <xsd:enumeration value="m^3/mol"/>
-                        <xsd:enumeration value="dm^3/mol"/>
-                        <xsd:enumeration value="cm^3/mol"/>
-                        <xsd:enumeration value="nm^3/mol"/>
-                        <xsd:enumeration value="ft^3/lb-mol"/>
                     </xsd:restriction>
                 </xsd:simpleType>
             </xsd:element>
@@ -7676,8 +7626,6 @@ relative partial molar volume,
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
                         <xsd:enumeration value="m3/kg"/>
-                        <xsd:enumeration value="cm3/g"/>
-                        <xsd:enumeration value="ft3/lb"/>
                     </xsd:restriction>
                 </xsd:simpleType>
             </xsd:element>
@@ -7823,8 +7771,6 @@ relative partial molar volume,
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
                         <xsd:enumeration value="N/m"/>
-                        <xsd:enumeration value="dyne/cm"/>
-                        <xsd:enumeration value="mN/m"/>
                     </xsd:restriction>
                 </xsd:simpleType>
             </xsd:element>
@@ -7862,20 +7808,17 @@ relative partial molar volume,
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
             <xsd:element name="units" default="K">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: measured unit of variable/property</xsd:documentation>
+                    <xsd:documentation>measured unit of variable/property in SI</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
                         <xsd:enumeration value="K"/>
-                        <xsd:enumeration value="C"/>
-                        <xsd:enumeration value="F"/>
-                        <xsd:enumeration value="R"/>
                     </xsd:restriction>
                 </xsd:simpleType>
             </xsd:element>
             <xsd:element name="scale" minOccurs="0">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: temperature scale</xsd:documentation>
+                    <xsd:documentation>temperature scale</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -7942,13 +7885,6 @@ relative partial molar volume,
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
                         <xsd:enumeration value="W/m/K"/>
-                        <xsd:enumeration value="W/cm/K"/>
-                        <xsd:enumeration value="mW/m/K"/>
-                        <xsd:enumeration value="cal(thermodynamic)/cm/s/K"/>
-                        <xsd:enumeration value="cal(IT)/cm/s/K"/>
-                        <xsd:enumeration value="cal(IT/cm/h/K"/>
-                        <xsd:enumeration value="kcal(IT)/m/h/K"/>
-                        <xsd:enumeration value="Btu/ft/hr/F"/>
                     </xsd:restriction>
                 </xsd:simpleType>
             </xsd:element>
@@ -7998,11 +7934,7 @@ relative partial molar volume,
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
-                        <xsd:enumeration value="Stroke"/>
-                        <xsd:enumeration value="centiStroke"/>
                         <xsd:enumeration value="m^2/s"/>
-                        <xsd:enumeration value="cm^2/s"/>
-                        <xsd:enumeration value="mm^2/s"/>
                     </xsd:restriction>
                 </xsd:simpleType>
             </xsd:element>
@@ -8045,7 +7977,6 @@ relative partial molar volume,
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
                         <xsd:enumeration value="m/m/K"/>
-                        <xsd:enumeration value="micron/m/K"/>
                     </xsd:restriction>
                 </xsd:simpleType>
             </xsd:element>
@@ -8090,8 +8021,6 @@ relative partial molar volume,
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
                         <xsd:enumeration value="Pa/K"/>
-                        <xsd:enumeration value="kPa/K"/>
-                        <xsd:enumeration value="atm/K"/>
                     </xsd:restriction>
                 </xsd:simpleType>
             </xsd:element>
@@ -8125,10 +8054,6 @@ relative partial molar volume,
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
                         <xsd:enumeration value="m^6/mol^2"/>
-                        <xsd:enumeration value="dm^6/mol^2"/>
-                        <xsd:enumeration value="cm^6/mol^2"/>
-                        <xsd:enumeration value="nm^6/mol^2"/>
-                        <xsd:enumeration value="ft^6/lb-mol^2"/>
                     </xsd:restriction>
                 </xsd:simpleType>
             </xsd:element>
@@ -8252,9 +8177,6 @@ relative partial molar volume,
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
                         <xsd:enumeration value="K"/>
-                        <xsd:enumeration value="C"/>
-                        <xsd:enumeration value="F"/>
-                        <xsd:enumeration value="R"/>
                     </xsd:restriction>
                 </xsd:simpleType>
             </xsd:element>
@@ -8359,11 +8281,6 @@ relative partial molar volume,
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
                         <xsd:enumeration value="Pa s"/>
-                        <xsd:enumeration value="Poise"/>
-                        <xsd:enumeration value="cPoise"/>
-                        <xsd:enumeration value="mPa s"/>
-                        <xsd:enumeration value="microPa s"/>
-                        <xsd:enumeration value="dyne s/cm^2"/>
                     </xsd:restriction>
                 </xsd:simpleType>
             </xsd:element>
@@ -8487,10 +8404,7 @@ relative partial molar volume,
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
-                        <xsd:enumeration value="Angstrom"/>
                         <xsd:enumeration value="nm"/>
-                        <xsd:enumeration value="micron"/>
-                        <xsd:enumeration value="kX"/>
                     </xsd:restriction>
                 </xsd:simpleType>
             </xsd:element>
@@ -8659,25 +8573,18 @@ relative partial molar volume,
     </xsd:complexType>
     <xsd:complexType name="phaseFieldType">
         <xsd:sequence>
-            <xsd:element name="phaseField">
+            <xsd:annotation>
+                <xsd:documentation>list of n>1 phases present</xsd:documentation>
+            </xsd:annotation>
+            <xsd:element name="phase" minOccurs="1" maxOccurs="unbounded">
                 <xsd:annotation>
-                    <xsd:documentation>list of n>1 phases present</xsd:documentation>
+                    <xsd:documentation>ref: phase(s)</xsd:documentation>
                 </xsd:annotation>
                 <xsd:complexType>
-                    <xsd:sequence>
-                        <xsd:element name="phase" minOccurs="1" maxOccurs="unbounded">
-                            <xsd:annotation>
-                                <xsd:documentation>ref: phase(s)</xsd:documentation>
-                            </xsd:annotation>
-                            <xsd:complexType>
-                                <xsd:attribute name="ref" type="xsd:positiveInteger" use="required"
-                                />
-                            </xsd:complexType>
-                        </xsd:element>
-                    </xsd:sequence>
+                    <xsd:attribute name="ref" type="xsd:positiveInteger" use="required"/>
                 </xsd:complexType>
             </xsd:element>
-            <xsd:element minOccurs="0" name="zeroPhaseFraction">
+            <xsd:element minOccurs="0" name="zeroPhaseFraction" maxOccurs="unbounded">
                 <xsd:annotation>
                     <xsd:documentation>for boundaries--list of phase(s) with fraction decreasing/increasing from zero</xsd:documentation>
                 </xsd:annotation>
@@ -8694,6 +8601,11 @@ relative partial molar volume,
                         </xsd:element>
                     </xsd:sequence>
                 </xsd:complexType>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="criticalPoint" type="xsd:boolean">
+                <xsd:annotation>
+                    <xsd:documentation>indicator of critical point (mag. transition, dew point, melting point, etc.)</xsd:documentation>
+                </xsd:annotation>
             </xsd:element>
         </xsd:sequence>
         <xsd:attribute name="id">
@@ -8803,9 +8715,6 @@ partial molar volume
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
                         <xsd:enumeration value="Hz"/>
-                        <xsd:enumeration value="kHz"/>
-                        <xsd:enumeration value="MHz"/>
-                        <xsd:enumeration value="GHz"/>
                     </xsd:restriction>
                 </xsd:simpleType>
             </xsd:element>
@@ -8822,56 +8731,22 @@ partial molar volume
             </xsd:choice>
         </xsd:sequence>
     </xsd:complexType>
-    <xsd:complexType name="apparentOrExcessEnergyType">
+    <xsd:complexType name="emfType">
         <xsd:annotation>
-            <xsd:documentation>EAP: used for apparent molar enthalpy, apparent molar gibbs energy, excess molar enthalpy molar enthalpy of mixing, molar enthalpy of dilution</xsd:documentation>
+            <xsd:documentation>Note: reaction information for cell is found in system
+</xsd:documentation>
         </xsd:annotation>
         <xsd:sequence>
-            <xsd:element name="label" type="xsd:string" minOccurs="0"/>
-            <xsd:element name="units" default="J/mol">
-                <xsd:annotation>
-                    <xsd:documentation>units associated with of measurand</xsd:documentation>
-                </xsd:annotation>
-                <xsd:simpleType>
-                    <xsd:restriction base="xsd:string">
-                        <xsd:enumeration value="kJ/mol"/>
-                        <xsd:enumeration value="J/mol"/>
-                        <xsd:enumeration value="kJ/g"/>
-                        <xsd:enumeration value="J/g"/>
-                        <xsd:enumeration value="kcal/mol"/>
-                        <xsd:enumeration value="cal/mol"/>
-                        <xsd:enumeration value="kcal/g"/>
-                        <xsd:enumeration value="cal/g"/>
-                        <xsd:enumeration value="cal(Interational Table)/g"/>
-                        <xsd:enumeration value="kcal(Interational Table)/mol"/>
-                        <xsd:enumeration value="btu/lb"/>
-                        <xsd:enumeration value="btu/lb-mol"/>
-                    </xsd:restriction>
-                </xsd:simpleType>
-            </xsd:element>
-            <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element minOccurs="0" name="label" type="xsd:string"/>
+            <xsd:choice maxOccurs="unbounded" minOccurs="0">
                 <xsd:element name="method">
                     <xsd:annotation>
                         <xsd:documentation>EAP: Standard method(s) of measurement</xsd:documentation>
                     </xsd:annotation>
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
-                            <xsd:enumeration value="AC calorimetry"/>
-                            <xsd:enumeration value="Closed cup calorimetry"/>
-                            <xsd:enumeration value="Drop calorimetry"/>
-                            <xsd:enumeration value="Drop ice or diphenyl ether calorimetry"/>
-                            <xsd:enumeration value="DSC"/>
-                            <xsd:enumeration value="DTA"/>
-                            <xsd:enumeration value="Flow calorimeter"/>
-                            <xsd:enumeration value="Large scale scanning calorimetry"/>
-                            <xsd:enumeration value="Laser pulse heating method"/>
-                            <xsd:enumeration value="Open cup calorimetry"/>
-                            <xsd:enumeration value="Resistive pulse heating"/>
-                            <xsd:enumeration value="Resistive pulse heating-millisecond"/>
-                            <xsd:enumeration value="Resistive pulse heating-microsecond"/>
-                            <xsd:enumeration value="Small adiabatic calorimetry"/>
-                            <xsd:enumeration value="Thin film calorimetry"/>
-                            <xsd:enumeration value="Vacuum adiabatic calorimetry"/>
+                            <xsd:enumeration value="Potentiometer"/>
+                            <xsd:enumeration value="Other"/>
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
@@ -8881,21 +8756,15 @@ partial molar volume
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
-            <xsd:element name="solute">
+            <xsd:element default="mV" name="units">
                 <xsd:annotation>
-                    <xsd:documentation>EAP: Solute component</xsd:documentation>
+                    <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
-                <xsd:complexType>
-                    <xsd:attribute name="ref" type="xsd:positiveInteger"/>
-                </xsd:complexType>
-            </xsd:element>
-            <xsd:element maxOccurs="unbounded" name="solvent">
-                <xsd:annotation>
-                    <xsd:documentation>EAP: solvent components</xsd:documentation>
-                </xsd:annotation>
-                <xsd:complexType>
-                    <xsd:attribute name="ref" type="xsd:positiveInteger"/>
-                </xsd:complexType>
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:enumeration value="mV"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
             </xsd:element>
         </xsd:sequence>
     </xsd:complexType>
@@ -8911,18 +8780,8 @@ partial molar volume
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
-                        <xsd:enumeration value="kJ/mol"/>
                         <xsd:enumeration value="J/mol"/>
-                        <xsd:enumeration value="kJ/g"/>
                         <xsd:enumeration value="J/g"/>
-                        <xsd:enumeration value="kcal/mol"/>
-                        <xsd:enumeration value="cal/mol"/>
-                        <xsd:enumeration value="kcal/g"/>
-                        <xsd:enumeration value="cal/g"/>
-                        <xsd:enumeration value="cal(Interational Table)/g"/>
-                        <xsd:enumeration value="kcal(Interational Table)/mol"/>
-                        <xsd:enumeration value="btu/lb"/>
-                        <xsd:enumeration value="btu/lb-mol"/>
                     </xsd:restriction>
                 </xsd:simpleType>
             </xsd:element>
@@ -8957,8 +8816,6 @@ partial molar volume
                         <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
-                <xsd:element maxOccurs="unbounded" minOccurs="0" name="instrumentDetails"
-                    type="tml:instrumentType"/>
             </xsd:choice>
             <xsd:element name="component" minOccurs="1" maxOccurs="1">
                 <xsd:annotation>
@@ -9165,15 +9022,13 @@ partial molar volume
         </xsd:annotation>
         <xsd:sequence>
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
-            <xsd:element name="units" default="kJ/mol">
+            <xsd:element name="units" default="J/mol">
                 <xsd:annotation>
                     <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
-                        <xsd:enumeration value="kJ/mol"/>
                         <xsd:enumeration value="J/mol"/>
-                        <xsd:enumeration value="kJ/g"/>
                         <xsd:enumeration value="J/g"/>
                     </xsd:restriction>
                 </xsd:simpleType>
@@ -9208,15 +9063,13 @@ partial molar volume
         </xsd:annotation>
         <xsd:sequence>
             <xsd:element name="label" type="xsd:string" minOccurs="0"/>
-            <xsd:element name="units" default="kJ/mol/K">
+            <xsd:element name="units" default="J/mol/K">
                 <xsd:annotation>
                     <xsd:documentation>units associated with of measurand</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
-                        <xsd:enumeration value="kJ/mol/K"/>
                         <xsd:enumeration value="J/mol/K"/>
-                        <xsd:enumeration value="kJ/g/K"/>
                         <xsd:enumeration value="J/g/K"/>
                     </xsd:restriction>
                 </xsd:simpleType>
@@ -9242,226 +9095,7 @@ partial molar volume
                         <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
                     </xsd:annotation>
                 </xsd:element>
-                <xsd:element maxOccurs="unbounded" minOccurs="0" name="instrumentDetails"
-                    type="tml:instrumentType">
-                    <xsd:annotation>
-                        <xsd:documentation>entirely open structure for strings to describe innstrument location, type, brand, model etc.</xsd:documentation>
-                    </xsd:annotation>
-                </xsd:element>
             </xsd:choice>
-        </xsd:sequence>
-    </xsd:complexType>
-    <xsd:complexType name="equilibriumConstantType">
-        <xsd:annotation>
-            <xsd:documentation>used for equlibrium reaction entropy</xsd:documentation>
-        </xsd:annotation>
-        <xsd:sequence>
-            <xsd:element name="label" type="xsd:string" minOccurs="0"/>
-            <xsd:choice minOccurs="0" maxOccurs="unbounded">
-                <xsd:element name="method">
-                    <xsd:annotation>
-                        <xsd:documentation>EAP: Standard method(s) of measurement</xsd:documentation>
-                    </xsd:annotation>
-                    <xsd:simpleType>
-                        <xsd:restriction base="xsd:string">
-                            <xsd:enumeration value="Static equilibration"/>
-                            <xsd:enumeration value="Dynamic equilibration"/>
-                            <xsd:enumeration value="Chromatography"/>
-                            <xsd:enumeration value="IR spectrometry"/>
-                            <xsd:enumeration value="UV spectroscopy"/>
-                            <xsd:enumeration value="NMR spectrometry"/>
-                            <xsd:enumeration value="Titration"/>
-                            <xsd:enumeration value="Other"/>
-                        </xsd:restriction>
-                    </xsd:simpleType>
-                </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string">
-                    <xsd:annotation>
-                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
-                    </xsd:annotation>
-                </xsd:element>
-                <xsd:element maxOccurs="unbounded" minOccurs="0" name="instrumentDetails"
-                    type="tml:instrumentType"/>
-            </xsd:choice>
-            <xsd:sequence>
-                <xsd:element name="units" default="dimensionless">
-                    <xsd:annotation>
-                        <xsd:documentation>units associated with of measurand</xsd:documentation>
-                    </xsd:annotation>
-                    <xsd:simpleType>
-                        <xsd:restriction base="xsd:string">
-                            <xsd:enumeration value="dimensionless"/>
-                            <xsd:enumeration value="(mol/kg)^n"/>
-                            <xsd:enumeration value="(mol/dm3)^n"/>
-                            <xsd:enumeration value="kPa^n"/>
-                        </xsd:restriction>
-                    </xsd:simpleType>
-                </xsd:element>
-                <xsd:element name="nValue" type="xsd:float"/>
-            </xsd:sequence>
-        </xsd:sequence>
-    </xsd:complexType>
-    <xsd:complexType name="propRepType">
-        <xsd:sequence>
-            <xsd:element name="label" type="xsd:string" minOccurs="0"/>
-            <xsd:element name="propertyRepresentation" default="Direct value, x = x1" minOccurs="1">
-                <xsd:annotation>
-                    <xsd:documentation>Representation of measurement (i.e. direct measurement, relative difference, ratio, ratio of difference difference, etc..)</xsd:documentation>
-                </xsd:annotation>
-                <xsd:simpleType>
-                    <xsd:restriction base="xsd:string">
-                        <xsd:enumeration value="Direct value, x = x1"/>
-                        <xsd:enumeration
-                            value="Relative difference value, x =  x_state1 - x_refState "/>
-                        <xsd:enumeration
-                            value="Mean between two conditions value, x = ( x_state1 - x_refState )/ 2"/>
-                        <xsd:enumeration
-                            value="Ratio of difference with reference state, x = x1 / x_ref - 1 "/>
-                        <xsd:enumeration
-                            value="Ratio with reference state, x = x_state1 / x_refState "/>
-                        <xsd:enumeration
-                            value="Ratio with amount of another component x = x1 /x_component"/>
-                        <!-- talk over with Ken, amount ratio,  not sure how to interpret -->
-                        <xsd:enumeration
-                            value="Ratio with mass of another component x = x1 /x_component"/>
-                        <!-- talk over with Ken, amount ratio,  not sure how to interpret -->
-                    </xsd:restriction>
-                </xsd:simpleType>
-            </xsd:element>
-            <xsd:element name="refDefinition" default="no reference needed">
-                <!-- from the old eRefStateType, type of reference state -->
-                <xsd:annotation>
-                    <xsd:documentation>description of representation, (reference or related relative quantity) i.e. ideal gas at same temperature and fixed pressure, Pure solvent at the temperature of the same phase equilibrium</xsd:documentation>
-                </xsd:annotation>
-                <xsd:simpleType>
-                    <xsd:restriction base="xsd:string">
-                        <xsd:enumeration value="no reference needed"/>
-                        <xsd:enumeration
-                            value="Reference phase with the same composition at fixed temperature and pressure"/>
-                        <xsd:enumeration
-                            value="Reference phase with the same composition, temperature and pressure"/>
-                        <xsd:enumeration
-                            value="Reference phase at fixed temperature and the same pressure"/>
-                        <xsd:enumeration
-                            value="Reference phase at the same temperature and fixed pressure"/>
-                        <xsd:enumeration
-                            value="Ideal gas at the same amount density, temperature, and composition"/>
-                        <xsd:enumeration
-                            value="Ideal mixture of pure fluid components at the same amount density, temperature, and composition"/>
-                        <xsd:enumeration
-                            value="Phase in equilibrium with primary phase at the same temperature and pressure"/>
-                        <xsd:enumeration
-                            value="Pure components in the same proportion at the same temperature and pressure"/>
-                        <xsd:enumeration
-                            value="Pure solvent at the temperature of the same phase equilibrium"/>
-                        <xsd:enumeration value="Pure solvent at the same temperature and pressure"/>
-                        <xsd:enumeration value="Pure solute at the same temperature and pressure"/>
-                    </xsd:restriction>
-                </xsd:simpleType>
-            </xsd:element>
-        </xsd:sequence>
-    </xsd:complexType>
-    <xsd:complexType name="instrumentType">
-        <xsd:sequence>
-            <xsd:element name="label" type="xsd:string" minOccurs="0"/>
-            <xsd:element maxOccurs="unbounded" minOccurs="0" name="instruments">
-                <xsd:complexType>
-                    <xsd:sequence>
-                        <xsd:element minOccurs="0" name="instrumentType" type="xsd:string">
-                            <xsd:annotation>
-                                <xsd:documentation>instrument name i.e. Scanning Electron Microscope, Potentiometer, Atomic Force Microscope</xsd:documentation>
-                            </xsd:annotation>
-                        </xsd:element>
-                        <xsd:element minOccurs="0" name="instrumentAcronym" type="xsd:string">
-                            <xsd:annotation>
-                                <xsd:documentation>instrument acronym commonly used or searched for i.e. SEM, TEM, AFM</xsd:documentation>
-                            </xsd:annotation>
-                        </xsd:element>
-                        <xsd:element minOccurs="0" name="model" type="xsd:string">
-                            <xsd:annotation>
-                                <xsd:documentation>instrument model or model number</xsd:documentation>
-                            </xsd:annotation>
-                        </xsd:element>
-                        <xsd:element minOccurs="0" name="brand" type="xsd:string">
-                            <xsd:annotation>
-                                <xsd:documentation>brand of instrument</xsd:documentation>
-                            </xsd:annotation>
-                        </xsd:element>
-                        <xsd:element minOccurs="0" name="customized" type="xsd:boolean">
-                            <xsd:annotation>
-                                <xsd:documentation>boolean to indicate whether the instrument has been modified.</xsd:documentation>
-                            </xsd:annotation>
-                        </xsd:element>
-                        <xsd:element minOccurs="0" name="manufacturer" type="xsd:string">
-                            <xsd:annotation>
-                                <xsd:documentation>company that manufactures the instrument</xsd:documentation>
-                            </xsd:annotation>
-                        </xsd:element>
-                    </xsd:sequence>
-                </xsd:complexType>
-            </xsd:element>
-            <xsd:element minOccurs="0" name="location">
-                <xsd:annotation>
-                    <xsd:documentation>location where the instrument resides</xsd:documentation>
-                </xsd:annotation>
-                <xsd:complexType>
-                    <xsd:sequence>
-                        <xsd:element minOccurs="0" name="country" type="xsd:string"/>
-                        <xsd:element minOccurs="0" name="region" type="xsd:string"/>
-                        <xsd:element minOccurs="0" name="provence" type="xsd:string"/>
-                        <xsd:element minOccurs="0" name="state" type="xsd:string"/>
-                        <xsd:element minOccurs="0" name="city" type="xsd:string"/>
-                    </xsd:sequence>
-                </xsd:complexType>
-            </xsd:element>
-            <xsd:element minOccurs="0" name="organization" type="xsd:string">
-                <xsd:annotation>
-                    <xsd:documentation>organization that used the instrument in the study.</xsd:documentation>
-                </xsd:annotation>
-            </xsd:element>
-            <xsd:element minOccurs="0" name="organizationAcronym" type="xsd:string"/>
-        </xsd:sequence>
-    </xsd:complexType>
-    <xsd:complexType name="emfType">
-        <xsd:annotation>
-            <xsd:documentation>Note: reaction information for cell is found in system
-</xsd:documentation>
-        </xsd:annotation>
-        <xsd:sequence>
-            <xsd:element minOccurs="0" name="label" type="xsd:string"/>
-            <xsd:choice maxOccurs="unbounded" minOccurs="0">
-                <xsd:element name="method">
-                    <xsd:annotation>
-                        <xsd:documentation>EAP: Standard method(s) of measurement</xsd:documentation>
-                    </xsd:annotation>
-                    <xsd:simpleType>
-                        <xsd:restriction base="xsd:string">
-                            <xsd:enumeration value="Potentiometer"/>
-                            <xsd:enumeration value="Other"/>
-                        </xsd:restriction>
-                    </xsd:simpleType>
-                </xsd:element>
-                <xsd:element name="otherMethod" type="xsd:string">
-                    <xsd:annotation>
-                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
-                    </xsd:annotation>
-                </xsd:element>
-                <xsd:element maxOccurs="unbounded" minOccurs="0" name="instrumentDetails"
-                    type="tml:instrumentType"/>
-            </xsd:choice>
-            <xsd:element default="mV" name="units">
-                <xsd:annotation>
-                    <xsd:documentation>units associated with of measurand</xsd:documentation>
-                </xsd:annotation>
-                <xsd:simpleType>
-                    <xsd:restriction base="xsd:string">
-                        <xsd:enumeration value="V"/>
-                        <xsd:enumeration value="mV"/>
-                        <xsd:enumeration value="uV"/>
-                        <xsd:enumeration value="nV"/>
-                    </xsd:restriction>
-                </xsd:simpleType>
-            </xsd:element>
         </xsd:sequence>
     </xsd:complexType>
     <xsd:complexType name="electrochemicalReactionType">
@@ -9592,6 +9226,180 @@ partial molar volume
                 </xsd:complexType>
             </xsd:element>
             <xsd:element minOccurs="0" name="electronNumber" type="xsd:integer"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="equilibriumConstantType">
+        <xsd:annotation>
+            <xsd:documentation>used for equlibrium reaction entropy</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="label" type="xsd:string" minOccurs="0"/>
+            <xsd:choice minOccurs="0" maxOccurs="unbounded">
+                <xsd:element name="method">
+                    <xsd:annotation>
+                        <xsd:documentation>EAP: Standard method(s) of measurement</xsd:documentation>
+                    </xsd:annotation>
+                    <xsd:simpleType>
+                        <xsd:restriction base="xsd:string">
+                            <xsd:enumeration value="Static equilibration"/>
+                            <xsd:enumeration value="Dynamic equilibration"/>
+                            <xsd:enumeration value="Chromatography"/>
+                            <xsd:enumeration value="IR spectrometry"/>
+                            <xsd:enumeration value="UV spectroscopy"/>
+                            <xsd:enumeration value="NMR spectrometry"/>
+                            <xsd:enumeration value="Titration"/>
+                            <xsd:enumeration value="Other"/>
+                        </xsd:restriction>
+                    </xsd:simpleType>
+                </xsd:element>
+                <xsd:element name="otherMethod" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>input for string-text of a method that is not listed in ThermoML</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+            </xsd:choice>
+            <xsd:sequence>
+                <xsd:element name="units" default="dimensionless">
+                    <xsd:annotation>
+                        <xsd:documentation>units associated with of measurand</xsd:documentation>
+                    </xsd:annotation>
+                    <xsd:simpleType>
+                        <xsd:restriction base="xsd:string">
+                            <xsd:enumeration value="dimensionless"/>
+                            <xsd:enumeration value="(mol/kg)^n"/>
+                            <xsd:enumeration value="(mol/dm3)^n"/>
+                            <xsd:enumeration value="kPa^n"/>
+                        </xsd:restriction>
+                    </xsd:simpleType>
+                </xsd:element>
+                <xsd:element name="nValue" type="xsd:float"/>
+            </xsd:sequence>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="propRepType">
+        <xsd:sequence>
+            <xsd:element name="label" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="propertyRepresentation" default="Direct value, x = x1" minOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>Representation of measurement (i.e. direct measurement, relative difference, ratio, ratio of difference difference, etc..)</xsd:documentation>
+                </xsd:annotation>
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:enumeration value="Direct value, x = x1"/>
+                        <xsd:enumeration
+                            value="Relative difference value, x =  x_state1 - x_refState "/>
+                        <xsd:enumeration
+                            value="Mean between two conditions value, x = ( x_state1 - x_refState )/ 2"/>
+                        <xsd:enumeration
+                            value="Ratio of difference with reference state, x = x1 / x_ref - 1 "/>
+                        <xsd:enumeration
+                            value="Ratio with reference state, x = x_state1 / x_refState "/>
+                        <xsd:enumeration
+                            value="Ratio with amount of another component x = x1 /x_component"/>
+                        <!-- talk over with Ken, amount ratio,  not sure how to interpret -->
+                        <xsd:enumeration
+                            value="Ratio with mass of another component x = x1 /x_component"/>
+                        <!-- talk over with Ken, amount ratio,  not sure how to interpret -->
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="refDefinition" default="no reference needed">
+                <!-- from the old eRefStateType, type of reference state -->
+                <xsd:annotation>
+                    <xsd:documentation>description of representation, (reference or related relative quantity) i.e. ideal gas at same temperature and fixed pressure, Pure solvent at the temperature of the same phase equilibrium</xsd:documentation>
+                </xsd:annotation>
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:enumeration value="no reference needed"/>
+                        <xsd:enumeration
+                            value="Reference phase with the same composition at fixed temperature and pressure"/>
+                        <xsd:enumeration
+                            value="Reference phase with the same composition, temperature and pressure"/>
+                        <xsd:enumeration
+                            value="Reference phase at fixed temperature and the same pressure"/>
+                        <xsd:enumeration
+                            value="Reference phase at the same temperature and fixed pressure"/>
+                        <xsd:enumeration
+                            value="Ideal gas at the same amount density, temperature, and composition"/>
+                        <xsd:enumeration
+                            value="Ideal mixture of pure fluid components at the same amount density, temperature, and composition"/>
+                        <xsd:enumeration
+                            value="Phase in equilibrium with primary phase at the same temperature and pressure"/>
+                        <xsd:enumeration
+                            value="Pure components in the same proportion at the same temperature and pressure"/>
+                        <xsd:enumeration
+                            value="Pure solvent at the temperature of the same phase equilibrium"/>
+                        <xsd:enumeration value="Pure solvent at the same temperature and pressure"/>
+                        <xsd:enumeration value="Pure solute at the same temperature and pressure"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="instrumentType">
+        <xsd:sequence>
+            <xsd:element name="label" type="xsd:string" minOccurs="0"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="instruments">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element minOccurs="0" name="instrumentType" type="xsd:string">
+                            <xsd:annotation>
+                                <xsd:documentation>instrument name i.e. Scanning Electron Microscope, Potentiometer, Atomic Force Microscope</xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element minOccurs="0" name="instrumentAcronym" type="xsd:string">
+                            <xsd:annotation>
+                                <xsd:documentation>instrument acronym commonly used or searched for i.e. SEM, TEM, AFM</xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element minOccurs="0" name="model" type="xsd:string">
+                            <xsd:annotation>
+                                <xsd:documentation>instrument model or model number</xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element minOccurs="0" name="brand" type="xsd:string">
+                            <xsd:annotation>
+                                <xsd:documentation>brand of instrument</xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element minOccurs="0" name="customized" type="xsd:boolean">
+                            <xsd:annotation>
+                                <xsd:documentation>boolean to indicate whether the instrument has been modified.</xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element minOccurs="0" name="manufacturer" type="xsd:string">
+                            <xsd:annotation>
+                                <xsd:documentation>company that manufactures the instrument</xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element minOccurs="0" name="otherDetails" type="xsd:string">
+                            <xsd:annotation>
+                                <xsd:documentation>string field for additional desciption of instrument, holders used, calibration details, purge gases, procedures used, third party attachments, etc.</xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="location">
+                <xsd:annotation>
+                    <xsd:documentation>location where the instrument resides</xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element minOccurs="0" name="country" type="xsd:string"/>
+                        <xsd:element minOccurs="0" name="region" type="xsd:string"/>
+                        <xsd:element minOccurs="0" name="provence" type="xsd:string"/>
+                        <xsd:element minOccurs="0" name="state" type="xsd:string"/>
+                        <xsd:element minOccurs="0" name="city" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="organization" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>organization that used the instrument in the study.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="organizationAcronym" type="xsd:string"/>
         </xsd:sequence>
     </xsd:complexType>
 </xsd:schema>
