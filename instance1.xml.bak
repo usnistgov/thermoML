@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataReport xmlns="http://www.iupac.org/namespaces/ThermoML"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.iupac.org/namespaces/ThermoML file:/N:/Pfeif/working/ThermoML/thermoML/ThermoML-draft%20v.pfeif.4.xsd">
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://www.iupac.org/namespaces/ThermoML file:/N:/Pfeif/working/ThermoML/thermoML/ThermoML-draft%20v.pfeif.4.xsd">
     <citation id="50">
         <TRCRefID>
             <yearPub>0</yearPub>
@@ -51,36 +51,19 @@
         <commonName>commonName0</commonName>
         <formulaMolecular>formulaMolecular0</formulaMolecular>
         <SMILES>SMILES0</SMILES>
-        <polymer>
-            <numberAvgMolMass>0</numberAvgMolMass>
-            <peakAvgMolMass>0</peakAvgMolMass>
-            <viscosityAvgMolMass>0</viscosityAvgMolMass>
-            <massAvgMolMass>0</massAvgMolMass>
-            <zAvgMolMass>0</zAvgMolMass>
-            <molarMassDispersity>0</molarMassDispersity>
-            <degOfPolymerizationDispersity>0</degOfPolymerizationDispersity>
-        </polymer>
+        <biomaterial>
+            <ECNumber>ECNumber0</ECNumber>
+            <PDBIdentifier>PDBIdentifier0</PDBIdentifier>
+        </biomaterial>
         <speciationState>equilibrium</speciationState>
     </chemical>
     <system id="id1">
-        <reaction>
-            <participant>
+        <multicomponentSubstance type="alloy" compositionBasis="number of molecules">
+            <component>
                 <chemical ref="50"/>
-                <stoichiometricCoef>0</stoichiometricCoef>
-                <phase ref="50"/>
-            </participant>
-            <auxiliarySubstance>
-                <otherFunction>otherFunction0</otherFunction>
-                <system ref="50"/>
-                <phase ref="50"/>
-            </auxiliarySubstance>
-            <solvent>
-                <system ref="50"/>
-                <phase ref="50"/>
-            </solvent>
-            <electronNumber>0</electronNumber>
-            <reactionType>Combustion with oxygen</reactionType>
-        </reaction>
+                <amount>0</amount>
+            </component>
+        </multicomponentSubstance>
     </system>
     <phase id="50">
         <singlephase compositionBasis="number of molecules">
@@ -108,33 +91,30 @@
         <system ref="50"/>
         <phase ref="50"/>
         <variable>
-            <temperature>
-                <label>label0</label>
-                <units>K</units>
-                <scale>ITS-90</scale>
-                <method>Platinum resistance thermometer</method>
-            </temperature>
+            <composition>
+                <label>dimensionless</label>
+                <units>atomic fraction</units>
+                <method>Mass spectroscopy</method>
+                <component ref="50"/>
+                <phase ref="50"/>
+            </composition>
         </variable>
         <constantVariable>
             <magneticFieldStrength>
-                <label>label1</label>
+                <label>label0</label>
                 <units>A/m</units>
                 <method>Inductive pick up coils</method>
             </magneticFieldStrength>
         </constantVariable>
         <property>
-            <criticals>
-                <lowerConsolutePressure>
-                    <label>label2</label>
-                    <units>kPa</units>
-                    <method>Manometer</method>
-                </lowerConsolutePressure>
-                <criticalEvaluation>
-                    <multiPropertyList>multiPropertyList0</multiPropertyList>
-                    <description>description0</description>
-                    <citation ref="50"/>
-                </criticalEvaluation>
-            </criticals>
+            <latticeProperties>
+                <latticeParameterC>
+                    <label>label1</label>
+                    <units>nm</units>
+                    <method>X-ray diffraction</method>
+                </latticeParameterC>
+                <method>X-ray diffraction</method>
+            </latticeProperties>
         </property>
         <point>
             <phase ref="50"/>
@@ -151,6 +131,7 @@
         <expPurpose>Principal objective of the work</expPurpose>
         <compiler>compiler0</compiler>
         <contributor>contributor0</contributor>
-        <date> </date>
+        <date>
+        </date>
     </dataset>
 </dataReport>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataReport xmlns="http://www.iupac.org/namespaces/ThermoML"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.iupac.org/namespaces/ThermoML file:/N:/Pfeif/working/ThermoML/thermoML/ThermoML-draft%20v.pfeif.4.xsd">
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://www.iupac.org/namespaces/ThermoML file:/N:/Pfeif/working/ThermoML/thermoML/ThermoML-draft%20v.pfeif.4.xsd">
     <citation id="50">
         <TRCRefID>
             <yearPub>0</yearPub>
@@ -61,7 +61,7 @@
         <process>
             <system ref="50"/>
             <heatingCooling>
-                <cooling/>
+                <cooling></cooling>
             </heatingCooling>
             <temperature>
                 <info>
@@ -172,6 +172,7 @@
         <expPurpose>Principal objective of the work</expPurpose>
         <compiler>compiler0</compiler>
         <contributor>contributor0</contributor>
-        <date> </date>
+        <date>
+        </date>
     </dataset>
 </dataReport>
