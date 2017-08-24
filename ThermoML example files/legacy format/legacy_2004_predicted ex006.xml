@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<ThermoMLEquation xmlns:xsi=“http://www.w3.org/2001/XMLSchema-instance" 
+xsi:noNamespaceSchemaLocation=“http://trc.nist.gov/ThermoMLEquation.xsd"> 
+  <Version>  
+    <nVersionMajor>1</nVersionMajor>  
+    <nVersionMinor>0</nVersionMinor>  
+  </Version>  
+  <sEqName>ThermoML.Antoine.VaporPressure</sEqName>  
+  <EqVariable>  
+    <sEqSymbol>P</sEqSymbol>  
+    <sEqVarComment>Vapor  pressure</sEqVarComment>  
+  </EqVariable>  
+  <EqVariable>  
+    <sEqSymbol>T</sEqSymbol>  
+    <sEqVarComment>Temperature</sEqVarComment>  
+  </EqVariable>  
+  <EqParameter>  
+    <sEqParSymbol>A</sEqParSymbol>  
+  </EqParameter>  
+  <EqParameter>  
+    <sEqParSymbol>B</sEqParSymbol>  
+  </EqParameter>  
+  <EqParameter>  
+    <sEqParSymbol>C</sEqParSymbol>  
+  </EqParameter>  
+  <EqMathContent>  
+    <math  xmlns=“http://www.w3.org/1998/Math/MathML">  
+      <apply>  
+    <eq/> 
+    <apply> 
+     <ln/> 
+     <ci>P</ci> 
+    </apply> 
+    <apply> 
+     <plus/> 
+     <ci>A</ci> 
+     <apply> 
+      <divide/> 
+      <ci>B</ci> 
+      <apply> 
+       <plus/> 
+       <ci>T</ci> 
+       <ci>C</ci> 
+      </apply> 
+     </apply> 
+    </apply> 
+   </apply> 
+    </math>  
+  </EqMathContent>  
+</ThermoMLEquation> 

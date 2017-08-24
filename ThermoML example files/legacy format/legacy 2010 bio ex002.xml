@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by Robert D. Chirico (U. S. Department of Commerce) -->
+<!--Created by Guided Data Capture (GDC) Software (http://www.trc.nist.gov)-->
+<DataReport xmlns="http://www.iupac.org/namespaces/ThermoML" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.iupac.org/namespaces/ThermoML ThermoML.xsd">
+	<Version>
+		<nVersionMajor>2</nVersionMajor>
+		<nVersionMinor>0</nVersionMinor>
+	</Version>
+	<Citation>
+		<TRCRefID>
+			<yrYrPub>1998</yrYrPub>
+			<sAuthor1>tew</sAuthor1>
+			<sAuthor2>che</sAuthor2>
+			<nAuthorn>1</nAuthorn>
+		</TRCRefID>
+		<eType>journal</eType>
+		<eSourceType>Original</eSourceType>
+		<sAuthor>Tewari, Y. B.[Yadu B.]</sAuthor>
+		<sAuthor>Chen, J.[Jiangang]</sAuthor>
+		<sAuthor>Holden, M. J.[Marcia J.]</sAuthor>
+		<sAuthor>Houk, K. N.[Kendall N.]</sAuthor>
+		<sAuthor>Goldberg, R. N.[Robert N.]</sAuthor>
+		<sPubName>J. Phys. Chem. B</sPubName>
+		<yrPubYr>1998</yrPubYr>
+		<sTitle>Thermodynamic and Quantum Chemical Study of the Conversion of Chorismate to  (Pyruvate + 4-Hydroxybenzoate)</sTitle>
+		<sVol>102</sVol>
+		<sPage>8634-8639</sPage>
+	</Citation>
+	<Compound>
+		<RegNum>
+			<nOrgNum>1</nOrgNum>
+		</RegNum>
+		<sCommonName>chorismic acid</sCommonName>
+		<sFormulaMolec>C10H10O6</sFormulaMolec>
+		<Sample>
+			<nSampleNm>1</nSampleNm>
+			<eSource>Commercial source</eSource>
+			<purity>
+				<nStep>1</nStep>
+				<nPurityMol>95.1</nPurityMol>
+				<nPurityMolDigits>3</nPurityMolDigits>
+				<eAnalMeth>HPLC</eAnalMeth>
+			</purity>
+		</Sample>
+	</Compound>
+	<Compound>
+		<RegNum>
+			<nOrgNum>2</nOrgNum>
+		</RegNum>
+		<sCommonName>chorismate lyase</sCommonName>
+		<sFormulaMolec>{CL}</sFormulaMolec>
+		<biomaterial>
+			<sECNumber>4.1.3.B1</sECNumber>
+		</biomaterial>
+	</Compound>
+	<Compound>
+		<RegNum>
+			<nOrgNum>3</nOrgNum>
+		</RegNum>
+		<sCommonName>p-hydroxybenzoic acid</sCommonName>
+		<sFormulaMolec>C7H6O3</sFormulaMolec>
+	</Compound>
+	<Compound>
+		<RegNum>
+			<nOrgNum>4</nOrgNum>
+		</RegNum>
+		<sCommonName>pyruvic acid</sCommonName>
+		<sFormulaMolec>C3H4O3</sFormulaMolec>
+	</Compound>
+	<Compound>
+		<RegNum>
+			<nOrgNum>5</nOrgNum>
+		</RegNum>
+		<sCommonName>phosphoric acid</sCommonName>
+		<sFormulaMolec>H3O4P</sFormulaMolec>
+	</Compound>
+	<Compound>
+		<RegNum>
+			<nOrgNum>6</nOrgNum>
+		</RegNum>
+		<sCommonName>phosphoric acid, dipotassium salt</sCommonName>
+		<sFormulaMolec>H3K2O4P</sFormulaMolec>
+	</Compound>
+	<Compound>
+		<RegNum>
+			<nOrgNum>7</nOrgNum>
+		</RegNum>
+		<sCommonName>water</sCommonName>
+		<sFormulaMolec>H2O</sFormulaMolec>
+	</Compound>
+	<Compound>
+		<RegNum>
+			<nOrgNum>8</nOrgNum>
+		</RegNum>
+		<sCommonName>sodium chloride</sCommonName>
+		<sFormulaMolec>NaCl</sFormulaMolec>
+	</Compound>
+	<ReactionData>
+		<Participant>
+			<RegNum>
+				<nOrgNum>1</nOrgNum>
+			</RegNum>
+			<nStoichiometricCoef>-1</nStoichiometricCoef>
+			<ePhase>Solution 1</ePhase>
+		</Participant>
+		<Participant>
+			<RegNum>
+				<nOrgNum>3</nOrgNum>
+			</RegNum>
+			<nStoichiometricCoef>1</nStoichiometricCoef>
+			<ePhase>Solution 1</ePhase>
+		</Participant>
+		<Participant>
+			<RegNum>
+				<nOrgNum>4</nOrgNum>
+			</RegNum>
+			<nStoichiometricCoef>1</nStoichiometricCoef>
+			<ePhase>Solution 1</ePhase>
+		</Participant>
+		<AuxiliarySubstance>
+			<eFunction>Buffer</eFunction>
+			<RegNum>
+				<nOrgNum>5</nOrgNum>
+			</RegNum>
+			<ePhase>Solution 1</ePhase>
+		</AuxiliarySubstance>
+		<AuxiliarySubstance>
+			<eFunction>Buffer</eFunction>
+			<RegNum>
+				<nOrgNum>6</nOrgNum>
+			</RegNum>
+			<ePhase>Solution 1</ePhase>
+		</AuxiliarySubstance>
+		<AuxiliarySubstance>
+			<eFunction>Inert</eFunction>
+			<RegNum>
+				<nOrgNum>8</nOrgNum>
+			</RegNum>
+			<ePhase>Solution 1</ePhase>
+		</AuxiliarySubstance>
+		<eReactionFormalism>biochemical</eReactionFormalism>
+		<eReactionType>Other reactions</eReactionType>
+		<Property>
+			<nPropNumber>1</nPropNumber>
+			<Property-MethodID>
+				<PropertyGroup>
+					<ReactionStateChangeProp>
+						<ePropName>Molar enthalpy of reaction, kJ/mol</ePropName>
+						<sMethodName>Heat-conduction</sMethodName>
+					</ReactionStateChangeProp>
+				</PropertyGroup>
+			</Property-MethodID>
+			<Solvent>
+				<RegNum>
+					<nOrgNum>7</nOrgNum>
+				</RegNum>
+				<ePhase>Solution 1</ePhase>
+			</Solvent>
+			<Catalyst>
+				<RegNum>
+					<nOrgNum>2</nOrgNum>
+				</RegNum>
+			</Catalyst>
+		</Property>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<ePressure>Pressure, kPa</ePressure>
+				</ConstraintType>
+			</ConstraintID>
+			<nConstraintValue>101.3</nConstraintValue>
+			<nConstrDigits>4</nConstrDigits>
+		</Constraint>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<eBioVariables>pH</eBioVariables>
+				</ConstraintType>
+			</ConstraintID>
+			<nConstraintValue>6.98</nConstraintValue>
+			<nConstrDigits>3</nConstrDigits>
+		</Constraint>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<eBioVariables>Ionic strength (molality basis), mol/kg</eBioVariables>
+				</ConstraintType>
+			</ConstraintID>
+			<nConstraintValue>0.38</nConstraintValue>
+			<nConstrDigits>2</nConstrDigits>
+		</Constraint>
+		<Variable>
+			<nVarNumber>1</nVarNumber>
+			<VariableID>
+				<VariableType>
+					<eTemperature>Temperature, K</eTemperature>
+				</VariableType>
+			</VariableID>
+		</Variable>
+		<NumValues>
+			<VariableValue>
+				<nVarNumber>1</nVarNumber>
+				<nVarValue>298.15</nVarValue>
+				<nVarDigits>5</nVarDigits>
+			</VariableValue>
+			<PropertyValue>
+				<nPropNumber>1</nPropNumber>
+				<nPropValue>-144.1</nPropValue>
+				<nPropDigits>4</nPropDigits>
+			</PropertyValue>
+		</NumValues>
+	</ReactionData>
+</DataReport>

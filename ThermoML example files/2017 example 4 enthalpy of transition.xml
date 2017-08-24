@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataReport xmlns="http://www.iupac.org/namespaces/ThermoML"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://www.iupac.org/namespaces/ThermoML file:/N:/Pfeif/working/ThermoML/thermoML/ThermoML-draft%20v.pfeif.6.xsd">
+  <!--citation information-->
+    <citation id="50">
+        <label>
+            This example provides resources for: 
+           (1) a journal reference, with a note(2) entry of chemical ids with no other data other than a name
+           (3) entry of phases with no data other than a name and crystal type
+           (4) phase fields for single, dual, and triple phase equilibrium
+           (5) Example of difference between chemcial analysis then anneal(A+B),anneal then chemical analysis (B+A)
+           (6) a dataset where reference states are needed (enthalpy of transition)for T,P, and phase to explain melting is occuring
+                (7)  a dataset where fixed conditions are used, no variable conditions            
+        </label>
+        
+        <TRCRefID>
+            <yearPub>1966</yearPub>
+            <author1>Vol</author1>
+            <author2>Koh</author2>
+            <authorN>0</authorN>
+        </TRCRefID>
+        <abstract>Die bisher veroffentlichten Daten der Schmelzwarme von Eisen, Kobalt und Nickel unterscheiden sich beachtlich und sind teilweise mit grossen Fehlergrenzen behaftet. Die gleiche Feststellung betrifft auch die Atomwarme im flussigen Zustand der drei Metalle. Eine Neubestimmung dieser Grossen erschien somit wunschenswert. Das von BRAUN und KOHLHAAS 1 entwickelte, unter Schutzgas betriebene, adiabatisch arbeitende Hochtemperaturkalorimeter erlaubt eine kontinuierliche Messung der spezifischen Warme und gleichzeitig eine Ermittlung der Umwandlungswarmen von Metallen im festen Zustand. Dieses Kalorimeter wurde mit einigen Anderungen versehen, die ausfuhrlich bei VOLLMER 2 beschrieben werden und nunmehr auch eine kontinuierliche Messung an flussigen Metallen ermoglichen.</abstract>
+        <author>Vollmer, O.</author>
+        <author>Kohlhaas, R. </author>
+        <author>Barun, M.</author>
+        <documentType>journal</documentType>
+        <language>German</language>
+
+        <title>Die Schmelzwarme und die Atomwarme im schmelzflussigen Bereich von Eisen, Kobalt und Nickel</title>
+        <yearPublished>1966</yearPublished>
+        <journal>
+            <journalName>Z. Natuforsch.</journalName>
+            <pages>181-182</pages>
+            <volume>21a</volume>
+        </journal>
+
+        <note>this is a trial</note>
+    </citation>
+    
+    <!-- chemcial information-->
+    <chemical id="11"><commonName>Iron</commonName></chemical>
+        
+    <!--phase information -->
+    <phase id="16"><label>deltaFe</label> <type>crystal</type> <commonName>delta Fe</commonName><metastable>false</metastable>    </phase>
+    <phase id="17"><label>LIQUID</label><type>liquid</type> <commonName>liquid</commonName><metastable>false</metastable>    </phase>
+  
+    <!--phase field information-->
+    <!--Single phases-->
+    <phaseField id="19"> <label>liquid</label><phase ref="17"/></phaseField>
+    <phaseField id="20"> <label>gamma</label><phase ref="15"/></phaseField>
+    <phaseField id="21"> <label>delta</label><phase ref="16"/></phaseField>
+    <!--two phases fields-->
+    <phaseField id="22"> <label>liquid+delta</label><phase ref="16"/> <phase ref="17"/></phaseField>
+    <phaseField id="23"> <label>gamma+delta</label><phase ref="16"/> <phase ref="15"/></phaseField>
+    <!--phase fields to define liquidus, solidus, pure melting, g=g+d and d=g+d  -->
+    <phaseField id="221"> <label>liquidus (L+D)</label><phase ref="16"/><phase ref="17"/><zeroPhaseFraction ref="16"/></phaseField>
+    <phaseField id="222"> <label>solidus (L+D)</label><phase ref="16"/> <phase ref="17"/><zeroPhaseFraction ref="17"/></phaseField>
+    <phaseField id="223"> <label>melting (L+D)</label><phase ref="16"/> <phase ref="17"/><zeroPhaseFraction ref="16"/><zeroPhaseFraction ref="17"/></phaseField>
+    <phaseField id="231"> <label>gamma+delta, 0Delta</label><phase ref="16"/> <phase ref="15"/><zeroPhaseFraction ref="16"/></phaseField>
+    <phaseField id="232"> <label>gamma+delta, 0Gamma</label><phase ref="16"/> <phase ref="15"/><zeroPhaseFraction ref="17"/></phaseField>
+    
+    <!--system information-->
+    <system id="31">
+        <label>Sample of iron received from commercial source (A)</label>
+        <sample>
+            <chemical ref="11"/>
+            <source>Commercial source</source>
+            <componentCharacterization><label>characterization of feedstock (A)</label><chemical ref="11"/>
+                <value>99.97</value><units>mass percent</units><analyticalMethod>Stated by supplier</analyticalMethod>
+            </componentCharacterization>
+            <componentCharacterization><chemical ref="1"/>
+                <value>0.009</value><units>mass percent</units><analyticalMethod>Stated by supplier</analyticalMethod>
+            </componentCharacterization>
+            <componentCharacterization><chemical ref="2"/>
+                <value>0.0029</value><units>mass percent</units><analyticalMethod>Stated by supplier</analyticalMethod>
+            </componentCharacterization>
+            <componentCharacterization><chemical ref="3"/>
+                <value>0.004</value><units>mass percent</units><analyticalMethod>Stated by supplier</analyticalMethod>
+            </componentCharacterization>
+            <componentCharacterization><chemical ref="4"/>
+                <value>0.003</value><units>mass percent</units><analyticalMethod>Stated by supplier</analyticalMethod>
+            </componentCharacterization>
+            <componentCharacterization><chemical ref="5"/>
+                <value>0.001</value><units>mass percent</units><analyticalMethod>Stated by supplier</analyticalMethod>
+            </componentCharacterization>
+            <componentCharacterization><chemical ref="6"/>
+                <value>0.002</value><units>mass percent</units><analyticalMethod>Stated by supplier</analyticalMethod>
+            </componentCharacterization>
+            <componentCharacterization><chemical ref="7"/>
+                <value>0.002</value><units>mass percent</units><analyticalMethod>Stated by supplier</analyticalMethod>
+            </componentCharacterization>
+            <componentCharacterization><chemical ref="8"/>
+                <value>0.0005</value><units>mass percent</units><analyticalMethod>Stated by supplier</analyticalMethod>
+            </componentCharacterization>
+            <materialForm>
+                <materialForm>unknown</materialForm><singleCrystal>false</singleCrystal>
+                <microstructuralFeatures></microstructuralFeatures>
+            </materialForm>
+        </sample>
+    </system>
+    
+    <system id="311">
+        <label>Commercial Iron (system:31), in annealed state after annealing at 500K (A+B)</label>
+        <processing>
+            <label>processing (B)</label>
+            <system ref="31"/>
+            <processingStep>
+                
+                <thermalProcessing><annealing></annealing></thermalProcessing>
+                <temperature>
+                    <info>
+                        <units>K</units>
+                    </info>
+                    <val>
+                        <v>500</v>
+                    </val>
+                </temperature>  
+            </processingStep>
+        </processing>
+    </system>
+    <system id="30">
+        <label>annealing of Iron material (B)</label>
+            <processing>
+                <label>annealing process at 500K (B)</label>
+                <chemical ref="11"/>
+                <processingStep><thermalProcessing><annealing></annealing></thermalProcessing>
+                    <temperature>
+                       <info>
+                        <units>K</units>
+                    </info>
+                    <val>
+                        <v>500</v>
+                    </val>
+                    </temperature>
+                </processingStep>
+        </processing>
+    </system>
+    <system id="301">
+        <label>chemical analysis on annealed material(B+A</label>
+        <sample>
+            <label>analysis of sample (A)</label>
+            <system ref="30"/>
+             <source>Commercial source</source>
+             <componentCharacterization><chemical ref="11"/>
+                <value>99.87</value><units>mass percent</units><analyticalMethod>Stated by supplier</analyticalMethod>
+            </componentCharacterization>
+            <componentCharacterization><chemical ref="13"/>
+                <value>0.1</value><units>mass percent</units><analyticalMethod>Stated by supplier</analyticalMethod>
+            </componentCharacterization>
+            <componentCharacterization><chemical ref="14"/>
+                <value>0.03</value><units>mass percent</units><analyticalMethod>Stated by supplier</analyticalMethod>
+            </componentCharacterization>
+            <materialForm>
+                <materialForm>unknown</materialForm><singleCrystal>false</singleCrystal>
+                <microstructuralFeatures></microstructuralFeatures>
+            </materialForm>
+        </sample>
+    </system>
+    
+    <!--Datasets-->
+    <dataset><label>dataset 1: Table 1 Fe1 (HTR), iron enthalpy of transformation from delta to liquid (enthalpy of melting)</label>
+        <citation ref="50"/>
+        <system ref="301"/>
+        <referenceDetails id="600">
+            <reference><label>initial state</label><refPhase ref="21"/></reference>
+        </referenceDetails>
+        <referenceDetails id="601">
+            <reference> <label>final state</label><refPhase ref="19"/></reference>
+        </referenceDetails>
+<!--fixed conditions: equilbirium temperature (initial ref:100), pressure (initial ref:100), alumina crucible, in argon atmosphere, phase defined in reference detaisl (100) -->
+        <fixedConditions>
+            <condition conditionDescription="reference condition"><refState ref="600"/><temperature><units>K</units></temperature><var><v>1809</v><unc><other><v>0.3</v></other></unc></var></condition>
+            <condition conditionDescription="reference condition"><refState ref="600"/><pressure><units>Pa</units></pressure><var><v>101325</v><unc><other><v>100</v></other></unc></var></condition>
+            <!--final conditions: T (final ref: 101) and P (final ref:101), phase is defined with reference details (101)-->
+            <condition conditionDescription="equilibrium condition"><temperature><units>K</units></temperature><var><v>1809</v><unc><other><v>0.3</v></other></unc></var></condition>
+            <condition conditionDescription="equilibrium condition"><pressure><units>Pa</units></pressure><var><v>101325</v><unc><other><v>100</v></other></unc></var></condition>
+            <crucibleMaterial>Al2O3</crucibleMaterial>
+            <atmosphere>argon</atmosphere>
+        </fixedConditions>
+ 
+<!--measured properties: enthalpy of formation, by definition is a difference with a reference state (initial state:100) -->
+        <property dataRepresentation="Difference with reference state, x =  x_1 - x_ref ">
+            <!--Molar enthalpy of transformation units are in Joules/mole and the method used was adiabatid calorimetry.-->
+            <thermodynamic>
+                <enthalpy>
+                    <molarEnthalpyOfTransitionOrFusion>
+                        <units>J/mol</units>
+                        <method>Vacuum adiabatic calorimetry</method>
+                    </molarEnthalpyOfTransitionOrFusion>
+                </enthalpy>
+            </thermodynamic>
+            <xRef ref="600"/>
+        </property>
+        <!--datapoint for property, enthalpy of transition -->
+       <point>
+           <!--phases involved delta and liquid, at melting -->
+           <phaseField ref="223"/>
+           <!--value for enthalpy of transition-->
+           <var/>
+           <prop>
+               <v>1440</v>
+               <unc>
+                    <other>
+                        <v>200</v>
+                    </other>
+               </unc>
+           </prop>
+       </point>
+    </dataset>
+    
+    <dataset> <label>dataset2: Table 1 Fe2 (HTR)</label>
+        <citation ref="50"/>
+        <system ref="311"/>
+        <referenceDetails id="103">
+            <reference><label>final state</label><refPhase ref="19"/></reference>
+        </referenceDetails>
+        <referenceDetails id="102">
+            <reference><label>initial state</label><refPhase ref="21"/></reference>
+        </referenceDetails>        
+        <fixedConditions>
+            <condition conditionDescription="equilibrium condition"><refState ref="102"/><temperature><units>K</units></temperature><var><v>1809</v><unc><other> <v>0.3</v></other></unc></var></condition>
+            <condition conditionDescription="equilibrium condition"><refState ref="102"/><pressure><units>Pa</units></pressure><var><v>101325</v><unc><other><v>100</v></other></unc></var></condition>
+            <condition conditionDescription="equilibrium condition"><temperature><units>K</units></temperature><var><v>1809</v><unc><other><v>0.3</v></other></unc></var></condition>
+            <condition conditionDescription="equilibrium condition"><pressure><units>Pa</units></pressure><var><v>101325</v><unc><other><v>100</v></other></unc></var></condition>
+            <crucibleMaterial>Al2O3</crucibleMaterial>
+            <atmosphere>argon</atmosphere>
+         </fixedConditions>
+        
+    
+        <property dataRepresentation="Difference with reference state, x =  x_1 - x_ref ">
+            <thermodynamic>
+                <enthalpy>
+                    <molarEnthalpyOfTransitionOrFusion>
+                        <units>J/mol</units>
+                        <method>Vacuum adiabatic calorimetry</method>
+                    </molarEnthalpyOfTransitionOrFusion>
+                </enthalpy>
+            </thermodynamic>
+            <xRef ref="102"/>
+        </property>
+        
+        <point><phaseField ref="223"/><var/><prop><v>1440</v><unc><other><v>200</v></other></unc></prop>
+        </point>
+    </dataset>
+     
+</dataReport>

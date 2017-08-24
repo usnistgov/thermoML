@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<ThermoMLEquation xmlns:xsi=“http://www.w3.org/2001/XMLSchema-instance" 
+xsi:noNamespaceSchemaLocation=“http://trc.nist.gov/ThermoMLEquation.xsd"> 
+  <Version>  
+    <nVersionMajor>1</nVersionMajor>  
+    <nVersionMinor>0</nVersionMinor>  
+  </Version>  
+  <sEqName>ThermoML.CustomExpansion</sEqName>  
+  <sEqDescription>The equation expands Y as a function of one variable X to the 
+number of terms nTerms with powers n[] and coefficients A[]</sEqDescription> 
+  <EqVariable>  
+    <sEqSymbol>Y</sEqSymbol>  
+    <sEqVarComment>Target  property</sEqVarComment>  
+  </EqVariable>  
+  <EqVariable>  
+    <sEqSymbol>X</sEqSymbol>  
+    <sEqVarComment>Variable,  usually  Temperature</sEqVarComment>  
+  </EqVariable>  
+  <EqParameter>  
+    <sEqParSymbol>A</sEqParSymbol>  
+  </EqParameter>  
+  <EqConstant>  
+    <sEqConstantSymbol>nTerms</sEqConstantSymbol>  
+  </EqConstant>  
+  <EqConstant>  
+    <sEqConstantSymbol>n</sEqConstantSymbol>  
+  </EqConstant>  
+  <EqMathContent>  
+    <math  xmlns=“http://www.w3.org/1998/Math/MathML">  
+      <declare  type="vector"><ci>A</ci></declare>  
+      <declare  type="vector"><ci>n</ci></declare>  
+      <apply>  
+    <eq/> 
+        <ci>Y</ci>  
+    <apply> 
+     <sum/> 
+          <bvar><ci>i</ci></bvar>  
+          <lowlimit><cn>1</cn></lowlimit>  
+          <uplimit><ci>nTerms</ci></uplimit>  
+     <apply> 
+      <times/> 
+      <apply> 
+       <selector/> 
+       <ci type="vector">A</ci> 
+       <ci>i</ci> 
+      </apply> 
+      <apply> 
+       <power/> 
+       <ci>X</ci> 
+       <apply> 
+        <selector/> 
+        <ci type="vector">n</ci> 
+        <ci>i</ci> 
+       </apply> 
+      </apply> 
+     </apply> 
+    </apply> 
+   </apply> 
+    </math>  
+  </EqMathContent>  
+</ThermoMLEquation> 

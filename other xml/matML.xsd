@@ -1,0 +1,1094 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  ******************************************************************************************************************************
+
+Title:              MatML Version 3.0 Schema 
+Author:             This document was prepared by E.F. Begley (begley@nist.gov) on behalf of the MatML Working Group (1999-2001) and the MatML Steering Committee (2002). 
+
+Copyrights:         This work is an official contribution of the National Institute of Standards and Technology (NIST) and is not subject to copyright in the United States. 
+            
+                    "METADATA" is a trademark of the Metadata Company. Any use of the term "metadata" in this document is in a descriptive sense, meaning "data about data." MatML is not in any way affiliated with the Metadata Company.
+                    
+      ******************************************************************************************************************************
+
+Acknowledgements:
+            The MatML development effort has provided deeply satisfying personal and professional challenges for the author. He gratefully acknowledges the contributions of his collaborators. 
+
+Funding:
+            This project was funded [in part] by NIST's Systems Integration for Manufacturing Applications (SIMA) Program. SIMA supports NIST projects applying information technologies and standards-based approaches to manufacturing software integration problems. 
+
+Project Support:      Standard Reference Data Program (SRD), NIST 
+                      Materials Science and Engineering Laboratory (MSEL), NIST 
+                      Building and Fire Research Laboratory (BFRL), NIST 
+
+Technical Collaboration:
+    The MatML Working Group (1999-2001) 
+    Members  External  to  NIST  
+    Tetsuya Baba,           National Research Laboratory of Metrology, Japan 
+    Chris Bullough,         ABB ALSTOM Power, Leicester UK 
+    Fran  Cverna,           ASM,  International  
+    Charles Gibson,         Center for Information and Numerical Data Analysis and Synthesis (CINDAS) 
+    Sasha  Gurke,           William  Andrew  Publishing  
+    Kohmei Halada,          National Research Institute for Metals, Japan 
+    Gil  Kaufman,           Aluminum  Association,  Inc.  
+    Tom  Kipp,              MSC.Software  
+    David  Martin,          Iowa  State  University  
+    John McCarthy,          Lawrence Berkeley National Laboratory 
+    Scott  McCormick,       ESM  Software  
+    John Michopoulos,       United States Naval Research Laboratory (USNRL) 
+    Fred  Moran,  Atomic    Weapons  Establishment,  UK  
+    Peter Murray-Rust,      Virtual School of Molecular Sciences, Nottingham University, UK
+    Crystal Newton,         Center for Composite Materials, University of Delaware 
+    Frank Olken,            Lawrence Berkeley National Laboratory 
+    Jon  Phipps,            William  Andrew  Publishing  
+    Adam C. Powell,         Massachusetts Institute of Technology 
+    Dennis Readey,          Colorado School of Mines 
+    David Rose,             Advanced Materials and Processes Technology Information Analysis Center (AMPTIAC) 
+    Martin  Smith,          CenTOR  Software  Corporation  
+    Michael  Stoeckle,      Ford  Motor  Company  
+    Mike  Sullentrup,       The  Boeing  Company  
+    
+   NIST Members 
+    Bill  Boetti Mannger,   Metallurgy Division, MSEL 
+    Sandy  Dapkunas,        Ceramics  Division,  MSEL  
+    Carol  Handwerker,      Metallurgy  Division,  MSEL  
+    Vicky  Karen,           Ceramics  Division,  MSEL  
+    Ursula  Kattner,        Metallurgy  Division,  MSEL  
+    Ron Munro,              Ceramics Division, MSEL 
+    John  Rumble,           SRD,  NIST  
+    Tom Siewert,            Materials Reliability Division, MSEL 
+    Charles  Sturrock,      SRD,  NIST  
+    Christopher  White,     Building  Materials  Division,  BFRL  
+
+The MatML Steering Committee (2002) 
+    Gil Kaufman,        Committee Chair, Aluminum Assoication, Inc. 
+    Fran  Cverna,       ASM  International  
+    Doug Fleming,       Automation Creations, Inc. 
+    Chris  Grethlein,   AMPTIAC  
+    Scott  McCormick,   ESM  Software  
+    Debbie  Mies,       MSC  Software  
+    Michael Mitchell,   NASA Marshall Space Flight Center 
+    Chris Nunez,        CenTOR Software Corporation 
+    Kent A. Reed,       BFRL, NIST 
+    James D. Rossi,     Westmoreland Testing & Research, Inc. 
+    Craig Seymour,      Granta Design Limited, UK 
+    Charles  Sturrock,  MSEL,  NIST  
+    Mike Sullentrup,    The Boeing Company 
+                    
+The author especially thanks: 
+                    Jim Fowler,     SIMA Program Manager (NIST), for funding and supporting the MatML effort; 
+                    Gil Kaufman,    Vice President (retired), The Aluminum Assocation, Inc., for his leadership while chairing the MatML Steering Committee, for his insightful technical criticisms, for the pleasure of his collaboration, periodically interrupted, across three decades, and for his personal and professional guidance; 
+                    John Rumble,    Measurement Services Division Chief (NIST), for his support, knowledge,insights, and generosity with his time; 
+                    Ron Munro,      Physicist (MSEL), for the benefit of his wisdom and recommendations as well as his John Michopoulos, Senior Research Scientist (USNRL), for his support, enthusiasm, technical insights and, particularly, for his early adoption of MatML for use via namespace in his development of femML, the finite element modeling markup language (http://www.istos.org/femML/); 
+                    George Kelly,   Building Environment Division Chief (BFRL) and Kent Reed, Computer Integrated Building Processes Group Leader (BFRL), for supporting the completion of this work. 
+
+******************************************************************************************************************************
+Revisions      
+                    MatML Version 3.0 Schema (henceforth referred to as MatML 3.0)  is an enhancement of the previously released Annotated MatML DTD Version 2.0 (henceforth referred to as MatML 2.0) and addresses the technical issues identified during the June 2001 NIST workshop entitled "The Technical and Strategic Future of MatML.” In addition to these revisions, the author reorganized several content models and renamed some elements to improve the clarity of the language.
+
+Schema      
+                    MatML 3.0 is expressed in XML Schema Definition Language and conforms to World Wide Web Consortium  (W3C)      http://www.w3.org/2001/XMLSchema.      
+
+Redundancy      
+                    Sample instance documents encoded using MatML 2.0 illustrated that descriptions of properties,measurement techniques, data sources, and parameters could be repeated many timesthroughout a document. This issue has been addressed by the introduction of the Metadataelement, which, in addition to the previously mentioned descriptions, includes another newelement, SpecimenDetails, for encoding descriptions of specimens.  
+      
+Units 
+                    MatML 2.0 represented units as a simple string and permitted embedded HTML tags. MatML 3.0 uses the Units content model developed by Dr. Edward J. Shaya of NASA Goddard Space FlightCenter for the eXtensible Data Format (XDF) language version 0.17 found at http://xml.gsfc.nasa.gov/DTD/XDF_017.dtd.      
+
+Uncertainty      
+                    MatML 2.0 did not provide for measurement uncertainty. MatML 3.0 includes a new element, Uncertainty, for encoding this information and was constructed based upon the recommendationsof Dr. Ron Munro of NIST's Ceramics Division (MSEL) and Dr. Raghu Kacker of NIST's Mathematical and Computational Sciences Division in the Information Technology Laboratory. 
+Glossary      
+                    The Terms element in MatML 2.0 has been replaced by the Glossary element in MatML 3.0, which uses a simplified content model for encoding terms instead of the Virtual HyperGlossary(TM) markup      language.      
+Composites      
+                    MatML 3.0 includes the revisions proposed by the MatML Composites Working Group. These changes include recursion of the ComponentDetails element as well as new attributes on the Material element (id, layers, local_frame_of_reference) and the ComponentDetails element (id). 
+Nesting             
+                    The MatML ASM-MSC Data Exchange Focus Group reported difficulties validating MatML 2.0 instance documents where multiple element tuples were encoded within a single element (Compound, PropertyDetails, etc.). Multiple element tuples have been eliminated in MatML 3.0 and have beenreplaced by nested content models. 
+ ******************************************************************************************************************************
+-->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    attributeFormDefault="unqualified">
+    <xsd:element name="MatML_Doc">
+        <xsd:annotation>
+            <xsd:documentation>****   MatML_Doc   **** 
+This element declares the content model for MatML_Doc, topmost in the hierarchy of elements that comprise a document marked up using MatML.
+
+Content models describe the relationships of the element and its child elements. MatML_Doc must contain one or more Material elements.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="Material" maxOccurs="unbounded"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="Material">
+        <xsd:annotation>
+            <xsd:documentation>****   Material   ****
+This element declares the content model for Material, which contains materials data. Material has three optional attributes. 
+
+The first attribute, id, may be used as an identification specifier for the material, which is especially useful for complex systems such as composite laminates.
+
+The second attribute, layers, may be used to indicate the number of layers in complex systems such as composite laminates.
+
+The third attribute, local_frame_of_reference, may be used as an identification specifier for the local material orientation relative to the global frame of reference, which is especially useful for complex systems such as anisotropic materials.
+
+Material is composed of the following elements:
+
+BulkDetails contains a description of the bulk material and must occur once and only once within the Material element. For additional information, see the documentation for the BulkDetails element.
+
+ComponentDetails contains a description of a component within the bulk material and may occur zero or more times within the Material element. ComponentDetails may be used to describe complex materials systems such as welds (e.g. the base metal, the heat affected zone, and the weld metal) or composites (e.g. the whiskers, fibers, and matrix of a fiber-reinforced composite material). For additional information, see the documentation for the ComponentDetails element.
+
+Metadata contains descriptions of the data sources,  properties, measurement techniques, specimens, and parameters which are referenced when materials property data are encoded using the PropertyData element. Metadata may occur once or not at all within the Material element. For more information, see the documentation for the Metadata element.
+
+Graphs contains descriptions of two dimensional graphics and may occur once or not at all within the Material element. For additional information, see the documentation for the Graphs element.
+
+Glossary contains descriptions of the material and property terms used in the document and may occur once or not at all within the Material element. For additional information, see the documentation for the Glossary element.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="BulkDetails">
+                    <xsd:annotation>
+                        <xsd:documentation>****   BulkDetails   **** 
+This element declares the content model for BulkDetails,  which contains a description of the bulk material and is  composed of the  following elements.
+
+Name contains the material's name and has one optional attribute, authority, for identifying an authoritative source of material names. Name must occur once and only once within  the BulkDetails  element. 
+
+Class contains the material's class and may occur once or not at all within the BulkDetails element.
+
+Subclass contains the material's subclass(es) and may occur zero or more times within the BulkDetails element.
+
+Specification contains the material's specification(s) and  has one optional attribute, authority, for identifying an authoritative source of material specifications. Specification may occur zero or more times within the  BulkDetails element.
+
+Source contains the name of the source of the material and may occur once or not at all within the BulkDetails element. 
+
+Form contains the form of the material and may occur once or not at all within the BulkDetails element.
+
+ProcessingDetails contains a description of a processing step for the material and may occur zero or more times within the BulkDetails element. For additional information, see the documentation for the ProcessingDetails element.
+
+Geometry contains a description of the geometry of the  material and may occur once or not at all within the BulkDetails element. For additional information, see the documentation for the Geometry  element. 
+
+Characterization contains the characterization  of the material, including the formula, chemical composition,      phase composition, and dimensional details. Characterization may occur once or not at all within the BulkDetails element. For additional information, see the documentation for the Characterization element.
+
+PropertyData contains the property data for the material and may occur zero or more times within the BulkDetails element. For additional information, see the documentation for the PropertyData element. 
+
+Notes contains any additional information concerning the bulk  material and may occur once or not at all within the  BulkDetails element. </xsd:documentation>
+                    </xsd:annotation>
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element ref="Name"/>
+                            <xsd:element ref="Class" minOccurs="0"/>
+                            <xsd:element ref="Subclass" minOccurs="0" maxOccurs="unbounded"/>
+                            <xsd:element ref="Specification" minOccurs="0" maxOccurs="unbounded"/>
+                            <xsd:element ref="Source" minOccurs="0"/>
+                            <xsd:element ref="Form" minOccurs="0"/>
+                            <xsd:element ref="ProcessingDetails" minOccurs="0" maxOccurs="unbounded"/>
+                            <xsd:element ref="Geometry" minOccurs="0"/>
+                            <xsd:element ref="Characterization" minOccurs="0"/>
+                            <xsd:element ref="PropertyData" minOccurs="0" maxOccurs="unbounded"/>
+                            <xsd:element ref="Notes" minOccurs="0"/>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+                <xsd:element ref="ComponentDetails" minOccurs="0" maxOccurs="unbounded"/>
+                <xsd:element name="Metadata" minOccurs="0">
+                    <xsd:annotation>
+                        <xsd:documentation>*****   Metadata   ****
+This element declares the content model for Metadata, which contains descriptions of data sources, properties, measurement techniques, specimens, and parameters, and is composed of the following elements:
+
+DataSourceDetails contains a description of a data source referenced using the PropertyData element and may occur zero or more times within the Metadata element. For additional information, see the documentation for the DataSourceDetails element.
+
+PropertyDetails contains a description of a property for which materials data are encoded using the PropertyData element and may occur zero or more times within the Metadata element. For additional information, see the documentation for the PropertyDetails element.
+
+MeasurementTechniqueDetails contains a description of a measurement technique referenced using the PropertyData element and may occur zero or more times within the Metadata element. For additional information, see the documentation for the MeasurementTechniqueDetails element.
+
+SpecimenDetails contains a description of a specimen referenced using the PropertyData element and may occur zero or more times within the Metadata element. For additional information, see the documentation for the SpecimenDetails element.
+
+ParameterDetails contains a description of a parameter referenced using the PropertyData element and may occur zero or more times within the Metadata element. For additional information, see the documentation for the ParameterDetails element.</xsd:documentation>
+                    </xsd:annotation>
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="DataSourceDetails" minOccurs="0"
+                                maxOccurs="unbounded">
+                                <xsd:annotation>
+                                    <xsd:documentation>****   DataSourceDetails   ****
+This element declares the content model for DataSourceDetails, which contains a description of a data  source referenced by the PropertyData element. DataSourceDetails has one required attribute, id, which may be arbitrarily assigned but must be unique among id attributes assigned elsewhere in a MatML document.
+
+DataSourceDetails also has one optional attribute, type, for specifying the type of the data source (examples include:  "unpublished report," "journal," "handbook," etc.)     
+                                                      DataSourceDetails is composed of the following elements.
+                                                      
+Name contains the name of the data source and has one optional attribute, authority, for identifying an authoritative source of data source names. Name must occur once and only once within the DataSourceDetails element. 
+
+Notes contains any additional information concerning the data source and may occur once or not at all within the DataSourceDetails element. </xsd:documentation>
+                                </xsd:annotation>
+                                <xsd:complexType>
+                                    <xsd:sequence>
+                                        <xsd:element ref="Name"/>
+                                        <xsd:element ref="Notes" minOccurs="0"/>
+                                    </xsd:sequence>
+                                    <xsd:attribute name="id" type="xsd:ID" use="required"/>
+                                    <xsd:attribute name="type" type="xsd:string" use="optional"/>
+                                </xsd:complexType>
+                            </xsd:element>
+                            <xsd:element name="PropertyDetails" minOccurs="0" maxOccurs="unbounded">
+                                <xsd:annotation>
+                                    <xsd:documentation>****   PropertyDetails   ****
+This element declares the content model for PropertyDetails, which contains a description of a property referenced by the PropertyData element. PropertyDetails has one required attribute, id, which may be arbitrarily assigned but must be unique among id attributes assigned elsewhere in a MatML document. PropertyDetails also has one optional attribute, type, for specifying the type of the property (examples include "thermal," "mechanical," "electrical," etc.) PropertyDetails is composed of the following elements.\
+
+Name contains the name of the property and has one optional attribute, authority, for identifying an authoritative source of property names. Name must occur once and only once within the PropertyDetails element.
+
+Units and Unitless are mutually exclusive elements for describing the property's units. Units or Unitless must occur once and only once within the PropertyDetails element. For additional information, see the documentation for the Units and Unitless elements.
+
+Notes contains any additional information concerning the property and may occur once or not at all within the PropertyDetails element. </xsd:documentation>
+                                </xsd:annotation>
+                                <xsd:complexType>
+                                    <xsd:sequence>
+                                        <xsd:element ref="Name"/>
+                                        <xsd:choice>
+                                            <xsd:element ref="Units"/>
+                                            <xsd:element ref="Unitless"/>
+                                        </xsd:choice>
+                                        <xsd:element ref="Notes" minOccurs="0"/>
+                                    </xsd:sequence>
+                                    <xsd:attribute name="id" type="xsd:ID" use="required"/>
+                                    <xsd:attribute name="type" type="xsd:string" use="optional"/>
+                                </xsd:complexType>
+                            </xsd:element>
+                            <xsd:element name="MeasurementTechniqueDetails" minOccurs="0"
+                                maxOccurs="unbounded">
+                                <xsd:annotation>
+                                    <xsd:documentation>*****   MeasurementTechniqueDetails   ****
+This element declares the content model for  MeasurementTechniqueDetails, which contains a description of a measurement technique referenced by the PropertyData  element. MeasurementTechniqueDetails has one required  attribute, id, which may be arbitrarily assigned but must be unique among id attributes assigned elsewhere in a MatML document.  MeasurementTechniqueDetails is composed of the following elements.
+
+Name contains the name of the measurement technique and has one optional attribute, authority, for identifying an authoritative source of measurement techniques. Name must occur once and only once within the  MeasurementTechniqueDetails element.
+
+Notes contains any additional information concerning the measurement technique, such as a description of the technique, and may occur once or not at all within the MeasurementTechniqueDetails element.</xsd:documentation>
+                                </xsd:annotation>
+                                <xsd:complexType>
+                                    <xsd:sequence>
+                                        <xsd:element ref="Name"/>
+                                        <xsd:element ref="Notes" minOccurs="0"/>
+                                    </xsd:sequence>
+                                    <xsd:attribute name="id" type="xsd:ID" use="required"/>
+                                </xsd:complexType>
+                            </xsd:element>
+                            <xsd:element name="SpecimenDetails" minOccurs="0" maxOccurs="unbounded">
+                                <xsd:annotation>
+                                    <xsd:documentation>****   SpecimenDetails   **** 
+This element declares the content model for SpecimenDetails, which contains a description of a specimen referenced by the PropertyData element. SpecimenDetails has one required  attribute, id, which may be arbitrarily assigned but must be unique among id attributes assigned elsewhere in a MatML      document. 
+
+SpecimenDetails also has one optional attribute, type,for specifying the type of the specimen (examples include  "cylindrical," "rectangular," "full cross-section," "pressed," etc.) SpecimenDetails is composed of the following elements.
+
+Name contains the name of the specimen and has one optional  attribute, authority, for identifying an authoritative source of specimen names. Name must occur once and only once within the SpecimenDetailselement.
+
+Notes contains any additional information concerning the specimen and may occur once or not at all within the SpecimenDetails element.</xsd:documentation>
+                                </xsd:annotation>
+                                <xsd:complexType>
+                                    <xsd:sequence>
+                                        <xsd:element ref="Name"/>
+                                        <xsd:element ref="Notes" minOccurs="0"/>
+                                    </xsd:sequence>
+                                    <xsd:attribute name="id" type="xsd:ID" use="required"/>
+                                    <xsd:attribute name="type" type="xsd:string" use="optional"/>
+                                </xsd:complexType>
+                            </xsd:element>
+                            <xsd:element name="ParameterDetails" minOccurs="0" maxOccurs="unbounded">
+                                <xsd:annotation>
+                                    <xsd:documentation>****   ParameterDetails   ****
+This element declares the content model for ParameterDetails, which contains a description of a parameter referenced by the ParameterValue element. ParameterDetails has one required    attribute, id, which may be arbitrarily assigned but must be unique among id attributes assigned elsewhere in a MatML document. ParameterDetails is composed of the following elements.
+
+Name contains the name of the parameter and has one optional attribute, authority, for identifying an authoritative source of parameter names. Name must occur once and only once within the ParameterDetails element.
+
+Units and Unitless are mutually exclusive elements for describing the parameter's units. Units or Unitless must occur once and only once within the ParameterDetails element. For additional information, see the documentation for the Units and Unitless elements.
+
+Notes contains any additional information concerning the parameter and may occur once or not at all within the ParameterDetails element.</xsd:documentation>
+                                </xsd:annotation>
+                                <xsd:complexType>
+                                    <xsd:sequence>
+                                        <xsd:element ref="Name"/>
+                                        <xsd:choice>
+                                            <xsd:element ref="Units"/>
+                                            <xsd:element ref="Unitless"/>
+                                        </xsd:choice>
+                                        <xsd:element ref="Notes" minOccurs="0"/>
+                                    </xsd:sequence>
+                                    <xsd:attribute name="id" type="xsd:ID" use="required"/>
+                                </xsd:complexType>
+                            </xsd:element>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+                <xsd:element name="Graphs" minOccurs="0">
+                    <xsd:complexType>
+                        <xsd:sequence maxOccurs="unbounded">
+                            <xsd:element name="Graph">
+                                <xsd:annotation>
+                                    <xsd:documentation>****   Graphs   ****
+This element declares the content model for Graphs, which must contain one or more Graph elements.
+
+Graph uses the W3C's Scalable Vector Graphics markup language (SVG) for describing two dimensional graphics and allows for three types of graphical objects: vector graphics shapes, images, and text. Graph must occur one or more times within the Graphs element. For more information concerning SVG, see the documentation at http://www.w3.org/TR/SVG/.</xsd:documentation>
+                                </xsd:annotation>
+                                <xsd:complexType>
+                                    <xsd:sequence>
+                                        <xsd:any namespace="http://www.w3.org/2000/svg"
+                                            processContents="lax" maxOccurs="unbounded"/>
+                                    </xsd:sequence>
+                                </xsd:complexType>
+                            </xsd:element>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+                <xsd:element name="Glossary" minOccurs="0">
+                    <xsd:annotation>
+                        <xsd:documentation>****   Glossary   **** 
+This element declares the content model for Glossary, which contains descriptions of material and property terms used in the document. 
+Glossary must contain one or more Term elements each of which is composed  of the following elements.
+
+Name contains the term's name and has one optional attribute, 
+authority, for identifying an authoritative source of terms. Name must occur once and only once within the Term element. 
+Definition contains the term's definition and must occur once and only once within the Term element.      
+
+Abbreviation contains the term's abbreviations and may occur zero or more times within the Term element.
+
+Synonym contains the term's synonyms and may occur zero or more times within the Term element.
+
+Notes contains any additional information concerning the term and may occur once or not at all within the Term element.</xsd:documentation>
+                    </xsd:annotation>
+                    <xsd:complexType>
+                        <xsd:sequence maxOccurs="unbounded">
+                            <xsd:element name="Term">
+                                <xsd:complexType>
+                                    <xsd:sequence>
+                                        <xsd:element ref="Name"/>
+                                        <xsd:element name="Definition" type="xsd:string"/>
+                                        <xsd:element name="Abbreviation" type="xsd:string"
+                                            minOccurs="0" maxOccurs="unbounded"/>
+                                        <xsd:element name="Synonym" type="xsd:string" minOccurs="0"
+                                            maxOccurs="unbounded"/>
+                                        <xsd:element ref="Notes" minOccurs="0"/>
+                                    </xsd:sequence>
+                                </xsd:complexType>
+                            </xsd:element>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+            </xsd:sequence>
+            <xsd:attribute name="id" type="xsd:ID" use="optional"/>
+            <xsd:attribute name="layers" type="xsd:integer" use="optional"/>
+            <xsd:attribute name="local_frame_of_reference" use="optional">
+                <xsd:annotation>
+                    <xsd:documentation>this type in the document is xsd:ID</xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="Characterization">
+        <xsd:annotation>
+            <xsd:documentation>****   Characterization   ****
+This element declares the content model for Characterization, which contains a description of the chemical composition of the bulk material or component and is composed of the following elements.
+
+Formula contains a string representation of the chemical formula for the bulk material or component and must occur once and only once within the Characterization element.
+
+ChemicalComposition contains a description of the compounds and elements that comprise the bulk material or component and may occur once or not at all within the Characterization element. For additional information, see the documentation for the ChemicalComposition element.
+
+PhaseComposition contains a description of the phases that comprise the bulk material or component and may occur zero or more times within the Characterization element. For additional information, see the documentation for the PhaseComposition element. 
+
+DimensionalDetails contains information relating to component or bulk material dimensional characteristics such as grain size, porosity, precipitate size and distribution, etc., and may occur zero or more times within the Characterization element. For additional information, see the documentation for the DimensionalDetails element. 
+
+Notes contains any additional information concerning the Characterization and may occur once or not at all within the Characterization element. </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="Formula" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>****   Formula   **** 
+This element declares the content model for Formula, which contains a string representation of the chemical formula for the bulk material or component.</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+                <xsd:element name="ChemicalComposition" minOccurs="0">
+                    <xsd:annotation>
+                        <xsd:documentation>****   ChemicalComposition   **** 
+This element declares the content model for ChemicalComposition, which contains a detailed description of the compounds and elements that comprise the bulk material or component. ChemicalComposition must contain at least one Compound element or Element element but may contain as many of each element as needed. 
+
+Compound contains a description of a compound. For additional 
+information, see the documentation for the Compound element. 
+Element contains a description of an element. For additional information, see the documentation for the Element element.</xsd:documentation>
+                    </xsd:annotation>
+                    <xsd:complexType>
+                        <xsd:choice maxOccurs="unbounded">
+                            <xsd:element name="Compound">
+                                <xsd:annotation>
+                                    <xsd:documentation>****   Compound   **** 
+This element declares the content model for Compound, which contains the elemental description of a chemical compound and is composed the following elements. 
+
+Element contains the description of a chemical element and must occur one or more times within the Compound element.  For additional information, see the documentation for the Element element.
+
+Concentration contains the concentration of the compound and may occur once or not at all within the Compound element. For additional information, see the documentation for the Concentration element.
+
+Notes contains anyadditional information concerning the  compound and may occur once or not at all within the Compound element.</xsd:documentation>
+                                </xsd:annotation>
+                                <xsd:complexType>
+                                    <xsd:sequence>
+                                        <xsd:element ref="Element" maxOccurs="unbounded"/>
+                                        <xsd:element ref="Concentration" minOccurs="0"/>
+                                        <xsd:element ref="Notes" minOccurs="0"/>
+                                    </xsd:sequence>
+                                </xsd:complexType>
+                            </xsd:element>
+                            <xsd:element ref="Element"/>
+                        </xsd:choice>
+                    </xsd:complexType>
+                </xsd:element>
+                <xsd:element name="PhaseComposition" minOccurs="0" maxOccurs="unbounded">
+                    <xsd:annotation>
+                        <xsd:documentation>****   PhaseComposition   ****
+This element declares the content model for PhaseComposition, which contains a description of a phase that comprises the bulk material or component and is composed of the following elements. 
+
+Name contains the name of the phase and has one optional attribute, authority, for identifying an authoritative source of phase names. Name must occur once and only once within the PhaseComposition element.
+
+Concentration contains the concentration of the phase and may occur once or not at all within the PhaseComposition element. For additional information, see the documentation for the Concentration element.
+
+PropertyData contains property data for the phase and may occur zero or more times within the PhaseComposition element. For additional information, see the documentation for the PropertyData element.
+
+Notes contains any additional information concerning the phase and may occur once or not at all within the PhaseComposition element.</xsd:documentation>
+                    </xsd:annotation>
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element ref="Name"/>
+                            <xsd:element ref="Concentration" minOccurs="0"/>
+                            <xsd:element ref="PropertyData" minOccurs="0" maxOccurs="unbounded"/>
+                            <xsd:element ref="Notes" minOccurs="0"/>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+                <xsd:element name="DimensionalDetails" minOccurs="0" maxOccurs="unbounded">
+                    <xsd:annotation>
+                        <xsd:documentation>****   DimensionalDetails   ****
+This element declares the content model for DimensionalDetails, which contains a description of a dimensional characteristic (e.g. grain size, porosity, precipitate size and distribution, etc.) of the bulk material or component and is composed of the following elements. 
+
+Name contains the name of the characteristic and has one  optional attribute, authority, for identifying an authoritative source of dimensional characteristic names. Name must occur once and only once within the DimensionalDetails element.
+
+Value contains the value of the dimensional characteristic and has one required attribute, format, for indicating the format of the value ("float," "integer," "string," or "exponential") found in Value. Value must occur once and only  once within the DimensionalDetails element. 
+
+Units contains the units for the value of the dimensional characteristic and must occur once and only once within the DimensionalDetails element. For additional information, see the documentation for the Units element.
+
+Qualifier contains any qualifier pertinent to the value of the dimensional characteristic (e.g. "min," "max," etc.) and may occur once or not at all within the DimensionalDetails  element.
+
+Notes contains any additional information concerning the dimensional characteristic and may occur once or not at all within the DimensionalDetails element.</xsd:documentation>
+                    </xsd:annotation>
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element ref="Name"/>
+                            <xsd:element ref="Value"/>
+                            <xsd:element ref="Units"/>
+                            <xsd:element ref="Qualifier" minOccurs="0"/>
+                            <xsd:element ref="Notes" minOccurs="0"/>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+                <xsd:element ref="Notes" minOccurs="0"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="Class" type="xsd:string">
+        <xsd:annotation>
+            <xsd:documentation>*****   Class   ****
+This element declares the content model for Class, which contains a string representing the class of the bulk material or component. 
+</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="ComponentDetails">
+        <xsd:annotation>
+            <xsd:documentation>****   ComponentDetails   **** 
+This element declares the content model for ComponentDetails, which contains a description of a component within the bulk material and has one optional attribute, id, which may be used as an identification specifier for the component and is especially useful for complex systems such as composite laminates. ComponentDetails is composed of the following elements.:
+
+Name contains the component's name and has one optional attribute, authority, for identifying an authoritative source of component names. Name must occur once and only once within the ComponentDetails element.
+
+Class contains the component's class and may occur once or not at all within the ComponentDetails element.
+
+Subclass contains the component's subclass(es) and may occur zero or more times within the ComponentDetails element. 
+
+Specification contains the component's specification(s) and has one optional attribute, authority, for identifying an authoritative source of component specifications.
+
+Specification may occur zero or more times within the ComponentDetails element. 
+
+Source contains the name of the source of the component and may occur once or not at all within the ComponentDetails element.
+
+Form contains the form of the component and may occur once or not at all within the ComponentDetails element. 
+
+ProcessingDetails contains a description of a processing step for the component and may occur zero or more times within the 
+ComponentDetails element. For additional information, see the 
+documentation for the ProcessingDetails element. 
+
+Geometry contains a description of the geometry of the component and may occur once or not at all within the ComponentDetails element.  For additional information, see the documentation for the Geometry element.
+
+Characterization contains the characterization of the component, including the formula, chemical composition, phase composition, and dimensional details. Characterization may occur once or not at all within the ComponentDetails element. For additional information, see the documentation for the Characterization element. 
+
+PropertyData contains the property data for the component and may occur zero or more times within the ComponentDetails element. For additional information, see the documentation for the PropertyData element.
+
+AssociationDetails contains a description of a relationship of the component to another component and may occur zero or more times within the ComponentDetails element. For additional information, see the documentation for the AssociationDetails element.
+
+Notes contains any additional information concerning the component and may occur once or not at all within the ComponentDetails element.
+
+ComponentDetails contains a description of a component within the component and is used to support encoding of information for complex materials systems such as composites. ComponentDetails may occur zero or more times within the ComponentDetails element. </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="Name"/>
+                <xsd:element ref="Class" minOccurs="0"/>
+                <xsd:element ref="Subclass" minOccurs="0" maxOccurs="unbounded"/>
+                <xsd:element ref="Specification" minOccurs="0" maxOccurs="unbounded"/>
+                <xsd:element ref="Source" minOccurs="0"/>
+                <xsd:element ref="Form" minOccurs="0"/>
+                <xsd:element ref="ProcessingDetails" minOccurs="0" maxOccurs="unbounded"/>
+                <xsd:element ref="Geometry" minOccurs="0"/>
+                <xsd:element ref="Characterization" minOccurs="0"/>
+                <xsd:element ref="PropertyData" minOccurs="0" maxOccurs="unbounded"/>
+                <xsd:element name="AssociationDetails" minOccurs="0" maxOccurs="unbounded">
+                    <xsd:annotation>
+                        <xsd:documentation>
+*************************        AssociationDetails          ************************* 
+This element declares the content model for AssociationDetails, which 
+contains a description of a relationship of the component to another 
+component in a complex material system such as a composite, weld, or 
+                                    multilayer      material.      AssociationDetails      is      composed      of      the      following      
+                                    elements.            
+Associate contains the name of a component's associate. For example, 
+a TiC coating has been placed on AISI 1018 steel coupons. The 
+Associate of the steel, then, is the "titanium carbide coating." Associate 
+must occur once and only once within the AssociationDetails element. 
+Relationship contains a description of the relationship between a 
+component and the associate. For example, the associate of the "steel" 
+component is the "titanium carbide coating." The relationship of the "steel" 
+to the "titanium carbide coating" is that the steel is the "substrate" for 
+the coating. Relationship must occur once and only once within the 
+                                    AssociationDetails      element.      
+Notes contains any additional information concerning the association and 
+may occur once or not at all within the AssociationDetails element. 
+</xsd:documentation>
+                    </xsd:annotation>
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="Associate" type="xsd:string">
+                                <xsd:annotation>
+                                    <xsd:documentation>
+  *************************              Associate                 *************************
+    This      element      declares      the      content      model      for      Associate,      which      contains  a string      representing      a      component's      associate.      
+</xsd:documentation>
+                                </xsd:annotation>
+                            </xsd:element>
+                            <xsd:element name="Relationship" type="xsd:string">
+                                <xsd:annotation>
+                                    <xsd:documentation>
+ *************************              Relationship              ************************* 
+ This      element      declares      the      content      model      for      Relationship,      which      
+contains      a      string      representing      the      relationship      between      a      component      
+and      the      associate.      
+            </xsd:documentation>
+                                </xsd:annotation>
+                            </xsd:element>
+                            <xsd:element ref="Notes" minOccurs="0"/>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+                <xsd:element ref="Notes" minOccurs="0"/>
+                <xsd:element ref="ComponentDetails" minOccurs="0" maxOccurs="unbounded"/>
+            </xsd:sequence>
+            <xsd:attribute name="id" type="xsd:ID" use="optional"/>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="Concentration">
+        <xsd:annotation>
+            <xsd:documentation>****   Concentration   ****
+This element declares the content model for Concentration and is composed of the following elements.
+
+Value contains the value of the concentration and has one  required attribute, format, for indicating the format of the  value ("float," "integer," "string," or "exponential") found  in Value. Value must occur once and only once within the  Concentration element.
+
+Units contains the units for the value of the concentration  and must occur once  and only once within the Concentration  element. For additional information, see the documentation  for the Units element.
+
+Qualifier contains any qualifier pertinent to the value of the concentration (e.g. "min," "max," etc.) and may occur once or not at all within the Concentration element.
+
+Notes contains any additional information concerning the  concentration and may occur once or not at all within the  Concentration element. 
+</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="Value"/>
+                <xsd:element ref="Units"/>
+                <xsd:element ref="Qualifier" minOccurs="0"/>
+                <xsd:element ref="Notes" minOccurs="0"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="Element">
+        <xsd:annotation>
+            <xsd:documentation>****   Element   ****
+
+This element declares the content model for Element and is composed of the following elements.
+
+Symbol contains the symbol for the chemical element, which is one among those enumerated by the ChemicalElementSymbol datatype. Symbol has one optional attribute, subscript, for indicating the subscript (formula units) of the chemical element. Symbol must occur once and only once within the Element element. For additional information, see the documentation for the ChemicalElementSymbol datatype.      
+
+Concentration contains the concentration of the element and may occur once or not at all within the Element element. For additional information, see the documentation for the Concentration element.
+
+Notes contains any additional information concerning the element and may occur once or not at all within the Element element.       </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="Symbol">
+                    <xsd:annotation>
+                        <xsd:documentation>****   Symbol   ****
+This element declares the content model for Symbol, which contains the symbol for the chemical element. The entry for Symbol is selected from among the strings enumerated by the ChemicalElementSymbol datatype. Symbol has one optional attribute, subscript, for indicating the subscript (formula units) of the chemical element.</xsd:documentation>
+                    </xsd:annotation>
+                    <xsd:complexType>
+                        <xsd:simpleContent>
+                            <xsd:extension base="ChemicalElementSymbol">
+                                <xsd:attribute name="subscript" type="xsd:string" use="optional"
+                                    default="1"/>
+                            </xsd:extension>
+                        </xsd:simpleContent>
+                    </xsd:complexType>
+                </xsd:element>
+                <xsd:element ref="Concentration" minOccurs="0"/>
+                <xsd:element ref="Notes" minOccurs="0"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="Form" type="xsd:string">
+        <xsd:annotation>
+            <xsd:documentation>****   Form   *****
+This element declares the content model for Form, which contains a string representing the form of the bulk material or component.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="Geometry">
+        <xsd:annotation>
+            <xsd:documentation>****   Geometry   ****
+This element declares the content model for Geometry, which contains a description of the geometry of the bulk material or component and is composed of the following elements. 
+
+Shape contains a description of the shape of the bulk material or component and must occur once and only once within the Geometry element.
+
+Dimensions contains the dimensions of the bulk material or component and may occur once or not at all within the Geometry element.
+
+Orientation contains the orientation of the bulk material or component and may occur once or not at all within the Geometry element.
+
+Notes contains any additional information concerning the geometry and may occur once or not at all within the Geometry element. </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="Shape" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>****   Shape   **** 
+This element declares the content model for Shape, which contains a string representing the shape of the bulk material or component.</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+                <xsd:element name="Dimensions" type="xsd:string" minOccurs="0">
+                    <xsd:annotation>
+                        <xsd:documentation>****   Dimensions   **** 
+This element declares the content model for Dimensions, which contains a string representing the dimensions of the bulk material or component.</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+                <xsd:element name="Orientation" type="xsd:string" minOccurs="0">
+                    <xsd:annotation>
+                        <xsd:documentation>****   Orientation   **** 
+This element declares the content model for Orientation, which 
+contains a string representing the orientation of the bulk material or component.</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+                <xsd:element ref="Notes" minOccurs="0"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="Name">
+        <xsd:annotation>
+            <xsd:documentation>*****    Name     **** 
+This element declares the content model for Name, which contains a string representing a name and has one optional attribute, authority, for identifying an authoritative source of names in the context in which the Name element is used.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+            <xsd:simpleContent>
+                <xsd:extension base="xsd:string">
+                    <xsd:attribute name="authority" type="xsd:string" use="optional"/>
+                </xsd:extension>
+            </xsd:simpleContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="Notes" type="xsd:string">
+        <xsd:annotation>
+            <xsd:documentation>****   Notes   **** 
+This element declares the content model for Notes, which contains a string representing descriptive notes.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="ParameterValue">
+        <xsd:annotation>
+            <xsd:documentation>****   ParameterValue   **** 
+This element declares the content model for ParameterValue, which contains the value of a parameter. ParameterValue has two required attributes.      
+
+The first attribute, parameter, references an id attribute specified in a ParameterDetails element so that the descriptive details of the parameter are tied to the value. 
+
+The second attribute, format, indicates the format of the value ("float," "integer," "string," or "exponential") found in ParameterValue.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+            <xsd:simpleContent>
+                <xsd:extension base="xsd:string">
+                    <xsd:attribute name="parameter" type="xsd:IDREF" use="required"/>
+                    <xsd:attribute name="format" use="required">
+                        <xsd:simpleType>
+                            <xsd:restriction base="xsd:string">
+                                <xsd:enumeration value="float"/>
+                                <xsd:enumeration value="integer"/>
+                                <xsd:enumeration value="string"/>
+                                <xsd:enumeration value="exponential"/>
+                            </xsd:restriction>
+                        </xsd:simpleType>
+                    </xsd:attribute>
+                </xsd:extension>
+            </xsd:simpleContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="ProcessingDetails">
+        <xsd:annotation>
+            <xsd:documentation>****   ProcessingDetails    ****
+This element declares the content model for ProcessingDetails, which contains a description of a processing step for the bulk material or component. ProcessingDetails is composed of the following elements:
+Name contains the name of the processing step and has one optional attribute, authority, for identifying an authoritative source of processing step names. 
+
+Name must occur once and only once within the ProcessingDetails element.
+
+ParameterValue contains the value of a parameter under which the processing step occurred and may occur zero or more times within the ProcessingDetails element. For additional information, see the documentation for the ParameterValue element. 
+
+Result contains a description of the outcome or result of the 
+processing step and may occur once or not at all within the  ProcessingDetails element.
+
+Notes contains any additional information concerning the processing step and may occur once or not at all within the ProcessingDetails element.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="Name"/>
+                <xsd:element ref="ParameterValue" minOccurs="0" maxOccurs="unbounded"/>
+                <xsd:element name="Result" type="xsd:string" minOccurs="0">
+                    <xsd:annotation>
+                        <xsd:documentation>****   Result   **** 
+This element declares the content model for Result, which contains a string representing the result of a processing step.</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+                <xsd:element ref="Notes" minOccurs="0"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="PropertyData">
+        <xsd:annotation>
+            <xsd:documentation>****   PropertyData   ***** 
+This element declares the content model for PropertyData, which contains property data. PropertyData has four attributes.
+
+The first attribute, property, is required and references an id attribute specified in a PropertyDetails element so that the descriptive details for the property are tied to the data found in the Data element.
+
+The second attribute, technique, is optional and references an id attribute Specified in a MeasurementTechniqueDetails element so that the 
+
+Descriptive details for the measurement technique are tied to the data found in the Data element.      
+
+The third attribute, source, is optional and references an id attribute specified in a DataSourceDetails element so that the descriptive details for the data source are tied to the data found in the Data element.
+
+The fourth attribute, specimen, is optional and references an id attribute specified in a SpecimenDetails element so that the descriptive details for the specimen are tied to the data found in the Data element. 
+
+PropertyData is composed of the following elements.
+
+Data contains the property data and has one required attribute, format, for indicating the format of the data ("float," "integer," "string," or "exponential") found in Data. Data must occur once and only once within the PropertyData element.
+
+Qualifier contains any qualifier(s) pertinent to the data in Data (e.g. "min," "max," etc.) and may occur once or not at all within the PropertyData element.
+
+Uncertainty contains the measurement uncertainty(ies) of the data in Data and may occur once or not at all within the PropertyData element. For additional information, see the documentation for the Uncertainty element.
+
+ParameterValue contains the value(s) of a parameter under which the data were determined and may occur zero or more times within the  PropertyData element. For additional information, see the documentation for the ParameterValue element.
+
+Notes contains any additional information concerning the property data and may occur once or not at all within the PropertyData element.
+
+Note -  Multiple entries in the Data, Qualifier, Uncertainty Value, and ParameterValue elements must be comma delimited    and synchronized across elements, i.e., the number of entries 
+in each of these four elements must be equal. </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="Data">
+                    <xsd:annotation>
+                        <xsd:documentation>****   Data   **** 
+This element declares the content model for Data, which contains property data and has one required attribute, format, for indicating the format of the data ("float," "integer," "string," or "exponential") found in Data.</xsd:documentation>
+                    </xsd:annotation>
+                    <xsd:complexType>
+                        <xsd:simpleContent>
+                            <xsd:extension base="xsd:string">
+                                <xsd:attribute name="format" use="required">
+                                    <xsd:simpleType>
+                                        <xsd:restriction base="xsd:string">
+                                            <xsd:enumeration value="float"/>
+                                            <xsd:enumeration value="integer"/>
+                                            <xsd:enumeration value="string"/>
+                                            <xsd:enumeration value="exponential"/>
+                                        </xsd:restriction>
+                                    </xsd:simpleType>
+                                </xsd:attribute>
+                            </xsd:extension>
+                        </xsd:simpleContent>
+                    </xsd:complexType>
+                </xsd:element>
+                <xsd:element ref="Qualifier" minOccurs="0"/>
+                <xsd:element name="Uncertainty" minOccurs="0">
+                    <xsd:annotation>
+                        <xsd:documentation>****   Uncertainty   **** 
+This element declares the content model for Uncertainty, which contains a description of the measurement uncertainty of the data. Uncertainty is composed of the following      elements.
+
+Value contains the value of the uncertainty and has one required attribute, format, for indicating the format of the value ("float," "integer," "string," or "exponential") found in Value. Value must occur once and only once within the Uncertainty element.
+
+Units contains the units for the value of the uncertainty and must occur once and only once within the Uncertainty element. For additional information, see the documentation for the Units element. 
+
+Notes contains any additional information concerning the uncertainty, such as a description of the evaluation of the uncertainty, and may occur once or not at all within the Uncertainty element.</xsd:documentation>
+                    </xsd:annotation>
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element ref="Value"/>
+                            <xsd:choice>
+                                <xsd:element ref="Units"/>
+                                <xsd:element ref="Unitless"/>
+                            </xsd:choice>
+                            <xsd:element ref="Notes" minOccurs="0"/>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+                <xsd:element ref="ParameterValue" minOccurs="0" maxOccurs="unbounded"/>
+                <xsd:element ref="Notes" minOccurs="0"/>
+            </xsd:sequence>
+            <xsd:attribute name="property" type="xsd:IDREF" use="required"/>
+            <xsd:attribute name="technique" type="xsd:IDREF" use="optional"/>
+            <xsd:attribute name="source" type="xsd:IDREF" use="optional"/>
+            <xsd:attribute name="specimen" type="xsd:IDREF" use="optional"/>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="Qualifier" type="xsd:string">
+        <xsd:annotation>
+            <xsd:documentation>****   Qualifier   ****
+This element declares the content model for Qualifier, which contains a string representing a qualifier.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="Source" type="xsd:string">
+        <xsd:annotation>
+            <xsd:documentation>****   Source   **** 
+This element declares the content model for Source, which contains a string representing the source of the bulk material or component.
+</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="Specification">
+        <xsd:annotation>
+            <xsd:documentation>****   Specification   **** 
+This element declares the content model for Specification, which contains a string representing the specification for the bulk material or component and has one optional attribute, authority, for identifying an authoritative source of specifications.      
+</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+            <xsd:simpleContent>
+                <xsd:extension base="xsd:string">
+                    <xsd:attribute name="authority" type="xsd:string" use="optional"/>
+                </xsd:extension>
+            </xsd:simpleContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="Subclass" type="xsd:string">
+        <xsd:annotation>
+            <xsd:documentation>****   Subclass   **** 
+This element declares the content model for Subclass, which contains a string representing the subclass of the bulk material or component. 
+</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="Unit">
+        <xsd:annotation>
+            <xsd:documentation>*****   Unit   **** 
+This element declares the content model for Unit, which contains a unit and has two optional attributes. 
+
+The first attribute, power, is used to indicate the exponent for Unit. 
+
+The second attribute, description, is used to describe Unit. 
+Note -   Multiple Unit elements are multiplied together to form units. 
+
+Division is specified by setting the power attribute of Unit 
+equal to "-1." For additional information, see the  documentation for the Units element.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+            <xsd:simpleContent>
+                <xsd:extension base="xsd:string">
+                    <xsd:attribute name="power" type="xsd:decimal"/>
+                    <xsd:attribute name="description" type="xsd:string"/>
+                </xsd:extension>
+            </xsd:simpleContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="Unitless">
+        <xsd:annotation>
+            <xsd:documentation>****   Unitless   **** 
+This element declares the content model for Unitless, which is an empty element used whenever a property, parameter, or uncertainty value has no units.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType/>
+    </xsd:element>
+    <xsd:element name="Units">
+        <xsd:annotation>
+            <xsd:documentation>****   Units   **** 
+This element declares the content model for Units, which contains units and has four optional attributes.
+
+The first attribute, system, is used to indicate the units system, such as "SI." 
+
+The second attribute, factor, is used to indicate a constant multiplier in floating point format.
+
+The third attribute, name, is used to indicate the name of the units. 
+
+The fourth attribute, description, is used to describe the units.
+
+Units is composed of the following elements. 
+Unit contains a unit and must occur one or more times within the Units element. For additional information, see the documentation for the Unit element.
+
+Note -   Multiple Unit elements are multiplied together to form the units. Division is specified by using setting the power attribute of Unit equal to "-1."</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="Unit" maxOccurs="unbounded"/>
+            </xsd:sequence>
+            <xsd:attribute name="system" type="xsd:string"/>
+            <xsd:attribute name="factor" type="xsd:float"/>
+            <xsd:attribute name="name" type="xsd:string"/>
+            <xsd:attribute name="description" type="xsd:string"/>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="Value">
+        <xsd:annotation>
+            <xsd:documentation>****   Value   ****
+This element declares the content model for value, which  contains a string representing a value. Value has one required attribute, format, for indicating the format of the value ("float," "integer," "string," or "exponential") found in  Value.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+            <xsd:simpleContent>
+                <xsd:extension base="xsd:string">
+                    <xsd:attribute name="format" use="required">
+                        <xsd:simpleType>
+                            <xsd:restriction base="xsd:string">
+                                <xsd:enumeration value="float"/>
+                                <xsd:enumeration value="integer"/>
+                                <xsd:enumeration value="string"/>
+                                <xsd:enumeration value="exponential"/>
+                            </xsd:restriction>
+                        </xsd:simpleType>
+                    </xsd:attribute>
+                </xsd:extension>
+            </xsd:simpleContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:simpleType name="ChemicalElementSymbol">
+        <xsd:annotation>
+            <xsd:documentation>****   ChemicalElementSymbol   ****
+This datatype enumerates the valid strings representing chemical elements, which may be used in the Symbol element.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="H"/>
+            <xsd:enumeration value="He"/>
+            <xsd:enumeration value="Li"/>
+            <xsd:enumeration value="Be"/>
+            <xsd:enumeration value="B"/>
+            <xsd:enumeration value="C"/>
+            <xsd:enumeration value="N"/>
+            <xsd:enumeration value="O"/>
+            <xsd:enumeration value="F"/>
+            <xsd:enumeration value="Ne"/>
+            <xsd:enumeration value="Na"/>
+            <xsd:enumeration value="Mg"/>
+            <xsd:enumeration value="Al"/>
+            <xsd:enumeration value="Si"/>
+            <xsd:enumeration value="P"/>
+            <xsd:enumeration value="S"/>
+            <xsd:enumeration value="Cl"/>
+            <xsd:enumeration value="Ar"/>
+            <xsd:enumeration value="K"/>
+            <xsd:enumeration value="Ca"/>
+            <xsd:enumeration value="Sc"/>
+            <xsd:enumeration value="Ti"/>
+            <xsd:enumeration value="V"/>
+            <xsd:enumeration value="Cr"/>
+            <xsd:enumeration value="Mn"/>
+            <xsd:enumeration value="Fe"/>
+            <xsd:enumeration value="Co"/>
+            <xsd:enumeration value="Ni"/>
+            <xsd:enumeration value="Cu"/>
+            <xsd:enumeration value="Zn"/>
+            <xsd:enumeration value="Ga"/>
+            <xsd:enumeration value="Ge"/>
+            <xsd:enumeration value="As"/>
+            <xsd:enumeration value="Se"/>
+            <xsd:enumeration value="Br"/>
+            <xsd:enumeration value="Kr"/>
+            <xsd:enumeration value="Rb"/>
+            <xsd:enumeration value="Sr"/>
+            <xsd:enumeration value="Y"/>
+            <xsd:enumeration value="Zr"/>
+            <xsd:enumeration value="Nb"/>
+            <xsd:enumeration value="Mo"/>
+            <xsd:enumeration value="Tc"/>
+            <xsd:enumeration value="Ru"/>
+            <xsd:enumeration value="Rh"/>
+            <xsd:enumeration value="Pd"/>
+            <xsd:enumeration value="Ag"/>
+            <xsd:enumeration value="Cd"/>
+            <xsd:enumeration value="In"/>
+            <xsd:enumeration value="Sn"/>
+            <xsd:enumeration value="Sb"/>
+            <xsd:enumeration value="Te"/>
+            <xsd:enumeration value="I"/>
+            <xsd:enumeration value="Xe"/>
+            <xsd:enumeration value="Cs"/>
+            <xsd:enumeration value="Ba"/>
+            <xsd:enumeration value="La"/>
+            <xsd:enumeration value="Ce"/>
+            <xsd:enumeration value="Pr"/>
+            <xsd:enumeration value="Nd"/>
+            <xsd:enumeration value="Pm"/>
+            <xsd:enumeration value="Sm"/>
+            <xsd:enumeration value="Eu"/>
+            <xsd:enumeration value="Gd"/>
+            <xsd:enumeration value="Tb"/>
+            <xsd:enumeration value="Dy"/>
+            <xsd:enumeration value="Ho"/>
+            <xsd:enumeration value="Er"/>
+            <xsd:enumeration value="Tm"/>
+            <xsd:enumeration value="Yb"/>
+            <xsd:enumeration value="Lu"/>
+            <xsd:enumeration value="Hf"/>
+            <xsd:enumeration value="Ta"/>
+            <xsd:enumeration value="W"/>
+            <xsd:enumeration value="Re"/>
+            <xsd:enumeration value="Os"/>
+            <xsd:enumeration value="Ir"/>
+            <xsd:enumeration value="Pt"/>
+            <xsd:enumeration value="Au"/>
+            <xsd:enumeration value="Hg"/>
+            <xsd:enumeration value="Tl"/>
+            <xsd:enumeration value="Pb"/>
+            <xsd:enumeration value="Bi"/>
+            <xsd:enumeration value="Po"/>
+            <xsd:enumeration value="At"/>
+            <xsd:enumeration value="Rn"/>
+            <xsd:enumeration value="Fr"/>
+            <xsd:enumeration value="Ra"/>
+            <xsd:enumeration value="Ac"/>
+            <xsd:enumeration value="Th"/>
+            <xsd:enumeration value="Pa"/>
+            <xsd:enumeration value="U"/>
+            <xsd:enumeration value="Np"/>
+            <xsd:enumeration value="Pu"/>
+            <xsd:enumeration value="Am"/>
+            <xsd:enumeration value="Cm"/>
+            <xsd:enumeration value="Bk"/>
+            <xsd:enumeration value="Cf"/>
+            <xsd:enumeration value="Es"/>
+            <xsd:enumeration value="Fm"/>
+            <xsd:enumeration value="Md"/>
+            <xsd:enumeration value="No"/>
+            <xsd:enumeration value="Lr"/>
+            <xsd:enumeration value="Rf"/>
+            <xsd:enumeration value="Db"/>
+            <xsd:enumeration value="Sg"/>
+            <xsd:enumeration value="Bh"/>
+            <xsd:enumeration value="Hs"/>
+            <xsd:enumeration value="Mt"/>
+            <xsd:enumeration value="Uun"/>
+            <xsd:enumeration value="Uuu"/>
+            <xsd:enumeration value="Uub"/>
+            <xsd:enumeration value="Uuq"/>
+            <xsd:enumeration value="Uuh"/>
+            <xsd:enumeration value="Uuo"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+</xsd:schema>

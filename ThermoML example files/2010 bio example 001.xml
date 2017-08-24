@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataReport xmlns="http://www.iupac.org/namespaces/ThermoML"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.iupac.org/namespaces/ThermoML file:/N:/Pfeif/working/ThermoML/thermoML/ThermoML-draft%20v.pfeif.6.xsd">
+    <!-- (1) citation -->  
+    <citation id="1">
+		<TRCRefID>
+			<yearPub>2001</yearPub>
+			<author1>hin</author1>
+			<author2>sch</author2>
+			<authorN>0</authorN>
+		</TRCRefID>
+        
+        <author>Hinz, H.-J.[Hans-Jurgen]</author>
+        <author>Schwarz, F. P.[Frederick P.]</author>
+		<documentType>journal</documentType>
+        <keyword>differential scanning calorimetry</keyword>
+        <keyword>lipids</keyword>
+        <keyword>phase transition</keyword>
+        <keyword>proteins</keyword>
+        <keyword>transition  enthalpy</keyword>
+        <keyword>transition temperature</keyword>
+        <keyword>unfolding transitions</keyword>
+		<sourceType>Original</sourceType>
+        <title>Measurement and analysis of results obtained on  biological substances with d.s.c.</title>
+        <yearPublished>2001</yearPublished>
+        <journal>
+            <journalName>J. Chem. Thermodyn.</journalName>
+            <pages>1511-1525</pages>
+            <volume>33</volume>
+        </journal>
+	</citation>
+    <chemical id="21">		<commonName>lysozyme</commonName>        <molecularFormula>{LZ}</molecularFormula><biomaterial><ECNumber>3.2.1.17</ECNumber></biomaterial></chemical>
+    <chemical id="22">        <commonName>glycine</commonName>        <molecularFormula>C2H5NO2</molecularFormula></chemical>
+    <chemical id="23">        <commonName>hydrogen chloride</commonName>        <molecularFormula>ClH</molecularFormula></chemical>
+    <chemical id="24">        <commonName>water</commonName>        <molecularFormula>H2O</molecularFormula></chemical>
+    
+    <phase id="31"><type>liquid</type><bioState>denatured</bioState></phase>
+    <phase id="32"><type>liquid</type><bioState>native</bioState></phase>
+    
+    <phaseField id="33"><phase ref="31"/><phase ref="32"/></phaseField>
+    
+    <system id="41"><sample><chemical ref="21"/><source>Commercial source</source>
+        <componentCharacterization><chemical ref="21"/><value>95</value>
+        <units>mass percent</units><analyticalMethod>Stated by supplier</analyticalMethod>
+    </componentCharacterization></sample></system>
+	
+<system id="42">
+    <reaction>
+       <participant><chemical ref="21"/></participant>
+        <solvent><chemical ref="24"/></solvent>
+        <auxiliarySubstance><chemical ref="22"/><function>buffer</function></auxiliarySubstance>
+        <auxiliarySubstance><chemical ref="23"/><function>buffer</function></auxiliarySubstance>
+        <reactionType>other reaction</reactionType>
+    </reaction>
+</system>
+    
+    <dataset>
+        <citation ref="1"/>
+        <system ref="42"/>
+        <fixedConditions>
+            <condition conditionDescription="equilibrium condition"><pressure>                <units>Pa</units>            </pressure>                <var><v>101325</v></var>
+            </condition>
+            <condition conditionDescription="equilibrium condition"><amountDensity>                <units>mol/m^3</units>                <component ref="22"/> 
+            </amountDensity>                <var><v>100</v></var>
+            </condition>
+            <condition conditionDescription="equilibrium condition"><amountDensity>                <units>mol/m^3</units>                <component ref="23"/> 
+            </amountDensity>                <var><v>100</v></var>
+            </condition>
+        </fixedConditions>
+        <variableConditions>
+            <condition conditionDescription="equilibrium condition"><pH><units/></pH></condition>
+            <condition conditionDescription="equilibrium condition">
+                <composition>                    <component ref="2"/>
+                    <units>Ratio of mass of solute to volume of solution, kg/m3</units><nominalOrBulkComposition>true</nominalOrBulkComposition></composition></condition>
+        </variableConditions>
+        <property dataRepresentation="Direct representation, x = x1">
+            <phaseTransitionConditions><temperature><zeroGibbsEnergyTemperature>                <units>K</units>
+            </zeroGibbsEnergyTemperature></temperature><method>DSC/DTA</method></phaseTransitionConditions>
+        </property>      
+        <property dataRepresentation="Direct representation, x = x1">
+            <thermodynamic><entropy><molarEntropyOfTransitionOrFusion>    <units>J/mol/K</units>    <chemical/>
+            </molarEntropyOfTransitionOrFusion></entropy></thermodynamic>
+        </property>
+        <property dataRepresentation="Direct representation, x = x1">
+            <thermodynamic><enthalpy><vantHoffEnthalpyOfTransition>                <units>J/mol</units><method>DSC</method>
+            </vantHoffEnthalpyOfTransition></enthalpy></thermodynamic>
+        </property>
+        <point><phaseField ref="33"/>
+            <var><v>2.5</v></var>
+            <var><v>4.81</v></var>
+            <prop><v>331.4</v></prop>
+            <prop><v>393</v></prop>
+            <prop><v>392000</v></prop>
+        </point>
+        <point><phaseField ref="33"/>
+            <var><v>2.5</v></var>
+            <var><v>4.81</v></var>
+            <prop><v>331.5</v></prop>
+            <prop><v>378</v></prop>
+            <prop><v>391000</v></prop>
+        </point>
+        <point><phaseField ref="33"/>
+            <var><v>2.5</v></var>
+            <var><v>4.81</v></var>
+            <prop><v>331.7</v></prop>
+            <prop><v>397</v></prop>
+            <prop><v>406000</v></prop>
+        </point>
+        <point><phaseField ref="33"/>
+            <var><v>2.5</v></var>
+            <var><v>0.97</v></var>
+            <prop><v>331.6</v></prop>
+            <prop><v>403</v></prop>
+            <prop><v>403000</v></prop>
+        </point>
+        <point><phaseField ref="33"/>
+            <var><v>2.5</v></var>
+            <var><v>0.97</v></var>
+            <prop><v>331.6</v></prop>
+            <prop><v>403</v></prop>
+            <prop><v>403000</v></prop>
+        </point>
+        <point><phaseField ref="33"/>
+            <var><v>2.5</v></var>
+            <var><v>0.98</v></var>
+            <prop><v>331.5</v></prop>
+            <prop><v>406</v></prop>
+            <prop><v>406000</v></prop>
+        </point>
+        <point><phaseField ref="33"/>
+            <var><v>2.5</v></var>
+            <var><v>0.95</v></var>
+            <prop><v>331.5</v></prop>
+            <prop><v>401</v></prop>
+            <prop><v>402000</v></prop>
+        </point>
+        <point><phaseField ref="33"/>
+            <var><v>2.5</v></var>
+            <var><v>2.28</v></var>
+            <prop><v>331.5</v></prop>
+            <prop><v>397</v></prop>
+            <prop><v>401000</v></prop>
+        </point>       
+        <point><phaseField ref="33"/>
+            <var><v>2.3</v></var>
+            <var><v>1.00</v></var>
+            <prop><v>331.3</v></prop>
+            <prop><v>401</v></prop>
+            <prop><v>382000</v></prop>
+        </point>
+        <point><phaseField ref="33"/>
+            <var><v>2.3</v></var>
+            <var><v>2.32</v></var>
+            <prop><v>331.6</v></prop>
+            <prop><v>427</v></prop>
+            <prop><v>373000</v></prop>
+        </point>
+        <point><phaseField ref="33"/>
+            <var><v>2.3</v></var>
+            <var><v>2.36</v></var>
+            <prop><v>331.9</v></prop>
+            <prop><v>434</v></prop>
+            <prop><v>369000</v></prop>
+        </point>
+        <point><phaseField ref="33"/>
+            <var><v>2.3</v></var>
+            <var><v>2.36</v></var>
+            <prop><v>331.6</v></prop>
+            <prop><v>439</v></prop>
+            <prop><v>368000</v></prop>
+        </point>
+        <point><phaseField ref="33"/>
+            <var><v>2.3</v></var>
+            <var><v>4.72</v></var>
+            <prop><v>330.3</v></prop>
+            <prop><v>436</v></prop>
+            <prop><v>363000</v></prop>
+        </point>
+        <point><phaseField ref="33"/>
+            <var><v>2.3</v></var>
+            <var><v>4.77</v></var>
+            <prop><v>330.5</v></prop>
+            <prop><v>411</v></prop>
+            <prop><v>3730000</v></prop>
+        </point>
+            <point><phaseField ref="33"/>
+                <var><v>2.3</v></var>
+                <var><v>4.77</v></var>
+                <prop><v>331.6</v></prop>
+                <prop><v>401</v></prop>
+                <prop><v>377000</v></prop>
+            </point>
+            <point><phaseField ref="33"/>
+                <var><v>2.3</v></var>
+                <var><v>9.70</v></var>
+                <prop><v>331.9</v></prop>
+                <prop><v>434</v></prop>
+                <prop><v>366000</v></prop>
+            </point>
+        <point><phaseField ref="33"/>
+            <var><v>2.3</v></var>
+            <var><v>9.70</v></var>
+            <prop><v>331.9</v></prop>
+            <prop><v>423</v></prop>
+            <prop><v>373000</v></prop>
+        </point>
+        <point><phaseField ref="33"/>
+            <var><v>2.5</v></var>
+            <var><v>1.00</v></var>
+            <prop><v>331.1</v></prop>
+            <prop><v>396</v></prop>
+            <prop><v>396000</v></prop>
+        </point>
+        <point><phaseField ref="33"/>
+            <var><v>2.5</v></var>
+            <var><v>1.00</v></var>
+            <prop><v>330.8</v></prop>
+            <prop><v>418</v></prop>
+            <prop><v>418000</v></prop>
+        </point>
+        <point><phaseField ref="33"/>
+            <var><v>2.5</v></var>
+            <var><v>1.00</v></var>
+            <prop><v>331.1</v></prop>
+            <prop><v>401</v></prop>
+            <prop><v>403000</v></prop>
+        </point>
+        <point><phaseField ref="33"/>
+            <var><v>2.5</v></var>
+            <var><v>2.41</v></var>
+            <prop><v>330.6</v></prop>
+            <prop><v>386</v></prop>
+            <prop><v>388000</v></prop>
+        </point>
+        <point><phaseField ref="33"/>
+            <var><v>2.5</v></var>
+            <var><v>2.41</v></var>
+            <prop><v>330.8</v></prop>
+            <prop><v>419</v></prop>
+            <prop><v>418000</v></prop>
+        </point>        
+        <point><phaseField ref="33"/>
+            <var><v>2.5</v></var>
+            <var><v>2.41</v></var>
+            <prop><v>331.2</v></prop>
+            <prop><v>396</v></prop>
+            <prop><v>398000</v></prop>
+        </point>
+        <point><phaseField ref="33"/>
+            <var><v>2.5</v></var>
+            <var><v>4.81</v></var>
+            <prop><v>330.9</v></prop>
+            <prop><v>386</v></prop>
+            <prop><v>388000</v></prop>
+        </point>
+        <point><phaseField ref="33"/>
+            <var><v>2.5</v></var>
+            <var><v>4.81</v></var>
+            <prop><v>330.8</v></prop>
+            <prop><v>418</v></prop>
+            <prop><v>418000</v></prop>
+        </point>
+        <point><phaseField ref="33"/>
+            <var><v>2.5</v></var>
+            <var><v>10.00</v></var>
+            <prop><v>331.5</v></prop>
+            <prop><v>396</v></prop>
+            <prop><v>398000</v></prop>
+        </point>
+        <point><phaseField ref="33"/>
+            <var><v>2.5</v></var>
+            <var><v>10.00</v></var>
+            <prop><v>330.9</v></prop>
+            <prop><v>415</v></prop>
+            <prop><v>416000</v></prop>
+        </point>
+        <point><phaseField ref="33"/>
+            <var><v>2.3</v></var>
+            <var><v>2.00</v></var>
+            <prop><v>330.4</v></prop>
+            <prop><v>402</v></prop>
+            <prop><v>402000</v></prop>
+        </point>
+        <point><phaseField ref="33"/>
+            <var><v>2.3</v></var>
+            <var><v>3.80</v></var>
+            <prop><v>330.6</v></prop>
+            <prop><v>401</v></prop>
+            <prop><v>401000</v></prop>
+        </point>
+        <point><phaseField ref="33"/>
+            <var><v>2.3</v></var>
+            <var><v>2.40</v></var>
+            <prop><v>329.4</v></prop>
+            <prop><v>381</v></prop>
+            <prop><v>395</v></prop>
+        </point>
+        <point><phaseField ref="33"/>
+            <var><v>2.4</v></var>
+            <var><v>3.27</v></var>
+            <prop><v>331.8</v></prop>
+            <prop><v>419</v></prop>
+            <prop><v>423000</v></prop>
+        </point>
+        <point><phaseField ref="33"/>
+            <var><v>2.4</v></var>
+            <var><v>2.79</v></var>
+            <prop><v>330.5</v></prop>
+            <prop><v>382</v></prop>
+            <prop><v>408000</v></prop>
+        </point>
+        <point><phaseField ref="33"/>
+            <var><v>2.5</v></var>
+            <var><v>2.48</v></var>
+            <prop><v>331.3</v></prop>
+            <prop><v>377</v></prop>
+            <prop><v>404000</v></prop>
+        </point>
+
+    </dataset>
+</dataReport>

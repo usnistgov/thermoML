@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<ThermoMLEquation xmlns:xsi=“http://www.w3.org/2001/XMLSchema-instance" 
+xsi:noNamespaceSchemaLocation=“http://trc.nist.gov/ThermoMLEquation.xsd"> 
+  <Version>  
+    <nVersionMajor>1</nVersionMajor>  
+    <nVersionMinor>0</nVersionMinor>  
+  </Version>  
+  <sEqName>ThermoML.Helmholtz3General.EOS</sEqName>  
+  <sEqDescription>The equation represents the non-ideal part of the Helmholtz energy as 
+a function of temperature and density.</sEqDescription> 
+  <EqReference>  
+    <eType>journal</eType>  
+    <sAuthor>Lemmon,  E.[Eric]</sAuthor>  
+    <sAuthor>Jacobsen,  R.[Richard]</sAuthor>  
+    <sPubName>J. Phys. Chem. Ref. Data</sPubName> 
+    <yrPubYr>2000</yrPubYr>  
+    <sTitle>An International Standard Formulation for the Thermodynamic Properties of 
+1,1,1-Trifluoroethane (HFC-143a) for Temperatures from 161 to 450 K and Pressures to 
+50 MPa</sTitle> 
+    <sVol>29</sVol>  
+    <sPage>521-552</sPage>  
+  </EqReference>  
+  <EqVariable>  
+    <sEqSymbol>Anid</sEqSymbol>  
+    <sEqVarComment>Helmholtz energy expressed as the difference between the real 
+fluid and the ideal-gas at the same tempareture and density</sEqVarComment> 
+  </EqVariable>  
+  <EqVariable>  
+    <sEqSymbol>T</sEqSymbol>  
+    <sEqVarComment>Temperature</sEqVarComment>  
+  </EqVariable>  
+  <EqVariable>  
+    <sEqSymbol>Density</sEqSymbol>  
+    <sEqVarComment>Density</sEqvarComment>  
+  </EqVariable>  
+  <EqParameter>  
+    <sEqParSymbol>TC</sEqParSymbol>  
+    <sEqParComment>Critical  temparature</sEqParComment>  
+  </EqParameter>  
+  <EqParameter>  
+    <sEqParSymbol>DC</sEqParSymbol>  
+    <sEqParComment>Critical  density</sEqParComment>  
+  </EqParameter>  
+  <EqParameter>  
+    <sEqParSymbol>n</sEqParSymbol>  
+  </EqParameter>  
+  <EqConstant>  
+    <sEqConstantSymbol>R</sEqConstantSymbol>  
+    <sEqConstantComment>Gas constant expressed in 
+J/(K*mol)</sEqConstantComment> 
+  </EqConstant>  
+  <EqConstant>  
+    <sEqConstantSymbol>nTerms</sEqConstantSymbol>  
+  </EqConstant>  
+  <EqConstant>  
+    <sEqConstantSymbol>d</sEqConstantSymbol>  
+  </EqConstant>  
+  <EqConstant>  
+    <sEqConstantSymbol>t</sEqConstantSymbol>
+  </EqConstant>  
+  <EqConstant>  
+    <sEqConstantSymbol>e</sEqConstantSymbol>  
+    <sEqConstantComment>This constant does not appear in the original formulation. It 
+is added here for uniform pepresentation of all equation terms. Its value is 0 or -1, 
+depending on the necessity of the exponential density factor in the 
+term</sEqConstantComment> 
+  </EqConstant>  
+  <EqConstant>  
+    <sEqConstantSymbol>p</sEqConstantSymbol>  
+  </EqConstant>  
+  <EqMathContent>  
+    <math  xmlns=“http://www.w3.org/1998/Math/MathML">  
+      <declare  type="vector">  
+        <ci>d</ci>  
+      </declare>  
+      <declare  type="vector">  
+    <ci>t</ci> 
+      </declare>  
+      <declare  type="vector">  
+    <ci>e</ci> 
+      </declare>  
+      <declare  type="vector">  
+        <ci>p</ci>  
+      </declare>  
+      <apply>  
+    <eq/> 
+    <ci>Tau</ci> 
+    <apply> 
+     <divide/> 
+          <ci>TC</ci>  
+     <ci>T</ci> 
+    </apply> 
+   </apply> 
+      <apply>  
+    <eq/> 
+        <ci>Delta</ci>  
+    <apply> 
+     <divide/> 
+          <ci>Density</ci>  
+          <ci>DC</ci>  
+    </apply> 
+   </apply> 
+        <apply>  
+    <eq/> 
+    <apply> 
+     <times/> 
+          <cn>1000</cn>  
+     <apply> 
+      <divide/> 
+      <ci>Anid</ci> 
+      <apply> 
+       <times/> 
+       <cn>R</cn> 
+       <ci>T</ci> 
+      </apply> 
+     </apply> 
+    </apply> 
+    <apply> 
+     <sum/> 
+          <bvar><ci>i</ci></bvar>  
+          <lowlimit><cn>1</cn></lowlimit>  
+          <uplimit><ci>nTerms</ci></uplimit>  
+     <apply> 
+      <times/> 
+      <apply> 
+       <selector/> 
+       <ci type="vector">n</ci> 
+       <ci>i</ci> 
+      </apply> 
+      <apply> 
+       <times/> 
+       <apply> 
+        <power/> 
+        <ci>Delta</ci> 
+        <apply> 
+         <selector/> 
+         <ci type="vector">d</ci> 
+         <ci>i</ci> 
+        </apply> 
+       </apply> 
+       <apply> 
+        <times/> 
+        <apply> 
+         <power/> 
+         <ci>Tau</ci> 
+pply> 
+          <selector/> 
+          <ci type="vector">t</ci> 
+          <ci>i</ci> 
+         </apply> 
+        </apply> 
+        <apply> 
+         <exp/> 
+         <apply> 
+          <times/> 
+          <apply> 
+           <selector/> 
+           <ci type="vector">e</ci> 
+           <ci>i</ci> 
+          </apply> 
+          <apply> 
+           <power/> 
+           <ci>Delta</ci> 
+           <apply> 
+            <selector/> 
+            <ci type="vector">p</ci> 
+            <ci>i</ci> 
+           </apply> 
+          </apply> 
+         </apply> 
+        </apply> 
+       </apply> 
+      </apply> 
+     </apply> 
+    </apply> 
+   </apply> 
+    </math>  
+  </EqMathContent>  
+</ThermoMLEquation> 

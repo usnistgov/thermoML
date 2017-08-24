@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by Robert D. Chirico (U. S. Department of Commerce) -->
+<!--Created by Guided Data Capture (GDC) Software (http://www.trc.nist.gov)-->
+<DataReport xmlns="http://www.iupac.org/namespaces/ThermoML" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.iupac.org/namespaces/ThermoML ThermoML.xsd">
+	<Version>
+		<nVersionMajor>2</nVersionMajor>
+		<nVersionMinor>0</nVersionMinor>
+	</Version>
+	<Citation>
+		<TRCRefID>
+			<yrYrPub>2007</yrYrPub>
+			<sAuthor1>tod</sAuthor1>
+			<sAuthor2>sch</sAuthor2>
+			<nAuthorn>0</nAuthorn>
+		</TRCRefID>
+		<eType>journal</eType>
+		<eSourceType>Original</eSourceType>
+		<sAuthor>Todorova, N. A.[Niya A.]</sAuthor>
+		<sAuthor>Schwartz, F. P.[Fred P.]</sAuthor>
+		<sPubName>J. Chem. Thermodyn.</sPubName>
+		<yrPubYr>2007</yrPubYr>
+		<sTitle>The role of water in the thermodynamics of drug binding to cyclodextrin</sTitle>
+		<sVol>39</sVol>
+		<sPage>1038-1048</sPage>
+	</Citation>
+	<Compound>
+		<RegNum>
+			<nOrgNum>1</nOrgNum>
+		</RegNum>
+		<sCommonName>.beta.-cyclodextrin</sCommonName>
+		<sFormulaMolec>C42H70O35</sFormulaMolec>
+		<Sample>
+			<nSampleNm>1</nSampleNm>
+			<eSource>Commercial source</eSource>
+			<purity>
+				<nStep>1</nStep>
+				<nPurityMass>98</nPurityMass>
+				<nPurityMassDigits>2</nPurityMassDigits>
+				<eAnalMeth>Stated by supplier</eAnalMeth>
+			</purity>
+			<purity>
+				<nStep>2</nStep>
+				<ePurifMethod>None used</ePurifMethod>
+			</purity>
+		</Sample>
+	</Compound>
+	<Compound>
+		<RegNum>
+			<nOrgNum>2</nOrgNum>
+		</RegNum>
+		<sCommonName>2-butanone, 4-(6-methoxy-2-naphthalenyl)-</sCommonName>
+		<sFormulaMolec>C15H16O2</sFormulaMolec>
+		<Sample>
+			<nSampleNm>1</nSampleNm>
+			<eSource>Commercial source</eSource>
+			<purity>
+				<nStep>1</nStep>
+				<ePurifMethod>None used</ePurifMethod>
+			</purity>
+		</Sample>
+	</Compound>
+	<Compound>
+		<RegNum>
+			<nOrgNum>3</nOrgNum>
+		</RegNum>
+		<sCommonName>sodium phosphate</sCommonName>
+		<sFormulaMolec>Na3O4P</sFormulaMolec>
+		<Sample>
+			<nSampleNm>1</nSampleNm>
+			<eSource>Commercial source</eSource>
+		</Sample>
+	</Compound>
+	<Compound>
+		<RegNum>
+			<nOrgNum>4</nOrgNum>
+		</RegNum>
+		<sCommonName>complex, 2-butanone, 4-(6-methoxy-2-naphthalenyl)- with .beta.-cyclodextrin</sCommonName>
+		<sFormulaMolec>C57H86O37</sFormulaMolec>
+		<MulticomponentSubstance type="complex" compositionBasis="number of molecules">
+			<Component>
+				<RegNum>
+					<nOrgNum>1</nOrgNum>
+				</RegNum>
+				<nAmount>1</nAmount>
+			</Component>
+			<Component>
+				<RegNum>
+					<nOrgNum>2</nOrgNum>
+				</RegNum>
+				<nAmount>1</nAmount>
+			</Component>
+		</MulticomponentSubstance>
+		<Sample>
+			<nSampleNm>1</nSampleNm>
+			<ComponentSample>
+				<RegNum>
+					<nOrgNum>1</nOrgNum>
+				</RegNum>
+				<nSampleNm>1</nSampleNm>
+			</ComponentSample>
+			<ComponentSample>
+				<RegNum>
+					<nOrgNum>2</nOrgNum>
+				</RegNum>
+				<nSampleNm>1</nSampleNm>
+			</ComponentSample>
+		</Sample>
+	</Compound>
+	<Compound>
+		<RegNum>
+			<nOrgNum>5</nOrgNum>
+		</RegNum>
+		<sCommonName>phosphoric acid</sCommonName>
+		<sFormulaMolec>H3O4P</sFormulaMolec>
+		<Sample>
+			<nSampleNm>1</nSampleNm>
+			<eSource>Commercial source</eSource>
+		</Sample>
+	</Compound>
+	<ReactionData>
+		<Participant>
+			<RegNum>
+				<nOrgNum>1</nOrgNum>
+			</RegNum>
+			<nStoichiometricCoef>-1</nStoichiometricCoef>
+			<ePhase>Solution 1</ePhase>
+		</Participant>
+		<Participant>
+			<RegNum>
+				<nOrgNum>2</nOrgNum>
+			</RegNum>
+			<nStoichiometricCoef>-1</nStoichiometricCoef>
+			<ePhase>Solution 1</ePhase>
+		</Participant>
+		<Participant>
+			<RegNum>
+				<nOrgNum>4</nOrgNum>
+			</RegNum>
+			<nStoichiometricCoef>1</nStoichiometricCoef>
+			<ePhase>Solution 1</ePhase>
+		</Participant>
+		<AuxiliarySubstance>
+			<eFunction>Buffer</eFunction>
+			<RegNum>
+				<nOrgNum>3</nOrgNum>
+			</RegNum>
+			<ePhase>Solution 1</ePhase>
+		</AuxiliarySubstance>
+		<AuxiliarySubstance>
+			<eFunction>Buffer</eFunction>
+			<RegNum>
+				<nOrgNum>5</nOrgNum>
+			</RegNum>
+			<ePhase>Solution 1</ePhase>
+		</AuxiliarySubstance>
+		<eReactionFormalism>chemical</eReactionFormalism>
+		<eReactionType>Other reactions</eReactionType>
+		<Property>
+			<nPropNumber>1</nPropNumber>
+			<Property-MethodID>
+				<PropertyGroup>
+					<ReactionEquilibriumProp>
+						<ePropName>Equilibrium constant in terms of mole fraction</ePropName>
+						<sMethodName>Isothermal titration calorimetry</sMethodName>
+					</ReactionEquilibriumProp>
+				</PropertyGroup>
+			</Property-MethodID>
+		</Property>
+		<Property>
+			<nPropNumber>2</nPropNumber>
+			<Property-MethodID>
+				<PropertyGroup>
+					<ReactionStateChangeProp>
+						<ePropName>Molar Gibbs energy of reaction, kJ/mol</ePropName>
+						<sMethodName>Isothermal titration calorimetry</sMethodName>
+					</ReactionStateChangeProp>
+				</PropertyGroup>
+			</Property-MethodID>
+		</Property>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<ePressure>Pressure, kPa</ePressure>
+				</ConstraintType>
+			</ConstraintID>
+			<nConstraintValue>101.3</nConstraintValue>
+			<nConstrDigits>4</nConstrDigits>
+		</Constraint>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<eComponentComposition>Amount concentration (molarity), mol/dm3</eComponentComposition>
+				</ConstraintType>
+				<RegNum>
+					<nOrgNum>3</nOrgNum>
+				</RegNum>
+			</ConstraintID>
+			<nConstraintValue>0.1</nConstraintValue>
+			<nConstrDigits>1</nConstrDigits>
+		</Constraint>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<eComponentComposition>Amount concentration (molarity), mol/dm3</eComponentComposition>
+				</ConstraintType>
+				<RegNum>
+					<nOrgNum>5</nOrgNum>
+				</RegNum>
+			</ConstraintID>
+			<nConstraintValue>0.1</nConstraintValue>
+			<nConstrDigits>1</nConstrDigits>
+		</Constraint>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<eBioVariables>pH</eBioVariables>
+				</ConstraintType>
+			</ConstraintID>
+			<nConstraintValue>7.1</nConstraintValue>
+			<nConstrDigits>2</nConstrDigits>
+		</Constraint>
+		<Variable>
+			<nVarNumber>1</nVarNumber>
+			<VariableID>
+				<VariableType>
+					<eTemperature>Temperature, K</eTemperature>
+				</VariableType>
+			</VariableID>
+		</Variable>
+		<NumValues>
+			<VariableValue>
+				<nVarNumber>1</nVarNumber>
+				<nVarValue>293.15</nVarValue>
+				<nVarDigits>5</nVarDigits>
+			</VariableValue>
+			<PropertyValue>
+				<nPropNumber>1</nPropNumber>
+				<nPropValue>3.30</nPropValue>
+				<nPropDigits>3</nPropDigits>
+			</PropertyValue>
+			<PropertyValue>
+				<nPropNumber>2</nPropNumber>
+				<nPropValue>-19.7</nPropValue>
+				<nPropDigits>3</nPropDigits>
+			</PropertyValue>
+		</NumValues>
+		<NumValues>
+			<VariableValue>
+				<nVarNumber>1</nVarNumber>
+				<nVarValue>298.15</nVarValue>
+				<nVarDigits>5</nVarDigits>
+			</VariableValue>
+			<PropertyValue>
+				<nPropNumber>1</nPropNumber>
+				<nPropValue>3.79</nPropValue>
+				<nPropDigits>3</nPropDigits>
+			</PropertyValue>
+			<PropertyValue>
+				<nPropNumber>2</nPropNumber>
+				<nPropValue>-20.4</nPropValue>
+				<nPropDigits>3</nPropDigits>
+			</PropertyValue>
+		</NumValues>
+		<NumValues>
+			<VariableValue>
+				<nVarNumber>1</nVarNumber>
+				<nVarValue>303.15</nVarValue>
+				<nVarDigits>5</nVarDigits>
+			</VariableValue>
+			<PropertyValue>
+				<nPropNumber>1</nPropNumber>
+				<nPropValue>2.94</nPropValue>
+				<nPropDigits>3</nPropDigits>
+			</PropertyValue>
+			<PropertyValue>
+				<nPropNumber>2</nPropNumber>
+				<nPropValue>-20.1</nPropValue>
+				<nPropDigits>3</nPropDigits>
+			</PropertyValue>
+		</NumValues>
+		<NumValues>
+			<VariableValue>
+				<nVarNumber>1</nVarNumber>
+				<nVarValue>308.15</nVarValue>
+				<nVarDigits>5</nVarDigits>
+			</VariableValue>
+			<PropertyValue>
+				<nPropNumber>1</nPropNumber>
+				<nPropValue>2.37</nPropValue>
+				<nPropDigits>3</nPropDigits>
+			</PropertyValue>
+			<PropertyValue>
+				<nPropNumber>2</nPropNumber>
+				<nPropValue>-19.9</nPropValue>
+				<nPropDigits>3</nPropDigits>
+			</PropertyValue>
+		</NumValues>
+		<NumValues>
+			<VariableValue>
+				<nVarNumber>1</nVarNumber>
+				<nVarValue>313.15</nVarValue>
+				<nVarDigits>5</nVarDigits>
+			</VariableValue>
+			<PropertyValue>
+				<nPropNumber>1</nPropNumber>
+				<nPropValue>1.97</nPropValue>
+				<nPropDigits>3</nPropDigits>
+			</PropertyValue>
+			<PropertyValue>
+				<nPropNumber>2</nPropNumber>
+				<nPropValue>-19.8</nPropValue>
+				<nPropDigits>3</nPropDigits>
+			</PropertyValue>
+		</NumValues>
+	</ReactionData>
+</DataReport>

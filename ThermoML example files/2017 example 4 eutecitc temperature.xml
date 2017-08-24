@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataReport xmlns="http://www.iupac.org/namespaces/ThermoML" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.iupac.org/namespaces/ThermoML file:/N:/Pfeif/working/ThermoML/thermoML/ThermoML-draft%20v.pfeif.6.xsd">
+
+
+    <citation id="1">
+        <label>
+        This example provides resources for:                             
+        (1) a journal reference
+        (2) entry of chemical ids with no other data other than a name 
+        (3) entry of phases with no data other than a name and crystal type 
+        (4) phase fields for single, triple and quadrinary phase equilibrium
+        (5) Example of an alloy made of known materials with no characterization
+        (6) example of eutectic temperature measurements                          
+        </label>
+        <TRCRefID><yearPub>1965</yearPub><author1>ker</author1><author2>bel</author2><authorN>0</authorN></TRCRefID>
+        <author>Kerr, H.</author><author>Bell, J.A.</author><author>Winegard, W.C.</author>
+        <documentType>journal</documentType>
+        <language>German</language>
+        <title>Solidification of Binary and Ternary Eutectics</title>
+        <yearPublished>1965</yearPublished>
+        <journal><journalName>J. Aust. Inst. Met.</journalName><pages>64-69</pages><volume>10</volume></journal>
+        
+    </citation>
+    
+    <!-- chemcial information-->
+    <chemical id="21"><label>aluminum chemical identifier information</label>    <CASName>aluminum</CASName> <regNum><CASRNum>7429905</CASRNum></regNum>  </chemical>
+    <chemical id="22"><label>silicon chemical identifier information</label>     <CASName> silicon </CASName> <regNum><CASRNum>7440213</CASRNum></regNum>  </chemical>
+    <chemical id="23"><label>zinc chemical identifier  information</label>        <CASName>zinc </CASName> <regNum><CASRNum>7440666</CASRNum></regNum>  </chemical>
+    <chemical id="24"><label>tin chemical identifier information</label>        <CASName>tin</CASName>   <regNum><CASRNum>7440315</CASRNum></regNum> </chemical>
+    <chemical id="25"><label>lead chemical identifier  information</label>       <CASName>lead </CASName> <regNum><CASRNum>7439921</CASRNum></regNum>  </chemical>
+    
+    <!-- phase information--> 
+    <phase id="30"><label>Liquid, phase not well described</label><type>liquid</type><commonName>liquid</commonName></phase>
+    <phase id="31"><label>alpha-Al, phase strukturbericth and prototype described</label><type>crystal</type><commonName>alpha al</commonName><prototype>Cu</prototype><strukturbericht>A2</strukturbericht></phase>
+    <phase id="32"><label>alpha-Si, not well described</label><type>crystal</type><commonName>alpha-si</commonName></phase>
+    <phase id="33"><label>alpha-Sn, only space group and pearson symobol given </label><type>crystal</type><commonName>alpha-sn</commonName><pearsonSymbol>tI4</pearsonSymbol><spaceGroup>I41/amd (141)</spaceGroup><spaceGroupNumber>141</spaceGroupNumber></phase>
+    <phase id="34"><label>alpha-Zn, specifically not superconductive</label><type>crystal</type><commonName>alpha-Zn</commonName><superconductive>false</superconductive></phase>
+    <phase id="35"><label>alpha-Pb, , not well described</label><type>crystal</type><commonName>alpha-Pb</commonName></phase>
+    
+    <!--phase field information-->
+    <phaseField id="41"><label>phase field information for eutectic phases *alpha Al 31, alpha Si 32, liquid 30*</label> <phase ref="31"/><phase ref="32"/><phase ref="30"/></phaseField>
+    <phaseField id="42"><label>phase field information for Al-Si eutectic reaction, including all involved phases as zero phase fractions indicating an invariant transaction.</label>
+        <phase ref="31"/><phase ref="32"/><phase ref="30"/> <zeroPhaseFraction ref="31"/><zeroPhaseFraction ref="32"/><zeroPhaseFraction ref="30"/></phaseField>
+    <phaseField id="43"><label>zero phase field information for Zn-Pb-Sn eutecitic reaction, with all phases at zero phase fraction indicating an invariant transaction. </label>
+        <phase ref="33"/><phase ref="34"/><phase ref="35"/><phase ref="30"/> <zeroPhaseFraction ref="33"/><zeroPhaseFraction ref="34"/><zeroPhaseFraction ref="35"/><zeroPhaseFraction ref="30"/></phaseField>
+    
+    <!--system information-->
+    <system id="51">
+        <label>aluminum specimen, that has been zone refined</label>
+        <processing><chemical ref="21"/><processingStep><preparation><modifiedSolidification>Zone Refining</modifiedSolidification></preparation></processingStep></processing></system>
+   <system id="52"><label>semiconductor grade silicon, not well described</label>
+       <sample><chemical ref="22"/> <reportingStatus>notDescribed</reportingStatus></sample></system>
+   <system id="53"><label>zinc, not described</label>
+       <sample><chemical ref="23"/> <reportingStatus>notDescribed</reportingStatus></sample></system>
+   <system id="54"><label>tin, not described</label>
+       <sample><chemical ref="24"/> <reportingStatus>notDescribed</reportingStatus></sample></system>
+   <system id="55"><label>lead, not described</label>
+       <sample><chemical ref="25"/> <reportingStatus>notDescribed</reportingStatus></sample></system>
+    
+    <system id="56"><label>al and si alloyed specimen containing zone refined aluminum *system id 51* and semiconductor Si *system id52*</label>
+        <multiComponent multiComponentType="alloy" compositionBasis="mass fraction">
+            <component><system ref="51"/></component>
+            <component><system ref="52"/></component>
+        </multiComponent></system>
+    <system id="57"><label>Zn,Sn,Pb alloyed specimen, no details on specimens *system id's 23,24,25* </label>
+        <multiComponent multiComponentType="alloy" compositionBasis="mass fraction">
+            <component><system ref="53"/></component>
+            <component><system ref="54"/></component>
+            <component><system ref="55"/></component>
+        </multiComponent></system>
+    
+    
+    <!--dataset descritpion-->
+    <dataset><label>Al Si eutectic Temperature, from pg 65 on this reference *citation 1*. System includes semiconductor silicon and zone refined aluminum *system 56*</label> 
+        <citation ref="1"/>
+        <system ref="56"/>
+        <fixedConditions>
+            <label>fixed/constant weight fraction of silicon *id 22* in the Al-Si system, assumed at equilibrium conditions</label>
+            <condition conditionDescription="equilibrium condition">
+                <composition><component ref="22"/><units>weight fraction</units><nominalOrBulkComposition>true</nominalOrBulkComposition>
+                </composition>
+                <var> <v>.126</v><unc> <combinedUncertainty>
+                            <v>0.001</v>
+                        </combinedUncertainty>
+                    </unc>                    
+                </var></condition>
+        </fixedConditions>
+        
+        <property dataRepresentation="Direct representation, x = x1">
+            <phaseTransitionConditions><temperature><eutecticTemperature>
+                <units>K</units>
+            </eutecticTemperature>
+            </temperature>
+                <method>DSC/DTA</method>
+            </phaseTransitionConditions>
+        </property>
+        <point><phaseField ref="56"/>
+            <var/>
+            <prop><v>850.35</v><unc><expandedUncertainty><v>3</v> </expandedUncertainty></unc></prop></point>
+    </dataset>
+    
+    <!---->
+    <dataset><label>Pb,Sn,Zn eutectic Temperature (note this is made up data)</label> 
+        <citation ref="1"/>
+        <system ref="57"/>
+        <fixedConditions>
+            <label>bulk compositions of Sn, and Zn</label>
+            <condition conditionDescription="equilibrium condition">
+                <composition><component ref="23"/><units>weight fraction</units><nominalOrBulkComposition>true</nominalOrBulkComposition>
+                </composition>
+                <var>
+                    <v>0.034</v>
+                    <unc>
+                        <combinedUncertainty>
+                            <v>0.001</v>
+                        </combinedUncertainty>
+                    </unc>                    
+                </var></condition>
+            <condition conditionDescription="equilibrium condition">
+                <composition><component ref="24"/><units>weight fraction</units><nominalOrBulkComposition>true</nominalOrBulkComposition>
+                </composition>
+                <var>
+                    <v>0.655</v>
+                    <unc>
+                        <combinedUncertainty>
+                            <v>0.001</v>
+                        </combinedUncertainty>
+                    </unc>                    
+                </var></condition>
+        </fixedConditions>
+        <property dataRepresentation="Direct representation, x = x1">
+            <label>eutectic phase transition temperature, measured with DSC, in units of Kelvin, note this temperature is not in the original document, an arbitrary number has been input here as a place holder.</label>
+            <phaseTransitionConditions><temperature><eutecticTemperature>
+                <units>K</units>
+            </eutecticTemperature>
+            </temperature>
+                <method>DSC/DTA</method>
+            </phaseTransitionConditions>
+        </property>
+        <point><phaseField ref="43"/><var/><prop><v>633</v><unc><expandedUncertainty><v>3</v> </expandedUncertainty></unc></prop></point>
+    </dataset>
+    
+    
+</dataReport>

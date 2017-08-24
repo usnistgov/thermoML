@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataReport xmlns="http://www.iupac.org/namespaces/ThermoML"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.iupac.org/namespaces/ThermoML file:/N:/Pfeif/working/ThermoML/thermoML/ThermoML-draft%20v.pfeif.6.xsd">
+    <!-- citation information-->
+<citation id="001">
+    <label>
+        This example provides resources for: 
+        (1) a journal reference, an abstract and keywords
+        (2) entry of very basic chemical ids 
+        (3) entry of phases with different common names and lables.
+        (4) phase fields for liquid used in many instances 
+        (5) Example of two specimens with known purities being melted together.
+        (6)  a dataset where reference states are defined for final and intial compositions of a liquid as mor material is added to the liquid.
+        (7)  a dataset where fixed and variable conditiosn are used 
+        (8) a dataset where Difference with reference state, x =  x_1 - x_ref  is used 
+    </label>
+    <TRCRefID><yearPub>2014</yearPub><author1>yak</author1><author2>fur</author2><authorN>0</authorN></TRCRefID>
+    <abstract>A literature overview of enthalpy of mixing data for liquid Co-Sn alloys shows large scattering but no clear temperature dependence.
+        Therefore drop calorimetry was performed in the Co-Sn system at twelve different temperatures in 100 K steps in the temperature range ( 673 to 1773) K.
+        The integral enthalpy of mixing was determined starting from 1173 K and fitted to a standard Redlich-Kister polynomial. In addition, the limiting
+        partial molar enthalpy of Co in Sn was investigated by small additions of Co to liquid Sn at temperatures ( 673 to 1773) K. The integral and partial
+        molar enthalpies of the Co-Sn system generally show an exothermic mixing behavior. Significant temperature dependence was detected for the enthalpies
+        of mixing. The minimum integral enthalpy values vary with rising temperature from approx. - 7820 j/mol at T = 1173 K to -1350 j/mol at T = 1773 K; the
+        position of the minimum is between (59 and 61) at.% Co. The results are discussed and compared with literature data available for this system. X-ray
+        studies and scanning electron microscopy of selected alloys obtained from the calorimetric measurements were carried out in order to check the 
+        completeness of the solution process. (C) 2014 The Authors. Published by Elsevier Ltd. This is an open access article under the CC BY-NC-ND</abstract>
+    <author>yakymovych, A.</author><author>Elmahfoudi, A.</author><author>Ipser, H.</author><author>Flandorfer, H.</author>
+    <documentType>journal</documentType>
+    <DOI>10.1016/j.jct.2014.02.013</DOI>
+    <keyword>Calorimetry</keyword><keyword> Molar mixing enthalpy</keyword><keyword> Liquid alloys</keyword><keyword> Co-Sn</keyword>
+    <language>English</language>
+    <title>Enthalpy of mixing of liquid Co-Sn alloys</title>
+    <yearPublished>2014</yearPublished>
+    <journal><journalName>J. Chem. Thermodyn.</journalName><pages>269-285</pages><volume>74</volume></journal>
+</citation>
+ <!-- chemical information for cobalt and tin-->
+<chemical id="10"><commonName>cobalt</commonName></chemical>
+<chemical id="11"><commonName>tin</commonName></chemical>
+    
+    <!--phaes information for multiple phases-->
+    <phase id="19">   <label>solid Co</label> <type>unknown solid</type><commonName>solid</commonName>  </phase>
+    <phase id="20">   <label>liquid</label>   <type>liquid</type><commonName>liquid</commonName></phase>
+    <phase id="21">   <label>Sn liquid</label>   <type>liquid</type><commonName>liquid</commonName><molecularFormula>
+        <component>            <chemical ref="11"/>            <amount>100</amount>        </component>    </molecularFormula> </phase>
+
+    <phaseField id="31"><label>liquid</label><phase ref="20"/></phaseField>
+    <!--system information-->   
+    
+
+    <system id="40">
+        <label>99m% cobalt specimen</label>
+        <sample><chemical ref="10"></chemical>
+            <componentCharacterization>
+                <chemical ref='10'/>
+                <value>99.99</value>
+                <units>mass percent</units>
+                <analyticalMethod>Not known</analyticalMethod>
+            </componentCharacterization>
+            <materialForm>
+                <materialForm>not stated</materialForm>
+            </materialForm>
+        </sample>
+    </system>    
+    <system id="41">
+        <label>99.99m% tin specimen</label>
+        <sample><chemical ref="11"></chemical>
+            <componentCharacterization>
+                <chemical ref='11'/>
+                <value>99.99</value>
+                <units>mass percent</units>
+                <analyticalMethod>Not known</analyticalMethod>
+            </componentCharacterization>
+            <materialForm>
+                <materialForm>not stated</materialForm>
+            </materialForm>
+        </sample>
+    </system>
+    <system id="42">
+        <label>specimen made of 99.99m% cobalt and 99.99m% tin, co-Sn Alloy</label>
+         <multiComponent>
+             <component><system ref="40"/></component>  
+             <component><system ref="41"/></component>
+        </multiComponent>
+    </system>
+    <system id="43">
+        <label>specimen containing 99.99m%Sn and 99.99m% Sn melted at 1773K, then cooled to 273K, Co-Sn alloy sample 1</label>
+        <processing><system ref="42"/>
+            <processingStep>
+                <thermalProcessing><melting/></thermalProcessing>
+                <temperature>
+                    <info>
+                        <units>K</units>
+                    </info>
+                    <val>
+                        <v>1773</v>
+                    </val>
+                </temperature>
+            </processingStep>
+            <processingStep><heatingCooling/><temperature>
+                <info>
+                    <units>K</units>
+                </info>
+                <val>
+                    <v>273</v>
+                </val>
+            </temperature>
+            </processingStep>
+        </processing>
+     </system>
+    <system id="45"><label>Specimen containing 99.99m%Sn and 99.99m% Sn melted at 1773K in argon, then cooled to 273K, Co-Sn alloy sample 2</label>
+        <processing><system ref="42"/>
+            <processingStep>
+                <thermalProcessing><melting/></thermalProcessing>
+                <temperature>
+                    <info>
+                        <units>K</units>
+                    </info>
+                    <val>
+                        <v>1773</v>
+                    </val>
+                </temperature>
+                <atmosphere><atmosphere>argon</atmosphere></atmosphere>
+            </processingStep>
+            <processingStep><heatingCooling/><temperature>
+                <info>
+                    <units>K</units>
+                </info>
+                <val>
+                    <v>273</v>
+                </val>
+            </temperature>
+            </processingStep>
+        </processing>
+    </system>     
+    <system id="46"><label>specimen containing 99.99m%Sn and 99.99m% Sn melted at 673K in argon, then cooled to 273K, Co-Sn alloy sample 3</label>
+        <processing><system ref="42"/>            <processingStep>                <thermalProcessing><melting/></thermalProcessing>               <temperature>                    <info>
+                        <units>K</units>                    </info>                    <val>                        <v>673</v>                    </val>
+                </temperature>            </processingStep>
+            <processingStep><heatingCooling/><temperature>
+                <info>
+                    <units>K</units>
+                </info>
+                <val>
+                    <v>273</v>
+                </val>
+            </temperature>
+            </processingStep>
+        </processing>
+    </system>
+    
+    <dataset>
+        <label>Table 1 Run 1 Co 24.6900 (HXM)</label>
+            <citation ref="01"/> <system ref="42"/>
+                <referenceDetails id="60">
+                    <label> initial material conditions</label>
+                    <reference><label>initialLiquid</label><refPhase ref="20"/><refSystem ref="42"/></reference>
+                </referenceDetails>
+                <referenceDetails id="61">
+                    <label>added material conditions</label><reference><label>added Liquid</label><refPhase ref="21"/><refSystem ref="41"/></reference>
+                </referenceDetails>
+
+        <fixedConditions> 
+            <condition conditionDescription="reference condition" >      <label>affected liquid state temperature</label>
+                <refState ref="60"/>
+                <temperature>
+                    <label>affected liquid temp</label>
+                    <units>K</units>
+                </temperature>
+                <var>
+                    <v>1773</v>
+                    </var></condition>
+            <condition conditionDescription="reference condition">       <label>initial number of atoms in affected liquid state</label>
+                <refState ref="60"/>
+                <composition><label>initial liquid composition</label>
+                    <component ref="10"/>
+                    <units>amount of atoms</units>
+                    <phase ref="10"/>
+                </composition>
+                <var>
+                    <v>0.0246900</v>
+                </var></condition>
+            <condition conditionDescription="reference condition">       <label>added Sn liquid temperature</label>
+                <refState ref="61"/>
+                <temperature>
+                    <label>added liquid temp</label>
+                    <units>K</units>
+                </temperature>
+                <var><v>1773</v>
+                </var></condition>
+            <condition conditionDescription="equilibrium condition"><pressure> <units>Pa</units> </pressure><var><v>101325</v><unc><combinedUncertainty> <v>100</v>  </combinedUncertainty></unc></var></condition>
+            <crucibleMaterial>graphite</crucibleMaterial>
+            <atmosphere>argon</atmosphere>
+        </fixedConditions>
+        
+        <!--variable conditiosn, -->
+        <variableConditions>
+            <condition conditionDescription="reference condition"><refState ref="60"/> <composition><label>variable initial composition, T=1773</label><component ref="11"/><units>atomic fraction</units><phase ref="20"/></composition></condition>
+            <condition conditionDescription="equilibrium condition"><refState ref="61"/> <composition><label>variable amount of added material, T=1773</label><component ref="11"/><units>amount of atoms</units><phase ref="21"/></composition></condition>
+            <condition  conditionDescription="equilibrium condition">  <composition><label>final composition of tin, note this is the intial composition from before + added amount of solution</label><component ref="11"/><units>atomic fraction</units><phase ref="20"/></composition></condition>
+        </variableConditions>
+
+        <!--enthalpy difference caused by droplet at elevated temperaeture into the liquid cobalt.-->
+        <property dataRepresentation="Difference with reference state, x =  x_1 - x_ref ">
+            <thermodynamic><enthalpy> <molarEnthalpy> <units>J/mol</units> <method>Drop calorimetry</method></molarEnthalpy></enthalpy> </thermodynamic>
+            <!--defining reference condition of-->
+            <xRef ref="60"/>
+        </property>
+        <!--value of mole fraction of tin before drop, after drop, and associated change in enthalpy, relative to the reference state-->
+        <point><phaseField ref="31"/><var><v>0</v></var><var><v>0.5561</v></var><var><v>0.0220</v></var><prop><v>25741</v></prop></point>
+        <point><phaseField ref="31"/><var><v>0.0220</v></var><var><v>1.4684</v></var><var><v>0.0758</v></var><prop><v>28444</v></prop></point>
+        <point><phaseField ref="31"/><var><v>0.0758</v></var><var><v>0.7792</v></var><var><v>0.1020</v></var><prop><v>38717</v></prop></point>
+        <point><phaseField ref="31"/><var><v>0.1020</v></var><var><v>0.8125</v></var><var><v>0.1277</v></var><prop><v>41751</v></prop></point>
+        
+    </dataset>
+    
+    </dataReport>

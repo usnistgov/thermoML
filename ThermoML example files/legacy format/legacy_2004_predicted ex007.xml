@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<ThermoMLEquation xmlns:xsi=“http://www.w3.org/2001/XMLSchema-instance" 
+xsi:noNamespaceSchemaLocation=“http://trc.nist.gov/ThermoMLEquation.xsd"> 
+  <Version>  
+    <nVersionMajor>1</nVersionMajor>  
+    <nVersionMinor>0</nVersionMinor>  
+  </Version>  
+  <sEqName>ThermoML.WagnerLinear.VaporPressure</sEqName>  
+  <sEqDescription>The equation is used for representation of vapor pressure over the 
+liquid. Linear with respect to all adjustable parameters. Allows any number of terms with 
+powers given as constants.</sEqDescription> 
+  <EqReference>  
+    <TRCRefID>  
+      <yrYrPub>1973</yrYrPub>  
+      <sAuthor1>wag</sAuthor1>  
+      <sAuthor2></sAuthor2>  
+      <nAuthorn>0</nAuthorn>  
+    </TRCRefID>  
+    <eType>journal</eType>  
+    <eSourceType>Original</eSourceType>  
+    <sAuthor>Wagner,  W.[Wolfgang]</sAuthor>  
+    <sPubName>Cryogenics</sPubName>  
+    <yrPubYr>1973</yrPubYr>  
+    <dateCit>2004-02-20</dateCit>  
+    <sTitle>New vapour pressure measurements for argon and nitrogen and a new method 
+for establishing rational vapour pressure equations</sTitle> 
+    <sVol>13</sVol>  
+    <sPage>470-82</sPage>  
+  </EqReference>  
+  <EqVariable>  
+    <sEqSymbol>P</sEqSymbol>  
+    <sEqVarComment>Vapor  pressure</sEqVarComment>  
+  </EqVariable>  
+  <EqVariable>  
+    <sEqSymbol>T</sEqSymbol>  
+    <sEqVarComment>Temperature</sEqVarComment>  
+  </EqVariable>  
+  <EqParameter>  
+    <sEqParSymbol>TC</sEqParSymbol>  
+    <sEqParComment>Critical  temperature</sEqParComment>  
+  </EqParameter>  
+  <EqParameter>  
+    <sEqParSymbol>lnPC</sEqParSymbol>  
+    <sEqParComment>Natural  logarithm  of  critical  pressure</sEqParComment>  
+  </EqParameter>  
+  <EqParameter>  
+    <sEqParSymbol>A</sEqParSymbol>  
+  </EqParameter>  
+  <EqConstant>  
+    <sEqConstantSymbol>nTerms</sEqConstantSymbol>  
+  </EqConstant>  
+  <EqConstant>  
+    <sEqConstantSymbol>n</sEqConstantSymbol>  
+  </EqConstant>  
+  <EqMathContent>  
+    <math  xmlns=“http://www.w3.org/1998/Math/MathML">  
+      <declare  type="vector"><ci>A</ci></declare>  
+      <declare  type="vector"><ci>n</ci></declare>  
+      <apply>  
+    <eq/> 
+    <ci>Tau</ci> 
+    <apply> 
+     <minus/> 
+n>1</cn> 
+     <apply> 
+      <divide/> 
+      <ci>T</ci> 
+      <ci>TC</ci> 
+     </apply> 
+    </apply> 
+   </apply> 
+      <apply>  
+    <eq/> 
+    <apply> 
+     <minus/> 
+     <apply> 
+      <ln/> 
+      <ci>P</ci> 
+     </apply> 
+          <ci>lnPC</ci>  
+    </apply> 
+    <apply> 
+     <divide/> 
+     <apply> 
+      <sum/> 
+      <bvar><ci>i</ci></bvar> 
+            <lowlimit><cn>1</cn></lowlimit>  
+      <uplimit><ci>nTerms</ci></uplimit> 
+      <apply> 
+       <times/> 
+       <apply> 
+        <selector/> 
+        <ci type="vector">A</ci> 
+        <ci>i</ci> 
+       </apply> 
+       <apply> 
+        <power/> 
+        <ci>Tau</ci> 
+        <apply> 
+         <selector/> 
+         <ci type="vector">n</ci> 
+         <ci>i</ci> 
+        </apply> 
+       </apply> 
+      </apply> 
+     </apply> 
+pply> 
+      <divide/> 
+      <ci>T</ci> 
+      <ci>TC</ci> 
+     </apply> 
+    </apply> 
+   </apply> 
+    </math>  
+  </EqMathContent>  
+</ThermoMLEquation> 
+

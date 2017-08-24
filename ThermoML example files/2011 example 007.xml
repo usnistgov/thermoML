@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataReport xmlns="http://www.iupac.org/namespaces/ThermoML"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.iupac.org/namespaces/ThermoML file:/N:/Pfeif/working/ThermoML/thermoML/ThermoML-draft%20v.pfeif.6.xsd">
+    
+    
+    <!--(1) citation information-->
+    <citation id="1">
+        <label>
+            This example provides resources for:   
+            (1) a journal reference                                                      
+            (2) entry of chemical ids, specifically ions   
+            (3) entry of generic liquid phases                                               
+            (4) phase fields to describe phase of propety                                  
+            (5) Example of a transport number as a function of molarity at constant T and P
+        </label>
+        <TRCRefID>
+            <yearPub>1938</yearPub>
+            <author1>lon</author1>
+            <author2>mac</author2>
+            <authorN>0</authorN>
+        </TRCRefID>
+        <author>Longsworth, L. G.</author>
+        <author>MacInnes, D. A.</author>
+        <documentType>journal</documentType>
+        <sourceType>Original</sourceType>
+        <title>Transference Numbers of Lanthanum Chloride at 25 C by the Moving Boundary Method</title>
+        <yearPublished>1938</yearPublished>      
+            <journal>
+                <journalName>J. Am. Chem. Soc.</journalName>
+                <pages>3070-3074</pages>
+                <volume>60</volume>
+            </journal>
+    </citation>
+    
+ <!--(2) chemical information-->
+<chemical id="21"> <commonName>water</commonName><molecularFormula>H2O</molecularFormula></chemical>
+<chemical id="22"> <commonName>lanthanum chloride</commonName><molecularFormula>Cl3La</molecularFormula></chemical>
+<chemical id="23"> <commonName>La ion</commonName><molecularFormula>La</molecularFormula><ion><charge>3</charge></ion></chemical>
+<chemical id="24"> <commonName>chloride ion</commonName><molecularFormula>Cl</molecularFormula><ion><charge>-1</charge></ion></chemical>
+    
+<!--(3) phase information-->
+    <phase id="31"> <type>liquid</type><commonName>liquid</commonName></phase>
+
+<!--(4) system information-->
+    <system id="51"><label>water</label><sample><chemical ref="21"/><source>Commercial source</source></sample></system>
+    <system id="52"><label>lanthanum chloride</label><sample><chemical ref="22"/><source>Commercial source</source></sample></system>
+    <system id="53"><label>lanthanum ions</label><sample><chemical ref="23"/><source>No sample used</source></sample></system>
+    <system id="54"><label>chloride ions</label><sample><chemical ref="23"/><source>No sample used</source></sample></system>
+    
+<!--(5) dataset-->
+<dataset>
+    <citation ref="1"/>
+    <system ref="2"/>
+        <fixedConditions>
+            <condition conditionDescription="equilibrium condition">
+                <pressure><units>Pa</units></pressure>
+                <var><v>101325</v></var></condition>
+            <condition conditionDescription="equilibrium condition">
+                <temperature><units>K</units></temperature>
+                <var><v>298.15</v></var></condition>
+        </fixedConditions>
+        <variableConditions>
+            <condition conditionDescription="equilibrium condition">
+                <molarDensity>
+                    <component ref="22"/>
+                    <units>mol/m^3</units>
+                </molarDensity>
+                </condition>
+        </variableConditions>
+    <property dataRepresentation="Direct representation, x = x1">
+        <transport>
+            <electricalTransport>
+                <transportNumber>
+                    <units>dimensionless</units>
+                    <method>moving boundary</method>
+                    <ion ref="23"/>
+                </transportNumber>
+            </electricalTransport>
+        </transport>
+    </property>
+    <point>
+          <var><v>0.0025</v><unc><combinedUncertainty><v>0.0001</v></combinedUncertainty></unc></var>
+          <prop><v>0.4641</v><unc><combinedUncertainty><v>0.01</v></combinedUncertainty></unc></prop>
+    </point>
+
+    <expPurpose>Principal objective of the work</expPurpose>
+    <compiler>VVD</compiler>
+    <contributor>TRC</contributor>
+    <date>2017-06-23</date>
+</dataset>
+    
+</dataReport>

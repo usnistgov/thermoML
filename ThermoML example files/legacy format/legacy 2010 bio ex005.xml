@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by Robert D. Chirico (U. S. Department of Commerce) -->
+<!--Created by Guided Data Capture (GDC) Software (http://www.trc.nist.gov)-->
+<DataReport xmlns="http://www.iupac.org/namespaces/ThermoML" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.iupac.org/namespaces/ThermoML D:\TRC\ThermoML2009\ThermoML2009.xsd">
+	<Version>
+		<nVersionMajor>4</nVersionMajor>
+		<nVersionMinor>0</nVersionMinor>
+	</Version>
+	<Citation>
+		<eType>journal</eType>
+		<eSourceType>Original</eSourceType>
+		<sAuthor>Ortiz, A.[Antonio]</sAuthor>
+		<sAuthor>Aranda, F. J.[Francisco J.]</sAuthor>
+		<sAuthor>Villalain, J.[Jose]</sAuthor>
+		<sAuthor>Gomez-Fernandez, J. C.[Juan C.]</sAuthor>
+		<sPubName>Biochimica et Biophysica Acta</sPubName>
+		<yrPubYr>1992</yrPubYr>
+		<dateCit>2009-07-16</dateCit>
+		<sTitle>Influence of retinoids on phosphatidylethanolamine  lipid polymorphism</sTitle>
+		<sVol>1112</sVol>
+		<sPage>226-234</sPage>
+	</Citation>
+	<Compound>
+		<RegNum>
+			<nOrgNum>1</nOrgNum>
+		</RegNum>
+		<sCommonName>9-Octadecenoic acid, 1-[[[(2-aminoethoxy)hydroxyphosphinyl]oxy]methyl]-1,2-ethanediyl ester, (E,E)-</sCommonName>
+		<sFormulaMolec>C41H79NO8P</sFormulaMolec>
+		<Sample>
+			<nSampleNm>1</nSampleNm>
+			<eSource>Commercial source</eSource>
+		</Sample>
+	</Compound>
+	<Compound>
+		<RegNum>
+			<nOrgNum>2</nOrgNum>
+		</RegNum>
+		<sCommonName>ethylenediaminetetraacetic acid</sCommonName>
+		<sFormulaMolec>C10H16N2O8</sFormulaMolec>
+		<Sample>
+			<nSampleNm>1</nSampleNm>
+			<eSource>Commercial source</eSource>
+		</Sample>
+	</Compound>
+	<Compound>
+		<RegNum>
+			<nOrgNum>3</nOrgNum>
+		</RegNum>
+		<sCommonName>4-(2-hydroxyethyl)-1-piperazineethanesulfonic acid</sCommonName>
+		<sFormulaMolec>C8H18N2O4S</sFormulaMolec>
+		<Sample>
+			<nSampleNm>1</nSampleNm>
+			<eSource>Commercial source</eSource>
+		</Sample>
+	</Compound>
+	<Compound>
+		<RegNum>
+			<nOrgNum>4</nOrgNum>
+		</RegNum>
+		<sCommonName>sodium chloride</sCommonName>
+		<sFormulaMolec>ClNa</sFormulaMolec>
+		<Sample>
+			<nSampleNm>1</nSampleNm>
+			<eSource>Commercial source</eSource>
+		</Sample>
+	</Compound>
+	<Compound>
+		<RegNum>
+			<nOrgNum>5</nOrgNum>
+		</RegNum>
+		<sCommonName>water</sCommonName>
+		<sFormulaMolec>H2O</sFormulaMolec>
+		<Sample>
+			<nSampleNm>1</nSampleNm>
+			<eSource>Commercial source</eSource>
+			<purity>
+				<nStep>1</nStep>
+				<nPurityMol>99.9</nPurityMol>
+				<nPurityMolDigits>3</nPurityMolDigits>
+				<eAnalMeth>Estimated by the compiler</eAnalMeth>
+			</purity>
+		</Sample>
+	</Compound>
+	<PureOrMixtureData>
+		<Component>
+			<RegNum>
+				<nOrgNum>1</nOrgNum>
+			</RegNum>
+		</Component>
+		<AuxiliarySubstance>
+			<eFunction>Buffer</eFunction>
+			<RegNum>
+				<nOrgNum>2</nOrgNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</AuxiliarySubstance>
+		<AuxiliarySubstance>
+			<eFunction>Buffer</eFunction>
+			<RegNum>
+				<nOrgNum>3</nOrgNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</AuxiliarySubstance>
+		<AuxiliarySubstance>
+			<eFunction>Inert</eFunction>
+			<RegNum>
+				<nOrgNum>4</nOrgNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</AuxiliarySubstance>
+		<AuxiliarySubstance>
+			<eFunction>Solvent</eFunction>
+			<RegNum>
+				<nOrgNum>5</nOrgNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</AuxiliarySubstance>
+		<sCompiler/>
+		<sContributor/>
+		<dateDateAdded/>
+		<Property>
+			<nPropNumber>1</nPropNumber>
+			<Property-MethodID>
+				<PropertyGroup>
+					<BioProperties>
+						<ePropName>Peak temperature, K</ePropName>
+						<sMethodName>DSC</sMethodName>
+					</BioProperties>
+				</PropertyGroup>
+			</Property-MethodID>
+			<PropPhaseID>
+				<ePropPhase>Solution</ePropPhase>
+				<sBioState>1A</sBioState>
+			</PropPhaseID>
+			<PropPhaseID>
+				<ePropPhase>Solution</ePropPhase>
+				<sBioState>2AHII</sBioState>
+			</PropPhaseID>
+			<ePresentation>Direct value, X</ePresentation>
+		</Property>
+		<Property>
+			<nPropNumber>2</nPropNumber>
+			<Property-MethodID>
+				<PropertyGroup>
+					<PhaseTransition>
+						<ePropName>Molar enthalpy of transition or fusion, kJ/mol</ePropName>
+						<sMethodName>DSC</sMethodName>
+					</PhaseTransition>
+				</PropertyGroup>
+			</Property-MethodID>
+			<PropPhaseID>
+				<ePropPhase>Solution</ePropPhase>
+				<sBioState>1A</sBioState>
+			</PropPhaseID>
+			<PropPhaseID>
+				<ePropPhase>Solution</ePropPhase>
+				<sBioState>2AHII</sBioState>
+			</PropPhaseID>
+			<ePresentation>Direct value, X</ePresentation>
+		</Property>
+		<PhaseID>
+			<ePhase>Solution</ePhase>
+		</PhaseID>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<ePressure>Pressure, kPa</ePressure>
+				</ConstraintType>
+			</ConstraintID>
+			<nConstraintValue>101.325</nConstraintValue>
+			<nConstrDigits>6</nConstrDigits>
+		</Constraint>
+		<Variable>
+			<nVarNumber>1</nVarNumber>
+			<VariableID>
+				<VariableType>
+					<eBioVariables>pH</eBioVariables>
+				</VariableType>
+			</VariableID>
+		</Variable>
+		<Variable>
+			<nVarNumber>2</nVarNumber>
+			<VariableID>
+				<VariableType>
+					<eBioVariables>Ionic strength (amount concentration basis), mol/dm3</eBioVariables>
+				</VariableType>
+			</VariableID>
+		</Variable>
+		<NumValues>
+			<VariableValue>
+				<nVarNumber>1</nVarNumber>
+				<nVarValue>7.4</nVarValue>
+				<nVarDigits>2</nVarDigits>
+			</VariableValue>
+			<VariableValue>
+				<nVarNumber>2</nVarNumber>
+				<nVarValue>0.20</nVarValue>
+				<nVarDigits>2</nVarDigits>
+			</VariableValue>
+			<PropertyValue>
+				<nPropNumber>1</nPropNumber>
+				<nPropValue>322.4</nPropValue>
+				<nPropDigits>4</nPropDigits>
+			</PropertyValue>
+			<PropertyValue>
+				<nPropNumber>2</nPropNumber>
+				<nPropValue>2.9</nPropValue>
+				<nPropDigits>2</nPropDigits>
+			</PropertyValue>
+		</NumValues>
+	</PureOrMixtureData>
+</DataReport>

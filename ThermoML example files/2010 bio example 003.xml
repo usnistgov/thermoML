@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataReport xmlns="http://www.iupac.org/namespaces/ThermoML"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.iupac.org/namespaces/ThermoML file:/N:/Pfeif/working/ThermoML/thermoML/ThermoML-draft%20v.pfeif.6.xsd">
+    <!-- (1) citation -->  
+    <citation id="1">
+        <TRCRefID>
+            <yearPub>2007</yearPub>
+            <author1>tod</author1>
+            <author2>sch</author2>
+            <authorN>0</authorN>
+        </TRCRefID>
+        
+        <author>Todorova, N. A.[Niya A.]</author>
+        <author>Schwartz, F. P.[Fred P.]</author>
+        
+        <documentType>journal</documentType>
+		<sourceType>Original</sourceType>
+        <title>The role of water in the thermodynamics of drug binding to cyclodextrin</title>
+        <yearPublished>2007</yearPublished>
+        <journal>
+            <journalName>J. Chem. Thermodyn.</journalName>
+            <pages>1038-1048</pages>
+            <volume>39</volume>             
+        </journal>
+		</citation>
+    
+    <chemical id="21"><commonName>.beta.-cyclodextrin</commonName>        <molecularFormula>C42H70O35</molecularFormula></chemical>
+    <chemical id="22"><commonName>2-butanone, 4-(6-methoxy-2-naphthalenyl)-</commonName>        <molecularFormula>C15H16O2</molecularFormula></chemical>
+    <chemical id="23">		<commonName>sodium phosphate</commonName>
+        <molecularFormula>Na3O4P</molecularFormula>
+    </chemical>
+    <chemical id="24"><commonName>complex, 2-butanone, 4-(6-methoxy-2-naphthalenyl)- with .beta.-cyclodextrin</commonName>
+        <molecularFormula>C57H86O37</molecularFormula>
+    </chemical>
+    <chemical id="25"><commonName>phosphoric acid</commonName>
+        <molecularFormula>H3O4P</molecularFormula></chemical>
+    <chemical id="21"><commonName>.beta.-cyclodextrin</commonName>        <molecularFormula>C42H70O35</molecularFormula></chemical>
+    <chemical id="21"><commonName>.beta.-cyclodextrin</commonName>        <molecularFormula>C42H70O35</molecularFormula></chemical>
+    <chemical id="21"><commonName>.beta.-cyclodextrin</commonName>        <molecularFormula>C42H70O35</molecularFormula></chemical>
+    
+    <phase id="31"><type>liquid</type></phase>
+    <system id="51">
+        <sample>
+            <chemical ref="21"/>
+            <componentCharacterization>
+                <chemical ref="21"/>
+                <value>98</value>                
+                <units>mass percent</units>
+                <analyticalMethod>Stated by supplier</analyticalMethod>
+            </componentCharacterization>
+        </sample>
+    </system>
+    <system id="52">
+        <sample>
+            <chemical ref="22"/>
+            <source>Commercial source</source>
+        </sample>
+    </system>
+    <system id="53">
+        <sample>
+            <chemical ref="23"/>
+            <source>Commercial source</source>
+        </sample>
+    </system>
+    <system id="54">
+        <multiComponent compositionBasis="number of molecules" multiComponentType="complex">
+            <component><system ref="51"/></component>
+            <component><system ref="52"/></component>           
+        </multiComponent>
+    </system>
+    <system id="55">
+        <sample>
+            <chemical ref="25"/>
+            <source>Commercial source</source>
+        </sample>
+    </system>    
+    
+<system id="56">
+    <reaction>
+        <participant><chemical ref="21"/><stoichiometricCoef>-1</stoichiometricCoef><phase ref="31"/></participant>
+        <participant><chemical ref="22"/><stoichiometricCoef>-1</stoichiometricCoef><phase ref="31"/></participant>
+        <participant><chemical ref="24"/><stoichiometricCoef>1</stoichiometricCoef><phase ref="31"/></participant>
+        <auxiliarySubstance><chemical ref="23"/> <function>buffer</function> <phase ref="31"/></auxiliarySubstance>
+        <auxiliarySubstance><chemical ref="25"/> <function>buffer</function> <phase ref="31"/></auxiliarySubstance>
+            <reactionFormalism>chemical</reactionFormalism>
+            <reactionType>other reaction</reactionType>
+    </reaction>
+</system>
+
+<dataset>
+    <citation ref="1"/>
+    <system ref="56"/>
+    <fixedConditions>
+        <condition conditionDescription="equilibrium condition"><pressure>
+            <units>Pa</units>
+            </pressure>
+            <var><v>101300</v></var>
+        </condition>
+        <condition conditionDescription="equilibrium condition"><amountDensity>
+            <units>mol/m^3</units>
+            <component ref="23"/>
+        </amountDensity>
+            <var><v>100</v></var>
+        </condition>
+        <condition conditionDescription="equilibrium condition"><amountDensity>
+            <units>mol/m^3</units>
+            <component ref="25"/>
+        </amountDensity>
+            <var><v>100</v></var>
+        </condition>
+        <condition conditionDescription="equilibrium condition"><pH>
+            <units></units>
+        </pH><var><v>7.1</v></var></condition>
+    </fixedConditions>
+    <variableConditions>
+        <condition conditionDescription="equilibrium condition"><temperature>
+            <units>K</units>
+        </temperature></condition>
+    </variableConditions>
+    <property dataRepresentation="Direct representation, x = x1">
+        <reaction><equilibriumConstant><equilibriumConstantInTermsOfMoleFraction>
+            <units></units>
+            <nValue>2</nValue><!--need to double check-->
+            <method>titration</method>
+        </equilibriumConstantInTermsOfMoleFraction></equilibriumConstant></reaction>
+    </property>
+    <property dataRepresentation="Direct representation, x = x1">
+        <reaction><energy><molarGibbsEnergyOfReaction>
+            <units>J/mol</units>
+            <otherMethod>Isothermal titration calorimetry</otherMethod>
+        </molarGibbsEnergyOfReaction></energy></reaction>
+    </property>
+    <point>
+        <var><v>293.15</v></var>
+        <prop><v>3.30</v></prop>
+        <prop><v>-19.7</v></prop>
+    </point>
+    <point>
+        <var><v>298.15</v></var>
+        <prop><v>3.79</v></prop>
+        <prop><v>-20.4</v></prop>
+    </point>
+    <point>
+        <var><v>303.15</v></var>
+        <prop><v>2.94</v></prop>
+        <prop><v>-20.1</v></prop>
+    </point>    
+    <point>
+        <var><v>308.15</v></var>
+        <prop><v>2.37</v></prop>
+        <prop><v>-19.9</v></prop>
+    </point>
+    <point>
+        <var><v>313.15</v></var>
+        <prop><v>1.97</v></prop>
+        <prop><v>-19.8</v></prop>
+    </point>
+    <point>
+        <var><v>293.15</v></var>
+        <prop><v>3.30</v></prop>
+        <prop><v>-19.7</v></prop>
+    </point>
+    <point>
+        <var><v>293.15</v></var>
+        <prop><v>3.30</v></prop>
+        <prop><v>-19.7</v></prop>
+    </point>
+</dataset>
+   
+</dataReport>

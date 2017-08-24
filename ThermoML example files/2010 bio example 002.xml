@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataReport xmlns="http://www.iupac.org/namespaces/ThermoML"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.iupac.org/namespaces/ThermoML file:/N:/Pfeif/working/ThermoML/thermoML/ThermoML-draft%20v.pfeif.6.xsd">
+    <!-- (1) citation -->  
+    <citation id="1">
+        <TRCRefID>
+            <yearPub>1998</yearPub>
+            <author1>tew</author1>
+            <author2>che</author2>
+            <authorN>1</authorN>
+        </TRCRefID>
+        <author>Tewari, Y. B.[Yadu B.]</author>
+            <author>Chen, J.[Jiangang]</author>
+                <author>Holden, M. J.[Marcia J.]</author>
+                    <author>Houk, K. N.[Kendall N.]</author>
+                        <author>Goldberg, R. N.[Robert N.]</author>
+                            <documentType>journal</documentType>
+        <sourceType>Original</sourceType>
+        <title>Thermodynamic and Quantum Chemical Study of the Conversion of Chorismate to  (Pyruvate + 4-Hydroxybenzoate)</title>
+            
+        <yearPublished>1998</yearPublished>
+        <journal>
+            <journalName>J. Phys. Chem. B</journalName>
+            <pages>8634-8639</pages>
+            <volume>102</volume>
+        </journal>
+    </citation>
+    
+    <chemical id="21"><commonName>chorismic acid</commonName><molecularFormula>C10H10O6</molecularFormula>    </chemical>
+    <chemical id="22"><commonName>chorismate lyase</commonName><molecularFormula>{CL}</molecularFormula><biomaterial><ECNumber>7.1.3.B1</ECNumber></biomaterial></chemical>
+    <chemical id="23"><commonName>p-hydroxybenzoic acid</commonName><molecularFormula>C7H6O3</molecularFormula>    </chemical>
+    <chemical id="24"><commonName>pyruvic acid</commonName><molecularFormula>C3H4O3</molecularFormula>    </chemical>
+    <chemical id="25"><commonName>phosphoric acid</commonName><molecularFormula>H3O4P</molecularFormula>    </chemical>
+    <chemical id="26"><commonName>>phosphoric acid, dipotassium salt</commonName><molecularFormula>H3K2O4P</molecularFormula>    </chemical>
+    <chemical id="27"><commonName>water</commonName><molecularFormula>H2O</molecularFormula>    </chemical>
+    <chemical id="28"><commonName>sodium chloride</commonName><molecularFormula>NaCl</molecularFormula>    </chemical>
+    
+    <phase id="31"><label>liquid</label><type>liquid</type></phase>
+
+    <system id="51">
+    <sample>
+        <chemical ref="21"/>
+        <source>Commercial source</source>
+        <componentCharacterization>
+                <chemical ref="21"/>
+                <value>95.1</value>
+                <units>mole percent</units>
+                <analyticalMethod>HPLC</analyticalMethod>
+            </componentCharacterization>
+        </sample>
+</system>
+    
+    <system id="53">
+        <reaction>
+            <participant><label>solution 1</label><chemical ref="21"/><stoichiometricCoef>-1</stoichiometricCoef><phase ref="31"/></participant>
+            <participant><label>solution 1</label><chemical ref="23"/><stoichiometricCoef>1</stoichiometricCoef><phase ref="31"/></participant>
+            <participant><label>solution 1</label><chemical ref="24"/><stoichiometricCoef>1</stoichiometricCoef><phase ref="31"/></participant>
+            <solvent><chemical ref="27"/><phase ref="31"/></solvent>
+            <auxiliarySubstance><chemical ref="22"/><function>catalyst</function></auxiliarySubstance>
+            <auxiliarySubstance><chemical ref="25"/><function>buffer</function><phase ref="31"/></auxiliarySubstance>
+            <auxiliarySubstance><chemical ref="26"/><function>buffer</function><phase ref="31"/></auxiliarySubstance>
+            <auxiliarySubstance><chemical ref="28"/><function>inert</function><phase ref="31"/></auxiliarySubstance>
+            <reactionFormalism>biochemical</reactionFormalism>
+            <reactionType>other reaction</reactionType>
+        </reaction>
+    </system>
+
+
+<dataset id="63">
+    <citation ref="1"/>
+    <system ref="53"/>
+    <fixedConditions>
+        <condition conditionDescription="equilibrium condition">
+            <pressure>
+                <units>Pa</units></pressure>
+                <var><v>10300</v></var>            
+        </condition>
+        <condition conditionDescription="equilibrium condition">
+            <pH><units>unitless</units></pH>
+            <var><v>6.98</v></var>
+        </condition>
+        <condition conditionDescription="equilibrium condition">
+            <ionicStrength>
+                <ion ref="29"/> <!--unsure what this reference is to, need to read paper.-->
+                <units>mol/kg</units></ionicStrength>
+            <var><v>0.38</v></var>
+        </condition>
+    </fixedConditions>
+    <variableConditions>
+        <condition conditionDescription="equilibrium condition"><temperature>
+            <units>K</units>
+        </temperature></condition>
+    </variableConditions>
+    <property dataRepresentation="Direct representation, x = x1">
+            <reaction>
+                <energy>
+                    <molarEnthalpyOfReaction>
+                        <units>J/mol</units>
+                        <otherMethod>heat-conduction</otherMethod>
+        </molarEnthalpyOfReaction></energy></reaction>  </property>          
+    <point>
+        <var><v>298.15</v></var>
+        <prop><v>-144.1</v>
+            <unc>
+                <combinedUncertainty>
+                    <v>2.6</v>
+                </combinedUncertainty>
+            </unc>
+        </prop>
+    </point>
+</dataset>
+    
+</dataReport>
+   
+
+    

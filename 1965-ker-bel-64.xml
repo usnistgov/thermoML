@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataReport xmlns="http://www.iupac.org/namespaces/ThermoML"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.iupac.org/namespaces/ThermoML file:/N:/Pfeif/working/ThermoML/thermoML/ThermoML-draft%20v.pfeif.6.xsd">
+    
+    <!-- ***********************************************************************  -->
+    <!--        This example provides resources for:                              -->
+    <!-- ***********************************************************************  -->
+    <!--(1) a journal reference                                     -->
+    <!--(2) entry of chemical ids with no other data other than a name            -->
+    <!--(3) entry of phases with no data other than a name and crystal type       -->
+    <!--(4) phase fields for single, triple and quadrinary phase equilibrium      -->
+    <!--(5) Example of an alloy made of known materials with no characterization  -->
+    <!--(6) example of eutectic temperature measuremetns                          -->
+    <!-- ************************************************************************ -->
+
+<!--citation informatio for datasource-->
+<citation id="1">
+    <TRCRefID><yearPub>1965</yearPub><author1>ker</author1><author2>bel</author2><authorN>0</authorN></TRCRefID>
+    <author>Kerr, H.</author><author>Bell, J.A.</author><author>Winegard, W.C.</author>
+    <documentType>journal</documentType>
+    <language>German</language>
+    <title>Solidification of Binary and Ternary Eutectics</title>
+    <yearPublished>1965</yearPublished>
+    <journal><journalName>J. Aust. Inst. Met.</journalName><pages>64-69</pages><volume>10</volume></journal>
+
+</citation>
+
+    <!-- chemcial information-->
+    <chemical id="21">        <commonName>aluminum</commonName>    </chemical>
+    <chemical id="22">        <commonName>silicon</commonName>    </chemical>
+    <chemical id="23">        <commonName>zinc</commonName>    </chemical>
+    <chemical id="24">        <commonName>tin</commonName>    </chemical>
+    <chemical id="25">        <commonName>lead</commonName>    </chemical>
+    
+    <!-- phase information--> 
+    <phase id="30"><label>Liquid</label><type>liquid</type><commonName>liquid</commonName></phase>
+    <phase id="31"><label>alpha-Al</label><type>crystal</type> <commonName>alpha al</commonName> </phase>
+    <phase id="32"><label>alpha-Si</label><type>crystal</type><commonName>alpha-si</commonName></phase>
+    <phase id="33"><label>alpha-sn</label><type>crystal</type><commonName>alpha-sn</commonName></phase>
+    <phase id="34"><label>alpha-Zn</label><type>crystal</type><commonName>alpha-Zn</commonName></phase>
+    <phase id="35"><label>alpha-Pb</label><type>crystal</type><commonName>alpha-Pb</commonName></phase>
+
+    <!--phase field information-->
+        <!--phase field information for eutectic phase-->
+            <phaseField id="41"><label>dunno</label> <phase ref="31"/><phase ref="32"/><phase ref="30"/></phaseField>
+        <!--phase field information for Al-Si eutectic reaction, including all involved phases as zero phase fractions indicating an invariant transaction-->
+            <phaseField id="42"><label>dunno</label><phase ref="31"/><phase ref="32"/><phase ref="30"/> <zeroPhaseFraction ref="31"/><zeroPhaseFraction ref="32"/><zeroPhaseFraction ref="30"/></phaseField>
+        <!--zero phase field information for Zn-Pb-Sn eutecitic reaction -->
+            <phaseField id="43"><label>dunno</label><phase ref="33"/><phase ref="34"/><phase ref="35"/><phase ref="30"/> <zeroPhaseFraction ref="33"/><zeroPhaseFraction ref="34"/><zeroPhaseFraction ref="35"/><zeroPhaseFraction ref="30"/></phaseField>
+    
+    <!--system information-->
+    <!--zone refined aluminum specimen-->
+    <system id="51">
+        <label>zone refined aluminum   </label>
+            <processing><chemical ref="21"/><processingStep><preparation><modifiedSolidification>Zone Refining</modifiedSolidification></preparation></processingStep></processing>
+    </system>
+
+    <!--silicon specimen-->
+ <system id="52"><label>semiconductor grade silicon</label>
+        <sample><chemical ref="22"/> <reportingStatus>notDescribed</reportingStatus></sample>
+ </system>
+    <!--zinc undescribed-->
+    <system id="53"><label>zinc</label>
+        <sample><chemical ref="23"/> <reportingStatus>notDescribed</reportingStatus></sample>       
+    </system>
+    <!--tin undescribed-->
+    <system id="54"><label>tin</label>
+        <sample><chemical ref="24"/> <reportingStatus>notDescribed</reportingStatus></sample>        
+    </system>
+    <!--lead undescribed-->
+    <system id="55"><label>lead</label>
+         <sample><chemical ref="25"/> <reportingStatus>notDescribed</reportingStatus></sample>       
+    </system>
+    
+    <!--al and si alloyed specimen-->
+    <system id="56"><label>al-si</label><multiComponent multiComponentType="alloy" compositionBasis="mass fraction"><component><system ref="51"/></component><component><system ref="52"/></component></multiComponent>    </system>
+
+    <!--Pb,Sn,Zn alloyed specimen-->
+    <system id="57"><label>al-si</label><multiComponent multiComponentType="alloy" compositionBasis="mass fraction"><component><system ref="53"/></component><component><system ref="54"/></component><component><system ref="55"/></component></multiComponent>    </system>
+    
+    
+    
+    <!--Al Si eutectic Temperature -->
+    <!--dataset descritpion-->
+    <dataset><label>pg 65 eutectic composition</label> 
+        <!--this citation -->
+        <citation ref="1"/>
+        <!--system consisting of zone refined al and semiconductor Si-->
+        <system ref="56"/>
+        <!--fixed conditions during measurement-->
+            <fixedConditions>
+                <condition conditionDescription="equilibrium condition">
+                    <composition><component ref="22"/><units>weight fraction</units><nominalOrBulkComposition>true</nominalOrBulkComposition>
+                </composition>
+                <var>
+                    <value>.126</value>
+                    <uncertainty>
+                        <combinedUncertainty>
+                            <value>0.001</value>
+                        </combinedUncertainty>
+                    </uncertainty>                    
+                </var></condition>
+            </fixedConditions>
+        
+        <property dataRepresentation="Direct representation, x = x1">
+            <phaseTransitionConditions><temperature><eutecticTemperature>
+                <units>K</units>
+                    </eutecticTemperature>
+                    </temperature>
+                <method>DSC/DTA</method>
+                </phaseTransitionConditions>
+            </property>
+        <point><phaseField ref="56"/><var><value>850.35</value><uncertainty><expandedUncertainty><value>3</value> </expandedUncertainty></uncertainty></var></point>
+    </dataset>
+
+<!--Pb,Sn,Zn eutectic Temperature (note this is fictionary)-->
+    <dataset><label>pg 65 eutectic composition, alternat version</label> 
+        <citation ref="1"/><system ref="57"/>
+        <!--compositions Sn, Zn-->
+        <fixedConditions>
+            
+            <condition conditionDescription="equilibrium condition">
+                <composition><component ref="23"/><units>weight fraction</units><nominalOrBulkComposition>true</nominalOrBulkComposition>
+                </composition>
+                <var>
+                    <value>0.034</value>
+                    <uncertainty>
+                        <combinedUncertainty>
+                            <value>0.001</value>
+                        </combinedUncertainty>
+                    </uncertainty>                    
+                </var></condition>
+            <condition conditionDescription="equilibrium condition">
+                <composition><component ref="24"/><units>weight fraction</units><nominalOrBulkComposition>true</nominalOrBulkComposition>
+                </composition>
+                <var>
+                    <value>0.655</value>
+                    <uncertainty>
+                        <combinedUncertainty>
+                            <value>0.001</value>
+                        </combinedUncertainty>
+                    </uncertainty>                    
+                </var></condition>
+        </fixedConditions>
+ <!--eutectic phase transition temperature-->
+        <property dataRepresentation="Direct representation, x = x1">
+            <phaseTransitionConditions><temperature><eutecticTemperature>
+                <units>K</units>
+            </eutecticTemperature>
+            </temperature>
+                <method>DSC/DTA</method>
+            </phaseTransitionConditions>
+        </property>
+        <!-- note this temperature is not in the original document, an arbitrary number has been input here as a place holder.-->
+        <point><phaseField ref="43"/><var><value>633</value><uncertainty><expandedUncertainty><value>3</value> </expandedUncertainty></uncertainty></var></point>
+    </dataset>
+ 
+ 
+</dataReport>

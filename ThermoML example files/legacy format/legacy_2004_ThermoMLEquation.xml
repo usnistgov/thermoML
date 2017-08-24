@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<xsd:schema 
+    xmlns:xsd =“http://www.w3.org/2001/XMLSchema" 
+    xmlns:mml =“http://www.w3.org/1998/Math/MathML"> 
+  <xsd:annotation>  
+    <xsd:documentation>Definition of an equation for use with ThermoML. Version 
+1.0</xsd:documentation> 
+  </xsd:annotation>  
+  <xsd:import  
+schemaLocation=“http://www.w3.org/Math/XMLSchema/mathml2/mathml2.xsd" 
+namespace=“http://www.w3.org/1998/Math/MathML"/> 
+  <xsd:include  schemaLocation="http://trc.nist.gov/ThermoML.xsd"/>  
+  <xsd:element name="ThermoMLEquation" type="ThermoMLEquation"/> 
+  <xsd:complexType  name="ThermoMLEquation">  
+    <xsd:annotation>  
+      <xsd:documentation>Definition and MathML description of an empirical 
+equation</xsd:documentation> 
+    </xsd:annotation>  
+    <xsd:sequence>  
+      <xsd:element  name="Version">  
+    <xsd:complexType> 
+     <xsd:sequence> 
+            <xsd:element  name="nVersionMajor"  type="xsd:integer"/>  
+            <xsd:element  name="nVersionMinor"  type="xsd:integer"/>  
+     </xsd:sequence> 
+    </xsd:complexType> 
+      </xsd:element>  
+      <xsd:element  name="sEqName"  type="xsd:string"/>  
+      <xsd:element  name="sEqAltName"  type="xsd:string"  minOccurs="0"  
+maxOccurs="unbounded"/> 
+      <xsd:element  name="sEqDescription"  type="xsd:string"  minOccurs="0"/>  
+      <xsd:element  name="EqReference"  type="CitationType"  minOccurs="0"  
+maxOccurs="unbounded"/> 
+      <xsd:element  name="EqVariable"  minOccurs="0"  maxOccurs="unbounded">  
+    <xsd:complexType> 
+     <xsd:sequence> 
+            <xsd:element  name="sEqSymbol"  type="xsd:string"/>  
+            <xsd:element  name="sEqVarComment"  type="xsd:string"  minOccurs="0"/>  
+            <xsd:element  name="IUPACSymbol"  minOccurs="0">  
+       <xsd:complexType> 
+        <xsd:sequence> 
+:element ref="mml:math"/> 
+        </xsd:sequence> 
+       </xsd:complexType> 
+      </xsd:element> 
+     </xsd:sequence> 
+    </xsd:complexType> 
+      </xsd:element>  
+      <xsd:element  name="EqParameter"  minOccurs="0"  maxOccurs="unbounded">  
+    <xsd:complexType> 
+     <xsd:sequence> 
+            <xsd:element  name="sEqParSymbol"  type="xsd:string"/>  
+            <xsd:element  name="sEqParComment"  type="xsd:string"  minOccurs="0"/>  
+            <xsd:element  name="IUPACSymbol"  minOccurs="0">  
+       <xsd:complexType> 
+        <xsd:sequence> 
+         <xsd:element ref="mml:math"/> 
+        </xsd:sequence> 
+       </xsd:complexType> 
+      </xsd:element> 
+     </xsd:sequence> 
+    </xsd:complexType> 
+      </xsd:element>  
+      <xsd:element  name="EqConstant"  minOccurs="0"  maxOccurs="unbounded">  
+    <xsd:complexType> 
+     <xsd:sequence> 
+            <xsd:element  name="sEqConstantSymbol"  type="xsd:string"/>  
+            <xsd:element  name="sEqConstantComment"  type="xsd:string"  
+minOccurs="0"/> 
+            <xsd:element  name="IUPACSymbol"  minOccurs="0">  
+       <xsd:complexType> 
+        <xsd:sequence> 
+         <xsd:element ref="mml:math"/> 
+        </xsd:sequence> 
+       </xsd:complexType> 
+      </xsd:element> 
+     </xsd:sequence> 
+    </xsd:complexType> 
+      </xsd:element>  
+      <xsd:element  name="EqMathContent"  maxOccurs="unbounded">  
+    <xsd:complexType> 
+     <xsd:sequence> 
+            <xsd:element  ref="mml:math"/>  
+     </xsd:sequence> 
+65
+    </xsd:complexType> 
+      </xsd:element>  
+      <xsd:element  name="EqMathPresentation"  minOccurs="0"  
+maxOccurs="unbounded"> 
+    <xsd:complexType> 
+     <xsd:sequence> 
+            <xsd:element  ref="mml:math"/>  
+     </xsd:sequence> 
+    </xsd:complexType> 
+      </xsd:element>  
+    </xsd:sequence>  
+  </xsd:complexType>  
+</xsd:schema> 
+

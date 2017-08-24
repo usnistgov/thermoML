@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<ThermoMLEquation xmlns:xsi=“http://www.w3.org/2001/XMLSchema-instance" 
+xsi:noNamespaceSchemaLocation=“http://trc.nist.gov/ThermoMLEquation.xsd"> 
+  <Version>  
+    <nVersionMajor>1</nVersionMajor>  
+    <nVersionMinor>0</nVersionMinor>  
+  </Version>  
+  <sEqName>ThermoML.Wagner25Linear.VaporPressure</sEqName>  
+  <sEqDescription>The equation is used for representation of vapor pressure over the 
+liquid. Linear with respect to all adjustable parameters.</sEqDescription> 
+  <EqReference>  
+    <TRCRefID>  
+      <yrYrPub>1990</yrYrPub>  
+      <sAuthor1>amb</sAuthor1>  
+      <sAuthor2>ewi</sAuthor2>  
+      <nAuthorn>0</nAuthorn>  
+    </TRCRefID>  
+    <eType>journal</eType>  
+    <eSourceType>Original</eSourceType>  
+    <sAuthor>Ambrose,  D.</sAuthor>  
+    <sAuthor>Ewing,  M.  B.</sAuthor>  
+    <sAuthor>Ghiassee  N.  B.</sAuthor>  
+    <sAuthor>Sanchez Ochoa, J. C.</sAuthor> 
+    <sPubName>J.  Chem.  Thermodyn.</sPubName>  
+    <yrPubYr>1990</yrPubYr>  
+    <sTitle>The ebulliometric method of vapor-pressure measurement: vapor pressures of 
+benzene, hexafluorobenzene, and naphthalene</sTitle> 
+    <sVol>22</sVol>  
+    <sPage>589</sPage>  
+  </EqReference>  
+  <EqVariable>  
+    <sEqSymbol>P</sEqSymbol>  
+    <sEqVarComment>Vapor  pressure</sEqVarComment>  
+  </EqVariable>  
+  <EqVariable>  
+    <sEqSymbol>T</sEqSymbol>  
+    <sEqVarComment>Temperature</sEqVarComment>  
+  </EqVariable>  
+  <EqParameter>  
+    <sEqParSymbol>TC</sEqParSymbol>  
+    <sEqParComment>Critical  temperature</sEqParComment>  
+  </EqParameter>  
+  <EqParameter>  
+    <sEqParSymbol>lnPC</sEqParSymbol>  
+    <sEqParComment>Natural  logarithm  of  critical  pressure</sEqParComment>  
+  </EqParameter>  
+  <EqParameter>  
+    <sEqParSymbol>A</sEqParSymbol>  
+  </EqParameter>  
+  <EqMathContent>  
+    <math  xmlns=“http://www.w3.org/1998/Math/MathML">  
+      <declare  type="vector"  nargs="4"><ci>A</ci></declare>  
+      <declare>  
+        <ci>n</ci>  
+    <vector> 
+     <cn>1</cn> 
+          <cn>1.5</cn>  
+          <cn>2.5</cn>  
+     <cn>5</cn> 
+    </vector> 
+      </declare>  
+      <apply>  
+    <eq/> 
+    <ci>Tau</ci> 
+apply> 
+     <minus/> 
+     <cn>1</cn> 
+     <apply> 
+      <divide/> 
+      <ci>T</ci> 
+      <ci>TC</ci> 
+     </apply> 
+    </apply> 
+   </apply> 
+      <apply>  
+    <eq/> 
+    <apply> 
+     <minus/> 
+     <apply> 
+      <ln/> 
+      <ci>P</ci> 
+     </apply> 
+          <ci>lnPC</ci>  
+    </apply> 
+    <apply> 
+     <divide/> 
+     <apply> 
+      <sum/> 
+      <bvar><ci>i</ci></bvar> 
+            <lowlimit><cn>1</cn></lowlimit>  
+            <uplimit><cn>4</cn></uplimit>  
+      <apply> 
+       <times/> 
+       <apply> 
+        <selector/> 
+        <ci type="vector">A</ci> 
+        <ci>i</ci> 
+       </apply> 
+       <apply> 
+        <power/> 
+        <ci>Tau</ci> 
+        <apply> 
+         <selector/> 
+         <ci type="vector">n</ci> 
+         <ci>i</ci> 
+        </apply> 
+       </apply> 
+/apply> 
+     </apply> 
+     <apply> 
+      <divide/> 
+      <ci>T</ci> 
+      <ci>TC</ci> 
+     </apply> 
+    </apply> 
+   </apply> 
+    </math>  
+  </EqMathContent>  
+</ThermoMLEquation> 

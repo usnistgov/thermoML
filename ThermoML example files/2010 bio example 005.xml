@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataReport xmlns="http://www.iupac.org/namespaces/ThermoML"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.iupac.org/namespaces/ThermoML file:/N:/Pfeif/working/ThermoML/thermoML/ThermoML-draft%20v.pfeif.6.xsd">
+    <!-- (1) citation -->  
+    <citation id="1">
+        
+        <author>Ortiz, A.[Antonio]</author>
+        <author>Aranda, F. J.[Francisco J.]</author>
+        <author>Villalain, J.[Jose]</author>
+        <author>Gomez-Fernandez, J. C.[Juan C.]</author>
+        
+        <documentType>journal</documentType>
+        <sourceType>Original</sourceType>
+        <title>Influence of retinoids on phosphatidylethanolamine  lipid polymorphism</title>
+        <yearPublished>1992</yearPublished>
+        <journal>
+            <journalName>Biochimica et Biophysica Acta</journalName>
+            <pages>226-234</pages>
+            <volume>1112</volume>          
+        </journal>
+            <!--<dateCit>2009-07-16</dateCit> NOT Transferred-->
+    </citation>
+    <chemical id="21">            <commonName>9-Octadecenoic acid, 1-[[[(2-aminoethoxy)hydroxyphosphinyl]oxy]methyl]-1,2-ethanediyl ester, (E,E)-</commonName>
+        <molecularFormula>C41H79NO8P</molecularFormula></chemical>
+    <chemical id="22">            <commonName>ethylenediaminetetraacetic acid</commonName>
+        <molecularFormula>C10H16N2O8</molecularFormula></chemical>
+    <chemical id="23">            <commonName>4-(2-hydroxyethyl)-1-piperazineethanesulfonic acid</commonName>
+        <molecularFormula>C8H18N2O4S</molecularFormula></chemical>
+    <chemical id="24">            <commonName>sodium chloride</commonName>
+        <molecularFormula>ClNa</molecularFormula></chemical>
+    <chemical id="25">            <commonName>water</commonName>
+        <molecularFormula>H2O</molecularFormula></chemical>
+    <chemical id="2"></chemical>
+    
+    <phase id="31"><type>liquid</type></phase>
+    <phase id="32"><label>1A</label><type>liquid</type><bioState>other</bioState></phase>
+    <phase id="33"><label>2AHII</label><type>liquid</type><bioState>other</bioState></phase>
+    
+    <phaseField id="41"><phase ref="32"/><phase ref="33"/></phaseField>
+    
+    <system id="51"><sample><chemical ref="21"/><source>Commercial source</source></sample>  </system>
+    <system id="52"><sample><chemical ref="22"/><source>Commercial source</source></sample>  </system>
+    <system id="53"><sample><chemical ref="23"/><source>Commercial source</source></sample>  </system>
+    <system id="54"><sample><chemical ref="24"/><source>Commercial source</source></sample>  </system>
+    <system id="55"><sample><chemical ref="25"/><source>Commercial source</source>
+        <componentCharacterization><chemical ref="25"/><value>99.9</value>
+        <units>mole percent</units><analyticalMethod>Estimated by the compiler</analyticalMethod>
+       
+   </componentCharacterization></sample>  </system>
+    <system id="56"><reaction>
+        <participant><chemical ref="21"/></participant>
+        <solvent><chemical ref="25"/></solvent>
+        <auxiliarySubstance><chemical ref="22"/><function>buffer</function></auxiliarySubstance>
+        <auxiliarySubstance><chemical ref="23"/><function>buffer</function></auxiliarySubstance>
+        <auxiliarySubstance><chemical ref="24"/><function>inert</function></auxiliarySubstance>
+        <reactionType>other reaction</reactionType>
+    </reaction></system>
+
+<dataset>
+    <citation ref="1"/>
+    <system ref="56"/>
+    <fixedConditions>
+        <condition conditionDescription="equilibrium condition">
+            <pressure><units>Pa</units></pressure><var><v>101325</v></var>
+        </condition>
+    </fixedConditions>
+    <variableConditions>
+        <condition conditionDescription="equilibrium condition">
+            <pH><units/></pH>
+        </condition>
+        <condition conditionDescription="equilibrium condition"><ionicStrength>
+            <ion/>
+            <units>mol/m^3</units>
+        </ionicStrength></condition>
+    </variableConditions>
+    <property dataRepresentation="Direct representation, x = x1">
+        <phaseTransitionConditions>
+            <temperature>
+                <peakTemperature>
+                <units>K</units>
+        </peakTemperature></temperature>
+            <method>DSC/DTA</method>
+        </phaseTransitionConditions>
+    </property>
+    <property dataRepresentation="Direct representation, x = x1">
+    <reaction><energy><molarEnthalpyOfReaction>
+        <units>J/mol</units><otherMethod>DSC</otherMethod>
+    </molarEnthalpyOfReaction></energy></reaction>    
+    </property>
+    <point>
+        <phaseField ref="41"/>
+        <var><v>7.4</v></var>
+        <var><v>0.20</v></var>
+        <prop><v>322.4</v></prop>
+        <prop><v>2.9</v></prop>
+    </point>   
+    <compiler/>
+    <contributor/>
+    <!--<date/> this can not be left as represented in other document -->
+</dataset>
+</dataReport>

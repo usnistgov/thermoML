@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<ThermoMLEquation xmlns:xsi=“http://www.w3.org/2001/XMLSchema-instance" 
+xsi:noNamespaceSchemaLocation=“http://trc.nist.gov/ThermoMLEquation.xsd"> 
+  <Version>  
+    <nVersionMajor>1</nVersionMajor>  
+    <nVersionMinor>0</nVersionMinor>  
+  </Version>  
+  <sEqName>ThermoML.HelmholtzIG.EOS</sEqName>  
+  <sEqDescription>The equation represents the ideal-gas Helmholtz energy as a function 
+of temperature and density. Only differences between two states should be calculated 
+with this equation.</sEqDescription> 
+  <EqReference>  
+    <eType>journal</eType>  
+    <sAuthor>Span,  R.[Roland]</sAuthor>  
+    <sAuthor>Wagner,  W.[Wolfgang]</sAuthor>  
+    <sPubName>J. Phys. Chem. Ref. Data</sPubName> 
+    <yrPubYr>1996</yrPubYr>  
+    <sTitle>A New Equation of State for Carbon Dioxide Covering the Fluid Region from 
+the Triple Point Temperature to 1100 K at Pressures up to 800 MPa</sTitle> 
+    <sVol>25</sVol>  
+    <sPage>1509-1596</sPage>  
+  </EqReference>  
+  <EqReference>  
+    <eType>journal</eType>  
+    <sAuthor>Span,  R.[Roland]</sAuthor>  
+    <sAuthor>Lemmon,  E.[Eric]</sAuthor>  
+    <sAuthor>Jacobsen,  R.[Richard]</sAuthor>  
+    <sAuthor>Wagner,  W.[Wolfgang]</sAuthor>  
+    <sAuthor>Yokozeki,  A.[Akimichi]</sAuthor>  
+    <sPubName>J. Phys. Chem. Ref. Data</sPubName> 
+    <yrPubYr>2000</yrPubYr>  
+    <sTitle>A Reference Equation of State for the Thermodynamic Properties of Nitrogen 
+for Temperatures from 63.151 to 1o00 K at Pressures up to 2200 MPa</sTitle> 
+    <sVol>29</sVol>  
+    <sPage>1361-1433</sPage>  
+  </EqReference>  
+  <EqReference>  
+    <eType>journal</eType>  
+    <sAuthor>Lemmon,  E.[Eric]</sAuthor>  
+    <sAuthor>Jacobsen,  R.[Richard]</sAuthor>  
+    <sPubName>J. Phys. Chem. Ref. Data</sPubName> 
+    <yrPubYr>2000</yrPubYr>  
+    <sTitle>An International Standard Formulation for the Thermodynamic Properties of 
+1,1,1-Trifluoroethane (HFC-143a) for Temperatures from 161 to 450 K and Pressures to 
+50 MPa</sTitle> 
+    <sVol>29</sVol>  
+    <sPage>521-552</sPage>  
+  </EqReference>  
+  <EqVariable>  
+    <sEqSymbol>A0</sEqSymbol>  
+    <sEqVarComment>Helmholtz  energy</sEqVarComment>  
+  </EqVariable>  
+  <EqVariable>  
+    <sEqSymbol>T</sEqSymbol>  
+    <sEqVarComment>Temperature</sEqVarComment>  
+  </EqVariable>  
+  <EqVariable>  
+    <sEqSymbol>Density</sEqSymbol>  
+    <sEqVarComment>Density</sEqvarComment>  
+  </EqVariable>  
+  <EqParameter>  
+    <sEqParSymbol>TC</sEqParSymbol>  
+    <sEqParComment>Critical  temparature</sEqParComment>  
+  </EqParameter>  
+  <EqParameter>  
+    <sEqParSymbol>DC</sEqParSymbol>  
+    <sEqParComment>Critical  density</sEqParComment>  
+  </EqParameter>  
+  <EqParameter>  
+    <sEqParSymbol>t</sEqParSymbol>  
+  </EqParameter>  
+  <EqParameter>  
+    <sEqParSymbol>a</sEqParSymbol>  
+  </EqParameter>  
+  <EqParameter>  
+    <sEqParSymbol>b</sEqParSymbol>  
+  </EqParameter>  
+  <EqParameter>  
+    <sEqParSymbol>c</sEqParSymbol>  
+  </EqParameter>  
+  <EqConstant>  
+    <sEqConstantSymbol>R</sEqConstantSymbol>  
+    <sEqConstantComment>Gas constant expressed in 
+J/(K*mol)</sEqConstantComment> 
+  </EqConstant>  
+  <EqConstant>  
+    <sEqConstantSymbol>nA</sEqConstantSymbol>  
+  </EqConstant>  
+  <EqConstant>  
+    <sEqConstantSymbol>nB</sEqConstantSymbol>  
+  </EqConstant>  
+  <EqMathContent>  
+    <math  xmlns=“http://www.w3.org/1998/Math/MathML">  
+      <declare  type="vector">  
+    <ci>a</ci> 
+      </declare>  
+      <declare  type="vector">  
+        <ci>b</ci>  
+      </declare>  
+      <declare  type="vector">  
+    <ci>c</ci> 
+      </declare>  
+      <apply>  
+    <eq/> 
+    <ci>Tau</ci> 
+    <apply> 
+     <divide/> 
+          <ci>TC</ci>  
+     <ci>T</ci> 
+    </apply> 
+   </apply> 
+      <apply>  
+    <eq/> 
+        <ci>Delta</ci>  
+    <apply> 
+     <divide/> 
+          <ci>Density</ci>  
+          <ci>DC</ci>  
+    </apply> 
+   </apply> 
+      <apply>  
+    <eq/> 
+    <apply> 
+     <times/> 
+          <cn>1000</cn>  
+     <apply> 
+      <divide/> 
+      <ci>A0</ci> 
+      <apply> 
+       <times/> 
+       <cn>R</cn> 
+       <ci>T</ci> 
+      </apply> 
+     </apply> 
+    </apply> 
+    <apply> 
+     <plus/> 
+     <apply> 
+      <ln/> 
+            <ci>Delta</ci>  
+/apply> 
+     <apply> 
+      <plus/> 
+      <apply> 
+       <times/> 
+       <ci>t</ci> 
+       <apply> 
+        <ln/> 
+        <ci>Tau</ci> 
+       </apply> 
+      </apply> 
+      <apply> 
+       <plus/> 
+       <apply> 
+        <sum/> 
+        <bvar><ci>i</ci></bvar> 
+        <lowlimit><cn>1</cn></lowlimit> 
+        <uplimit><ci>nA</ci></uplimit> 
+        <apply> 
+         <times/> 
+         <apply> 
+          <selector/> 
+          <ci type="vector">a</ci> 
+          <ci>i</ci> 
+         </apply> 
+         <apply> 
+          <power/> 
+          <ci>Tau</ci> 
+          <apply> 
+           <selector/> 
+           <ci type="vector">n</ci> 
+           <ci>i</ci> 
+          </apply> 
+         </apply> 
+        </apply> 
+       </apply> 
+       <apply> 
+        <sum/> 
+        <bvar><ci>i</ci></bvar> 
+        <lowlimit><cn>1</cn></lowlimit> 
+        <uplimit><ci>nB</ci></uplimit> 
+        <apply> 
+         <times/> 
+apply> 
+          <selector/> 
+          <ci type="vector">b</ci> 
+          <ci>i</ci> 
+         </apply> 
+         <apply> 
+          <ln/> 
+          <apply> 
+           <minus/> 
+           <cn>1</cn> 
+           <apply> 
+            <exp/> 
+            <apply> 
+             <times/> 
+             <cn>-1</cn> 
+             <apply> 
+              <times/> 
+              <ci>Tau</ci> 
+              <apply> 
+               <selector/> 
+               <ci type="vector">c</ci> 
+               <ci>i</ci> 
+              </apply> 
+             </apply> 
+            </apply> 
+           </apply> 
+          </apply> 
+         </apply> 
+        </apply> 
+       </apply> 
+      </apply> 
+     </apply> 
+    </apply> 
+   </apply> 
+    </math>  
+  </EqMathContent>  
+</ThermoMLEquation> 
+
+
+

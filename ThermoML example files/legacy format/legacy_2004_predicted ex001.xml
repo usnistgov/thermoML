@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!--Created by Guided Data Capture (GDC) Software (http://www.trc.nist.gov)--> 
+<DataReport xmlns:xsi=“http://www.w3.org/2001/XMLSchema-instance" 
+xsi:noNamespaceSchemaLocation=“http://trc.nist.gov/ThermoML.xsd”> 
+  <Version>  
+    <nVersionMajor>3</nVersionMajor>  
+    <nVersionMinor>0</nVersionMinor>  
+  </Version>  
+  <Citation>  
+    <TRCRefID>  
+      <yrYrPub>2003</yrYrPub>  
+      <sAuthor1>ste</sAuthor1>  
+      <sAuthor2>chi</sAuthor2>  
+      <nAuthorn>0</nAuthorn>  
+    </TRCRefID>  
+    <eType>journal</eType>  
+    <eSourceType>Original</eSourceType>  
+    <sAuthor>Steele, W. V.[William V.]</sAuthor> 
+    <sAuthor>Chirico, R. D.[Robert D.]</sAuthor> 
+    <sAuthor>Cowell,  A.  B.</sAuthor>  
+    <sAuthor>Nguyen,  A.</sAuthor>  
+    <sAuthor>Knipmeyer,  S.  E.</sAuthor>  
+    <sPubName>J.  Chem.  Thermodyn.</sPubName>  
+    <yrPubYr>2003</yrPubYr>  
+    <dateCit>2004-02-23</dateCit>  
+    <sTitle>Possible precursors and products of deep hydrodesulfurization of gasoline and 
+distillate fuels. Part 2. The thermodynamic properties of 2,3-
+dihydrobenzo[b]thiophene</sTitle> 
+    <sVol>35</sVol>  
+    <sPage>1253-1276</sPage>  
+  </Citation>  
+  <Compound>  
+  <RegNum> 
+      <nCASRNum>4565326</nCASRNum>  
+    </RegNum>  
+    <sCommonName>2,3-dihydrobenzo[b]thiophene</sCommonName>  
+    <sFormulaMolec>C8H8S</sFormulaMolec>  
+  </Compound>  
+  <PureOrMixtureData>  
+    <Component>  
+   <RegNum> 
+        <nCASRNum>4565326</nCASRNum>  
+      </RegNum>  
+      <nSampleNm>1</nSampleNm>  
+  </Component> 
+    <eExpPurpose>Principal objective of the work</eExpPurpose> 
+    <sCompiler>VVD</sCompiler>  
+    <sContributor>TRC</sContributor>  
+    <dateDateAdded>2/23/2004</dateDateAdded>  
+    <Property>  
+      <nPropNumber>1</nPropNumber>  
+      <Property-MethodID>  
+        <PropertyGroup>  
+     <Criticals> 
+      <ePropName>Critical temperature, K</ePropName> 
+      <Prediction> 
+              <ePredictionType>Group  contribution</ePredictionType>  
+       <sPredictionMethodDescription>Joback 
+method</sPredictionMethodDescription> 
+       <PredictionMethodRef> 
+                <TRCRefID>  
+         <yrYrPub>1984</yrYrPub> 
+         <sAuthor1>job</sAuthor1> 
+         <sAuthor2></sAuthor2> 
+         <nAuthorn>0</nAuthorn> 
+        </TRCRefID> 
+        <eType>thesis</eType> 
+                <sAuthor>Joback,  K.  G.[Kevin  G.]</sAuthor>  
+        <yrPubYr>1984</yrPubYr> 
+        <dateCit>2004-02-23</dateCit> 
+        <thesis> 
+         <sDeg>Ph. D.</sDeg> 
+                  <sDegInst>Massachussetts  Institute  of  Technology</sDegInst>  
+        </thesis> 
+       </PredictionMethodRef> 
+       <PredictionMethodRef> 
+                <TRCRefID>  
+         <yrYrPub>2000</yrYrPub> 
+thor1>pol</sAuthor1> 
+                  <sAuthor2>oco</sAuthor2>  
+         <nAuthorn>0</nAuthorn> 
+        </TRCRefID> 
+        <eType>book</eType> 
+                <eSourceType>Original</eSourceType>  
+        <sAuthor>Poling, B. E.[Bruce E.]</sAuthor> 
+        <sAuthor>O'Connell, J.</sAuthor> 
+        <sAuthor>Prausnitz, J. M.[John M.]</sAuthor> 
+        <sPubName>The Properties of Gases and Liquids</sPubName> 
+        <yrPubYr>2000</yrPubYr> 
+        <dateCit>2004-02-23</dateCit> 
+                <book>  
+                  <sEdition>5th</sEdition>  
+         <sPublisher>McGraw-Hill: New York</sPublisher> 
+        </book> 
+       </PredictionMethodRef> 
+      </Prediction> 
+     </Criticals> 
+    </PropertyGroup> 
+      </Property-MethodID>  
+      <PropPhaseID>  
+        <ePropPhase>Liquid</ePropPhase>  
+      </PropPhaseID>  
+      <ePresentation>Direct  value,  X</ePresentation>  
+    </Property>  
+    <PhaseID>  
+        <ePhase>Liquid</ePhase>  
+    </PhaseID>  
+    <PhaseID>  
+    <ePhase>Gas</ePhase> 
+    </PhaseID>  
+    <NumValues>  
+      <PropertyValue>  
+        <nPropNumber>1</nPropNumber>  
+        <nPropValue>773</nPropValue>  
+        <nPropDigits>3</nPropDigits>  
+      </PropertyValue>  
+  </NumValues> 
+  </PureOrMixtureData>  
+</DataReport> 

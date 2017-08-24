@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Citation>
+		<TRCRefID>
+			<yrYrPub>1976</yrYrPub>
+			<sAuthor1>ham</sAuthor1>
+			<sAuthor2>tho</sAuthor2>
+			<nAuthorn>0</nAuthorn>
+		</TRCRefID>
+		<eType>journal</eType>
+		<eSourceType>Original</eSourceType>
+		<sAuthor>Hamilton, W. S.[Walter S.]</sAuthor>
+		<sAuthor>Thompson, P.[Patricia]</sAuthor>
+		<sAuthor>Pustejovsky, S.[Sharon]</sAuthor>
+		<sPubName>J. Chem. Eng. Data</sPubName>
+		<yrPubYr>1976</yrPubYr>
+		<dateCit>2002-11-08</dateCit>
+		<sTitle>The Enthalpies of Combustion and Formation of 2-Methyl-2-oxazoline and 2-Ethyl-2-oxazoline</sTitle>
+		<sKeyword>Enthalpy of combustion</sKeyword>
+		<sKeyword>Oxazolines</sKeyword>
+		<sVol>21</sVol>
+		<sPage>428-9</sPage>
+	</Citation>
+	<Compound>
+		<RegNum>
+			<nCASRNum>1120645</nCASRNum>
+		</RegNum>
+		<sCommonName>2-methyl-2-oxazoline</sCommonName>
+		<sFormulaMolec>C4H7NO</sFormulaMolec>
+		<Sample>
+			<nSampleNm>1</nSampleNm>
+			<eSource>Commercial source</eSource>
+			<purity>
+				<nStep>1</nStep>
+				<nPurityVol>99</nPurityVol>
+				<eAnalMeth>Not known</eAnalMeth>
+			</purity>
+			<purity>
+				<nStep>2</nStep>
+				<ePurifMethod>Fractional distillation</ePurifMethod>
+				<ePurifMethod>Molecular sieve treatment</ePurifMethod>
+			</purity>
+			<purity>
+				<nStep>2</nStep>
+				<nPurityMass>100</nPurityMass>
+				<eAnalMeth>Gas chromatography</eAnalMeth>
+			</purity>
+		</Sample>
+	</Compound>
+	<Compound>
+		<RegNum>
+			<nCASRNum>124389</nCASRNum>
+		</RegNum>
+		<sCommonName>carbon dioxide</sCommonName>
+		<sFormulaMolec>CO2</sFormulaMolec>
+	</Compound>
+	<Compound>
+		<RegNum>
+			<nCASRNum>7727379</nCASRNum>
+		</RegNum>
+		<sCommonName>nitrogen</sCommonName>
+		<sFormulaMolec>N2</sFormulaMolec>
+	</Compound>
+	<Compound>
+		<RegNum>
+			<nCASRNum>7732185</nCASRNum>
+		</RegNum>
+		<sCommonName>water</sCommonName>
+		<sFormulaMolec>H2O</sFormulaMolec>
+	</Compound>
+	<Compound>
+		<RegNum>
+			<nCASRNum>7782447</nCASRNum>
+		</RegNum>
+		<sCommonName>oxygen</sCommonName>
+		<sFormulaMolec>O2</sFormulaMolec>
+	</Compound>
+	<ReactionData>
+		<Participant>
+			<RegNum>
+				<nCASRNum>1120645</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+			<nStoichiometricCoef>-1</nStoichiometricCoef>
+			<ePhase>Liquid</ePhase>
+		</Participant>
+		<Participant>
+			<RegNum>
+				<nCASRNum>124389</nCASRNum>
+			</RegNum>
+			<nStoichiometricCoef>4</nStoichiometricCoef>
+			<ePhase>Gas</ePhase>
+		</Participant>
+		<Participant>
+			<RegNum>
+				<nCASRNum>7727379</nCASRNum>
+			</RegNum>
+			<nStoichiometricCoef>0.5</nStoichiometricCoef>
+			<ePhase>Gas</ePhase>
+		</Participant>
+		<Participant>
+			<RegNum>
+				<nCASRNum>7732185</nCASRNum>
+			</RegNum>
+			<nStoichiometricCoef>3.5</nStoichiometricCoef>
+			<ePhase>Liquid</ePhase>
+		</Participant>
+		<Participant>
+			<RegNum>
+				<nCASRNum>7782447</nCASRNum>
+			</RegNum>
+			<nStoichiometricCoef>-5.25</nStoichiometricCoef>
+			<ePhase>Gas</ePhase>
+		</Participant>
+		<eExpPurpose>Principal objective of the work</eExpPurpose>
+		<sCompiler>RCW</sCompiler>
+		<sContributor>TRC</sContributor>
+		<dateDateAdded>3/20/1992</dateDateAdded>
+		<eReactionType>Combustion with oxygen</eReactionType>
+		<Property>
+			<nPropNumber>1</nPropNumber>
+			<Property-MethodID>
+				<PropertyGroup>
+					<EnthalpyInternalEnergyOfReaction>
+						<ePropName>Internal energy of reaction (mass basis), J/g</ePropName>
+						<eMethodName>Other</eMethodName>
+					</EnthalpyInternalEnergyOfReaction>
+				</PropertyGroup>
+			</Property-MethodID>
+			<nTemperature-K>298.15</nTemperature-K>
+			<nPressure-kPa>101.32</nPressure-kPa>
+		</Property>
+		<NumValues>
+			<PropertyValue>
+				<nPropNumber>1</nPropNumber>
+				<nPropValue>-28236.3516</nPropValue>
+			</PropertyValue>
+		</NumValues>
+	</ReactionData>
+</DataReport>

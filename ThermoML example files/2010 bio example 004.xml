@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataReport xmlns="http://www.iupac.org/namespaces/ThermoML"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.iupac.org/namespaces/ThermoML file:/N:/Pfeif/working/ThermoML/thermoML/ThermoML-draft%20v.pfeif.6.xsd">
+    <!-- (1) citation -->  
+    <citation id="1">
+        
+        <TRCRefID>
+			<yearPub>1998</yearPub>
+			<author1>car</author1>
+			<author2/>
+            <authorN>0</authorN>
+		</TRCRefID>
+        <author>Carta, R.[Renzo]</author>
+        <documentType>journal</documentType>
+		<sourceType>Original</sourceType>
+        <title>Solubilities of L-cystine, L-tyrosine,  L-leucine, and glycine in sodium chloride  solutions at various pH values</title>
+        <yearPublished>1998</yearPublished>
+            <journal>
+            <journalName>J. Chem. Thermodyn.</journalName>
+            <pages>379-387</pages>
+            <volume>30</volume>
+        </journal>
+	</citation>
+    <chemical id="21">		<commonName>L-cystine</commonName>        <molecularFormula>C6H12N2O4S2</molecularFormula>    </chemical>
+    <chemical id="22">				<commonName>water</commonName>        <molecularFormula>H2O</molecularFormula>   </chemical>
+    <chemical id="23">        <commonName>sodium chloride</commonName>        <molecularFormula>ClNa</molecularFormula></chemical> 
+    <chemical id="24">        <commonName>hydrogen chloride</commonName>        <molecularFormula>ClH</molecularFormula></chemical>  
+
+    <phase id="31"><type>liquid</type></phase>
+    <phase id="32"><type>crystal</type></phase>
+   
+   <system id="51"><sample><chemical ref="21"/>
+       <source>Commercial source</source>
+       <componentCharacterization>
+           <chemical ref="21"/>
+           <value>98</value>
+       <units>mass percent</units>
+           <analyticalMethod>Stated by supplier</analyticalMethod>
+   </componentCharacterization>
+   </sample></system>
+    
+    <system id="52"><sample><chemical ref="22"/>
+        <source>Commercial source</source>
+        <componentCharacterization>
+            <chemical ref="22"/>
+            <value>99.99</value>
+            <units>mass percent</units>
+            <analyticalMethod>Estimation</analyticalMethod>
+        </componentCharacterization>
+    </sample></system>
+    
+    <system id="53"><sample><chemical ref="23"/>
+        <source>Commercial source</source>
+        <componentCharacterization>
+            <chemical ref="23"/>
+            <value>99.9</value>
+            <units>mass percent</units>
+            <analyticalMethod>Estimation</analyticalMethod>
+        </componentCharacterization>
+    </sample></system>
+    
+    <system id="54"><sample><chemical ref="24"/>
+        <source>Commercial source</source>
+    </sample></system>
+
+<system id="55">
+    <multiComponent>
+    <component><system ref="51"/></component>
+    <component><system ref="52"/></component>
+    <component><system ref="53"/></component>
+    <component><system ref="54"/></component>
+</multiComponent></system>
+
+<dataset>
+    <citation ref="1"/>
+    <system ref="55"/>
+    <fixedConditions>
+        <condition conditionDescription="equilibrium condition"><temperature>
+            <units>K</units>
+        </temperature>
+            <var><v>298</v></var>
+        </condition>
+        <condition conditionDescription="equilibrium condition"><pressure>
+            <units>Pa</units>
+        </pressure>
+            <var><v>101000</v></var>
+        </condition>
+        
+    </fixedConditions>
+    <variableConditions>
+        <condition conditionDescription="equilibrium condition"><pH><units/></pH></condition>
+        <condition conditionDescription="equilibrium condition"><amountDensity>
+            <units>mol/m^3</units>
+            <component ref="23"/>
+        </amountDensity></condition>
+    </variableConditions>
+    <property dataRepresentation="Direct representation, x = x1">
+        <label>composition at phase equilibrium</label>
+        <thermodynamic><composition><molality>
+            <units>mol/kg</units>
+            <solute ref="21"/>
+            <solvent ref="22"/>
+            <solvent ref="23"/>
+            <solvent ref="24"/>
+            <otherMethod>gravimetric analysis</otherMethod>
+        </molality></composition></thermodynamic>
+    </property>
+    <point>
+        <var><v>0.00</v></var>
+        <var><v>0</v></var>
+        <prop><v>0.09412</v></prop>
+    </point>
+    <point>
+        <var><v>1.03</v></var>
+        <var><v>0</v></var>
+        <prop><v>0.01701</v></prop>
+    </point>
+    <point>
+        <var><v>2.11</v></var>
+        <var><v>0</v></var>
+        <prop><v>0.00145</v></prop>
+    </point>
+    <point>
+        <var><v>7.81</v></var>
+        <var><v>0</v></var>
+        <prop><v>0.00161</v></prop>
+    </point>
+    <point>
+        <var><v>10.93</v></var>
+        <var><v>0</v></var>
+        <prop><v>0.00450</v></prop>
+    </point>
+    <point>
+        <var><v>12.28</v></var>
+        <var><v>0</v></var>
+        <prop><v>0.02825</v></prop>
+    </point>
+    <point>
+        <var><v>0.01</v></var>
+        <var><v>0.5</v></var>
+        <prop><v>0.10315</v></prop>
+    </point>
+    <point>
+        <var><v>1.05</v></var>
+        <var><v>0.5</v></var>
+        <prop><v>0.02039</v></prop>
+    </point>
+    <point>
+        <var><v>2.12</v></var>
+        <var><v>0.5</v></var>
+        <prop><v>0.00156</v></prop>
+    </point>
+    <point>
+        <var><v>7.81</v></var>
+        <var><v>0.5</v></var>
+        <prop><v>0.00169</v></prop>
+    </point>
+    <point>
+        <var><v>10.93</v></var>
+        <var><v>0.5</v></var>
+        <prop><v>0.00465</v></prop>
+    </point>
+    <point>
+        <var><v>12.32</v></var>
+        <var><v>0.5</v></var>
+        <prop><v>0.03125</v></prop>
+    </point>
+    <point>
+        <var><v>0.01</v></var>
+        <var><v>1.0</v></var>
+        <prop><v>0.10911</v></prop>
+    </point>
+    <point>
+        <var><v>1.05</v></var>
+        <var><v>1.0</v></var>
+        <prop><v>0.02365</v></prop>
+    </point>
+    <point>
+        <var><v>2.14</v></var>
+        <var><v>1.0</v></var>
+        <prop><v>0.00172</v></prop>
+    </point>
+    <point>
+        <var><v>7.79</v></var>
+        <var><v>1.0</v></var>
+        <prop><v>0.00181</v></prop>
+    </point>
+    <point>
+        <var><v>10.92</v></var>
+        <var><v>1.0</v></var>
+        <prop><v>0.00517</v></prop>
+    </point>
+    <point>
+        <var><v>12.35</v></var>
+        <var><v>1.0</v></var>
+        <prop><v>0.03392</v></prop>
+    </point>
+    <point>
+        <var><v>7.79</v></var>
+        <var><v>1.5</v></var>
+        <prop><v>0.00211</v></prop>
+    </point>
+    <point>
+        <var><v>0.02</v></var>
+        <var><v>1.5</v></var>
+        <prop><v>0.11864</v></prop>
+    </point>
+    <point>
+        <var><v>10.90</v></var>
+        <var><v>1.5</v></var>
+        <prop><v>0.00552</v></prop>
+    </point>
+    <point>
+        <var><v>2.14</v></var>
+        <var><v>1.5</v></var>
+        <prop><v>0.00189</v></prop>
+    </point>
+    <point>
+        <var><v>1.06</v></var>
+        <var><v>1.5</v></var>
+        <prop><v>0.02398</v></prop>
+    </point>
+    <point>
+        <var><v>12.31</v></var>
+        <var><v>1.5</v></var>
+        <prop><v>0.03716</v></prop>
+    </point>
+    <point>
+        <var><v>2.15</v></var>
+        <var><v>2.0</v></var>
+        <prop><v>0.00201</v></prop>
+    </point>
+    <point>
+        <var><v>10.90</v></var>
+        <var><v>2.0</v></var>
+        <prop><v>0.00567</v></prop>
+    </point>
+    <point>
+        <var><v>7.76</v></var>
+        <var><v>2.0</v></var>
+        <prop><v>0.00233</v></prop>
+    </point>
+    <point>
+        <var><v>0.02</v></var>
+        <var><v>2.0</v></var>
+        <prop><v>0.12719</v></prop>
+    </point>
+    <point>
+        <var><v>12.30</v></var>
+        <var><v>2.0</v></var>
+        <prop><v>0.03722</v></prop>
+    </point>
+    <point>
+        <var><v>1.06</v></var>
+        <var><v>2.0</v></var>
+        <prop><v>0.02401</v></prop>
+    </point>
+    <point>
+        <var><v>2.17</v></var>
+        <var><v>2.5</v></var>
+        <prop><v>0.00234</v></prop>
+    </point>
+    <point>
+        <var><v>0.03</v></var>
+        <var><v>2.5</v></var>
+        <prop><v>0.14087</v></prop>
+    </point>
+    <point>
+        <var><v>12.29</v></var>
+        <var><v>2.5</v></var>
+        <prop><v>0.04087</v></prop>
+    </point>
+    <point>
+        <var><v>10.88</v></var>
+        <var><v>2.5</v></var>
+        <prop><v>0.00593</v></prop>
+    </point>
+    <point>
+        <var><v>7.79</v></var>
+        <var><v>2.5</v></var>
+        <prop><v>0.00228</v></prop>
+    </point>
+    <point>
+        <var><v>1.07</v></var>
+        <var><v>2.5</v></var>
+        <prop><v>0.02447</v></prop>
+    </point>
+    <point>
+        <var><v>1.08</v></var>
+        <var><v>3.0</v></var>
+        <prop><v>0.02437</v></prop>
+    </point>
+    <point>
+        <var><v>2.17</v></var>
+        <var><v>3.0</v></var>
+        <prop><v>0.00247</v></prop>
+    </point>
+    <point>
+        <var><v>7.78</v></var>
+        <var><v>3.0</v></var>
+        <prop><v>0.00242</v></prop>
+    </point>
+    <point>
+        <var><v>10.89</v></var>
+        <var><v>3.0</v></var>
+        <prop><v>0.00596</v></prop>
+    </point>
+    <point>
+        <var><v>12.32</v></var>
+        <var><v>3.0</v></var>
+        <prop><v>0.04212</v></prop>
+    </point>
+    <point>
+        <var><v>0.02</v></var>
+        <var><v>3.0</v></var>
+        <prop><v>0.04212</v></prop>
+    </point>
+    <point>
+        <var><v>0.02</v></var>
+        <var><v>3.0</v></var>
+        <prop><v>0.14399</v></prop>
+    </point>
+</dataset>
+</dataReport>
+

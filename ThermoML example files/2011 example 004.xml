@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataReport xmlns="http://www.iupac.org/namespaces/ThermoML"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.iupac.org/namespaces/ThermoML file:/N:/Pfeif/working/ThermoML/thermoML/ThermoML-draft%20v.pfeif.6.xsd">
+  
+    <!-- (1) citation information-->
+    <citation id="1">
+        <label>
+            (1) a journal citation                                                    
+            (2) entry of chemical ids with molecular formulas and ions                
+            (3) entry of gerneric phases (only name and liquid type)                  
+            (4) entry of a phase field containing all liquid phases in reaction       
+            (5) system information for two reactions                                  
+            (6) equilibrium constants measurements as a fucntion of T
+        </label>
+		<TRCRefID>
+			<yearPub>2009</yearPub>
+			<author1>ham</author1>
+			<author2>ver</author2>
+			<authorN>0</authorN>
+		</TRCRefID>
+        <author>Hamborg, E. S.[Espen S.]</author>
+        <author>Versteeg, G. F.[Geert F.]</author>
+        <documentType>journal</documentType>
+        <DOI>10.1021/je800897v</DOI>
+        <sourceType>Original</sourceType>
+        <title>Dissociation Constants and Thermodynamic Properties of Amines and Alkanolamines from (293 to 353) K</title>
+        <yearPublished>2009</yearPublished>
+        <journal>
+		    <journalName>J. Chem. Eng. Data</journalName>
+		    <pages>1318-1328</pages>
+		    <volume>54</volume>      
+		</journal>
+    </citation>
+    
+	<!-- (2) chemical information -->
+    <chemical id="21"><commonName>piperazine</commonName><molecularFormula>C4H10N2</molecularFormula></chemical>
+    <chemical id="22"><commonName>piperazonium</commonName><molecularFormula>C4H11N2</molecularFormula><ion><charge>1</charge></ion></chemical>
+    <chemical id="23"><commonName>piperazinedionium</commonName><molecularFormula>C4H12N2</molecularFormula><ion><charge>2</charge></ion></chemical>
+    <chemical id="24"><commonName>water</commonName><molecularFormula>H20</molecularFormula></chemical>
+    <chemical id="25"><commonName>hydroxonium ion</commonName><molecularFormula>H3O</molecularFormula><ion><charge>1</charge></ion></chemical>
+
+    
+    <!-- (3) phase information-->
+    <phase id="31"><label>liquid</label><type>liquid</type><commonName>liquid</commonName></phase>
+    <!-- (4) phaseField information-->
+    <phaseField id="41"><phase ref="31"/></phaseField>
+    <!-- system information purity characterization-->
+    <system id="51"><sample><label>C4H10N2</label><chemical ref="21"/></sample></system>
+    <system id="54"><sample>
+        <label>water</label>
+        <chemical ref="24"/>
+        <source>Commercial source</source>
+        <componentCharacterization>
+            <chemical ref="24"/>
+            <value>99.9</value>
+            <units>mole percent</units>
+            <analyticalMethod>Estimated by the compiler</analyticalMethod>
+    </componentCharacterization></sample></system>
+<!--(5) reaction details-->
+    <system id="55">
+        <reaction>
+            <label> 1 C4H10N2 +  2 H3O --> 2 H2O 1 C4H12N2 </label>
+            <participant><label>3</label><chemical ref="23"/><stoichiometricCoef>-1</stoichiometricCoef><phase ref="31"/></participant>
+            <participant><label>5</label><chemical ref="25"/><stoichiometricCoef>2</stoichiometricCoef><phase ref="31"/></participant>
+            <participant><label>1</label><chemical ref="21"/><stoichiometricCoef>1</stoichiometricCoef><phase ref="31"/></participant>
+            <participant><label>4</label><chemical ref="24"/><stoichiometricCoef>-2</stoichiometricCoef><phase ref="31"/></participant>
+            <solvent><chemical ref="24"/><phase ref="31"/></solvent>
+            <reactionType>other reaction</reactionType>
+        </reaction>
+    </system>
+    <system id="56">
+        <reaction>
+            <label> C4H10N2 + 1 H3O --> 1 C4H11N2 + H20 </label>
+            <participant><label>2</label><chemical ref="22"/><stoichiometricCoef>-1</stoichiometricCoef><phase ref="31"/></participant>
+            <participant><label>5</label><chemical ref="25"/><stoichiometricCoef>1</stoichiometricCoef><phase ref="31"/></participant>
+            <participant><label>1</label><chemical ref="21"/><stoichiometricCoef>1</stoichiometricCoef><phase ref="31"/></participant>
+            <participant><label>4</label><chemical ref="24"/><stoichiometricCoef>-1</stoichiometricCoef><phase ref="31"/></participant>
+            <solvent><chemical ref="24"/><phase ref="31"/></solvent>
+            <reactionType>other reaction</reactionType>
+        </reaction>
+    </system>
+    
+    <!-- (6) datasets-->
+<dataset>
+    <citation ref="1"/>
+    <system ref="55"/>
+    <referenceDetails  id="64">
+        <reference></reference><infiniteDillutionSolute>true</infiniteDillutionSolute>
+    </referenceDetails>
+    <fixedConditions>
+         <condition conditionDescription="equilibrium condition">
+            <pressure><units>Pa</units></pressure><var>
+                <v>100000</v>
+            </var>
+        </condition>
+    </fixedConditions>
+    <variableConditions>
+        <condition conditionDescription="equilibrium condition">
+            <temperature>
+                <units>K</units>               
+            </temperature>
+        </condition>
+    </variableConditions>
+    <property dataRepresentation="Difference with reference state, x =  x_1 - x_ref ">
+        <reaction><equilibriumConstant><thermodynamicEqulibriumConstant>
+            <units>dimensionless</units>
+            <nValue>2</nValue><!--value is fictional, not verified-->
+            <otherMethod>Cell potential with glass electrode</otherMethod>
+        </thermodynamicEqulibriumConstant></equilibriumConstant></reaction>
+        <xRef ref="64"/>
+    </property>
+    <point><var><v>293.15</v></var><prop><v>3.11E-06</v></prop></point>
+    <point><var><v>298.15</v></var><prop><v>3.92E-06</v></prop></point>
+    <point><var><v>303.15</v></var><prop><v>4.83E-06</v></prop></point>
+    <point><var><v>308.15</v></var><prop><v>5.96E-06</v></prop></point>
+    <point><var><v>313.15</v></var><prop><v>7.28E-06</v></prop></point>
+    <point><var><v>318.15</v></var><prop><v>8.90E-06</v></prop></point>
+    <point><var><v>323.15</v></var><prop><v>1.09E-05</v></prop></point>
+    <point><var><v>308.15</v></var><prop><v>5.96E-05</v></prop></point>
+    
+
+    <expPurpose>Principal objective of the work</expPurpose>
+    <compiler>TRC</compiler>
+    <contributor>VVD</contributor>
+    <date>2010-04-21</date>
+</dataset>
+<dataset>
+        <citation ref="1"/>
+        <system ref="56"/>
+        <referenceDetails id="64">
+            <reference></reference><infiniteDillutionSolute>true</infiniteDillutionSolute>
+        </referenceDetails>
+        <fixedConditions>
+            <condition conditionDescription="equilibrium condition">
+                <pressure><units>Pa</units></pressure><var>
+                    <v>100000</v>
+                </var>
+            </condition>
+        </fixedConditions>
+        <variableConditions>
+            <condition conditionDescription="equilibrium condition">
+                <temperature>
+                    <units>K</units>               
+                </temperature>
+            </condition>
+        </variableConditions>
+        <property dataRepresentation="Difference with reference state, x =  x_1 - x_ref ">
+            <reaction><equilibriumConstant><naturalLogarithmOfThermodynamicEquilibriumConstant>
+                <units>dimensionless</units>
+                <nValue>2</nValue><!--value is fictional, not verified-->
+                <otherMethod>Cell potential with glass electrode</otherMethod>
+            </naturalLogarithmOfThermodynamicEquilibriumConstant></equilibriumConstant></reaction>
+            <xRef ref="64"/>
+        </property>
+        <point><var><v>293.15</v></var><prop><v>-22.6</v></prop></point>
+        <point><var><v>298.15</v></var><prop><v>-22.37</v></prop></point>
+        <point><var><v>303.15</v></var><prop><v>-22.08</v></prop></point>
+        <point><var><v>308.15</v></var><prop><v>-21.80</v></prop></point>        
+        
+        <expPurpose>Principal objective of the work</expPurpose>
+        <compiler>TRC</compiler>
+        <contributor>VVD</contributor>
+        <date>2010-04-21</date>
+    </dataset>
+
+</dataReport>

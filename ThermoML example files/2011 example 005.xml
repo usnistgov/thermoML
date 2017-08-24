@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataReport xmlns="http://www.iupac.org/namespaces/ThermoML"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.iupac.org/namespaces/ThermoML file:/N:/Pfeif/working/ThermoML/thermoML/ThermoML-draft%20v.pfeif.6.xsd">
+   
+<!--(1) citation information-->
+    <citation id="1">
+        <label>
+            This example provides resources for:                              
+            (1) a journal reference                                                  
+            (2) entry of chemical ids with molecular formulas                        
+            (3) entry of gerneric phases (only name and liquid type)                 
+            (4) entry of a system containign two characterized specimens.            
+            (5) linking of chemical species to the mean ionic activity (property)    
+            (6) linking of phases to mean ionic activity (property)        
+        </label>
+        <TRCRefID>
+            <yearPub>2008</yearPub>
+            <author1>cia</author1>
+            <author2>eli</author2>
+            <authorN>0</authorN>
+        </TRCRefID>
+        <author>Ciavatta, L.</author>
+        <author>Elia, V.</author>
+        <author>Napoli, E.</author>
+        <author>Niccoli, M.</author>
+        <documentType>journal</documentType>
+        <DOI>10.1007/s10953-008-9299-6</DOI>
+        <sourceType>Original</sourceType>
+        <title>New Physico-Chemical Properties of Extremely Diluted  Solutions. Electromotive Force Measurements  of Galvanic Cells Sensible to the Activity of NaCl at 25 deg C</title>
+        <yearPublished>2008</yearPublished>
+        <journal>
+            <journalName>J. Solution Chem.</journalName>
+            <pages>1037-1049</pages>
+            <volume>37</volume>
+        </journal>
+    </citation>
+
+<!--(2) chemical information -->
+    <chemical id="21"><commonName>water</commonName><molecularFormula>H2O</molecularFormula></chemical>
+    <chemical id="22"><commonName>sodium chloride</commonName><molecularFormula>NaCl</molecularFormula></chemical>
+<!--(3) phase information-->
+    <phase id="31"><type>liquid</type><commonName>liquid</commonName></phase>
+    
+    <!--(4) phaseField information-->
+    <phaseField id="41"><phase ref="31"/></phaseField>
+
+    <!--(5) system information -->
+    <system id="51">
+        <label> initial water from commercial source </label>        <sample><label>water</label><chemical ref="21"/><source>Commercial source</source></sample>    </system>
+    <system id="511"> 
+        <label>purified specimen of water</label>
+        <processing><system ref="51"/><processingStep><purification><method>Fractional distillation</method></purification></processingStep></processing>
+    </system>
+
+    <system id="52">
+        <label>initial sodium chloride from commercial source</label>
+        <sample><chemical ref="22"/><source>Commercial source</source></sample></system>
+    <system id="522">
+        <label>dried sodium chloride</label>
+        <processing><system ref="52"/>
+            <processingStep><purification><method>Dried by oven heating</method></purification></processingStep>
+        </processing></system>
+    <system id="53">
+        <label>sample consisting of dried sodium chloride and purified water</label>
+        <sample>
+            <system ref="522"/>
+            <system ref="511"/>
+        </sample>
+    </system>
+    
+<!--(6) datasets-->
+<dataset id="60">
+    <label>mean ionic activity of ??? in ???</label>
+    <citation ref="1"/>
+    <system ref="53"/>
+    <referenceDetails id="86">
+        <reference>
+            <refComponent ref="22"/>
+            <refPhase ref="31"/>
+        </reference>    <infiniteDillutionSolute>true</infiniteDillutionSolute>
+    </referenceDetails>
+    
+    <fixedConditions>
+        <condition conditionDescription="equilibrium condition">
+            <temperature><units>K</units></temperature>
+            <var><v>298.15</v></var>
+        </condition>
+        <condition conditionDescription="equilibrium condition">
+            <pressure><units>Pa</units></pressure>
+            <var><v>101325</v></var>
+        </condition>
+    </fixedConditions>
+    <variableConditions>
+        <condition conditionDescription="equilibrium condition">
+            <molarDensity> <component ref="22"/><units>mol/m^3</units></molarDensity>
+        </condition>
+    </variableConditions>
+
+    
+    <property dataRepresentation="Difference with reference state, x =  x_1 - x_ref ">
+         <thermodynamic>
+             <activitiy>
+                 <meanIonicActivity>
+                     <units>dimensionless</units>
+                     <component ref="22"/>
+                     <phase ref="31"/>
+                     <method>calculated from electrochemical cell potential</method>
+                 </meanIonicActivity>
+             </activitiy>
+         </thermodynamic>
+        <xRef ref="86"/>
+     </property>   
+    <point>
+        <var><v>0.9899</v><unc><combinedUncertainty><v>0.005</v></combinedUncertainty></unc></var>
+        <prop><v>0.6464</v><unc><combinedUncertainty><v>0.005</v></combinedUncertainty></unc></prop>
+    </point>
+    <expPurpose>Principal objective of the work</expPurpose>
+    <compiler>VVD</compiler>
+    <contributor>TRC</contributor>
+    <date>2017-07-24</date>
+</dataset>
+
+
+    <dataset id="61">
+        <label>mean ionic activity of ??? in ???</label>
+        <citation ref="1"/>
+        <system ref="53"/>
+        <referenceDetails  id="87">
+            <reference>
+                <refComponent ref="22"/>
+                <refPhase ref="31"/>
+            </reference>
+            <infiniteDillutionSolute>true</infiniteDillutionSolute>
+        </referenceDetails>
+        
+        <fixedConditions>
+            <condition conditionDescription="equilibrium condition">
+                <temperature><units>K</units></temperature>
+                <var><v>298.15</v></var>
+            </condition>
+            <condition conditionDescription="equilibrium condition">
+                <pressure><units>Pa</units></pressure>
+                <var><v>101325</v></var>
+            </condition>
+        </fixedConditions>
+        <variableConditions>
+            <condition conditionDescription="equilibrium condition">
+                <molarDensity> <component ref="22"/><units>mol/m^3</units></molarDensity>
+            </condition>
+        </variableConditions>
+        
+        
+        <property dataRepresentation="Difference with reference state, x =  x_1 - x_ref ">
+            <thermodynamic>
+                <activitiy>
+                    <meanIonicActivity>
+                        <units>dimensionless</units>
+                        <component ref="22"/>
+                        <phase ref="31"/>
+                        <method>calculated from electrochemical cell potential</method>
+                    </meanIonicActivity>
+                </activitiy>
+            </thermodynamic><xRef ref="87"/>
+        </property>   
+        <point>
+            <var><v>0.9899</v><unc><combinedUncertainty><v>0.005</v></combinedUncertainty></unc></var>
+            <prop><v>0.6530</v><unc><combinedUncertainty><v>0.005</v></combinedUncertainty></unc></prop>
+        </point>
+        <expPurpose>Principal objective of the work</expPurpose>
+        <compiler>VVD</compiler>
+        <contributor>TRC</contributor>
+        <date>2017-07-24</date>
+        
+</dataset>
+     
+</dataReport>

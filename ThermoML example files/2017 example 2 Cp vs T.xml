@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataReport xmlns="http://www.iupac.org/namespaces/ThermoML"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://www.iupac.org/namespaces/ThermoML file:/N:/Pfeif/working/ThermoML/thermoML/ThermoML-draft%20v.pfeif.6.xsd">
+
+
+
+    
+    <!--citation information-->
+    <citation id="50">
+        <label>
+            This example provides resources for: 
+            (1) a journal reference, with a note                                      
+            (2) entry of chemical ids with no other data other than a name 
+            (3) entry of phases with no data other than a name and crystal type
+            (4) phase fields for single phase equilibrium 
+            (7)  a dataset wehre fixed and variable conditions are used 
+        </label>
+        <TRCRefID>
+            <yearPub>1966</yearPub>
+            <author1>Vol</author1>
+            <author2>Koh</author2>
+            <authorN>0</authorN>
+        </TRCRefID>
+        <abstract>Die bisher veroffentlichten Daten der Schmelzwarme von Eisen, Kobalt und Nickel unterscheiden sich beachtlich und sind teilweise mit grossen Fehlergrenzen behaftet. Die gleiche Feststellung betrifft auch die Atomwarme im flussigen Zustand der drei Metalle. Eine Neubestimmung dieser Grossen erschien somit wunschenswert. Das von BRAUN und KOHLHAAS 1 entwickelte, unter Schutzgas betriebene, adiabatisch arbeitende Hochtemperaturkalorimeter erlaubt eine kontinuierliche Messung der spezifischen Warme und gleichzeitig eine Ermittlung der Umwandlungswarmen von Metallen im festen Zustand. Dieses Kalorimeter wurde mit einigen Anderungen versehen, die ausfuhrlich bei VOLLMER 2 beschrieben werden und nunmehr auch eine kontinuierliche Messung an flussigen Metallen ermoglichen.</abstract>
+        <author>Vollmer, O.</author>
+        <author>Kohlhaas, R. </author>
+        <author>Barun, M.</author>
+        <documentType>journal</documentType>
+        <language>German</language>
+
+        <title>Die Schmelzwarme und die Atomwarme im schmelzflussigen Bereich von Eisen, Kobalt und Nickel</title>
+        <yearPublished>1966</yearPublished>
+        <journal>
+            <journalName>Z. Natuforsch.</journalName>
+            <pages>181-182</pages>
+            <volume>21a</volume>
+        </journal>
+
+        <note>this is a trial</note>
+    </citation>
+    
+    <!-- chemcial information-->
+    <chemical id="11"><commonName>Iron</commonName></chemical>
+    <chemical id="11"><commonName>cobalt</commonName></chemical>
+    <chemical id="13"> <commonName>nickel</commonName></chemical>
+    <chemical id="14"> <commonName>molybdenum</commonName></chemical>
+    <chemical id="1"><commonName>carbon</commonName></chemical>
+    <chemical id="2"> <commonName>oxygen</commonName></chemical>
+    <chemical id="3"> <commonName>sulfur</commonName></chemical>
+    <chemical id="4"><commonName>phosphorus</commonName></chemical>
+    <chemical id="5"> <commonName>silicon</commonName></chemical>
+    <chemical id="6"> <commonName>aluminum</commonName></chemical>
+    <chemical id="7"><commonName>nitrogen</commonName></chemical>
+    <chemical id="8"> <commonName>manganease</commonName></chemical>
+        
+    <!--phase information assumed to not be metastable-->
+    <phase id="15"><label>gammaFe</label> <type>crystal</type> <commonName>gamma_fe</commonName>  </phase>
+
+    <!--phase field information-->
+    <phaseField id="20"> <label>gamma</label><phase ref="15"/></phaseField>
+    
+    <!--system-->
+   
+<!--Sample of iron, with impurities-->
+    <system id="30">
+        <label>Pure iron specimen, with measured purity of 99.97 mass percent purity, additional impurities also listed--method of analysis stated by supplier, geomeitry not given, assumed to not be single crystal.</label> 
+<!--sample is pure iron -->
+        <sample>
+            <chemical ref="11"/>
+            <source>Commercial source</source>
+                    <componentCharacterization><chemical ref="11"/>
+                        <value>99.97</value><units>mass percent</units><analyticalMethod>Stated by supplier</analyticalMethod>
+                    </componentCharacterization>
+                    <componentCharacterization><chemical ref="1"/>
+                        <value>0.009</value><units>mass percent</units><analyticalMethod>Stated by supplier</analyticalMethod>
+                    </componentCharacterization>
+                    <componentCharacterization><chemical ref="2"/>
+                        <value>0.0029</value><units>mass percent</units><analyticalMethod>Stated by supplier</analyticalMethod>
+                    </componentCharacterization>
+                    <componentCharacterization><chemical ref="3"/>
+                        <value>0.004</value><units>mass percent</units><analyticalMethod>Stated by supplier</analyticalMethod>
+                    </componentCharacterization>
+                    <componentCharacterization><chemical ref="4"/>
+                        <value>0.003</value><units>mass percent</units><analyticalMethod>Stated by supplier</analyticalMethod>
+                    </componentCharacterization>
+                    <componentCharacterization><chemical ref="5"/>
+                        <value>0.001</value><units>mass percent</units><analyticalMethod>Stated by supplier</analyticalMethod>
+                    </componentCharacterization>
+                    <componentCharacterization><chemical ref="6"/>
+                        <value>0.002</value><units>mass percent</units><analyticalMethod>Stated by supplier</analyticalMethod>
+                    </componentCharacterization>
+                    <componentCharacterization><chemical ref="7"/>
+                        <value>0.002</value><units>mass percent</units><analyticalMethod>Stated by supplier</analyticalMethod>
+                    </componentCharacterization>
+                    <componentCharacterization><chemical ref="8"/>
+                        <value>0.0005</value><units>mass percent</units><analyticalMethod>Stated by supplier</analyticalMethod>
+                    </componentCharacterization>
+            <materialForm>
+                <materialForm>unknown</materialForm>
+            </materialForm>
+        </sample>
+    </system>
+    
+    
+<!--Dataset 1, iron enthalpy at two temperatures-->
+ 
+ <dataset> 
+     <label> iron enthalpy at two different temperatures, citation this document, system: the characterized specimen *system 30*</label>
+    <citation ref="50"/>
+    <system ref="30"/>
+        <fixedConditions>
+            <label> fixed pressure, atmosphere of argon, and crucible material of alumina, assumed to be equilibrium condition</label>
+            <condition conditionDescription="equilibrium condition"><pressure><units>Pa</units></pressure><var><v>101325</v><unc><other><v>100</v></other></unc></var></condition>
+        <crucibleMaterial>Al2O3</crucibleMaterial>
+        <atmosphere>argon</atmosphere>
+        </fixedConditions>
+        <variableConditions>
+            <label>variable condition of tempearture, assumed to be equilibrium temperature.</label>
+            <condition conditionDescription="equilibrium condition">
+            <temperature><units>K</units></temperature></condition></variableConditions>
+     
+     <property dataRepresentation="Direct representation, x = x1">
+         <label>measured property, direct representation, in J/mol/K, method of measurement Vacuum adiabatic calorimetry</label>
+            <thermodynamic>
+                <heatCapacity>
+                    <molarHeatCapacityAtConstantPressure>
+                        <units>J/mol/K</units>
+                        <method>Vacuum adiabatic calorimetry</method>
+                    </molarHeatCapacityAtConstantPressure>
+                </heatCapacity>
+            </thermodynamic>
+        </property>
+        <point>
+            <label>datapoints, temperature 1600K, Cp 36.3 J/mol/K with associated uncertainties of 8K and 0.3 J/mol/K, gamma phase *phasefield 20*</label>
+            <phaseField ref="20"/>
+            <var><v>1600</v><unc><other><v>8</v></other></unc></var>
+            <prop><v>36.3</v><unc><other><v>.3</v></other></unc></prop>
+           </point>
+        <point>
+            <label>datapoints, at a higher temperature and heat capacity</label>          
+            <phaseField ref="20"/>
+            <var><v>1604</v><unc><other><v>8</v></other></unc></var>
+            <prop><v>36.7</v><unc><other><v>.3</v></other></unc></prop>
+        </point>
+    </dataset>  
+    
+</dataReport>

@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataReport xmlns="http://www.iupac.org/namespaces/ThermoML" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.iupac.org/namespaces/ThermoML file:/N:/Pfeif/working/ThermoML/thermoML/ThermoML-draft%20v.pfeif.6.xsd">
+    
+
+    
+    <!--(1) citation information-->
+    <citation id="1">
+        <label>
+            this example provides resources for:
+            (1) a journal reference                                                   
+            (2) entry of chemical ids with molecular formulas                         
+            (3) entry of gerneric phases (only name and crystal type)                 
+            (4) entry of a system for reaction with participants and stoichiometry    
+            (5) linking of chemical species to a reaction system                      
+            (6) linking of phases to reaction system  
+        </label>
+        <TRCRefID>
+            <yearPub>2006</yearPub>
+            <author1>rak</author1>
+            <author2>par</author2>
+            <authorN>0</authorN>
+        </TRCRefID>
+        <author>Rakshit, S. K.</author>
+        <author>Parida, S. C.</author>
+        <author>Dash, S.</author>
+        <author>Singh, Z.[Ziley]</author>
+        <author>Venugopal, V.</author>
+        <documentType>journal</documentType>
+        <keyword>Quaternary oxides</keyword>
+        <keyword>Thermodynamic properties</keyword>
+        <keyword>Heat capacity</keyword>
+        <keyword>Solid-state electrochemical cell</keyword>
+        <keyword>Differential scanning calorimetry</keyword>
+        <sourceType>Original</sourceType>
+        <title>Thermodynamics of BaNd2Fe2O7(s) and BaNdFeO4(s) in the system Ba Nd Fe O</title>    
+        <yearPublished>2006</yearPublished>        
+        <journal>
+            <journalName>Thermochim. Acta</journalName>
+            <pages>98-104</pages>
+            <volume>443</volume>
+        </journal>
+    </citation>
+    
+    <!--(2) chemical information -->
+    <chemical id="21">        <commonName>Calcium oxide</commonName>        <molecularFormula>CaO</molecularFormula>   </chemical>    
+    <chemical id="22">        <commonName>BaNd2Fe2O7</commonName>        <molecularFormula>BaFe2Nd2O7</molecularFormula>    </chemical>    
+    <chemical id="23">        <commonName>BaNdFeO4</commonName>        <molecularFormula>BaNdFeO4</molecularFormula>          </chemical>
+    <chemical id="24">        <commonName>barium fluoride (BaF2)</commonName>        <molecularFormula>BaF2</molecularFormula>     </chemical>
+    <chemical id="25">        <commonName>calcium fluoride</commonName>        <molecularFormula>CaF2</molecularFormula></chemical>    
+    <chemical id="26">        <commonName>NdFeO3</commonName>        <molecularFormula>NdFeO3</molecularFormula> </chemical> 
+    <chemical id="201"> <molecularFormula>Nd</molecularFormula></chemical>
+    <chemical id="202"> <molecularFormula>Ba</molecularFormula></chemical>
+    <chemical id="203"> <molecularFormula>Fe</molecularFormula></chemical>
+    <chemical id="204"> <molecularFormula>O</molecularFormula></chemical>
+    <chemical id="205"> <molecularFormula>Ca</molecularFormula></chemical>
+    <chemical id="206"> <molecularFormula>F</molecularFormula></chemical>
+    
+    <!--(3) phase information -->
+    <phase id="31"> <label>crystal</label> <type>crystal</type> <commonName>dunno</commonName></phase>
+    
+    <!-- (4) system information-->
+<system id="50">
+    <label>BdNd2Fe2O7 specimen information, characterized as 98 mol% pure by the compiler</label>
+    <sample>
+        <chemical ref="21"/>
+        <source>Synthesized by the authors</source>
+        <componentCharacterization>
+            <chemical ref="21"/>
+            <value>98</value>
+            <units>mole percent</units>
+            <analyticalMethod>Estimated by the compiler</analyticalMethod>
+        </componentCharacterization>
+    </sample>
+</system>
+
+    <system id="51">
+        <label>BaNdFeO4 specimen information, characterized as 98 mol% pure by the compiler</label>
+        <sample>
+            <chemical ref="22"/>
+            <source>Synthesized by the authors</source>
+            <componentCharacterization>
+                <chemical ref="22"/>
+                <value>98</value>
+                <units>mole percent</units>
+                <analyticalMethod>Estimated by the compiler</analyticalMethod>
+            </componentCharacterization>
+        </sample>
+    </system>   
+    
+<system id="52">
+    <label>Reaction info for reaction:  BaNd2Fe2O7 + CaF2 > CaO + BaF2 +2 NdFeO3</label>
+    <reaction>
+        <label> BaNd2Fe2O7 + CaF2 > CaO + BaF2 +2 NdFeO3 </label>
+        <participant>
+                <label>CaO</label>
+                <chemical ref="21"/>
+                <stoichiometricCoef>-1</stoichiometricCoef>
+                <phase ref="31"/>
+            </participant>
+        <participant>
+            <label>BaF2</label>
+            <chemical ref="24"/>
+            <stoichiometricCoef>-1</stoichiometricCoef>
+            <phase ref="31"/>
+        </participant>
+        <participant>
+            <label>CaF2</label>
+            <chemical ref="25"/>
+            <stoichiometricCoef>1</stoichiometricCoef>
+            <phase ref="31"/>
+        </participant>
+        <participant>
+            <label>NdFeO3</label>
+            <chemical ref="26"/>
+            <stoichiometricCoef>-2</stoichiometricCoef>
+            <phase ref="31"/>
+        </participant>
+        <participant>
+            <label>BaNd2Fe2O7</label>
+            <chemical ref="22"/>
+            <stoichiometricCoef>1</stoichiometricCoef>
+            <phase ref="31"/>
+        </participant>
+        <electronNumber>2</electronNumber>
+        <reactionType>other reaction</reactionType>
+    </reaction>
+</system>
+   
+<!--(5) dataSet information-->
+    <dataset id="61">
+        <label>BaNd2Fe2O7 + CaF2 > CaO + BaF2 +2 NdFeO3</label>
+        <citation ref="1"/>
+        <system ref="52"/>
+        <referenceDetails id="77">
+            <reference>
+            <label>standard state pure compound</label>
+                <refComponent ref="201"/>              
+            </reference>
+            <reference>
+                <label>standard state pure compound</label>
+                <refComponent ref="202"/>              
+            </reference>
+            <reference>
+                <label>standard state pure compound</label>
+                <refComponent ref="203"/>              
+            </reference>
+            <reference>
+                <label>standard state pure compound</label>
+                <refComponent ref="204"/>              
+            </reference>
+            <reference>
+                <label>standard state pure compound</label>
+                <refComponent ref="205"/>              
+            </reference>
+            <reference>
+                <label>standard state pure compound</label>
+                <refComponent ref="206"/>              
+            </reference>
+            <standardStatePureCompound>true</standardStatePureCompound>
+        </referenceDetails>
+        <fixedConditions>
+            <condition conditionDescription="equilibrium condition">
+                <pressure>
+                    <units>Pa</units>
+                </pressure>
+                <var>
+                    <v>101325</v>
+                </var>
+            </condition>
+            <condition conditionDescription="reference condition">
+                <pressure>
+                    <units>Pa</units>
+                </pressure>
+                <var>
+                    <v>101325</v>
+                </var>
+            </condition>
+            <condition conditionDescription="reference condition">
+                <temperature>
+                    <units/>
+                </temperature>
+                <var>
+                    <v>298</v>
+                </var>
+            </condition>
+        </fixedConditions>
+        <variableConditions>
+            <condition conditionDescription="equilibrium condition">
+                <temperature><units>K</units></temperature>
+            </condition>
+        </variableConditions>
+        <property dataRepresentation="Difference with reference state, x =  x_1 - x_ref ">
+            <reaction>
+                <energy>
+                 <potentialDifferenceOfAnElectrochemicalCell>
+                     <units>V</units>
+                 </potentialDifferenceOfAnElectrochemicalCell>
+                </energy>
+            </reaction>
+            <xRef ref="77"/>
+        </property>
+        <point>
+            <var><v>861</v><unc><combinedUncertainty><v>1</v></combinedUncertainty></unc></var>
+            <prop><v>0.0213</v><unc><combinedUncertainty><v>1</v></combinedUncertainty></unc></prop>
+        </point>
+        <point>
+            <var><v>995</v><unc><combinedUncertainty><v>1</v></combinedUncertainty></unc></var>
+            <prop><v>0.0725</v><unc><combinedUncertainty><v>1</v></combinedUncertainty></unc></prop>
+        </point>
+        <expPurpose>Principal objective of the work</expPurpose>
+        <compiler>ABC</compiler>
+        <contributor>TRC</contributor>
+        <date>2017-07-25</date>
+    </dataset>  
+
+    <dataset id="61">
+        <label>BaNd2Fe2O7 + CaF2 > CaO + BaF2 +2 NdFeO3</label>
+        <citation ref="1"/>
+        <system ref="52"/>
+        <referenceDetails id="78">
+            <reference>
+                <label>standard state pure compound</label>
+                <refComponent ref="201"/>              
+            </reference>
+            <reference>
+                <label>standard state pure compound</label>
+                <refComponent ref="202"/>              
+            </reference>
+            <reference>
+                <label>standard state pure compound</label>
+                <refComponent ref="203"/>              
+            </reference>
+            <reference>
+                <label>standard state pure compound</label>
+                <refComponent ref="204"/>              
+            </reference>
+            <reference>
+                <label>standard state pure compound</label>
+                <refComponent ref="205"/>              
+            </reference>
+            <reference>
+                <label>standard state pure compound</label>
+                <refComponent ref="206"/>              
+            </reference>
+                <standardStatePureCompound>true</standardStatePureCompound>
+        </referenceDetails>
+        <fixedConditions>
+            <condition conditionDescription="equilibrium condition">
+                <pressure>
+                    <units>Pa</units>
+                </pressure>
+                <var>
+                    <v>101325</v>
+                </var>
+            </condition>
+            <condition conditionDescription="reference condition">
+                <pressure>
+                    <units>Pa</units>
+                </pressure>
+                <var>
+                    <v>101325</v>
+                </var>
+            </condition>
+            <condition conditionDescription="reference condition">
+                <temperature>
+                    <units/>
+                </temperature>
+                <var>
+                    <v>298</v>
+                </var>
+            </condition>
+        </fixedConditions>
+        <variableConditions>
+            <condition conditionDescription="equilibrium condition">
+                <temperature><units>K</units></temperature>
+            </condition>
+         </variableConditions>
+        <property dataRepresentation="Difference with reference state, x =  x_1 - x_ref ">
+            <reaction>
+                <energy>
+                    <molarGibbsEnergyOfReaction>
+                        <units>J/mol</units>
+                        <method>electrochemical cell reaction</method>
+                    </molarGibbsEnergyOfReaction>
+                </energy>
+            </reaction>
+            <xRef ref="78"/>
+        </property>
+        <point>
+            <var><v>861</v><unc><combinedUncertainty><v>1</v></combinedUncertainty></unc></var>
+            <prop><v>4170</v><unc><combinedUncertainty><v>1</v></combinedUncertainty></unc></prop>
+        </point>
+        <point>
+            <var><v>995</v><unc><combinedUncertainty><v>1</v></combinedUncertainty></unc></var>
+            <prop><v>14030</v><unc><combinedUncertainty><v>1</v></combinedUncertainty></unc></prop>
+        </point>
+        <expPurpose>Principal objective of the work</expPurpose>
+        <compiler>ABC</compiler>
+        <contributor>TRC</contributor>
+        <date>2017-07-25</date>
+    </dataset>  
+ 
+</dataReport>
