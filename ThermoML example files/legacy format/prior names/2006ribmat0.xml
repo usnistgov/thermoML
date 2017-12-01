@@ -1,0 +1,1159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="http://www-i.boulder.nist.gov/div838/trc/ThermoMLtoHTML_devel.xsl" type="text/xsl"?>
+<!--Created by Guided Data Capture (GDC) Software (http://www.trc.nist.gov)-->
+<DataReport xmlns="http://www.iupac.org/namespaces/ThermoML" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.iupac.org/namespaces/ThermoML http://trc.nist.gov/ThermoML.xsd">
+	<Version>
+		<nVersionMajor>2</nVersionMajor>
+		<nVersionMinor>0</nVersionMinor>
+	</Version>
+	<Citation>
+		<TRCRefID>
+			<yrYrPub>2006</yrYrPub>
+			<sAuthor1>rib</sAuthor1>
+			<sAuthor2>mat</sAuthor2>
+			<nAuthorn>0</nAuthorn>
+		</TRCRefID>
+		<eType>journal</eType>
+		<eSourceType>Original</eSourceType>
+		<sAuthor>Ribeiro da Silva, M. A. V.[Manuel A. V.]</sAuthor>
+		<sAuthor>Matos, M. A. R.[M. Agostinha R.]</sAuthor>
+		<sAuthor>Amaral, L. M. P. F.[Luisa M. P. F.]</sAuthor>
+		<sPubName>J. Chem. Thermodyn.</sPubName>
+		<yrPubYr>2006</yrPubYr>
+		<dateCit>2006-09-11</dateCit>
+		<sTitle>Standard molar enthalpies of formation of 2-chloroquinoline, 4-chloroquinoline, 6-chloroquinoline and 4,7-dichloroquinoline by rotating-bomb calorimetry</sTitle>
+		<sKeyword>standard molar enthalpy of formation</sKeyword>
+		<sKeyword>standard molar enthalpy of sublimation</sKeyword>
+		<sKeyword>combustion calorimetry</sKeyword>
+		<sKeyword>chloroquinolines</sKeyword>
+		<sVol>38</sVol>
+		<sPage>49-55</sPage>
+	</Citation>
+	<Compound>
+		<RegNum>
+			<nCASRNum>612624</nCASRNum>
+		</RegNum>
+		<sCommonName>2-chloroquinoline</sCommonName>
+		<sFormulaMolec>C9H6ClN</sFormulaMolec>
+		<Sample>
+			<nSampleNm>1</nSampleNm>
+			<eSource>Commercial source</eSource>
+			<purity>
+				<nStep>1</nStep>
+				<nPurityMass>99</nPurityMass>
+				<nPurityMassDigits>2</nPurityMassDigits>
+				<eAnalMeth>Stated by supplier</eAnalMeth>
+			</purity>
+			<purity>
+				<nStep>2</nStep>
+				<ePurifMethod>Sublimation</ePurifMethod>
+			</purity>
+			<purity>
+				<nStep>2</nStep>
+				<nPurityMass>99.5</nPurityMass>
+				<nPurityMassDigits>3</nPurityMassDigits>
+				<eAnalMeth>Chemical analysis</eAnalMeth>
+			</purity>
+		</Sample>
+	</Compound>
+	<Compound>
+		<RegNum>
+			<nCASRNum>611358</nCASRNum>
+		</RegNum>
+		<sCommonName>4-chloroquinoline</sCommonName>
+		<sFormulaMolec>C9H6ClN</sFormulaMolec>
+		<Sample>
+			<nSampleNm>1</nSampleNm>
+			<eSource>Commercial source</eSource>
+			<purity>
+				<nStep>1</nStep>
+				<nPurityMass>99</nPurityMass>
+				<nPurityMassDigits>2</nPurityMassDigits>
+				<eAnalMeth>Stated by supplier</eAnalMeth>
+			</purity>
+			<purity>
+				<nStep>2</nStep>
+				<ePurifMethod>Sublimation</ePurifMethod>
+			</purity>
+		</Sample>
+	</Compound>
+	<Compound>
+		<RegNum>
+			<nCASRNum>612577</nCASRNum>
+		</RegNum>
+		<sCommonName>6-chloroquinoline</sCommonName>
+		<sFormulaMolec>C9H6ClN</sFormulaMolec>
+		<Sample>
+			<nSampleNm>1</nSampleNm>
+			<eSource>Commercial source</eSource>
+			<purity>
+				<nStep>1</nStep>
+				<nPurityMass>99</nPurityMass>
+				<nPurityMassDigits>2</nPurityMassDigits>
+				<eAnalMeth>Stated by supplier</eAnalMeth>
+			</purity>
+			<purity>
+				<nStep>2</nStep>
+				<ePurifMethod>Sublimation</ePurifMethod>
+			</purity>
+			<purity>
+				<nStep>2</nStep>
+				<nPurityMass>99.44</nPurityMass>
+				<nPurityMassDigits>4</nPurityMassDigits>
+				<eAnalMeth>Chemical analysis</eAnalMeth>
+			</purity>
+		</Sample>
+	</Compound>
+	<Compound>
+		<RegNum>
+			<nCASRNum>86986</nCASRNum>
+		</RegNum>
+		<sCommonName>4,7-dichloroquinoline</sCommonName>
+		<sFormulaMolec>C9H5Cl2N</sFormulaMolec>
+		<Sample>
+			<nSampleNm>1</nSampleNm>
+			<eSource>Commercial source</eSource>
+			<purity>
+				<nStep>1</nStep>
+				<nPurityMass>99</nPurityMass>
+				<nPurityMassDigits>2</nPurityMassDigits>
+				<eAnalMeth>Stated by supplier</eAnalMeth>
+			</purity>
+			<purity>
+				<nStep>2</nStep>
+				<ePurifMethod>Sublimation</ePurifMethod>
+			</purity>
+			<purity>
+				<nStep>2</nStep>
+				<nPurityMass>99.31</nPurityMass>
+				<nPurityMassDigits>4</nPurityMassDigits>
+				<eAnalMeth>Chemical analysis</eAnalMeth>
+			</purity>
+		</Sample>
+	</Compound>
+	<Compound>
+		<RegNum>
+			<nCASRNum>7647010</nCASRNum>
+		</RegNum>
+		<sCommonName>hydrogen chloride</sCommonName>
+		<sFormulaMolec>ClH</sFormulaMolec>
+	</Compound>
+	<Compound>
+		<RegNum>
+			<nCASRNum>124389</nCASRNum>
+		</RegNum>
+		<sCommonName>carbon dioxide</sCommonName>
+		<sFormulaMolec>CO2</sFormulaMolec>
+	</Compound>
+	<Compound>
+		<RegNum>
+			<nCASRNum>7727379</nCASRNum>
+		</RegNum>
+		<sCommonName>nitrogen</sCommonName>
+		<sFormulaMolec>N2</sFormulaMolec>
+	</Compound>
+	<Compound>
+		<RegNum>
+			<nCASRNum>7732185</nCASRNum>
+		</RegNum>
+		<sCommonName>water</sCommonName>
+		<sFormulaMolec>H2O</sFormulaMolec>
+	</Compound>
+	<Compound>
+		<RegNum>
+			<nCASRNum>7782447</nCASRNum>
+		</RegNum>
+		<sCommonName>oxygen</sCommonName>
+		<sFormulaMolec>O2</sFormulaMolec>
+	</Compound>
+	<PureOrMixtureData>
+		<Component>
+			<RegNum>
+				<nCASRNum>612624</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<eExpPurpose>Principal objective of the work</eExpPurpose>
+		<sCompiler>JCE</sCompiler>
+		<sContributor>JCE</sContributor>
+		<dateDateAdded>12/27/2005</dateDateAdded>
+		<Property>
+			<nPropNumber>1</nPropNumber>
+			<Property-MethodID>
+				<PropertyGroup>
+					<PhaseTransition>
+						<ePropName>Normal melting temperature, K</ePropName>
+						<eMethodName>DSC/DTA</eMethodName>
+					</PhaseTransition>
+				</PropertyGroup>
+			</Property-MethodID>
+			<PropPhaseID>
+				<ePropPhase>Crystal</ePropPhase>
+			</PropPhaseID>
+			<ePresentation>Direct value, X</ePresentation>
+		</Property>
+		<PhaseID>
+				<ePhase>Crystal</ePhase>
+		</PhaseID>
+		<PhaseID>
+				<ePhase>Liquid</ePhase>
+		</PhaseID>
+		<PhaseID>
+				<ePhase>Air at 1 atmosphere</ePhase>
+		</PhaseID>
+		<NumValues>
+			<PropertyValue>
+				<nPropNumber>1</nPropNumber>
+				<nPropValue>311.5</nPropValue>
+				<nPropDigits>4</nPropDigits>
+			</PropertyValue>
+		</NumValues>
+	</PureOrMixtureData>
+	<PureOrMixtureData>
+		<Component>
+			<RegNum>
+				<nCASRNum>612624</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<eExpPurpose>Principal objective of the work</eExpPurpose>
+		<sCompiler>JCE</sCompiler>
+		<sContributor>JCE</sContributor>
+		<dateDateAdded>12/27/2005</dateDateAdded>
+		<Property>
+			<nPropNumber>1</nPropNumber>
+			<Property-MethodID>
+				<PropertyGroup>
+					<VolumetricProp>
+						<ePropName>Mass density, kg/m3</ePropName>
+						<eMethodName>Pycnometric method</eMethodName>
+					</VolumetricProp>
+				</PropertyGroup>
+			</Property-MethodID>
+			<PropPhaseID>
+				<ePropPhase>Crystal</ePropPhase>
+			</PropPhaseID>
+			<ePresentation>Direct value, X</ePresentation>
+		</Property>
+		<PhaseID>
+				<ePhase>Crystal</ePhase>
+		</PhaseID>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<ePressure>Pressure, kPa</ePressure>
+				</ConstraintType>
+			</ConstraintID>
+			<nConstraintValue>101.325</nConstraintValue>
+			<nConstrDigits>6</nConstrDigits>
+		</Constraint>
+		<Variable>
+			<nVarNumber>1</nVarNumber>
+			<VariableID>
+				<VariableType>
+					<eTemperature>Temperature, K</eTemperature>
+				</VariableType>
+			</VariableID>
+		</Variable>
+		<NumValues>
+			<VariableValue>
+				<nVarNumber>1</nVarNumber>
+				<nVarValue>298</nVarValue>
+				<nVarDigits>3</nVarDigits>
+			</VariableValue>
+			<PropertyValue>
+				<nPropNumber>1</nPropNumber>
+				<nPropValue>1246</nPropValue>
+				<nPropDigits>4</nPropDigits>
+			</PropertyValue>
+		</NumValues>
+	</PureOrMixtureData>
+	<PureOrMixtureData>
+		<Component>
+			<RegNum>
+				<nCASRNum>612624</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<eExpPurpose>Principal objective of the work</eExpPurpose>
+		<sCompiler>JCE</sCompiler>
+		<sContributor>JCE</sContributor>
+		<dateDateAdded>12/27/2005</dateDateAdded>
+		<Property>
+			<nPropNumber>1</nPropNumber>
+			<Property-MethodID>
+				<PropertyGroup>
+					<HeatCapacityAndDerivedProp>
+						<ePropName>Molar enthalpy, kJ/mol</ePropName>
+						<sMethodName>Calvet microcalorimetry</sMethodName>
+					</HeatCapacityAndDerivedProp>
+				</PropertyGroup>
+			</Property-MethodID>
+			<PropPhaseID>
+				<ePropPhase>Gas</ePropPhase>
+			</PropPhaseID>
+			<ePresentation>Difference with the reference state, X-X(REF)</ePresentation>
+			<eRefStateType>Reference phase with the same composition at fixed temperature and pressure</eRefStateType>
+			<nRefTemp>298.15</nRefTemp>
+			<nRefTempDigits>5</nRefTempDigits>
+			<nRefPressure>100</nRefPressure>
+			<nRefPressureDigits>3</nRefPressureDigits>
+			<RefPhaseID>
+				<eRefPhase>Crystal</eRefPhase>
+			</RefPhaseID>
+			<PropRepeatability>
+				<sRepeatEvaluator>Author</sRepeatEvaluator>
+				<eRepeatMethod>Standard deviation of a single value (unbiased)</eRepeatMethod>
+			</PropRepeatability>
+		</Property>
+		<PhaseID>
+				<ePhase>Gas</ePhase>
+		</PhaseID>
+		<Variable>
+			<nVarNumber>1</nVarNumber>
+			<VariableID>
+				<VariableType>
+					<eTemperature>Temperature, K</eTemperature>
+				</VariableType>
+			</VariableID>
+		</Variable>
+		<Variable>
+			<nVarNumber>2</nVarNumber>
+			<VariableID>
+				<VariableType>
+					<ePressure>Pressure, kPa</ePressure>
+				</VariableType>
+			</VariableID>
+		</Variable>
+		<NumValues>
+			<VariableValue>
+				<nVarNumber>1</nVarNumber>
+				<nVarValue>377</nVarValue>
+				<nVarDigits>3</nVarDigits>
+			</VariableValue>
+			<VariableValue>
+				<nVarNumber>2</nVarNumber>
+				<nVarValue>100</nVarValue>
+				<nVarDigits>3</nVarDigits>
+			</VariableValue>
+			<PropertyValue>
+				<nPropNumber>1</nPropNumber>
+				<nPropValue>97.6</nPropValue>
+				<nPropDigits>3</nPropDigits>
+			<PropRepeatability>
+				<nPropRepeatValue>1.7</nPropRepeatValue>
+				<nRepetitions>6</nRepetitions>
+			</PropRepeatability>
+			</PropertyValue>
+		</NumValues>
+	</PureOrMixtureData>
+	<PureOrMixtureData>
+		<Component>
+			<RegNum>
+				<nCASRNum>611358</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<eExpPurpose>Principal objective of the work</eExpPurpose>
+		<sCompiler>JCE</sCompiler>
+		<sContributor>JCE</sContributor>
+		<dateDateAdded>12/27/2005</dateDateAdded>
+		<Property>
+			<nPropNumber>1</nPropNumber>
+			<Property-MethodID>
+				<PropertyGroup>
+					<PhaseTransition>
+						<ePropName>Normal melting temperature, K</ePropName>
+						<eMethodName>DSC/DTA</eMethodName>
+					</PhaseTransition>
+				</PropertyGroup>
+			</Property-MethodID>
+			<PropPhaseID>
+				<ePropPhase>Crystal</ePropPhase>
+			</PropPhaseID>
+			<ePresentation>Direct value, X</ePresentation>
+		</Property>
+		<PhaseID>
+				<ePhase>Crystal</ePhase>
+		</PhaseID>
+		<PhaseID>
+				<ePhase>Liquid</ePhase>
+		</PhaseID>
+		<PhaseID>
+				<ePhase>Air at 1 atmosphere</ePhase>
+		</PhaseID>
+		<NumValues>
+			<PropertyValue>
+				<nPropNumber>1</nPropNumber>
+				<nPropValue>308</nPropValue>
+				<nPropDigits>4</nPropDigits>
+			</PropertyValue>
+		</NumValues>
+	</PureOrMixtureData>
+	<PureOrMixtureData>
+		<Component>
+			<RegNum>
+				<nCASRNum>611358</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<eExpPurpose>Principal objective of the work</eExpPurpose>
+		<sCompiler>JCE</sCompiler>
+		<sContributor>JCE</sContributor>
+		<dateDateAdded>12/27/2005</dateDateAdded>
+		<Property>
+			<nPropNumber>1</nPropNumber>
+			<Property-MethodID>
+				<PropertyGroup>
+					<VolumetricProp>
+						<ePropName>Mass density, kg/m3</ePropName>
+						<eMethodName>Pycnometric method</eMethodName>
+					</VolumetricProp>
+				</PropertyGroup>
+			</Property-MethodID>
+			<PropPhaseID>
+				<ePropPhase>Crystal</ePropPhase>
+			</PropPhaseID>
+			<ePresentation>Direct value, X</ePresentation>
+		</Property>
+		<PhaseID>
+				<ePhase>Crystal</ePhase>
+		</PhaseID>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<ePressure>Pressure, kPa</ePressure>
+				</ConstraintType>
+			</ConstraintID>
+			<nConstraintValue>101.325</nConstraintValue>
+			<nConstrDigits>6</nConstrDigits>
+		</Constraint>
+		<Variable>
+			<nVarNumber>1</nVarNumber>
+			<VariableID>
+				<VariableType>
+					<eTemperature>Temperature, K</eTemperature>
+				</VariableType>
+			</VariableID>
+		</Variable>
+		<NumValues>
+			<VariableValue>
+				<nVarNumber>1</nVarNumber>
+				<nVarValue>298</nVarValue>
+				<nVarDigits>3</nVarDigits>
+			</VariableValue>
+			<PropertyValue>
+				<nPropNumber>1</nPropNumber>
+				<nPropValue>1251</nPropValue>
+				<nPropDigits>4</nPropDigits>
+			</PropertyValue>
+		</NumValues>
+	</PureOrMixtureData>
+	<PureOrMixtureData>
+		<Component>
+			<RegNum>
+				<nCASRNum>611358</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<eExpPurpose>Principal objective of the work</eExpPurpose>
+		<sCompiler>JCE</sCompiler>
+		<sContributor>JCE</sContributor>
+		<dateDateAdded>12/27/2005</dateDateAdded>
+		<Property>
+			<nPropNumber>1</nPropNumber>
+			<Property-MethodID>
+				<PropertyGroup>
+					<HeatCapacityAndDerivedProp>
+						<ePropName>Molar enthalpy, kJ/mol</ePropName>
+						<sMethodName>Calvet microcalorimetry</sMethodName>
+					</HeatCapacityAndDerivedProp>
+				</PropertyGroup>
+			</Property-MethodID>
+			<PropPhaseID>
+				<ePropPhase>Gas</ePropPhase>
+			</PropPhaseID>
+			<ePresentation>Difference with the reference state, X-X(REF)</ePresentation>
+			<eRefStateType>Reference phase with the same composition at fixed temperature and pressure</eRefStateType>
+			<nRefTemp>298.15</nRefTemp>
+			<nRefTempDigits>5</nRefTempDigits>
+			<nRefPressure>100</nRefPressure>
+			<nRefPressureDigits>3</nRefPressureDigits>
+			<RefPhaseID>
+				<eRefPhase>Crystal</eRefPhase>
+			</RefPhaseID>
+			<PropRepeatability>
+				<sRepeatEvaluator>Author</sRepeatEvaluator>
+				<eRepeatMethod>Standard deviation of a single value (unbiased)</eRepeatMethod>
+			</PropRepeatability>
+		</Property>
+		<PhaseID>
+				<ePhase>Gas</ePhase>
+		</PhaseID>
+		<Variable>
+			<nVarNumber>1</nVarNumber>
+			<VariableID>
+				<VariableType>
+					<eTemperature>Temperature, K</eTemperature>
+				</VariableType>
+			</VariableID>
+		</Variable>
+		<Variable>
+			<nVarNumber>2</nVarNumber>
+			<VariableID>
+				<VariableType>
+					<ePressure>Pressure, kPa</ePressure>
+				</VariableType>
+			</VariableID>
+		</Variable>
+		<NumValues>
+			<VariableValue>
+				<nVarNumber>1</nVarNumber>
+				<nVarValue>377</nVarValue>
+				<nVarDigits>3</nVarDigits>
+			</VariableValue>
+			<VariableValue>
+				<nVarNumber>2</nVarNumber>
+				<nVarValue>100</nVarValue>
+				<nVarDigits>3</nVarDigits>
+			</VariableValue>
+			<PropertyValue>
+				<nPropNumber>1</nPropNumber>
+				<nPropValue>91.9</nPropValue>
+				<nPropDigits>3</nPropDigits>
+			<PropRepeatability>
+				<nPropRepeatValue>1.9</nPropRepeatValue>
+				<nRepetitions>5</nRepetitions>
+			</PropRepeatability>
+			</PropertyValue>
+		</NumValues>
+	</PureOrMixtureData>
+	<PureOrMixtureData>
+		<Component>
+			<RegNum>
+				<nCASRNum>612577</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<eExpPurpose>Principal objective of the work</eExpPurpose>
+		<sCompiler>JCE</sCompiler>
+		<sContributor>JCE</sContributor>
+		<dateDateAdded>12/27/2005</dateDateAdded>
+		<Property>
+			<nPropNumber>1</nPropNumber>
+			<Property-MethodID>
+				<PropertyGroup>
+					<PhaseTransition>
+						<ePropName>Normal melting temperature, K</ePropName>
+						<eMethodName>DSC/DTA</eMethodName>
+					</PhaseTransition>
+				</PropertyGroup>
+			</Property-MethodID>
+			<PropPhaseID>
+				<ePropPhase>Crystal</ePropPhase>
+			</PropPhaseID>
+			<ePresentation>Direct value, X</ePresentation>
+		</Property>
+		<PhaseID>
+				<ePhase>Crystal</ePhase>
+		</PhaseID>
+		<PhaseID>
+				<ePhase>Liquid</ePhase>
+		</PhaseID>
+		<PhaseID>
+				<ePhase>Air at 1 atmosphere</ePhase>
+		</PhaseID>
+		<NumValues>
+			<PropertyValue>
+				<nPropNumber>1</nPropNumber>
+				<nPropValue>319</nPropValue>
+				<nPropDigits>4</nPropDigits>
+			</PropertyValue>
+		</NumValues>
+	</PureOrMixtureData>
+	<PureOrMixtureData>
+		<Component>
+			<RegNum>
+				<nCASRNum>612577</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<eExpPurpose>Principal objective of the work</eExpPurpose>
+		<sCompiler>JCE</sCompiler>
+		<sContributor>JCE</sContributor>
+		<dateDateAdded>12/27/2005</dateDateAdded>
+		<Property>
+			<nPropNumber>1</nPropNumber>
+			<Property-MethodID>
+				<PropertyGroup>
+					<HeatCapacityAndDerivedProp>
+						<ePropName>Molar enthalpy, kJ/mol</ePropName>
+						<sMethodName>Calvet microcalorimetry</sMethodName>
+					</HeatCapacityAndDerivedProp>
+				</PropertyGroup>
+			</Property-MethodID>
+			<PropPhaseID>
+				<ePropPhase>Gas</ePropPhase>
+			</PropPhaseID>
+			<ePresentation>Difference with the reference state, X-X(REF)</ePresentation>
+			<eRefStateType>Reference phase with the same composition at fixed temperature and pressure</eRefStateType>
+			<nRefTemp>298.15</nRefTemp>
+			<nRefTempDigits>5</nRefTempDigits>
+			<nRefPressure>100</nRefPressure>
+			<nRefPressureDigits>3</nRefPressureDigits>
+			<RefPhaseID>
+				<eRefPhase>Crystal</eRefPhase>
+			</RefPhaseID>
+			<PropRepeatability>
+				<sRepeatEvaluator>Author</sRepeatEvaluator>
+				<eRepeatMethod>Standard deviation of a single value (unbiased)</eRepeatMethod>
+			</PropRepeatability>
+		</Property>
+		<PhaseID>
+				<ePhase>Gas</ePhase>
+		</PhaseID>
+		<Variable>
+			<nVarNumber>1</nVarNumber>
+			<VariableID>
+				<VariableType>
+					<eTemperature>Temperature, K</eTemperature>
+				</VariableType>
+			</VariableID>
+		</Variable>
+		<Variable>
+			<nVarNumber>2</nVarNumber>
+			<VariableID>
+				<VariableType>
+					<ePressure>Pressure, kPa</ePressure>
+				</VariableType>
+			</VariableID>
+		</Variable>
+		<NumValues>
+			<VariableValue>
+				<nVarNumber>1</nVarNumber>
+				<nVarValue>377</nVarValue>
+				<nVarDigits>3</nVarDigits>
+			</VariableValue>
+			<VariableValue>
+				<nVarNumber>2</nVarNumber>
+				<nVarValue>100</nVarValue>
+				<nVarDigits>3</nVarDigits>
+			</VariableValue>
+			<PropertyValue>
+				<nPropNumber>1</nPropNumber>
+				<nPropValue>94.1</nPropValue>
+				<nPropDigits>3</nPropDigits>
+			<PropRepeatability>
+				<nPropRepeatValue>2.3</nPropRepeatValue>
+				<nRepetitions>8</nRepetitions>
+			</PropRepeatability>
+			</PropertyValue>
+		</NumValues>
+	</PureOrMixtureData>
+	<PureOrMixtureData>
+		<Component>
+			<RegNum>
+				<nCASRNum>86986</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<eExpPurpose>Principal objective of the work</eExpPurpose>
+		<sCompiler>JCE</sCompiler>
+		<sContributor>JCE</sContributor>
+		<dateDateAdded>12/27/2005</dateDateAdded>
+		<Property>
+			<nPropNumber>1</nPropNumber>
+			<Property-MethodID>
+				<PropertyGroup>
+					<PhaseTransition>
+						<ePropName>Normal melting temperature, K</ePropName>
+						<eMethodName>DSC/DTA</eMethodName>
+					</PhaseTransition>
+				</PropertyGroup>
+			</Property-MethodID>
+			<PropPhaseID>
+				<ePropPhase>Crystal</ePropPhase>
+			</PropPhaseID>
+			<ePresentation>Direct value, X</ePresentation>
+		</Property>
+		<PhaseID>
+				<ePhase>Crystal</ePhase>
+		</PhaseID>
+		<PhaseID>
+				<ePhase>Liquid</ePhase>
+		</PhaseID>
+		<PhaseID>
+				<ePhase>Air at 1 atmosphere</ePhase>
+		</PhaseID>
+		<NumValues>
+			<PropertyValue>
+				<nPropNumber>1</nPropNumber>
+				<nPropValue>365.5</nPropValue>
+				<nPropDigits>4</nPropDigits>
+			</PropertyValue>
+		</NumValues>
+	</PureOrMixtureData>
+	<PureOrMixtureData>
+		<Component>
+			<RegNum>
+				<nCASRNum>86986</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<eExpPurpose>Principal objective of the work</eExpPurpose>
+		<sCompiler>JCE</sCompiler>
+		<sContributor>JCE</sContributor>
+		<dateDateAdded>12/27/2005</dateDateAdded>
+		<Property>
+			<nPropNumber>1</nPropNumber>
+			<Property-MethodID>
+				<PropertyGroup>
+					<HeatCapacityAndDerivedProp>
+						<ePropName>Molar enthalpy, kJ/mol</ePropName>
+						<sMethodName>Calvet microcalorimetry</sMethodName>
+					</HeatCapacityAndDerivedProp>
+				</PropertyGroup>
+			</Property-MethodID>
+			<PropPhaseID>
+				<ePropPhase>Gas</ePropPhase>
+			</PropPhaseID>
+			<ePresentation>Difference with the reference state, X-X(REF)</ePresentation>
+			<eRefStateType>Reference phase with the same composition at fixed temperature and pressure</eRefStateType>
+			<nRefTemp>298.15</nRefTemp>
+			<nRefTempDigits>5</nRefTempDigits>
+			<nRefPressure>100</nRefPressure>
+			<nRefPressureDigits>3</nRefPressureDigits>
+			<RefPhaseID>
+				<eRefPhase>Crystal</eRefPhase>
+			</RefPhaseID>
+			<PropRepeatability>
+				<sRepeatEvaluator>Author</sRepeatEvaluator>
+				<eRepeatMethod>Standard deviation of a single value (unbiased)</eRepeatMethod>
+			</PropRepeatability>
+		</Property>
+		<PhaseID>
+				<ePhase>Gas</ePhase>
+		</PhaseID>
+		<Variable>
+			<nVarNumber>1</nVarNumber>
+			<VariableID>
+				<VariableType>
+					<eTemperature>Temperature, K</eTemperature>
+				</VariableType>
+			</VariableID>
+		</Variable>
+		<Variable>
+			<nVarNumber>2</nVarNumber>
+			<VariableID>
+				<VariableType>
+					<ePressure>Pressure, kPa</ePressure>
+				</VariableType>
+			</VariableID>
+		</Variable>
+		<NumValues>
+			<VariableValue>
+				<nVarNumber>1</nVarNumber>
+				<nVarValue>372</nVarValue>
+				<nVarDigits>3</nVarDigits>
+			</VariableValue>
+			<VariableValue>
+				<nVarNumber>2</nVarNumber>
+				<nVarValue>100</nVarValue>
+				<nVarDigits>3</nVarDigits>
+			</VariableValue>
+			<PropertyValue>
+				<nPropNumber>1</nPropNumber>
+				<nPropValue>103.1</nPropValue>
+				<nPropDigits>4</nPropDigits>
+			<PropRepeatability>
+				<nPropRepeatValue>2.3</nPropRepeatValue>
+				<nRepetitions>8</nRepetitions>
+			</PropRepeatability>
+			</PropertyValue>
+		</NumValues>
+	</PureOrMixtureData>
+	<ReactionData>
+		<Participant>
+			<RegNum>
+				<nCASRNum>612624</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+			<nStoichiometricCoef>-1</nStoichiometricCoef>
+			<ePhase>Crystal</ePhase>
+		</Participant>
+		<Participant>
+			<RegNum>
+				<nCASRNum>7647010</nCASRNum>
+			</RegNum>
+			<nSampleNm>0</nSampleNm>
+			<nStoichiometricCoef>1</nStoichiometricCoef>
+			<ePhase>Solution 1</ePhase>
+			<eCompositionRepresentation>Amount ratio of solvent to participant</eCompositionRepresentation>
+			<nNumericalComposition>600</nNumericalComposition>
+		</Participant>
+		<Participant>
+			<RegNum>
+				<nCASRNum>124389</nCASRNum>
+			</RegNum>
+			<nSampleNm>0</nSampleNm>
+			<nStoichiometricCoef>9</nStoichiometricCoef>
+			<ePhase>Gas</ePhase>
+		</Participant>
+		<Participant>
+			<RegNum>
+				<nCASRNum>7727379</nCASRNum>
+			</RegNum>
+			<nSampleNm>0</nSampleNm>
+			<nStoichiometricCoef>0.5</nStoichiometricCoef>
+			<ePhase>Gas</ePhase>
+		</Participant>
+		<Participant>
+			<RegNum>
+				<nCASRNum>7732185</nCASRNum>
+			</RegNum>
+			<nStoichiometricCoef>2.5</nStoichiometricCoef>
+			<ePhase>Liquid</ePhase>
+		</Participant>
+		<Participant>
+			<RegNum>
+				<nCASRNum>7782447</nCASRNum>
+			</RegNum>
+			<nStoichiometricCoef>-10.25</nStoichiometricCoef>
+			<ePhase>Gas</ePhase>
+		</Participant>
+		<eExpPurpose>Principal objective of the work</eExpPurpose>
+		<sCompiler>JCE</sCompiler>
+		<sContributor>JCE</sContributor>
+		<dateDateAdded>12/27/2005</dateDateAdded>
+		<eReactionType>Combustion with oxygen</eReactionType>
+		<Property>
+			<nPropNumber>1</nPropNumber>
+			<Property-MethodID>
+				<PropertyGroup>
+					<ReactionStateChangeProp>
+						<ePropName>Specific internal energy of reaction at constant volume, J/g</ePropName>
+						<eMethodName>Rotating bomb calorimetry</eMethodName>
+					</ReactionStateChangeProp>
+				</PropertyGroup>
+			</Property-MethodID>
+			<Solvent>
+				<RegNum>
+					<nCASRNum>7732185</nCASRNum>
+				</RegNum>
+				<ePhase>Solution 1</ePhase>
+			</Solvent>
+			<nTemperature-K>298.15</nTemperature-K>
+			<nTemperatureDigits>5</nTemperatureDigits>
+			<nPressure-kPa>100</nPressure-kPa>
+			<nPressureDigits>3</nPressureDigits>
+			<PropRepeatability>
+				<sRepeatEvaluator>Author</sRepeatEvaluator>
+				<eRepeatMethod>Standard deviation of the mean</eRepeatMethod>
+			</PropRepeatability>
+			<PropDeviceSpec>
+				<eDeviceSpecMethod>Calibrated by the experimentalist</eDeviceSpecMethod>
+				<nDeviceSpecLevOfConfid>95</nDeviceSpecLevOfConfid>
+			</PropDeviceSpec>
+		</Property>
+		<NumValues>
+			<PropertyValue>
+				<nPropNumber>1</nPropNumber>
+				<nPropValue>-27447.6</nPropValue>
+				<nPropDigits>6</nPropDigits>
+			<PropRepeatability>
+				<nPropRepeatValue>4.1</nPropRepeatValue>
+				<nRepetitions>6</nRepetitions>
+			</PropRepeatability>
+			<nPropDeviceSpecValue>-2.17961779898911</nPropDeviceSpecValue>
+			</PropertyValue>
+		</NumValues>
+	</ReactionData>
+	<ReactionData>
+		<Participant>
+			<RegNum>
+				<nCASRNum>611358</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+			<nStoichiometricCoef>-1</nStoichiometricCoef>
+			<ePhase>Crystal</ePhase>
+		</Participant>
+		<Participant>
+			<RegNum>
+				<nCASRNum>7647010</nCASRNum>
+			</RegNum>
+			<nSampleNm>0</nSampleNm>
+			<nStoichiometricCoef>1</nStoichiometricCoef>
+			<ePhase>Solution 1</ePhase>
+			<eCompositionRepresentation>Amount ratio of solvent to participant</eCompositionRepresentation>
+			<nNumericalComposition>600</nNumericalComposition>
+		</Participant>
+		<Participant>
+			<RegNum>
+				<nCASRNum>124389</nCASRNum>
+			</RegNum>
+			<nSampleNm>0</nSampleNm>
+			<nStoichiometricCoef>9</nStoichiometricCoef>
+			<ePhase>Gas</ePhase>
+		</Participant>
+		<Participant>
+			<RegNum>
+				<nCASRNum>7727379</nCASRNum>
+			</RegNum>
+			<nSampleNm>0</nSampleNm>
+			<nStoichiometricCoef>0.5</nStoichiometricCoef>
+			<ePhase>Gas</ePhase>
+		</Participant>
+		<Participant>
+			<RegNum>
+				<nCASRNum>7732185</nCASRNum>
+			</RegNum>
+			<nStoichiometricCoef>2.5</nStoichiometricCoef>
+			<ePhase>Liquid</ePhase>
+		</Participant>
+		<Participant>
+			<RegNum>
+				<nCASRNum>7782447</nCASRNum>
+			</RegNum>
+			<nStoichiometricCoef>-10.25</nStoichiometricCoef>
+			<ePhase>Gas</ePhase>
+		</Participant>
+		<eExpPurpose>Principal objective of the work</eExpPurpose>
+		<sCompiler>JCE</sCompiler>
+		<sContributor>JCE</sContributor>
+		<dateDateAdded>12/27/2005</dateDateAdded>
+		<eReactionType>Combustion with oxygen</eReactionType>
+		<Property>
+			<nPropNumber>1</nPropNumber>
+			<Property-MethodID>
+				<PropertyGroup>
+					<ReactionStateChangeProp>
+						<ePropName>Specific internal energy of reaction at constant volume, J/g</ePropName>
+						<eMethodName>Rotating bomb calorimetry</eMethodName>
+					</ReactionStateChangeProp>
+				</PropertyGroup>
+			</Property-MethodID>
+			<Solvent>
+				<RegNum>
+					<nCASRNum>7732185</nCASRNum>
+				</RegNum>
+				<ePhase>Solution 1</ePhase>
+			</Solvent>
+			<nTemperature-K>298.15</nTemperature-K>
+			<nTemperatureDigits>5</nTemperatureDigits>
+			<nPressure-kPa>100</nPressure-kPa>
+			<nPressureDigits>3</nPressureDigits>
+			<PropRepeatability>
+				<sRepeatEvaluator>Author</sRepeatEvaluator>
+				<eRepeatMethod>Standard deviation of the mean</eRepeatMethod>
+			</PropRepeatability>
+			<PropDeviceSpec>
+				<eDeviceSpecMethod>Calibrated by the experimentalist</eDeviceSpecMethod>
+				<nDeviceSpecLevOfConfid>95</nDeviceSpecLevOfConfid>
+			</PropDeviceSpec>
+		</Property>
+		<NumValues>
+			<PropertyValue>
+				<nPropNumber>1</nPropNumber>
+				<nPropValue>-27544.8</nPropValue>
+				<nPropDigits>6</nPropDigits>
+			<PropRepeatability>
+				<nPropRepeatValue>4</nPropRepeatValue>
+				<nRepetitions>6</nRepetitions>
+			</PropRepeatability>
+			<nPropDeviceSpecValue>-1.53141522808773</nPropDeviceSpecValue>
+			</PropertyValue>
+		</NumValues>
+	</ReactionData>
+	<ReactionData>
+		<Participant>
+			<RegNum>
+				<nCASRNum>612577</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+			<nStoichiometricCoef>-1</nStoichiometricCoef>
+			<ePhase>Crystal</ePhase>
+		</Participant>
+		<Participant>
+			<RegNum>
+				<nCASRNum>7647010</nCASRNum>
+			</RegNum>
+			<nSampleNm>0</nSampleNm>
+			<nStoichiometricCoef>1</nStoichiometricCoef>
+			<ePhase>Solution 1</ePhase>
+			<eCompositionRepresentation>Amount ratio of solvent to participant</eCompositionRepresentation>
+			<nNumericalComposition>600</nNumericalComposition>
+		</Participant>
+		<Participant>
+			<RegNum>
+				<nCASRNum>124389</nCASRNum>
+			</RegNum>
+			<nSampleNm>0</nSampleNm>
+			<nStoichiometricCoef>9</nStoichiometricCoef>
+			<ePhase>Gas</ePhase>
+		</Participant>
+		<Participant>
+			<RegNum>
+				<nCASRNum>7727379</nCASRNum>
+			</RegNum>
+			<nSampleNm>0</nSampleNm>
+			<nStoichiometricCoef>0.5</nStoichiometricCoef>
+			<ePhase>Gas</ePhase>
+		</Participant>
+		<Participant>
+			<RegNum>
+				<nCASRNum>7732185</nCASRNum>
+			</RegNum>
+			<nStoichiometricCoef>2.5</nStoichiometricCoef>
+			<ePhase>Liquid</ePhase>
+		</Participant>
+		<Participant>
+			<RegNum>
+				<nCASRNum>7782447</nCASRNum>
+			</RegNum>
+			<nStoichiometricCoef>-10.25</nStoichiometricCoef>
+			<ePhase>Gas</ePhase>
+		</Participant>
+		<eExpPurpose>Principal objective of the work</eExpPurpose>
+		<sCompiler>JCE</sCompiler>
+		<sContributor>JCE</sContributor>
+		<dateDateAdded>12/27/2005</dateDateAdded>
+		<eReactionType>Combustion with oxygen</eReactionType>
+		<Property>
+			<nPropNumber>1</nPropNumber>
+			<Property-MethodID>
+				<PropertyGroup>
+					<ReactionStateChangeProp>
+						<ePropName>Specific internal energy of reaction at constant volume, J/g</ePropName>
+						<eMethodName>Rotating bomb calorimetry</eMethodName>
+					</ReactionStateChangeProp>
+				</PropertyGroup>
+			</Property-MethodID>
+			<Solvent>
+				<RegNum>
+					<nCASRNum>7732185</nCASRNum>
+				</RegNum>
+				<ePhase>Solution 1</ePhase>
+			</Solvent>
+			<nTemperature-K>298.15</nTemperature-K>
+			<nTemperatureDigits>5</nTemperatureDigits>
+			<nPressure-kPa>100</nPressure-kPa>
+			<nPressureDigits>3</nPressureDigits>
+			<PropRepeatability>
+				<sRepeatEvaluator>Author</sRepeatEvaluator>
+				<eRepeatMethod>Standard deviation of the mean</eRepeatMethod>
+			</PropRepeatability>
+			<PropDeviceSpec>
+				<eDeviceSpecMethod>Calibrated by the experimentalist</eDeviceSpecMethod>
+				<nDeviceSpecLevOfConfid>95</nDeviceSpecLevOfConfid>
+			</PropDeviceSpec>
+		</Property>
+		<NumValues>
+			<PropertyValue>
+				<nPropNumber>1</nPropNumber>
+				<nPropValue>-27543.3</nPropValue>
+				<nPropDigits>6</nPropDigits>
+			<PropRepeatability>
+				<nPropRepeatValue>4</nPropRepeatValue>
+				<nRepetitions>8</nRepetitions>
+			</PropRepeatability>
+			<nPropDeviceSpecValue>-2.18721734952771</nPropDeviceSpecValue>
+			</PropertyValue>
+		</NumValues>
+	</ReactionData>
+	<ReactionData>
+		<Participant>
+			<RegNum>
+				<nCASRNum>86986</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+			<nStoichiometricCoef>-1</nStoichiometricCoef>
+			<ePhase>Crystal</ePhase>
+		</Participant>
+		<Participant>
+			<RegNum>
+				<nCASRNum>7647010</nCASRNum>
+			</RegNum>
+			<nSampleNm>0</nSampleNm>
+			<nStoichiometricCoef>2</nStoichiometricCoef>
+			<ePhase>Solution 1</ePhase>
+			<eCompositionRepresentation>Amount ratio of solvent to participant</eCompositionRepresentation>
+			<nNumericalComposition>600</nNumericalComposition>
+		</Participant>
+		<Participant>
+			<RegNum>
+				<nCASRNum>124389</nCASRNum>
+			</RegNum>
+			<nSampleNm>0</nSampleNm>
+			<nStoichiometricCoef>9</nStoichiometricCoef>
+			<ePhase>Gas</ePhase>
+		</Participant>
+		<Participant>
+			<RegNum>
+				<nCASRNum>7727379</nCASRNum>
+			</RegNum>
+			<nSampleNm>0</nSampleNm>
+			<nStoichiometricCoef>0.5</nStoichiometricCoef>
+			<ePhase>Gas</ePhase>
+		</Participant>
+		<Participant>
+			<RegNum>
+				<nCASRNum>7732185</nCASRNum>
+			</RegNum>
+			<nStoichiometricCoef>1.5</nStoichiometricCoef>
+			<ePhase>Liquid</ePhase>
+		</Participant>
+		<Participant>
+			<RegNum>
+				<nCASRNum>7782447</nCASRNum>
+			</RegNum>
+			<nStoichiometricCoef>-9.75</nStoichiometricCoef>
+			<ePhase>Gas</ePhase>
+		</Participant>
+		<eExpPurpose>Principal objective of the work</eExpPurpose>
+		<sCompiler>JCE</sCompiler>
+		<sContributor>JCE</sContributor>
+		<dateDateAdded>12/27/2005</dateDateAdded>
+		<eReactionType>Combustion with oxygen</eReactionType>
+		<Property>
+			<nPropNumber>1</nPropNumber>
+			<Property-MethodID>
+				<PropertyGroup>
+					<ReactionStateChangeProp>
+						<ePropName>Specific internal energy of reaction at constant volume, J/g</ePropName>
+						<eMethodName>Rotating bomb calorimetry</eMethodName>
+					</ReactionStateChangeProp>
+				</PropertyGroup>
+			</Property-MethodID>
+			<Solvent>
+				<RegNum>
+					<nCASRNum>7732185</nCASRNum>
+				</RegNum>
+				<ePhase>Solution 1</ePhase>
+			</Solvent>
+			<nTemperature-K>298.15</nTemperature-K>
+			<nTemperatureDigits>5</nTemperatureDigits>
+			<nPressure-kPa>100</nPressure-kPa>
+			<nPressureDigits>3</nPressureDigits>
+			<PropRepeatability>
+				<sRepeatEvaluator>Author</sRepeatEvaluator>
+				<eRepeatMethod>Standard deviation of the mean</eRepeatMethod>
+			</PropRepeatability>
+			<PropDeviceSpec>
+				<eDeviceSpecMethod>Calibrated by the experimentalist</eDeviceSpecMethod>
+				<nDeviceSpecLevOfConfid>95</nDeviceSpecLevOfConfid>
+			</PropDeviceSpec>
+		</Property>
+		<NumValues>
+			<PropertyValue>
+				<nPropNumber>1</nPropNumber>
+				<nPropValue>-21977.6</nPropValue>
+				<nPropDigits>6</nPropDigits>
+			<PropRepeatability>
+				<nPropRepeatValue>2.2</nPropRepeatValue>
+				<nRepetitions>6</nRepetitions>
+			</PropRepeatability>
+			<nPropDeviceSpecValue>-1.2218941984266</nPropDeviceSpecValue>
+			</PropertyValue>
+		</NumValues>
+	</ReactionData>
+</DataReport>

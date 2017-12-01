@@ -1,0 +1,3463 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="http://www-i.boulder.nist.gov/div838/trc/ThermoMLtoHTML_devel.xsl" type="text/xsl"?>
+<!--Created by Guided Data Capture (GDC) Software (http://www.trc.nist.gov)-->
+<DataReport xmlns="http://www.iupac.org/namespaces/ThermoML" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.iupac.org/namespaces/ThermoML http://trc.nist.gov/ThermoML.xsd">
+	<Version>
+		<nVersionMajor>2</nVersionMajor>
+		<nVersionMinor>0</nVersionMinor>
+	</Version>
+	<Citation>
+		<TRCRefID>
+			<yrYrPub>2004</yrYrPub>
+			<sAuthor1>liu</sAuthor1>
+			<sAuthor2>chi</sAuthor2>
+			<nAuthorn>0</nAuthorn>
+		</TRCRefID>
+		<eType>journal</eType>
+		<eSourceType>Original</eSourceType>
+		<sAuthor>Liu, J.-f.[Jing-fu]</sAuthor>
+		<sAuthor>Chi, Y.-g.[Yu-guang]</sAuthor>
+		<sAuthor>Peng, J.-f.[Jin-feng]</sAuthor>
+		<sAuthor>Jiang, G.-b.[Gui-bin]</sAuthor>
+		<sAuthor>Jonsson, J. A.[Jan Ake]</sAuthor>
+		<sPubName>J. Chem. Eng. Data</sPubName>
+		<yrPubYr>2004</yrPubYr>
+		<dateCit>2006-09-11</dateCit>
+		<sTitle>Ionic Liquids/Water Distribution Ratios of Some Polycyclic Aromatic Hydrocarbons</sTitle>
+		<sAbstract>By using the shake-flask procedure, the distribution ratios (D) at infinite dilution and 298.1 K of 15 polycyclic aromatic hydrocarbons (PAHs) between room-temperature ionic liquids, 1-alkyl-3-methylimiazolium hexafluorophosphates ([CnMIM][PF6], n ) 4 and 8), and water were determined. The log D values are in the range of 3.34-4.36, which increased very slowly with the molar mass of PAHs.</sAbstract>
+		<sKeyword>ionic liquids</sKeyword>
+		<sKeyword>distribution ratios</sKeyword>
+		<sKeyword>polycyclic aromatic hydrocarbons</sKeyword>
+		<sVol>49</sVol>
+		<sPage>1422-1424</sPage>
+	</Citation>
+	<Compound>
+		<RegNum>
+			<nCASRNum>91203</nCASRNum>
+		</RegNum>
+		<sCommonName>naphthalene</sCommonName>
+		<sFormulaMolec>C10H8</sFormulaMolec>
+		<Sample>
+			<nSampleNm>1</nSampleNm>
+			<eSource>Commercial source</eSource>
+		</Sample>
+	</Compound>
+	<Compound>
+		<RegNum>
+			<nCASRNum>83329</nCASRNum>
+		</RegNum>
+		<sCommonName>acenaphthene</sCommonName>
+		<sFormulaMolec>C12H10</sFormulaMolec>
+		<Sample>
+			<nSampleNm>1</nSampleNm>
+			<eSource>Commercial source</eSource>
+		</Sample>
+	</Compound>
+	<Compound>
+		<RegNum>
+			<nCASRNum>86737</nCASRNum>
+		</RegNum>
+		<sCommonName>fluorene</sCommonName>
+		<sFormulaMolec>C13H10</sFormulaMolec>
+		<Sample>
+			<nSampleNm>1</nSampleNm>
+			<eSource>Commercial source</eSource>
+		</Sample>
+	</Compound>
+	<Compound>
+		<RegNum>
+			<nCASRNum>85018</nCASRNum>
+		</RegNum>
+		<sCommonName>phenanthrene</sCommonName>
+		<sFormulaMolec>C14H10</sFormulaMolec>
+		<Sample>
+			<nSampleNm>1</nSampleNm>
+			<eSource>Commercial source</eSource>
+		</Sample>
+	</Compound>
+	<Compound>
+		<RegNum>
+			<nCASRNum>120127</nCASRNum>
+		</RegNum>
+		<sCommonName>anthracene</sCommonName>
+		<sFormulaMolec>C14H10</sFormulaMolec>
+		<Sample>
+			<nSampleNm>1</nSampleNm>
+			<eSource>Commercial source</eSource>
+		</Sample>
+	</Compound>
+	<Compound>
+		<RegNum>
+			<nCASRNum>206440</nCASRNum>
+		</RegNum>
+		<sCommonName>fluoranthene</sCommonName>
+		<sFormulaMolec>C16H10</sFormulaMolec>
+		<Sample>
+			<nSampleNm>1</nSampleNm>
+			<eSource>Commercial source</eSource>
+		</Sample>
+	</Compound>
+	<Compound>
+		<RegNum>
+			<nCASRNum>129000</nCASRNum>
+		</RegNum>
+		<sCommonName>pyrene</sCommonName>
+		<sFormulaMolec>C16H10</sFormulaMolec>
+		<Sample>
+			<nSampleNm>1</nSampleNm>
+			<eSource>Commercial source</eSource>
+		</Sample>
+	</Compound>
+	<Compound>
+		<RegNum>
+			<nCASRNum>56553</nCASRNum>
+		</RegNum>
+		<sCommonName>benz[a]anthracene</sCommonName>
+		<sFormulaMolec>C18H12</sFormulaMolec>
+		<Sample>
+			<nSampleNm>1</nSampleNm>
+			<eSource>Commercial source</eSource>
+		</Sample>
+	</Compound>
+	<Compound>
+		<RegNum>
+			<nCASRNum>218019</nCASRNum>
+		</RegNum>
+		<sCommonName>chrysene</sCommonName>
+		<sFormulaMolec>C18H12</sFormulaMolec>
+		<Sample>
+			<nSampleNm>1</nSampleNm>
+			<eSource>Commercial source</eSource>
+		</Sample>
+	</Compound>
+	<Compound>
+		<RegNum>
+			<nCASRNum>205992</nCASRNum>
+		</RegNum>
+		<sCommonName>benz[e]acephenanthrylene</sCommonName>
+		<sFormulaMolec>C20H12</sFormulaMolec>
+		<Sample>
+			<nSampleNm>1</nSampleNm>
+			<eSource>Commercial source</eSource>
+		</Sample>
+	</Compound>
+	<Compound>
+		<RegNum>
+			<nCASRNum>207089</nCASRNum>
+		</RegNum>
+		<sCommonName>benzo[k]fluoranthene</sCommonName>
+		<sFormulaMolec>C20H12</sFormulaMolec>
+		<Sample>
+			<nSampleNm>1</nSampleNm>
+			<eSource>Commercial source</eSource>
+		</Sample>
+	</Compound>
+	<Compound>
+		<RegNum>
+			<nCASRNum>50328</nCASRNum>
+		</RegNum>
+		<sCommonName>benzo[a]pyrene</sCommonName>
+		<sFormulaMolec>C20H12</sFormulaMolec>
+		<Sample>
+			<nSampleNm>1</nSampleNm>
+			<eSource>Commercial source</eSource>
+		</Sample>
+	</Compound>
+	<Compound>
+		<RegNum>
+			<nCASRNum>53703</nCASRNum>
+		</RegNum>
+		<sCommonName>dibenz[a,h]anthracene</sCommonName>
+		<sFormulaMolec>C22H14</sFormulaMolec>
+		<Sample>
+			<nSampleNm>1</nSampleNm>
+			<eSource>Commercial source</eSource>
+		</Sample>
+	</Compound>
+	<Compound>
+		<RegNum>
+			<nCASRNum>191242</nCASRNum>
+		</RegNum>
+		<sCommonName>benzo[ghi]perylene</sCommonName>
+		<sFormulaMolec>C22H12</sFormulaMolec>
+		<Sample>
+			<nSampleNm>1</nSampleNm>
+			<eSource>Commercial source</eSource>
+		</Sample>
+	</Compound>
+	<Compound>
+		<RegNum>
+			<nCASRNum>7732185</nCASRNum>
+		</RegNum>
+		<sCommonName>water</sCommonName>
+		<sFormulaMolec>H2O</sFormulaMolec>
+		<Sample>
+			<nSampleNm>1</nSampleNm>
+			<eSource>Commercial source</eSource>
+		</Sample>
+	</Compound>
+	<Compound>
+		<RegNum>
+			<nCASRNum>174501645</nCASRNum>
+		</RegNum>
+		<sCommonName>1-N-butyl-3-methylimidazolium hexafluorophosphate</sCommonName>
+		<sFormulaMolec>C8H15F6N2P</sFormulaMolec>
+		<Sample>
+			<nSampleNm>1</nSampleNm>
+			<eSource>Commercial source</eSource>
+		</Sample>
+	</Compound>
+	<Compound>
+		<RegNum>
+			<nCASRNum>304680362</nCASRNum>
+		</RegNum>
+		<sCommonName>1-octyl-3-methylimidazolium hexafluorophosphate</sCommonName>
+		<sFormulaMolec>C12H23F6N2P</sFormulaMolec>
+		<Sample>
+			<nSampleNm>1</nSampleNm>
+			<eSource>Commercial source</eSource>
+		</Sample>
+	</Compound>
+	<Compound>
+		<RegNum>
+			<nCASRNum>193395</nCASRNum>
+		</RegNum>
+		<sCommonName>o-phenylenepyrene</sCommonName>
+		<sFormulaMolec>C22H12</sFormulaMolec>
+		<Sample>
+			<nSampleNm>1</nSampleNm>
+			<eSource>Commercial source</eSource>
+		</Sample>
+	</Compound>
+	<PureOrMixtureData>
+		<Component>
+			<RegNum>
+				<nCASRNum>91203</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<Component>
+			<RegNum>
+				<nCASRNum>7732185</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<Component>
+			<RegNum>
+				<nCASRNum>174501645</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<eExpPurpose>Principal objective of the work</eExpPurpose>
+		<sCompiler>CDG</sCompiler>
+		<sContributor>TRC</sContributor>
+		<dateDateAdded>10/20/2004</dateDateAdded>
+		<Property>
+			<nPropNumber>1</nPropNumber>
+			<Property-MethodID>
+				<PropertyGroup>
+					<CompositionAtPhaseEquilibrium>
+						<ePropName>Mass concentration, kg/m3</ePropName>
+						<eMethodName>Chromatography</eMethodName>
+					</CompositionAtPhaseEquilibrium>
+				</PropertyGroup>
+			<RegNum>
+				<nCASRNum>91203</nCASRNum>
+			</RegNum>
+			</Property-MethodID>
+			<PropPhaseID>
+				<ePropPhase>Liquid mixture 1</ePropPhase>
+			</PropPhaseID>
+			<ePresentation>Ratio with the reference state, X/X(REF)</ePresentation>
+			<eRefStateType>Phase in equilibrium with primary phase at the same temperature and pressure</eRefStateType>
+			<RefPhaseID>
+				<eRefPhase>Liquid</eRefPhase>
+			<RegNum>
+				<nCASRNum>7732185</nCASRNum>
+			</RegNum>
+			</RefPhaseID>
+			<PropUncertainty>
+				<nUncertAssessNum>1</nUncertAssessNum>
+				<sUncertEvaluator>Author</sUncertEvaluator>
+				<nUncertLevOfConfid>95</nUncertLevOfConfid>
+			</PropUncertainty>
+		</Property>
+		<PhaseID>
+				<ePhase>Liquid mixture 1</ePhase>
+		</PhaseID>
+		<PhaseID>
+				<ePhase>Liquid mixture 2</ePhase>
+		</PhaseID>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<ePressure>Pressure, kPa</ePressure>
+				</ConstraintType>
+			</ConstraintID>
+			<nConstraintValue>101.3</nConstraintValue>
+			<nConstrDigits>4</nConstrDigits>
+		</Constraint>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<eComponentComposition>Mole fraction</eComponentComposition>
+				</ConstraintType>
+			<RegNum>
+				<nCASRNum>91203</nCASRNum>
+			</RegNum>
+			</ConstraintID>
+			<ConstraintPhaseID>
+				<eConstraintPhase>Liquid mixture 2</eConstraintPhase>
+			</ConstraintPhaseID>
+			<nConstraintValue>0</nConstraintValue>
+			<nConstrDigits>0</nConstrDigits>
+		</Constraint>
+		<Variable>
+			<nVarNumber>1</nVarNumber>
+			<VariableID>
+				<VariableType>
+					<eTemperature>Temperature, K</eTemperature>
+				</VariableType>
+			</VariableID>
+		</Variable>
+		<NumValues>
+			<VariableValue>
+				<nVarNumber>1</nVarNumber>
+				<nVarValue>298.15</nVarValue>
+				<nVarDigits>5</nVarDigits>
+			</VariableValue>
+			<PropertyValue>
+				<nPropNumber>1</nPropNumber>
+				<nPropValue>2188</nPropValue>
+				<nPropDigits>4</nPropDigits>
+			<PropUncertainty>
+				<nUncertAssessNum>1</nUncertAssessNum>
+				<nExpandUncertValue>324</nExpandUncertValue>
+			</PropUncertainty>
+			</PropertyValue>
+		</NumValues>
+	</PureOrMixtureData>
+	<PureOrMixtureData>
+		<Component>
+			<RegNum>
+				<nCASRNum>83329</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<Component>
+			<RegNum>
+				<nCASRNum>7732185</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<Component>
+			<RegNum>
+				<nCASRNum>174501645</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<eExpPurpose>Principal objective of the work</eExpPurpose>
+		<sCompiler>CDG</sCompiler>
+		<sContributor>TRC</sContributor>
+		<dateDateAdded>10/20/2004</dateDateAdded>
+		<Property>
+			<nPropNumber>1</nPropNumber>
+			<Property-MethodID>
+				<PropertyGroup>
+					<CompositionAtPhaseEquilibrium>
+						<ePropName>Mass concentration, kg/m3</ePropName>
+						<eMethodName>Chromatography</eMethodName>
+					</CompositionAtPhaseEquilibrium>
+				</PropertyGroup>
+			<RegNum>
+				<nCASRNum>83329</nCASRNum>
+			</RegNum>
+			</Property-MethodID>
+			<PropPhaseID>
+				<ePropPhase>Liquid mixture 1</ePropPhase>
+			</PropPhaseID>
+			<ePresentation>Ratio with the reference state, X/X(REF)</ePresentation>
+			<eRefStateType>Phase in equilibrium with primary phase at the same temperature and pressure</eRefStateType>
+			<RefPhaseID>
+				<eRefPhase>Liquid</eRefPhase>
+			<RegNum>
+				<nCASRNum>7732185</nCASRNum>
+			</RegNum>
+			</RefPhaseID>
+			<PropUncertainty>
+				<nUncertAssessNum>1</nUncertAssessNum>
+				<sUncertEvaluator>Author</sUncertEvaluator>
+				<nUncertLevOfConfid>95</nUncertLevOfConfid>
+			</PropUncertainty>
+		</Property>
+		<PhaseID>
+				<ePhase>Liquid mixture 1</ePhase>
+		</PhaseID>
+		<PhaseID>
+				<ePhase>Liquid mixture 2</ePhase>
+		</PhaseID>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<eComponentComposition>Mole fraction</eComponentComposition>
+				</ConstraintType>
+			<RegNum>
+				<nCASRNum>83329</nCASRNum>
+			</RegNum>
+			</ConstraintID>
+			<ConstraintPhaseID>
+				<eConstraintPhase>Liquid mixture 2</eConstraintPhase>
+			</ConstraintPhaseID>
+			<nConstraintValue>0</nConstraintValue>
+			<nConstrDigits>0</nConstrDigits>
+		</Constraint>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<ePressure>Pressure, kPa</ePressure>
+				</ConstraintType>
+			</ConstraintID>
+			<nConstraintValue>101.3</nConstraintValue>
+			<nConstrDigits>4</nConstrDigits>
+		</Constraint>
+		<Variable>
+			<nVarNumber>1</nVarNumber>
+			<VariableID>
+				<VariableType>
+					<eTemperature>Temperature, K</eTemperature>
+				</VariableType>
+			</VariableID>
+		</Variable>
+		<NumValues>
+			<VariableValue>
+				<nVarNumber>1</nVarNumber>
+				<nVarValue>298.1</nVarValue>
+				<nVarDigits>4</nVarDigits>
+			</VariableValue>
+			<PropertyValue>
+				<nPropNumber>1</nPropNumber>
+				<nPropValue>5129</nPropValue>
+				<nPropDigits>4</nPropDigits>
+			<PropUncertainty>
+				<nUncertAssessNum>1</nUncertAssessNum>
+				<nExpandUncertValue>897</nExpandUncertValue>
+			</PropUncertainty>
+			</PropertyValue>
+		</NumValues>
+	</PureOrMixtureData>
+	<PureOrMixtureData>
+		<Component>
+			<RegNum>
+				<nCASRNum>86737</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<Component>
+			<RegNum>
+				<nCASRNum>7732185</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<Component>
+			<RegNum>
+				<nCASRNum>174501645</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<eExpPurpose>Principal objective of the work</eExpPurpose>
+		<sCompiler>CDG</sCompiler>
+		<sContributor>TRC</sContributor>
+		<dateDateAdded>10/20/2004</dateDateAdded>
+		<Property>
+			<nPropNumber>1</nPropNumber>
+			<Property-MethodID>
+				<PropertyGroup>
+					<CompositionAtPhaseEquilibrium>
+						<ePropName>Mass concentration, kg/m3</ePropName>
+						<eMethodName>Chromatography</eMethodName>
+					</CompositionAtPhaseEquilibrium>
+				</PropertyGroup>
+			<RegNum>
+				<nCASRNum>86737</nCASRNum>
+			</RegNum>
+			</Property-MethodID>
+			<PropPhaseID>
+				<ePropPhase>Liquid mixture 1</ePropPhase>
+			</PropPhaseID>
+			<ePresentation>Ratio with the reference state, X/X(REF)</ePresentation>
+			<eRefStateType>Phase in equilibrium with primary phase at the same temperature and pressure</eRefStateType>
+			<RefPhaseID>
+				<eRefPhase>Liquid</eRefPhase>
+			<RegNum>
+				<nCASRNum>7732185</nCASRNum>
+			</RegNum>
+			</RefPhaseID>
+			<PropUncertainty>
+				<nUncertAssessNum>1</nUncertAssessNum>
+				<sUncertEvaluator>Author</sUncertEvaluator>
+				<nUncertLevOfConfid>95</nUncertLevOfConfid>
+			</PropUncertainty>
+		</Property>
+		<PhaseID>
+				<ePhase>Liquid mixture 1</ePhase>
+		</PhaseID>
+		<PhaseID>
+				<ePhase>Liquid mixture 2</ePhase>
+		</PhaseID>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<ePressure>Pressure, kPa</ePressure>
+				</ConstraintType>
+			</ConstraintID>
+			<nConstraintValue>101.3</nConstraintValue>
+			<nConstrDigits>4</nConstrDigits>
+		</Constraint>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<eComponentComposition>Mole fraction</eComponentComposition>
+				</ConstraintType>
+			<RegNum>
+				<nCASRNum>86737</nCASRNum>
+			</RegNum>
+			</ConstraintID>
+			<ConstraintPhaseID>
+				<eConstraintPhase>Liquid mixture 2</eConstraintPhase>
+			</ConstraintPhaseID>
+			<nConstraintValue>0</nConstraintValue>
+			<nConstrDigits>0</nConstrDigits>
+		</Constraint>
+		<Variable>
+			<nVarNumber>1</nVarNumber>
+			<VariableID>
+				<VariableType>
+					<eTemperature>Temperature, K</eTemperature>
+				</VariableType>
+			</VariableID>
+		</Variable>
+		<NumValues>
+			<VariableValue>
+				<nVarNumber>1</nVarNumber>
+				<nVarValue>298.1</nVarValue>
+				<nVarDigits>4</nVarDigits>
+			</VariableValue>
+			<PropertyValue>
+				<nPropNumber>1</nPropNumber>
+				<nPropValue>6607</nPropValue>
+				<nPropDigits>4</nPropDigits>
+			<PropUncertainty>
+				<nUncertAssessNum>1</nUncertAssessNum>
+				<nExpandUncertValue>2726</nExpandUncertValue>
+			</PropUncertainty>
+			</PropertyValue>
+		</NumValues>
+	</PureOrMixtureData>
+	<PureOrMixtureData>
+		<Component>
+			<RegNum>
+				<nCASRNum>85018</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<Component>
+			<RegNum>
+				<nCASRNum>7732185</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<Component>
+			<RegNum>
+				<nCASRNum>174501645</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<eExpPurpose>Principal objective of the work</eExpPurpose>
+		<sCompiler>CDG</sCompiler>
+		<sContributor>TRC</sContributor>
+		<dateDateAdded>10/20/2004</dateDateAdded>
+		<Property>
+			<nPropNumber>1</nPropNumber>
+			<Property-MethodID>
+				<PropertyGroup>
+					<CompositionAtPhaseEquilibrium>
+						<ePropName>Mass concentration, kg/m3</ePropName>
+						<eMethodName>Chromatography</eMethodName>
+					</CompositionAtPhaseEquilibrium>
+				</PropertyGroup>
+			<RegNum>
+				<nCASRNum>85018</nCASRNum>
+			</RegNum>
+			</Property-MethodID>
+			<PropPhaseID>
+				<ePropPhase>Liquid mixture 1</ePropPhase>
+			</PropPhaseID>
+			<ePresentation>Ratio with the reference state, X/X(REF)</ePresentation>
+			<eRefStateType>Phase in equilibrium with primary phase at the same temperature and pressure</eRefStateType>
+			<RefPhaseID>
+				<eRefPhase>Liquid</eRefPhase>
+			<RegNum>
+				<nCASRNum>7732185</nCASRNum>
+			</RegNum>
+			</RefPhaseID>
+			<PropUncertainty>
+				<nUncertAssessNum>1</nUncertAssessNum>
+				<sUncertEvaluator>Author</sUncertEvaluator>
+				<nUncertLevOfConfid>95</nUncertLevOfConfid>
+			</PropUncertainty>
+		</Property>
+		<PhaseID>
+				<ePhase>Liquid mixture 1</ePhase>
+		</PhaseID>
+		<PhaseID>
+				<ePhase>Liquid mixture 2</ePhase>
+		</PhaseID>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<ePressure>Pressure, kPa</ePressure>
+				</ConstraintType>
+			</ConstraintID>
+			<nConstraintValue>101.3</nConstraintValue>
+			<nConstrDigits>4</nConstrDigits>
+		</Constraint>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<eComponentComposition>Mole fraction</eComponentComposition>
+				</ConstraintType>
+			<RegNum>
+				<nCASRNum>85018</nCASRNum>
+			</RegNum>
+			</ConstraintID>
+			<ConstraintPhaseID>
+				<eConstraintPhase>Liquid mixture 2</eConstraintPhase>
+			</ConstraintPhaseID>
+			<nConstraintValue>0</nConstraintValue>
+			<nConstrDigits>0</nConstrDigits>
+		</Constraint>
+		<Variable>
+			<nVarNumber>1</nVarNumber>
+			<VariableID>
+				<VariableType>
+					<eTemperature>Temperature, K</eTemperature>
+				</VariableType>
+			</VariableID>
+		</Variable>
+		<NumValues>
+			<VariableValue>
+				<nVarNumber>1</nVarNumber>
+				<nVarValue>298.1</nVarValue>
+				<nVarDigits>4</nVarDigits>
+			</VariableValue>
+			<PropertyValue>
+				<nPropNumber>1</nPropNumber>
+				<nPropValue>11482</nPropValue>
+				<nPropDigits>5</nPropDigits>
+			<PropUncertainty>
+				<nUncertAssessNum>1</nUncertAssessNum>
+				<nExpandUncertValue>3654</nExpandUncertValue>
+			</PropUncertainty>
+			</PropertyValue>
+		</NumValues>
+	</PureOrMixtureData>
+	<PureOrMixtureData>
+		<Component>
+			<RegNum>
+				<nCASRNum>120127</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<Component>
+			<RegNum>
+				<nCASRNum>7732185</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<Component>
+			<RegNum>
+				<nCASRNum>174501645</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<eExpPurpose>Principal objective of the work</eExpPurpose>
+		<sCompiler>CDG</sCompiler>
+		<sContributor>TRC</sContributor>
+		<dateDateAdded>10/20/2004</dateDateAdded>
+		<Property>
+			<nPropNumber>1</nPropNumber>
+			<Property-MethodID>
+				<PropertyGroup>
+					<CompositionAtPhaseEquilibrium>
+						<ePropName>Mass concentration, kg/m3</ePropName>
+						<eMethodName>Chromatography</eMethodName>
+					</CompositionAtPhaseEquilibrium>
+				</PropertyGroup>
+			<RegNum>
+				<nCASRNum>120127</nCASRNum>
+			</RegNum>
+			</Property-MethodID>
+			<PropPhaseID>
+				<ePropPhase>Liquid mixture 1</ePropPhase>
+			</PropPhaseID>
+			<ePresentation>Ratio with the reference state, X/X(REF)</ePresentation>
+			<eRefStateType>Phase in equilibrium with primary phase at the same temperature and pressure</eRefStateType>
+			<RefPhaseID>
+				<eRefPhase>Liquid</eRefPhase>
+			<RegNum>
+				<nCASRNum>7732185</nCASRNum>
+			</RegNum>
+			</RefPhaseID>
+			<PropUncertainty>
+				<nUncertAssessNum>1</nUncertAssessNum>
+				<sUncertEvaluator>Author</sUncertEvaluator>
+				<nUncertLevOfConfid>95</nUncertLevOfConfid>
+			</PropUncertainty>
+		</Property>
+		<PhaseID>
+				<ePhase>Liquid mixture 1</ePhase>
+		</PhaseID>
+		<PhaseID>
+				<ePhase>Liquid mixture 2</ePhase>
+		</PhaseID>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<ePressure>Pressure, kPa</ePressure>
+				</ConstraintType>
+			</ConstraintID>
+			<nConstraintValue>101.3</nConstraintValue>
+			<nConstrDigits>4</nConstrDigits>
+		</Constraint>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<eComponentComposition>Mole fraction</eComponentComposition>
+				</ConstraintType>
+			<RegNum>
+				<nCASRNum>120127</nCASRNum>
+			</RegNum>
+			</ConstraintID>
+			<ConstraintPhaseID>
+				<eConstraintPhase>Liquid mixture 2</eConstraintPhase>
+			</ConstraintPhaseID>
+			<nConstraintValue>0</nConstraintValue>
+			<nConstrDigits>0</nConstrDigits>
+		</Constraint>
+		<Variable>
+			<nVarNumber>1</nVarNumber>
+			<VariableID>
+				<VariableType>
+					<eTemperature>Temperature, K</eTemperature>
+				</VariableType>
+			</VariableID>
+		</Variable>
+		<NumValues>
+			<VariableValue>
+				<nVarNumber>1</nVarNumber>
+				<nVarValue>298.1</nVarValue>
+				<nVarDigits>4</nVarDigits>
+			</VariableValue>
+			<PropertyValue>
+				<nPropNumber>1</nPropNumber>
+				<nPropValue>14125</nPropValue>
+				<nPropDigits>5</nPropDigits>
+			<PropUncertainty>
+				<nUncertAssessNum>1</nUncertAssessNum>
+				<nExpandUncertValue>3657</nExpandUncertValue>
+			</PropUncertainty>
+			</PropertyValue>
+		</NumValues>
+	</PureOrMixtureData>
+	<PureOrMixtureData>
+		<Component>
+			<RegNum>
+				<nCASRNum>206440</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<Component>
+			<RegNum>
+				<nCASRNum>7732185</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<Component>
+			<RegNum>
+				<nCASRNum>174501645</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<eExpPurpose>Principal objective of the work</eExpPurpose>
+		<sCompiler>CDG</sCompiler>
+		<sContributor>TRC</sContributor>
+		<dateDateAdded>10/20/2004</dateDateAdded>
+		<Property>
+			<nPropNumber>1</nPropNumber>
+			<Property-MethodID>
+				<PropertyGroup>
+					<CompositionAtPhaseEquilibrium>
+						<ePropName>Mass concentration, kg/m3</ePropName>
+						<eMethodName>Chromatography</eMethodName>
+					</CompositionAtPhaseEquilibrium>
+				</PropertyGroup>
+			<RegNum>
+				<nCASRNum>206440</nCASRNum>
+			</RegNum>
+			</Property-MethodID>
+			<PropPhaseID>
+				<ePropPhase>Liquid mixture 1</ePropPhase>
+			</PropPhaseID>
+			<ePresentation>Ratio with the reference state, X/X(REF)</ePresentation>
+			<eRefStateType>Phase in equilibrium with primary phase at the same temperature and pressure</eRefStateType>
+			<RefPhaseID>
+				<eRefPhase>Liquid</eRefPhase>
+			<RegNum>
+				<nCASRNum>7732185</nCASRNum>
+			</RegNum>
+			</RefPhaseID>
+			<PropUncertainty>
+				<nUncertAssessNum>1</nUncertAssessNum>
+				<sUncertEvaluator>Author</sUncertEvaluator>
+				<nUncertLevOfConfid>95</nUncertLevOfConfid>
+			</PropUncertainty>
+		</Property>
+		<PhaseID>
+				<ePhase>Liquid mixture 1</ePhase>
+		</PhaseID>
+		<PhaseID>
+				<ePhase>Liquid mixture 2</ePhase>
+		</PhaseID>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<ePressure>Pressure, kPa</ePressure>
+				</ConstraintType>
+			</ConstraintID>
+			<nConstraintValue>101.3</nConstraintValue>
+			<nConstrDigits>4</nConstrDigits>
+		</Constraint>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<eComponentComposition>Mole fraction</eComponentComposition>
+				</ConstraintType>
+			<RegNum>
+				<nCASRNum>206440</nCASRNum>
+			</RegNum>
+			</ConstraintID>
+			<ConstraintPhaseID>
+				<eConstraintPhase>Liquid mixture 2</eConstraintPhase>
+			</ConstraintPhaseID>
+			<nConstraintValue>0</nConstraintValue>
+			<nConstrDigits>0</nConstrDigits>
+		</Constraint>
+		<Variable>
+			<nVarNumber>1</nVarNumber>
+			<VariableID>
+				<VariableType>
+					<eTemperature>Temperature, K</eTemperature>
+				</VariableType>
+			</VariableID>
+		</Variable>
+		<NumValues>
+			<VariableValue>
+				<nVarNumber>1</nVarNumber>
+				<nVarValue>298.1</nVarValue>
+				<nVarDigits>4</nVarDigits>
+			</VariableValue>
+			<PropertyValue>
+				<nPropNumber>1</nPropNumber>
+				<nPropValue>15849</nPropValue>
+				<nPropDigits>5</nPropDigits>
+			<PropUncertainty>
+				<nUncertAssessNum>1</nUncertAssessNum>
+				<nExpandUncertValue>5531</nExpandUncertValue>
+			</PropUncertainty>
+			</PropertyValue>
+		</NumValues>
+	</PureOrMixtureData>
+	<PureOrMixtureData>
+		<Component>
+			<RegNum>
+				<nCASRNum>129000</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<Component>
+			<RegNum>
+				<nCASRNum>7732185</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<Component>
+			<RegNum>
+				<nCASRNum>174501645</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<eExpPurpose>Principal objective of the work</eExpPurpose>
+		<sCompiler>CDG</sCompiler>
+		<sContributor>TRC</sContributor>
+		<dateDateAdded>10/20/2004</dateDateAdded>
+		<Property>
+			<nPropNumber>1</nPropNumber>
+			<Property-MethodID>
+				<PropertyGroup>
+					<CompositionAtPhaseEquilibrium>
+						<ePropName>Mass concentration, kg/m3</ePropName>
+						<eMethodName>Chromatography</eMethodName>
+					</CompositionAtPhaseEquilibrium>
+				</PropertyGroup>
+			<RegNum>
+				<nCASRNum>129000</nCASRNum>
+			</RegNum>
+			</Property-MethodID>
+			<PropPhaseID>
+				<ePropPhase>Liquid mixture 1</ePropPhase>
+			</PropPhaseID>
+			<ePresentation>Ratio with the reference state, X/X(REF)</ePresentation>
+			<eRefStateType>Phase in equilibrium with primary phase at the same temperature and pressure</eRefStateType>
+			<RefPhaseID>
+				<eRefPhase>Liquid</eRefPhase>
+			<RegNum>
+				<nCASRNum>7732185</nCASRNum>
+			</RegNum>
+			</RefPhaseID>
+			<PropUncertainty>
+				<nUncertAssessNum>1</nUncertAssessNum>
+				<sUncertEvaluator>Author</sUncertEvaluator>
+				<nUncertLevOfConfid>95</nUncertLevOfConfid>
+			</PropUncertainty>
+		</Property>
+		<PhaseID>
+				<ePhase>Liquid mixture 1</ePhase>
+		</PhaseID>
+		<PhaseID>
+				<ePhase>Liquid mixture 2</ePhase>
+		</PhaseID>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<ePressure>Pressure, kPa</ePressure>
+				</ConstraintType>
+			</ConstraintID>
+			<nConstraintValue>101.3</nConstraintValue>
+			<nConstrDigits>4</nConstrDigits>
+		</Constraint>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<eComponentComposition>Mole fraction</eComponentComposition>
+				</ConstraintType>
+			<RegNum>
+				<nCASRNum>129000</nCASRNum>
+			</RegNum>
+			</ConstraintID>
+			<ConstraintPhaseID>
+				<eConstraintPhase>Liquid mixture 2</eConstraintPhase>
+			</ConstraintPhaseID>
+			<nConstraintValue>0</nConstraintValue>
+			<nConstrDigits>0</nConstrDigits>
+		</Constraint>
+		<Variable>
+			<nVarNumber>1</nVarNumber>
+			<VariableID>
+				<VariableType>
+					<eTemperature>Temperature, K</eTemperature>
+				</VariableType>
+			</VariableID>
+		</Variable>
+		<NumValues>
+			<VariableValue>
+				<nVarNumber>1</nVarNumber>
+				<nVarValue>298.1</nVarValue>
+				<nVarDigits>4</nVarDigits>
+			</VariableValue>
+			<PropertyValue>
+				<nPropNumber>1</nPropNumber>
+				<nPropValue>16218</nPropValue>
+				<nPropDigits>5</nPropDigits>
+			<PropUncertainty>
+				<nUncertAssessNum>1</nUncertAssessNum>
+				<nExpandUncertValue>4675</nExpandUncertValue>
+			</PropUncertainty>
+			</PropertyValue>
+		</NumValues>
+	</PureOrMixtureData>
+	<PureOrMixtureData>
+		<Component>
+			<RegNum>
+				<nCASRNum>56553</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<Component>
+			<RegNum>
+				<nCASRNum>7732185</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<Component>
+			<RegNum>
+				<nCASRNum>174501645</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<eExpPurpose>Principal objective of the work</eExpPurpose>
+		<sCompiler>CDG</sCompiler>
+		<sContributor>TRC</sContributor>
+		<dateDateAdded>10/20/2004</dateDateAdded>
+		<Property>
+			<nPropNumber>1</nPropNumber>
+			<Property-MethodID>
+				<PropertyGroup>
+					<CompositionAtPhaseEquilibrium>
+						<ePropName>Mass concentration, kg/m3</ePropName>
+						<eMethodName>Chromatography</eMethodName>
+					</CompositionAtPhaseEquilibrium>
+				</PropertyGroup>
+			<RegNum>
+				<nCASRNum>56553</nCASRNum>
+			</RegNum>
+			</Property-MethodID>
+			<PropPhaseID>
+				<ePropPhase>Liquid mixture 1</ePropPhase>
+			</PropPhaseID>
+			<ePresentation>Ratio with the reference state, X/X(REF)</ePresentation>
+			<eRefStateType>Phase in equilibrium with primary phase at the same temperature and pressure</eRefStateType>
+			<RefPhaseID>
+				<eRefPhase>Liquid</eRefPhase>
+			<RegNum>
+				<nCASRNum>7732185</nCASRNum>
+			</RegNum>
+			</RefPhaseID>
+			<PropUncertainty>
+				<nUncertAssessNum>1</nUncertAssessNum>
+				<sUncertEvaluator>Author</sUncertEvaluator>
+				<nUncertLevOfConfid>95</nUncertLevOfConfid>
+			</PropUncertainty>
+		</Property>
+		<PhaseID>
+				<ePhase>Liquid mixture 1</ePhase>
+		</PhaseID>
+		<PhaseID>
+				<ePhase>Liquid mixture 2</ePhase>
+		</PhaseID>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<ePressure>Pressure, kPa</ePressure>
+				</ConstraintType>
+			</ConstraintID>
+			<nConstraintValue>101.3</nConstraintValue>
+			<nConstrDigits>4</nConstrDigits>
+		</Constraint>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<eComponentComposition>Mole fraction</eComponentComposition>
+				</ConstraintType>
+			<RegNum>
+				<nCASRNum>56553</nCASRNum>
+			</RegNum>
+			</ConstraintID>
+			<ConstraintPhaseID>
+				<eConstraintPhase>Liquid mixture 2</eConstraintPhase>
+			</ConstraintPhaseID>
+			<nConstraintValue>0</nConstraintValue>
+			<nConstrDigits>0</nConstrDigits>
+		</Constraint>
+		<Variable>
+			<nVarNumber>1</nVarNumber>
+			<VariableID>
+				<VariableType>
+					<eTemperature>Temperature, K</eTemperature>
+				</VariableType>
+			</VariableID>
+		</Variable>
+		<NumValues>
+			<VariableValue>
+				<nVarNumber>1</nVarNumber>
+				<nVarValue>298.1</nVarValue>
+				<nVarDigits>4</nVarDigits>
+			</VariableValue>
+			<PropertyValue>
+				<nPropNumber>1</nPropNumber>
+				<nPropValue>16596</nPropValue>
+				<nPropDigits>5</nPropDigits>
+			<PropUncertainty>
+				<nUncertAssessNum>1</nUncertAssessNum>
+				<nExpandUncertValue>6846</nExpandUncertValue>
+			</PropUncertainty>
+			</PropertyValue>
+		</NumValues>
+	</PureOrMixtureData>
+	<PureOrMixtureData>
+		<Component>
+			<RegNum>
+				<nCASRNum>218019</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<Component>
+			<RegNum>
+				<nCASRNum>7732185</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<Component>
+			<RegNum>
+				<nCASRNum>174501645</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<eExpPurpose>Principal objective of the work</eExpPurpose>
+		<sCompiler>CDG</sCompiler>
+		<sContributor>TRC</sContributor>
+		<dateDateAdded>10/20/2004</dateDateAdded>
+		<Property>
+			<nPropNumber>1</nPropNumber>
+			<Property-MethodID>
+				<PropertyGroup>
+					<CompositionAtPhaseEquilibrium>
+						<ePropName>Mass concentration, kg/m3</ePropName>
+						<eMethodName>Chromatography</eMethodName>
+					</CompositionAtPhaseEquilibrium>
+				</PropertyGroup>
+			<RegNum>
+				<nCASRNum>218019</nCASRNum>
+			</RegNum>
+			</Property-MethodID>
+			<PropPhaseID>
+				<ePropPhase>Liquid mixture 1</ePropPhase>
+			</PropPhaseID>
+			<ePresentation>Ratio with the reference state, X/X(REF)</ePresentation>
+			<eRefStateType>Phase in equilibrium with primary phase at the same temperature and pressure</eRefStateType>
+			<RefPhaseID>
+				<eRefPhase>Liquid</eRefPhase>
+			<RegNum>
+				<nCASRNum>7732185</nCASRNum>
+			</RegNum>
+			</RefPhaseID>
+			<PropUncertainty>
+				<nUncertAssessNum>1</nUncertAssessNum>
+				<sUncertEvaluator>Author</sUncertEvaluator>
+				<nUncertLevOfConfid>95</nUncertLevOfConfid>
+			</PropUncertainty>
+		</Property>
+		<PhaseID>
+				<ePhase>Liquid mixture 1</ePhase>
+		</PhaseID>
+		<PhaseID>
+				<ePhase>Liquid mixture 2</ePhase>
+		</PhaseID>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<ePressure>Pressure, kPa</ePressure>
+				</ConstraintType>
+			</ConstraintID>
+			<nConstraintValue>101.3</nConstraintValue>
+			<nConstrDigits>4</nConstrDigits>
+		</Constraint>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<eComponentComposition>Mole fraction</eComponentComposition>
+				</ConstraintType>
+			<RegNum>
+				<nCASRNum>218019</nCASRNum>
+			</RegNum>
+			</ConstraintID>
+			<ConstraintPhaseID>
+				<eConstraintPhase>Liquid mixture 2</eConstraintPhase>
+			</ConstraintPhaseID>
+			<nConstraintValue>0</nConstraintValue>
+			<nConstrDigits>0</nConstrDigits>
+		</Constraint>
+		<Variable>
+			<nVarNumber>1</nVarNumber>
+			<VariableID>
+				<VariableType>
+					<eTemperature>Temperature, K</eTemperature>
+				</VariableType>
+			</VariableID>
+		</Variable>
+		<NumValues>
+			<VariableValue>
+				<nVarNumber>1</nVarNumber>
+				<nVarValue>298.1</nVarValue>
+				<nVarDigits>4</nVarDigits>
+			</VariableValue>
+			<PropertyValue>
+				<nPropNumber>1</nPropNumber>
+				<nPropValue>16596</nPropValue>
+				<nPropDigits>5</nPropDigits>
+			<PropUncertainty>
+				<nUncertAssessNum>1</nUncertAssessNum>
+				<nExpandUncertValue>6313</nExpandUncertValue>
+			</PropUncertainty>
+			</PropertyValue>
+		</NumValues>
+	</PureOrMixtureData>
+	<PureOrMixtureData>
+		<Component>
+			<RegNum>
+				<nCASRNum>205992</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<Component>
+			<RegNum>
+				<nCASRNum>7732185</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<Component>
+			<RegNum>
+				<nCASRNum>174501645</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<eExpPurpose>Principal objective of the work</eExpPurpose>
+		<sCompiler>CDG</sCompiler>
+		<sContributor>TRC</sContributor>
+		<dateDateAdded>10/20/2004</dateDateAdded>
+		<Property>
+			<nPropNumber>1</nPropNumber>
+			<Property-MethodID>
+				<PropertyGroup>
+					<CompositionAtPhaseEquilibrium>
+						<ePropName>Mass concentration, kg/m3</ePropName>
+						<eMethodName>Chromatography</eMethodName>
+					</CompositionAtPhaseEquilibrium>
+				</PropertyGroup>
+			<RegNum>
+				<nCASRNum>205992</nCASRNum>
+			</RegNum>
+			</Property-MethodID>
+			<PropPhaseID>
+				<ePropPhase>Liquid mixture 1</ePropPhase>
+			</PropPhaseID>
+			<ePresentation>Ratio with the reference state, X/X(REF)</ePresentation>
+			<eRefStateType>Phase in equilibrium with primary phase at the same temperature and pressure</eRefStateType>
+			<RefPhaseID>
+				<eRefPhase>Liquid</eRefPhase>
+			<RegNum>
+				<nCASRNum>7732185</nCASRNum>
+			</RegNum>
+			</RefPhaseID>
+			<PropUncertainty>
+				<nUncertAssessNum>1</nUncertAssessNum>
+				<sUncertEvaluator>Author</sUncertEvaluator>
+				<nUncertLevOfConfid>95</nUncertLevOfConfid>
+			</PropUncertainty>
+		</Property>
+		<PhaseID>
+				<ePhase>Liquid mixture 1</ePhase>
+		</PhaseID>
+		<PhaseID>
+				<ePhase>Liquid mixture 2</ePhase>
+		</PhaseID>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<ePressure>Pressure, kPa</ePressure>
+				</ConstraintType>
+			</ConstraintID>
+			<nConstraintValue>101.3</nConstraintValue>
+			<nConstrDigits>4</nConstrDigits>
+		</Constraint>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<eComponentComposition>Mole fraction</eComponentComposition>
+				</ConstraintType>
+			<RegNum>
+				<nCASRNum>205992</nCASRNum>
+			</RegNum>
+			</ConstraintID>
+			<ConstraintPhaseID>
+				<eConstraintPhase>Liquid mixture 2</eConstraintPhase>
+			</ConstraintPhaseID>
+			<nConstraintValue>0</nConstraintValue>
+			<nConstrDigits>0</nConstrDigits>
+		</Constraint>
+		<Variable>
+			<nVarNumber>1</nVarNumber>
+			<VariableID>
+				<VariableType>
+					<eTemperature>Temperature, K</eTemperature>
+				</VariableType>
+			</VariableID>
+		</Variable>
+		<NumValues>
+			<VariableValue>
+				<nVarNumber>1</nVarNumber>
+				<nVarValue>298.1</nVarValue>
+				<nVarDigits>4</nVarDigits>
+			</VariableValue>
+			<PropertyValue>
+				<nPropNumber>1</nPropNumber>
+				<nPropValue>20417</nPropValue>
+				<nPropDigits>5</nPropDigits>
+			<PropUncertainty>
+				<nUncertAssessNum>1</nUncertAssessNum>
+				<nExpandUncertValue>9782</nExpandUncertValue>
+			</PropUncertainty>
+			</PropertyValue>
+		</NumValues>
+	</PureOrMixtureData>
+	<PureOrMixtureData>
+		<Component>
+			<RegNum>
+				<nCASRNum>207089</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<Component>
+			<RegNum>
+				<nCASRNum>7732185</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<Component>
+			<RegNum>
+				<nCASRNum>174501645</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<eExpPurpose>Principal objective of the work</eExpPurpose>
+		<sCompiler>CDG</sCompiler>
+		<sContributor>TRC</sContributor>
+		<dateDateAdded>10/20/2004</dateDateAdded>
+		<Property>
+			<nPropNumber>1</nPropNumber>
+			<Property-MethodID>
+				<PropertyGroup>
+					<CompositionAtPhaseEquilibrium>
+						<ePropName>Mass concentration, kg/m3</ePropName>
+						<eMethodName>Chromatography</eMethodName>
+					</CompositionAtPhaseEquilibrium>
+				</PropertyGroup>
+			<RegNum>
+				<nCASRNum>207089</nCASRNum>
+			</RegNum>
+			</Property-MethodID>
+			<PropPhaseID>
+				<ePropPhase>Liquid mixture 1</ePropPhase>
+			</PropPhaseID>
+			<ePresentation>Ratio with the reference state, X/X(REF)</ePresentation>
+			<eRefStateType>Phase in equilibrium with primary phase at the same temperature and pressure</eRefStateType>
+			<RefPhaseID>
+				<eRefPhase>Liquid</eRefPhase>
+			<RegNum>
+				<nCASRNum>7732185</nCASRNum>
+			</RegNum>
+			</RefPhaseID>
+			<PropUncertainty>
+				<nUncertAssessNum>1</nUncertAssessNum>
+				<sUncertEvaluator>Author</sUncertEvaluator>
+				<nUncertLevOfConfid>95</nUncertLevOfConfid>
+			</PropUncertainty>
+		</Property>
+		<PhaseID>
+				<ePhase>Liquid mixture 1</ePhase>
+		</PhaseID>
+		<PhaseID>
+				<ePhase>Liquid mixture 2</ePhase>
+		</PhaseID>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<ePressure>Pressure, kPa</ePressure>
+				</ConstraintType>
+			</ConstraintID>
+			<nConstraintValue>101.3</nConstraintValue>
+			<nConstrDigits>4</nConstrDigits>
+		</Constraint>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<eComponentComposition>Mole fraction</eComponentComposition>
+				</ConstraintType>
+			<RegNum>
+				<nCASRNum>207089</nCASRNum>
+			</RegNum>
+			</ConstraintID>
+			<ConstraintPhaseID>
+				<eConstraintPhase>Liquid mixture 2</eConstraintPhase>
+			</ConstraintPhaseID>
+			<nConstraintValue>0</nConstraintValue>
+			<nConstrDigits>0</nConstrDigits>
+		</Constraint>
+		<Variable>
+			<nVarNumber>1</nVarNumber>
+			<VariableID>
+				<VariableType>
+					<eTemperature>Temperature, K</eTemperature>
+				</VariableType>
+			</VariableID>
+		</Variable>
+		<NumValues>
+			<VariableValue>
+				<nVarNumber>1</nVarNumber>
+				<nVarValue>298.1</nVarValue>
+				<nVarDigits>4</nVarDigits>
+			</VariableValue>
+			<PropertyValue>
+				<nPropNumber>1</nPropNumber>
+				<nPropValue>19953</nPropValue>
+				<nPropDigits>5</nPropDigits>
+			<PropUncertainty>
+				<nUncertAssessNum>1</nUncertAssessNum>
+				<nExpandUncertValue>11670</nExpandUncertValue>
+			</PropUncertainty>
+			</PropertyValue>
+		</NumValues>
+	</PureOrMixtureData>
+	<PureOrMixtureData>
+		<Component>
+			<RegNum>
+				<nCASRNum>50328</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<Component>
+			<RegNum>
+				<nCASRNum>7732185</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<Component>
+			<RegNum>
+				<nCASRNum>174501645</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<eExpPurpose>Principal objective of the work</eExpPurpose>
+		<sCompiler>CDG</sCompiler>
+		<sContributor>TRC</sContributor>
+		<dateDateAdded>10/20/2004</dateDateAdded>
+		<Property>
+			<nPropNumber>1</nPropNumber>
+			<Property-MethodID>
+				<PropertyGroup>
+					<CompositionAtPhaseEquilibrium>
+						<ePropName>Mass concentration, kg/m3</ePropName>
+						<eMethodName>Chromatography</eMethodName>
+					</CompositionAtPhaseEquilibrium>
+				</PropertyGroup>
+			<RegNum>
+				<nCASRNum>50328</nCASRNum>
+			</RegNum>
+			</Property-MethodID>
+			<PropPhaseID>
+				<ePropPhase>Liquid mixture 1</ePropPhase>
+			</PropPhaseID>
+			<ePresentation>Ratio with the reference state, X/X(REF)</ePresentation>
+			<eRefStateType>Phase in equilibrium with primary phase at the same temperature and pressure</eRefStateType>
+			<RefPhaseID>
+				<eRefPhase>Liquid</eRefPhase>
+			<RegNum>
+				<nCASRNum>7732185</nCASRNum>
+			</RegNum>
+			</RefPhaseID>
+			<PropUncertainty>
+				<nUncertAssessNum>1</nUncertAssessNum>
+				<sUncertEvaluator>Author</sUncertEvaluator>
+				<nUncertLevOfConfid>95</nUncertLevOfConfid>
+			</PropUncertainty>
+		</Property>
+		<PhaseID>
+				<ePhase>Liquid mixture 1</ePhase>
+		</PhaseID>
+		<PhaseID>
+				<ePhase>Liquid mixture 2</ePhase>
+		</PhaseID>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<ePressure>Pressure, kPa</ePressure>
+				</ConstraintType>
+			</ConstraintID>
+			<nConstraintValue>101.3</nConstraintValue>
+			<nConstrDigits>4</nConstrDigits>
+		</Constraint>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<eComponentComposition>Mole fraction</eComponentComposition>
+				</ConstraintType>
+			<RegNum>
+				<nCASRNum>50328</nCASRNum>
+			</RegNum>
+			</ConstraintID>
+			<ConstraintPhaseID>
+				<eConstraintPhase>Liquid mixture 2</eConstraintPhase>
+			</ConstraintPhaseID>
+			<nConstraintValue>0</nConstraintValue>
+			<nConstrDigits>0</nConstrDigits>
+		</Constraint>
+		<Variable>
+			<nVarNumber>1</nVarNumber>
+			<VariableID>
+				<VariableType>
+					<eTemperature>Temperature, K</eTemperature>
+				</VariableType>
+			</VariableID>
+		</Variable>
+		<NumValues>
+			<VariableValue>
+				<nVarNumber>1</nVarNumber>
+				<nVarValue>298.1</nVarValue>
+				<nVarDigits>4</nVarDigits>
+			</VariableValue>
+			<PropertyValue>
+				<nPropNumber>1</nPropNumber>
+				<nPropValue>20893</nPropValue>
+				<nPropDigits>5</nPropDigits>
+			<PropUncertainty>
+				<nUncertAssessNum>1</nUncertAssessNum>
+				<nExpandUncertValue>10730</nExpandUncertValue>
+			</PropUncertainty>
+			</PropertyValue>
+		</NumValues>
+	</PureOrMixtureData>
+	<PureOrMixtureData>
+		<Component>
+			<RegNum>
+				<nCASRNum>53703</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<Component>
+			<RegNum>
+				<nCASRNum>7732185</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<Component>
+			<RegNum>
+				<nCASRNum>174501645</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<eExpPurpose>Principal objective of the work</eExpPurpose>
+		<sCompiler>CDG</sCompiler>
+		<sContributor>TRC</sContributor>
+		<dateDateAdded>10/20/2004</dateDateAdded>
+		<Property>
+			<nPropNumber>1</nPropNumber>
+			<Property-MethodID>
+				<PropertyGroup>
+					<CompositionAtPhaseEquilibrium>
+						<ePropName>Mass concentration, kg/m3</ePropName>
+						<eMethodName>Chromatography</eMethodName>
+					</CompositionAtPhaseEquilibrium>
+				</PropertyGroup>
+			<RegNum>
+				<nCASRNum>53703</nCASRNum>
+			</RegNum>
+			</Property-MethodID>
+			<PropPhaseID>
+				<ePropPhase>Liquid mixture 1</ePropPhase>
+			</PropPhaseID>
+			<ePresentation>Ratio with the reference state, X/X(REF)</ePresentation>
+			<eRefStateType>Phase in equilibrium with primary phase at the same temperature and pressure</eRefStateType>
+			<RefPhaseID>
+				<eRefPhase>Liquid</eRefPhase>
+			<RegNum>
+				<nCASRNum>7732185</nCASRNum>
+			</RegNum>
+			</RefPhaseID>
+			<PropUncertainty>
+				<nUncertAssessNum>1</nUncertAssessNum>
+				<sUncertEvaluator>Author</sUncertEvaluator>
+				<nUncertLevOfConfid>95</nUncertLevOfConfid>
+			</PropUncertainty>
+		</Property>
+		<PhaseID>
+				<ePhase>Liquid mixture 1</ePhase>
+		</PhaseID>
+		<PhaseID>
+				<ePhase>Liquid mixture 2</ePhase>
+		</PhaseID>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<ePressure>Pressure, kPa</ePressure>
+				</ConstraintType>
+			</ConstraintID>
+			<nConstraintValue>101.3</nConstraintValue>
+			<nConstrDigits>4</nConstrDigits>
+		</Constraint>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<eComponentComposition>Mole fraction</eComponentComposition>
+				</ConstraintType>
+			<RegNum>
+				<nCASRNum>53703</nCASRNum>
+			</RegNum>
+			</ConstraintID>
+			<ConstraintPhaseID>
+				<eConstraintPhase>Liquid mixture 2</eConstraintPhase>
+			</ConstraintPhaseID>
+			<nConstraintValue>0</nConstraintValue>
+			<nConstrDigits>0</nConstrDigits>
+		</Constraint>
+		<Variable>
+			<nVarNumber>1</nVarNumber>
+			<VariableID>
+				<VariableType>
+					<eTemperature>Temperature, K</eTemperature>
+				</VariableType>
+			</VariableID>
+		</Variable>
+		<NumValues>
+			<VariableValue>
+				<nVarNumber>1</nVarNumber>
+				<nVarValue>298.1</nVarValue>
+				<nVarDigits>4</nVarDigits>
+			</VariableValue>
+			<PropertyValue>
+				<nPropNumber>1</nPropNumber>
+				<nPropValue>19953</nPropValue>
+				<nPropDigits>5</nPropDigits>
+			<PropUncertainty>
+				<nUncertAssessNum>1</nUncertAssessNum>
+				<nExpandUncertValue>12407</nExpandUncertValue>
+			</PropUncertainty>
+			</PropertyValue>
+		</NumValues>
+	</PureOrMixtureData>
+	<PureOrMixtureData>
+		<Component>
+			<RegNum>
+				<nCASRNum>191242</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<Component>
+			<RegNum>
+				<nCASRNum>7732185</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<Component>
+			<RegNum>
+				<nCASRNum>174501645</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<eExpPurpose>Principal objective of the work</eExpPurpose>
+		<sCompiler>CDG</sCompiler>
+		<sContributor>TRC</sContributor>
+		<dateDateAdded>10/20/2004</dateDateAdded>
+		<Property>
+			<nPropNumber>1</nPropNumber>
+			<Property-MethodID>
+				<PropertyGroup>
+					<CompositionAtPhaseEquilibrium>
+						<ePropName>Mass concentration, kg/m3</ePropName>
+						<eMethodName>Chromatography</eMethodName>
+					</CompositionAtPhaseEquilibrium>
+				</PropertyGroup>
+			<RegNum>
+				<nCASRNum>191242</nCASRNum>
+			</RegNum>
+			</Property-MethodID>
+			<PropPhaseID>
+				<ePropPhase>Liquid mixture 1</ePropPhase>
+			</PropPhaseID>
+			<ePresentation>Ratio with the reference state, X/X(REF)</ePresentation>
+			<eRefStateType>Phase in equilibrium with primary phase at the same temperature and pressure</eRefStateType>
+			<RefPhaseID>
+				<eRefPhase>Liquid</eRefPhase>
+			<RegNum>
+				<nCASRNum>7732185</nCASRNum>
+			</RegNum>
+			</RefPhaseID>
+			<PropUncertainty>
+				<nUncertAssessNum>1</nUncertAssessNum>
+				<sUncertEvaluator>Author</sUncertEvaluator>
+				<nUncertLevOfConfid>95</nUncertLevOfConfid>
+			</PropUncertainty>
+		</Property>
+		<PhaseID>
+				<ePhase>Liquid mixture 1</ePhase>
+		</PhaseID>
+		<PhaseID>
+				<ePhase>Liquid mixture 2</ePhase>
+		</PhaseID>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<ePressure>Pressure, kPa</ePressure>
+				</ConstraintType>
+			</ConstraintID>
+			<nConstraintValue>101.3</nConstraintValue>
+			<nConstrDigits>4</nConstrDigits>
+		</Constraint>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<eComponentComposition>Mole fraction</eComponentComposition>
+				</ConstraintType>
+			<RegNum>
+				<nCASRNum>191242</nCASRNum>
+			</RegNum>
+			</ConstraintID>
+			<ConstraintPhaseID>
+				<eConstraintPhase>Liquid mixture 2</eConstraintPhase>
+			</ConstraintPhaseID>
+			<nConstraintValue>0</nConstraintValue>
+			<nConstrDigits>0</nConstrDigits>
+		</Constraint>
+		<Variable>
+			<nVarNumber>1</nVarNumber>
+			<VariableID>
+				<VariableType>
+					<eTemperature>Temperature, K</eTemperature>
+				</VariableType>
+			</VariableID>
+		</Variable>
+		<NumValues>
+			<VariableValue>
+				<nVarNumber>1</nVarNumber>
+				<nVarValue>298.1</nVarValue>
+				<nVarDigits>4</nVarDigits>
+			</VariableValue>
+			<PropertyValue>
+				<nPropNumber>1</nPropNumber>
+				<nPropValue>20417</nPropValue>
+				<nPropDigits>5</nPropDigits>
+			<PropUncertainty>
+				<nUncertAssessNum>1</nUncertAssessNum>
+				<nExpandUncertValue>13467</nExpandUncertValue>
+			</PropUncertainty>
+			</PropertyValue>
+		</NumValues>
+	</PureOrMixtureData>
+	<PureOrMixtureData>
+		<Component>
+			<RegNum>
+				<nCASRNum>91203</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<Component>
+			<RegNum>
+				<nCASRNum>7732185</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<Component>
+			<RegNum>
+				<nCASRNum>304680362</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<eExpPurpose>Principal objective of the work</eExpPurpose>
+		<sCompiler>CDG</sCompiler>
+		<sContributor>TRC</sContributor>
+		<dateDateAdded>10/20/2004</dateDateAdded>
+		<Property>
+			<nPropNumber>1</nPropNumber>
+			<Property-MethodID>
+				<PropertyGroup>
+					<CompositionAtPhaseEquilibrium>
+						<ePropName>Mass concentration, kg/m3</ePropName>
+						<eMethodName>Chromatography</eMethodName>
+					</CompositionAtPhaseEquilibrium>
+				</PropertyGroup>
+			<RegNum>
+				<nCASRNum>91203</nCASRNum>
+			</RegNum>
+			</Property-MethodID>
+			<PropPhaseID>
+				<ePropPhase>Liquid mixture 1</ePropPhase>
+			</PropPhaseID>
+			<ePresentation>Ratio with the reference state, X/X(REF)</ePresentation>
+			<eRefStateType>Phase in equilibrium with primary phase at the same temperature and pressure</eRefStateType>
+			<RefPhaseID>
+				<eRefPhase>Liquid</eRefPhase>
+			<RegNum>
+				<nCASRNum>7732185</nCASRNum>
+			</RegNum>
+			</RefPhaseID>
+			<PropUncertainty>
+				<nUncertAssessNum>1</nUncertAssessNum>
+				<sUncertEvaluator>Author</sUncertEvaluator>
+				<nUncertLevOfConfid>95</nUncertLevOfConfid>
+			</PropUncertainty>
+		</Property>
+		<PhaseID>
+				<ePhase>Liquid mixture 1</ePhase>
+		</PhaseID>
+		<PhaseID>
+				<ePhase>Liquid mixture 2</ePhase>
+		</PhaseID>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<ePressure>Pressure, kPa</ePressure>
+				</ConstraintType>
+			</ConstraintID>
+			<nConstraintValue>101.3</nConstraintValue>
+			<nConstrDigits>4</nConstrDigits>
+		</Constraint>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<eComponentComposition>Mole fraction</eComponentComposition>
+				</ConstraintType>
+			<RegNum>
+				<nCASRNum>91203</nCASRNum>
+			</RegNum>
+			</ConstraintID>
+			<ConstraintPhaseID>
+				<eConstraintPhase>Liquid mixture 2</eConstraintPhase>
+			</ConstraintPhaseID>
+			<nConstraintValue>0</nConstraintValue>
+			<nConstrDigits>0</nConstrDigits>
+		</Constraint>
+		<Variable>
+			<nVarNumber>1</nVarNumber>
+			<VariableID>
+				<VariableType>
+					<eTemperature>Temperature, K</eTemperature>
+				</VariableType>
+			</VariableID>
+		</Variable>
+		<NumValues>
+			<VariableValue>
+				<nVarNumber>1</nVarNumber>
+				<nVarValue>298.1</nVarValue>
+				<nVarDigits>4</nVarDigits>
+			</VariableValue>
+			<PropertyValue>
+				<nPropNumber>1</nPropNumber>
+				<nPropValue>3236</nPropValue>
+				<nPropDigits>4</nPropDigits>
+			<PropUncertainty>
+				<nUncertAssessNum>1</nUncertAssessNum>
+				<nExpandUncertValue>566</nExpandUncertValue>
+			</PropUncertainty>
+			</PropertyValue>
+		</NumValues>
+	</PureOrMixtureData>
+	<PureOrMixtureData>
+		<Component>
+			<RegNum>
+				<nCASRNum>83329</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<Component>
+			<RegNum>
+				<nCASRNum>7732185</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<Component>
+			<RegNum>
+				<nCASRNum>304680362</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<eExpPurpose>Principal objective of the work</eExpPurpose>
+		<sCompiler>CDG</sCompiler>
+		<sContributor>TRC</sContributor>
+		<dateDateAdded>10/20/2004</dateDateAdded>
+		<Property>
+			<nPropNumber>1</nPropNumber>
+			<Property-MethodID>
+				<PropertyGroup>
+					<CompositionAtPhaseEquilibrium>
+						<ePropName>Mass concentration, kg/m3</ePropName>
+						<eMethodName>Chromatography</eMethodName>
+					</CompositionAtPhaseEquilibrium>
+				</PropertyGroup>
+			<RegNum>
+				<nCASRNum>83329</nCASRNum>
+			</RegNum>
+			</Property-MethodID>
+			<PropPhaseID>
+				<ePropPhase>Liquid mixture 1</ePropPhase>
+			</PropPhaseID>
+			<ePresentation>Ratio with the reference state, X/X(REF)</ePresentation>
+			<eRefStateType>Phase in equilibrium with primary phase at the same temperature and pressure</eRefStateType>
+			<RefPhaseID>
+				<eRefPhase>Liquid</eRefPhase>
+			<RegNum>
+				<nCASRNum>7732185</nCASRNum>
+			</RegNum>
+			</RefPhaseID>
+			<PropUncertainty>
+				<nUncertAssessNum>1</nUncertAssessNum>
+				<sUncertEvaluator>Author</sUncertEvaluator>
+				<nUncertLevOfConfid>95</nUncertLevOfConfid>
+			</PropUncertainty>
+		</Property>
+		<PhaseID>
+				<ePhase>Liquid mixture 1</ePhase>
+		</PhaseID>
+		<PhaseID>
+				<ePhase>Liquid mixture 2</ePhase>
+		</PhaseID>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<ePressure>Pressure, kPa</ePressure>
+				</ConstraintType>
+			</ConstraintID>
+			<nConstraintValue>101.3</nConstraintValue>
+			<nConstrDigits>4</nConstrDigits>
+		</Constraint>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<eComponentComposition>Mole fraction</eComponentComposition>
+				</ConstraintType>
+			<RegNum>
+				<nCASRNum>83329</nCASRNum>
+			</RegNum>
+			</ConstraintID>
+			<ConstraintPhaseID>
+				<eConstraintPhase>Liquid mixture 2</eConstraintPhase>
+			</ConstraintPhaseID>
+			<nConstraintValue>0</nConstraintValue>
+			<nConstrDigits>0</nConstrDigits>
+		</Constraint>
+		<Variable>
+			<nVarNumber>1</nVarNumber>
+			<VariableID>
+				<VariableType>
+					<eTemperature>Temperature, K</eTemperature>
+				</VariableType>
+			</VariableID>
+		</Variable>
+		<NumValues>
+			<VariableValue>
+				<nVarNumber>1</nVarNumber>
+				<nVarValue>298.1</nVarValue>
+				<nVarDigits>4</nVarDigits>
+			</VariableValue>
+			<PropertyValue>
+				<nPropNumber>1</nPropNumber>
+				<nPropValue>7244</nPropValue>
+				<nPropDigits>4</nPropDigits>
+			<PropUncertainty>
+				<nUncertAssessNum>1</nUncertAssessNum>
+				<nExpandUncertValue>3227</nExpandUncertValue>
+			</PropUncertainty>
+			</PropertyValue>
+		</NumValues>
+	</PureOrMixtureData>
+	<PureOrMixtureData>
+		<Component>
+			<RegNum>
+				<nCASRNum>86737</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<Component>
+			<RegNum>
+				<nCASRNum>7732185</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<Component>
+			<RegNum>
+				<nCASRNum>304680362</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<eExpPurpose>Principal objective of the work</eExpPurpose>
+		<sCompiler>CDG</sCompiler>
+		<sContributor>TRC</sContributor>
+		<dateDateAdded>10/20/2004</dateDateAdded>
+		<Property>
+			<nPropNumber>1</nPropNumber>
+			<Property-MethodID>
+				<PropertyGroup>
+					<CompositionAtPhaseEquilibrium>
+						<ePropName>Mass concentration, kg/m3</ePropName>
+						<eMethodName>Chromatography</eMethodName>
+					</CompositionAtPhaseEquilibrium>
+				</PropertyGroup>
+			<RegNum>
+				<nCASRNum>86737</nCASRNum>
+			</RegNum>
+			</Property-MethodID>
+			<PropPhaseID>
+				<ePropPhase>Liquid mixture 1</ePropPhase>
+			</PropPhaseID>
+			<ePresentation>Ratio with the reference state, X/X(REF)</ePresentation>
+			<eRefStateType>Phase in equilibrium with primary phase at the same temperature and pressure</eRefStateType>
+			<RefPhaseID>
+				<eRefPhase>Liquid</eRefPhase>
+			<RegNum>
+				<nCASRNum>7732185</nCASRNum>
+			</RegNum>
+			</RefPhaseID>
+			<PropUncertainty>
+				<nUncertAssessNum>1</nUncertAssessNum>
+				<sUncertEvaluator>Author</sUncertEvaluator>
+				<nUncertLevOfConfid>95</nUncertLevOfConfid>
+			</PropUncertainty>
+		</Property>
+		<PhaseID>
+				<ePhase>Liquid mixture 1</ePhase>
+		</PhaseID>
+		<PhaseID>
+				<ePhase>Liquid mixture 2</ePhase>
+		</PhaseID>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<ePressure>Pressure, kPa</ePressure>
+				</ConstraintType>
+			</ConstraintID>
+			<nConstraintValue>101.3</nConstraintValue>
+			<nConstrDigits>4</nConstrDigits>
+		</Constraint>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<eComponentComposition>Mole fraction</eComponentComposition>
+				</ConstraintType>
+			<RegNum>
+				<nCASRNum>86737</nCASRNum>
+			</RegNum>
+			</ConstraintID>
+			<ConstraintPhaseID>
+				<eConstraintPhase>Liquid mixture 2</eConstraintPhase>
+			</ConstraintPhaseID>
+			<nConstraintValue>0</nConstraintValue>
+			<nConstrDigits>0</nConstrDigits>
+		</Constraint>
+		<Variable>
+			<nVarNumber>1</nVarNumber>
+			<VariableID>
+				<VariableType>
+					<eTemperature>Temperature, K</eTemperature>
+				</VariableType>
+			</VariableID>
+		</Variable>
+		<NumValues>
+			<VariableValue>
+				<nVarNumber>1</nVarNumber>
+				<nVarValue>298.1</nVarValue>
+				<nVarDigits>4</nVarDigits>
+			</VariableValue>
+			<PropertyValue>
+				<nPropNumber>1</nPropNumber>
+				<nPropValue>9333</nPropValue>
+				<nPropDigits>4</nPropDigits>
+			<PropUncertainty>
+				<nUncertAssessNum>1</nUncertAssessNum>
+				<nExpandUncertValue>5122</nExpandUncertValue>
+			</PropUncertainty>
+			</PropertyValue>
+		</NumValues>
+	</PureOrMixtureData>
+	<PureOrMixtureData>
+		<Component>
+			<RegNum>
+				<nCASRNum>85018</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<Component>
+			<RegNum>
+				<nCASRNum>7732185</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<Component>
+			<RegNum>
+				<nCASRNum>304680362</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<eExpPurpose>Principal objective of the work</eExpPurpose>
+		<sCompiler>CDG</sCompiler>
+		<sContributor>TRC</sContributor>
+		<dateDateAdded>10/20/2004</dateDateAdded>
+		<Property>
+			<nPropNumber>1</nPropNumber>
+			<Property-MethodID>
+				<PropertyGroup>
+					<CompositionAtPhaseEquilibrium>
+						<ePropName>Mass concentration, kg/m3</ePropName>
+						<eMethodName>Chromatography</eMethodName>
+					</CompositionAtPhaseEquilibrium>
+				</PropertyGroup>
+			<RegNum>
+				<nCASRNum>85018</nCASRNum>
+			</RegNum>
+			</Property-MethodID>
+			<PropPhaseID>
+				<ePropPhase>Liquid mixture 1</ePropPhase>
+			</PropPhaseID>
+			<ePresentation>Ratio with the reference state, X/X(REF)</ePresentation>
+			<eRefStateType>Phase in equilibrium with primary phase at the same temperature and pressure</eRefStateType>
+			<RefPhaseID>
+				<eRefPhase>Liquid</eRefPhase>
+			<RegNum>
+				<nCASRNum>7732185</nCASRNum>
+			</RegNum>
+			</RefPhaseID>
+			<PropUncertainty>
+				<nUncertAssessNum>1</nUncertAssessNum>
+				<sUncertEvaluator>Author</sUncertEvaluator>
+				<nUncertLevOfConfid>95</nUncertLevOfConfid>
+			</PropUncertainty>
+		</Property>
+		<PhaseID>
+				<ePhase>Liquid mixture 1</ePhase>
+		</PhaseID>
+		<PhaseID>
+				<ePhase>Liquid mixture 2</ePhase>
+		</PhaseID>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<ePressure>Pressure, kPa</ePressure>
+				</ConstraintType>
+			</ConstraintID>
+			<nConstraintValue>101.3</nConstraintValue>
+			<nConstrDigits>4</nConstrDigits>
+		</Constraint>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<eComponentComposition>Mole fraction</eComponentComposition>
+				</ConstraintType>
+			<RegNum>
+				<nCASRNum>85018</nCASRNum>
+			</RegNum>
+			</ConstraintID>
+			<ConstraintPhaseID>
+				<eConstraintPhase>Liquid mixture 2</eConstraintPhase>
+			</ConstraintPhaseID>
+			<nConstraintValue>0</nConstraintValue>
+			<nConstrDigits>0</nConstrDigits>
+		</Constraint>
+		<Variable>
+			<nVarNumber>1</nVarNumber>
+			<VariableID>
+				<VariableType>
+					<eTemperature>Temperature, K</eTemperature>
+				</VariableType>
+			</VariableID>
+		</Variable>
+		<NumValues>
+			<VariableValue>
+				<nVarNumber>1</nVarNumber>
+				<nVarValue>298.1</nVarValue>
+				<nVarDigits>4</nVarDigits>
+			</VariableValue>
+			<PropertyValue>
+				<nPropNumber>1</nPropNumber>
+				<nPropValue>13804</nPropValue>
+				<nPropDigits>5</nPropDigits>
+			<PropUncertainty>
+				<nUncertAssessNum>1</nUncertAssessNum>
+				<nExpandUncertValue>2414</nExpandUncertValue>
+			</PropUncertainty>
+			</PropertyValue>
+		</NumValues>
+	</PureOrMixtureData>
+	<PureOrMixtureData>
+		<Component>
+			<RegNum>
+				<nCASRNum>120127</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<Component>
+			<RegNum>
+				<nCASRNum>7732185</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<Component>
+			<RegNum>
+				<nCASRNum>304680362</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<eExpPurpose>Principal objective of the work</eExpPurpose>
+		<sCompiler>CDG</sCompiler>
+		<sContributor>TRC</sContributor>
+		<dateDateAdded>10/20/2004</dateDateAdded>
+		<Property>
+			<nPropNumber>1</nPropNumber>
+			<Property-MethodID>
+				<PropertyGroup>
+					<CompositionAtPhaseEquilibrium>
+						<ePropName>Mass concentration, kg/m3</ePropName>
+						<eMethodName>Chromatography</eMethodName>
+					</CompositionAtPhaseEquilibrium>
+				</PropertyGroup>
+			<RegNum>
+				<nCASRNum>120127</nCASRNum>
+			</RegNum>
+			</Property-MethodID>
+			<PropPhaseID>
+				<ePropPhase>Liquid mixture 1</ePropPhase>
+			</PropPhaseID>
+			<ePresentation>Ratio with the reference state, X/X(REF)</ePresentation>
+			<eRefStateType>Phase in equilibrium with primary phase at the same temperature and pressure</eRefStateType>
+			<RefPhaseID>
+				<eRefPhase>Liquid</eRefPhase>
+			<RegNum>
+				<nCASRNum>7732185</nCASRNum>
+			</RegNum>
+			</RefPhaseID>
+		</Property>
+		<PhaseID>
+				<ePhase>Liquid mixture 1</ePhase>
+		</PhaseID>
+		<PhaseID>
+				<ePhase>Liquid mixture 2</ePhase>
+		</PhaseID>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<ePressure>Pressure, kPa</ePressure>
+				</ConstraintType>
+			</ConstraintID>
+			<nConstraintValue>101.3</nConstraintValue>
+			<nConstrDigits>4</nConstrDigits>
+		</Constraint>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<eComponentComposition>Mole fraction</eComponentComposition>
+				</ConstraintType>
+			<RegNum>
+				<nCASRNum>120127</nCASRNum>
+			</RegNum>
+			</ConstraintID>
+			<ConstraintPhaseID>
+				<eConstraintPhase>Liquid mixture 2</eConstraintPhase>
+			</ConstraintPhaseID>
+			<nConstraintValue>0</nConstraintValue>
+			<nConstrDigits>0</nConstrDigits>
+		</Constraint>
+		<Variable>
+			<nVarNumber>1</nVarNumber>
+			<VariableID>
+				<VariableType>
+					<eTemperature>Temperature, K</eTemperature>
+				</VariableType>
+			</VariableID>
+		</Variable>
+		<NumValues>
+			<VariableValue>
+				<nVarNumber>1</nVarNumber>
+				<nVarValue>298.1</nVarValue>
+				<nVarDigits>4</nVarDigits>
+			</VariableValue>
+			<PropertyValue>
+				<nPropNumber>1</nPropNumber>
+				<nPropValue>13183</nPropValue>
+				<nPropDigits>5</nPropDigits>
+			</PropertyValue>
+		</NumValues>
+	</PureOrMixtureData>
+	<PureOrMixtureData>
+		<Component>
+			<RegNum>
+				<nCASRNum>206440</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<Component>
+			<RegNum>
+				<nCASRNum>7732185</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<Component>
+			<RegNum>
+				<nCASRNum>304680362</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<eExpPurpose>Principal objective of the work</eExpPurpose>
+		<sCompiler>CDG</sCompiler>
+		<sContributor>TRC</sContributor>
+		<dateDateAdded>10/20/2004</dateDateAdded>
+		<Property>
+			<nPropNumber>1</nPropNumber>
+			<Property-MethodID>
+				<PropertyGroup>
+					<CompositionAtPhaseEquilibrium>
+						<ePropName>Mass concentration, kg/m3</ePropName>
+						<eMethodName>Chromatography</eMethodName>
+					</CompositionAtPhaseEquilibrium>
+				</PropertyGroup>
+			<RegNum>
+				<nCASRNum>206440</nCASRNum>
+			</RegNum>
+			</Property-MethodID>
+			<PropPhaseID>
+				<ePropPhase>Liquid mixture 1</ePropPhase>
+			</PropPhaseID>
+			<ePresentation>Ratio with the reference state, X/X(REF)</ePresentation>
+			<eRefStateType>Phase in equilibrium with primary phase at the same temperature and pressure</eRefStateType>
+			<RefPhaseID>
+				<eRefPhase>Liquid</eRefPhase>
+			<RegNum>
+				<nCASRNum>7732185</nCASRNum>
+			</RegNum>
+			</RefPhaseID>
+			<PropUncertainty>
+				<nUncertAssessNum>1</nUncertAssessNum>
+				<sUncertEvaluator>Author</sUncertEvaluator>
+				<nUncertLevOfConfid>95</nUncertLevOfConfid>
+			</PropUncertainty>
+		</Property>
+		<PhaseID>
+				<ePhase>Liquid mixture 1</ePhase>
+		</PhaseID>
+		<PhaseID>
+				<ePhase>Liquid mixture 2</ePhase>
+		</PhaseID>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<ePressure>Pressure, kPa</ePressure>
+				</ConstraintType>
+			</ConstraintID>
+			<nConstraintValue>101.3</nConstraintValue>
+			<nConstrDigits>4</nConstrDigits>
+		</Constraint>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<eComponentComposition>Mole fraction</eComponentComposition>
+				</ConstraintType>
+			<RegNum>
+				<nCASRNum>206440</nCASRNum>
+			</RegNum>
+			</ConstraintID>
+			<ConstraintPhaseID>
+				<eConstraintPhase>Liquid mixture 2</eConstraintPhase>
+			</ConstraintPhaseID>
+			<nConstraintValue>0</nConstraintValue>
+			<nConstrDigits>0</nConstrDigits>
+		</Constraint>
+		<Variable>
+			<nVarNumber>1</nVarNumber>
+			<VariableID>
+				<VariableType>
+					<eTemperature>Temperature, K</eTemperature>
+				</VariableType>
+			</VariableID>
+		</Variable>
+		<NumValues>
+			<VariableValue>
+				<nVarNumber>1</nVarNumber>
+				<nVarValue>298.1</nVarValue>
+				<nVarDigits>4</nVarDigits>
+			</VariableValue>
+			<PropertyValue>
+				<nPropNumber>1</nPropNumber>
+				<nPropValue>16982</nPropValue>
+				<nPropDigits>5</nPropDigits>
+			<PropUncertainty>
+				<nUncertAssessNum>1</nUncertAssessNum>
+				<nExpandUncertValue>8136</nExpandUncertValue>
+			</PropUncertainty>
+			</PropertyValue>
+		</NumValues>
+	</PureOrMixtureData>
+	<PureOrMixtureData>
+		<Component>
+			<RegNum>
+				<nCASRNum>129000</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<Component>
+			<RegNum>
+				<nCASRNum>7732185</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<Component>
+			<RegNum>
+				<nCASRNum>304680362</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<eExpPurpose>Principal objective of the work</eExpPurpose>
+		<sCompiler>CDG</sCompiler>
+		<sContributor>TRC</sContributor>
+		<dateDateAdded>10/20/2004</dateDateAdded>
+		<Property>
+			<nPropNumber>1</nPropNumber>
+			<Property-MethodID>
+				<PropertyGroup>
+					<CompositionAtPhaseEquilibrium>
+						<ePropName>Mass concentration, kg/m3</ePropName>
+						<eMethodName>Chromatography</eMethodName>
+					</CompositionAtPhaseEquilibrium>
+				</PropertyGroup>
+			<RegNum>
+				<nCASRNum>129000</nCASRNum>
+			</RegNum>
+			</Property-MethodID>
+			<PropPhaseID>
+				<ePropPhase>Liquid mixture 1</ePropPhase>
+			</PropPhaseID>
+			<ePresentation>Ratio with the reference state, X/X(REF)</ePresentation>
+			<eRefStateType>Phase in equilibrium with primary phase at the same temperature and pressure</eRefStateType>
+			<RefPhaseID>
+				<eRefPhase>Liquid</eRefPhase>
+			<RegNum>
+				<nCASRNum>7732185</nCASRNum>
+			</RegNum>
+			</RefPhaseID>
+			<PropUncertainty>
+				<nUncertAssessNum>1</nUncertAssessNum>
+				<sUncertEvaluator>Author</sUncertEvaluator>
+				<nUncertLevOfConfid>95</nUncertLevOfConfid>
+			</PropUncertainty>
+		</Property>
+		<PhaseID>
+				<ePhase>Liquid mixture 1</ePhase>
+		</PhaseID>
+		<PhaseID>
+				<ePhase>Liquid mixture 2</ePhase>
+		</PhaseID>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<ePressure>Pressure, kPa</ePressure>
+				</ConstraintType>
+			</ConstraintID>
+			<nConstraintValue>101.3</nConstraintValue>
+			<nConstrDigits>4</nConstrDigits>
+		</Constraint>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<eComponentComposition>Mole fraction</eComponentComposition>
+				</ConstraintType>
+			<RegNum>
+				<nCASRNum>129000</nCASRNum>
+			</RegNum>
+			</ConstraintID>
+			<ConstraintPhaseID>
+				<eConstraintPhase>Liquid mixture 2</eConstraintPhase>
+			</ConstraintPhaseID>
+			<nConstraintValue>0</nConstraintValue>
+			<nConstrDigits>0</nConstrDigits>
+		</Constraint>
+		<Variable>
+			<nVarNumber>1</nVarNumber>
+			<VariableID>
+				<VariableType>
+					<eTemperature>Temperature, K</eTemperature>
+				</VariableType>
+			</VariableID>
+		</Variable>
+		<NumValues>
+			<VariableValue>
+				<nVarNumber>1</nVarNumber>
+				<nVarValue>298.1</nVarValue>
+				<nVarDigits>4</nVarDigits>
+			</VariableValue>
+			<PropertyValue>
+				<nPropNumber>1</nPropNumber>
+				<nPropValue>16218</nPropValue>
+				<nPropDigits>5</nPropDigits>
+			<PropUncertainty>
+				<nUncertAssessNum>1</nUncertAssessNum>
+				<nExpandUncertValue>9486</nExpandUncertValue>
+			</PropUncertainty>
+			</PropertyValue>
+		</NumValues>
+	</PureOrMixtureData>
+	<PureOrMixtureData>
+		<Component>
+			<RegNum>
+				<nCASRNum>56553</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<Component>
+			<RegNum>
+				<nCASRNum>7732185</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<Component>
+			<RegNum>
+				<nCASRNum>304680362</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<eExpPurpose>Principal objective of the work</eExpPurpose>
+		<sCompiler>CDG</sCompiler>
+		<sContributor>TRC</sContributor>
+		<dateDateAdded>10/20/2004</dateDateAdded>
+		<Property>
+			<nPropNumber>1</nPropNumber>
+			<Property-MethodID>
+				<PropertyGroup>
+					<CompositionAtPhaseEquilibrium>
+						<ePropName>Mass concentration, kg/m3</ePropName>
+						<eMethodName>Chromatography</eMethodName>
+					</CompositionAtPhaseEquilibrium>
+				</PropertyGroup>
+			<RegNum>
+				<nCASRNum>56553</nCASRNum>
+			</RegNum>
+			</Property-MethodID>
+			<PropPhaseID>
+				<ePropPhase>Liquid mixture 1</ePropPhase>
+			</PropPhaseID>
+			<ePresentation>Ratio with the reference state, X/X(REF)</ePresentation>
+			<eRefStateType>Phase in equilibrium with primary phase at the same temperature and pressure</eRefStateType>
+			<RefPhaseID>
+				<eRefPhase>Liquid</eRefPhase>
+			<RegNum>
+				<nCASRNum>7732185</nCASRNum>
+			</RegNum>
+			</RefPhaseID>
+			<PropUncertainty>
+				<nUncertAssessNum>1</nUncertAssessNum>
+				<sUncertEvaluator>Author</sUncertEvaluator>
+				<nUncertLevOfConfid>95</nUncertLevOfConfid>
+			</PropUncertainty>
+		</Property>
+		<PhaseID>
+				<ePhase>Liquid mixture 1</ePhase>
+		</PhaseID>
+		<PhaseID>
+				<ePhase>Liquid mixture 2</ePhase>
+		</PhaseID>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<ePressure>Pressure, kPa</ePressure>
+				</ConstraintType>
+			</ConstraintID>
+			<nConstraintValue>101.3</nConstraintValue>
+			<nConstrDigits>4</nConstrDigits>
+		</Constraint>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<eComponentComposition>Mole fraction</eComponentComposition>
+				</ConstraintType>
+			<RegNum>
+				<nCASRNum>56553</nCASRNum>
+			</RegNum>
+			</ConstraintID>
+			<ConstraintPhaseID>
+				<eConstraintPhase>Liquid mixture 2</eConstraintPhase>
+			</ConstraintPhaseID>
+			<nConstraintValue>0</nConstraintValue>
+			<nConstrDigits>0</nConstrDigits>
+		</Constraint>
+		<Variable>
+			<nVarNumber>1</nVarNumber>
+			<VariableID>
+				<VariableType>
+					<eTemperature>Temperature, K</eTemperature>
+				</VariableType>
+			</VariableID>
+		</Variable>
+		<NumValues>
+			<VariableValue>
+				<nVarNumber>1</nVarNumber>
+				<nVarValue>298.1</nVarValue>
+				<nVarDigits>4</nVarDigits>
+			</VariableValue>
+			<PropertyValue>
+				<nPropNumber>1</nPropNumber>
+				<nPropValue>14791</nPropValue>
+				<nPropDigits>5</nPropDigits>
+			<PropUncertainty>
+				<nUncertAssessNum>1</nUncertAssessNum>
+				<nExpandUncertValue>5626</nExpandUncertValue>
+			</PropUncertainty>
+			</PropertyValue>
+		</NumValues>
+	</PureOrMixtureData>
+	<PureOrMixtureData>
+		<Component>
+			<RegNum>
+				<nCASRNum>218019</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<Component>
+			<RegNum>
+				<nCASRNum>7732185</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<Component>
+			<RegNum>
+				<nCASRNum>304680362</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<eExpPurpose>Principal objective of the work</eExpPurpose>
+		<sCompiler>CDG</sCompiler>
+		<sContributor>TRC</sContributor>
+		<dateDateAdded>10/20/2004</dateDateAdded>
+		<Property>
+			<nPropNumber>1</nPropNumber>
+			<Property-MethodID>
+				<PropertyGroup>
+					<CompositionAtPhaseEquilibrium>
+						<ePropName>Mass concentration, kg/m3</ePropName>
+						<eMethodName>Chromatography</eMethodName>
+					</CompositionAtPhaseEquilibrium>
+				</PropertyGroup>
+			<RegNum>
+				<nCASRNum>218019</nCASRNum>
+			</RegNum>
+			</Property-MethodID>
+			<PropPhaseID>
+				<ePropPhase>Liquid mixture 1</ePropPhase>
+			</PropPhaseID>
+			<ePresentation>Ratio with the reference state, X/X(REF)</ePresentation>
+			<eRefStateType>Phase in equilibrium with primary phase at the same temperature and pressure</eRefStateType>
+			<RefPhaseID>
+				<eRefPhase>Liquid</eRefPhase>
+			<RegNum>
+				<nCASRNum>7732185</nCASRNum>
+			</RegNum>
+			</RefPhaseID>
+			<PropUncertainty>
+				<nUncertAssessNum>1</nUncertAssessNum>
+				<sUncertEvaluator>Author</sUncertEvaluator>
+				<nUncertLevOfConfid>95</nUncertLevOfConfid>
+			</PropUncertainty>
+		</Property>
+		<PhaseID>
+				<ePhase>Liquid mixture 1</ePhase>
+		</PhaseID>
+		<PhaseID>
+				<ePhase>Liquid mixture 2</ePhase>
+		</PhaseID>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<ePressure>Pressure, kPa</ePressure>
+				</ConstraintType>
+			</ConstraintID>
+			<nConstraintValue>101.3</nConstraintValue>
+			<nConstrDigits>4</nConstrDigits>
+		</Constraint>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<eComponentComposition>Mole fraction</eComponentComposition>
+				</ConstraintType>
+			<RegNum>
+				<nCASRNum>218019</nCASRNum>
+			</RegNum>
+			</ConstraintID>
+			<ConstraintPhaseID>
+				<eConstraintPhase>Liquid mixture 2</eConstraintPhase>
+			</ConstraintPhaseID>
+			<nConstraintValue>0</nConstraintValue>
+			<nConstrDigits>0</nConstrDigits>
+		</Constraint>
+		<Variable>
+			<nVarNumber>1</nVarNumber>
+			<VariableID>
+				<VariableType>
+					<eTemperature>Temperature, K</eTemperature>
+				</VariableType>
+			</VariableID>
+		</Variable>
+		<NumValues>
+			<VariableValue>
+				<nVarNumber>1</nVarNumber>
+				<nVarValue>298.1</nVarValue>
+				<nVarDigits>4</nVarDigits>
+			</VariableValue>
+			<PropertyValue>
+				<nPropNumber>1</nPropNumber>
+				<nPropValue>16982</nPropValue>
+				<nPropDigits>5</nPropDigits>
+			<PropUncertainty>
+				<nUncertAssessNum>1</nUncertAssessNum>
+				<nExpandUncertValue>8722</nExpandUncertValue>
+			</PropUncertainty>
+			</PropertyValue>
+		</NumValues>
+	</PureOrMixtureData>
+	<PureOrMixtureData>
+		<Component>
+			<RegNum>
+				<nCASRNum>205992</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<Component>
+			<RegNum>
+				<nCASRNum>7732185</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<Component>
+			<RegNum>
+				<nCASRNum>304680362</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<eExpPurpose>Principal objective of the work</eExpPurpose>
+		<sCompiler>CDG</sCompiler>
+		<sContributor>TRC</sContributor>
+		<dateDateAdded>10/20/2004</dateDateAdded>
+		<Property>
+			<nPropNumber>1</nPropNumber>
+			<Property-MethodID>
+				<PropertyGroup>
+					<CompositionAtPhaseEquilibrium>
+						<ePropName>Mass concentration, kg/m3</ePropName>
+						<eMethodName>Chromatography</eMethodName>
+					</CompositionAtPhaseEquilibrium>
+				</PropertyGroup>
+			<RegNum>
+				<nCASRNum>205992</nCASRNum>
+			</RegNum>
+			</Property-MethodID>
+			<PropPhaseID>
+				<ePropPhase>Liquid mixture 1</ePropPhase>
+			</PropPhaseID>
+			<ePresentation>Ratio with the reference state, X/X(REF)</ePresentation>
+			<eRefStateType>Phase in equilibrium with primary phase at the same temperature and pressure</eRefStateType>
+			<RefPhaseID>
+				<eRefPhase>Liquid</eRefPhase>
+			<RegNum>
+				<nCASRNum>7732185</nCASRNum>
+			</RegNum>
+			</RefPhaseID>
+			<PropUncertainty>
+				<nUncertAssessNum>1</nUncertAssessNum>
+				<sUncertEvaluator>Author</sUncertEvaluator>
+				<nUncertLevOfConfid>95</nUncertLevOfConfid>
+			</PropUncertainty>
+		</Property>
+		<PhaseID>
+				<ePhase>Liquid mixture 1</ePhase>
+		</PhaseID>
+		<PhaseID>
+				<ePhase>Liquid mixture 2</ePhase>
+		</PhaseID>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<ePressure>Pressure, kPa</ePressure>
+				</ConstraintType>
+			</ConstraintID>
+			<nConstraintValue>101.3</nConstraintValue>
+			<nConstrDigits>4</nConstrDigits>
+		</Constraint>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<eComponentComposition>Mole fraction</eComponentComposition>
+				</ConstraintType>
+			<RegNum>
+				<nCASRNum>205992</nCASRNum>
+			</RegNum>
+			</ConstraintID>
+			<ConstraintPhaseID>
+				<eConstraintPhase>Liquid mixture 2</eConstraintPhase>
+			</ConstraintPhaseID>
+			<nConstraintValue>0</nConstraintValue>
+			<nConstrDigits>0</nConstrDigits>
+		</Constraint>
+		<Variable>
+			<nVarNumber>1</nVarNumber>
+			<VariableID>
+				<VariableType>
+					<eTemperature>Temperature, K</eTemperature>
+				</VariableType>
+			</VariableID>
+		</Variable>
+		<NumValues>
+			<VariableValue>
+				<nVarNumber>1</nVarNumber>
+				<nVarValue>298.1</nVarValue>
+				<nVarDigits>4</nVarDigits>
+			</VariableValue>
+			<PropertyValue>
+				<nPropNumber>1</nPropNumber>
+				<nPropValue>18197</nPropValue>
+				<nPropDigits>5</nPropDigits>
+			<PropUncertainty>
+				<nUncertAssessNum>1</nUncertAssessNum>
+				<nExpandUncertValue>9345</nExpandUncertValue>
+			</PropUncertainty>
+			</PropertyValue>
+		</NumValues>
+	</PureOrMixtureData>
+	<PureOrMixtureData>
+		<Component>
+			<RegNum>
+				<nCASRNum>207089</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<Component>
+			<RegNum>
+				<nCASRNum>7732185</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<Component>
+			<RegNum>
+				<nCASRNum>304680362</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<eExpPurpose>Principal objective of the work</eExpPurpose>
+		<sCompiler>CDG</sCompiler>
+		<sContributor>TRC</sContributor>
+		<dateDateAdded>10/20/2004</dateDateAdded>
+		<Property>
+			<nPropNumber>1</nPropNumber>
+			<Property-MethodID>
+				<PropertyGroup>
+					<CompositionAtPhaseEquilibrium>
+						<ePropName>Mass concentration, kg/m3</ePropName>
+						<eMethodName>Chromatography</eMethodName>
+					</CompositionAtPhaseEquilibrium>
+				</PropertyGroup>
+			<RegNum>
+				<nCASRNum>207089</nCASRNum>
+			</RegNum>
+			</Property-MethodID>
+			<PropPhaseID>
+				<ePropPhase>Liquid mixture 1</ePropPhase>
+			</PropPhaseID>
+			<ePresentation>Ratio with the reference state, X/X(REF)</ePresentation>
+			<eRefStateType>Phase in equilibrium with primary phase at the same temperature and pressure</eRefStateType>
+			<RefPhaseID>
+				<eRefPhase>Liquid</eRefPhase>
+			<RegNum>
+				<nCASRNum>7732185</nCASRNum>
+			</RegNum>
+			</RefPhaseID>
+			<PropUncertainty>
+				<nUncertAssessNum>1</nUncertAssessNum>
+				<sUncertEvaluator>Author</sUncertEvaluator>
+				<nUncertLevOfConfid>95</nUncertLevOfConfid>
+			</PropUncertainty>
+		</Property>
+		<PhaseID>
+				<ePhase>Liquid mixture 1</ePhase>
+		</PhaseID>
+		<PhaseID>
+				<ePhase>Liquid mixture 2</ePhase>
+		</PhaseID>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<ePressure>Pressure, kPa</ePressure>
+				</ConstraintType>
+			</ConstraintID>
+			<nConstraintValue>101.3</nConstraintValue>
+			<nConstrDigits>4</nConstrDigits>
+		</Constraint>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<eComponentComposition>Mole fraction</eComponentComposition>
+				</ConstraintType>
+			<RegNum>
+				<nCASRNum>207089</nCASRNum>
+			</RegNum>
+			</ConstraintID>
+			<ConstraintPhaseID>
+				<eConstraintPhase>Liquid mixture 2</eConstraintPhase>
+			</ConstraintPhaseID>
+			<nConstraintValue>0</nConstraintValue>
+			<nConstrDigits>0</nConstrDigits>
+		</Constraint>
+		<Variable>
+			<nVarNumber>1</nVarNumber>
+			<VariableID>
+				<VariableType>
+					<eTemperature>Temperature, K</eTemperature>
+				</VariableType>
+			</VariableID>
+		</Variable>
+		<NumValues>
+			<VariableValue>
+				<nVarNumber>1</nVarNumber>
+				<nVarValue>298.1</nVarValue>
+				<nVarDigits>4</nVarDigits>
+			</VariableValue>
+			<PropertyValue>
+				<nPropNumber>1</nPropNumber>
+				<nPropValue>16596</nPropValue>
+				<nPropDigits>5</nPropDigits>
+			<PropUncertainty>
+				<nUncertAssessNum>1</nUncertAssessNum>
+				<nExpandUncertValue>9108</nExpandUncertValue>
+			</PropUncertainty>
+			</PropertyValue>
+		</NumValues>
+	</PureOrMixtureData>
+	<PureOrMixtureData>
+		<Component>
+			<RegNum>
+				<nCASRNum>50328</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<Component>
+			<RegNum>
+				<nCASRNum>7732185</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<Component>
+			<RegNum>
+				<nCASRNum>304680362</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<eExpPurpose>Principal objective of the work</eExpPurpose>
+		<sCompiler>CDG</sCompiler>
+		<sContributor>TRC</sContributor>
+		<dateDateAdded>10/20/2004</dateDateAdded>
+		<Property>
+			<nPropNumber>1</nPropNumber>
+			<Property-MethodID>
+				<PropertyGroup>
+					<CompositionAtPhaseEquilibrium>
+						<ePropName>Mass concentration, kg/m3</ePropName>
+						<eMethodName>Chromatography</eMethodName>
+					</CompositionAtPhaseEquilibrium>
+				</PropertyGroup>
+			<RegNum>
+				<nCASRNum>50328</nCASRNum>
+			</RegNum>
+			</Property-MethodID>
+			<PropPhaseID>
+				<ePropPhase>Liquid mixture 1</ePropPhase>
+			</PropPhaseID>
+			<ePresentation>Ratio with the reference state, X/X(REF)</ePresentation>
+			<eRefStateType>Phase in equilibrium with primary phase at the same temperature and pressure</eRefStateType>
+			<RefPhaseID>
+				<eRefPhase>Liquid</eRefPhase>
+			<RegNum>
+				<nCASRNum>7732185</nCASRNum>
+			</RegNum>
+			</RefPhaseID>
+			<PropUncertainty>
+				<nUncertAssessNum>1</nUncertAssessNum>
+				<sUncertEvaluator>Author</sUncertEvaluator>
+				<nUncertLevOfConfid>95</nUncertLevOfConfid>
+			</PropUncertainty>
+		</Property>
+		<PhaseID>
+				<ePhase>Liquid mixture 1</ePhase>
+		</PhaseID>
+		<PhaseID>
+				<ePhase>Liquid mixture 2</ePhase>
+		</PhaseID>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<ePressure>Pressure, kPa</ePressure>
+				</ConstraintType>
+			</ConstraintID>
+			<nConstraintValue>101.3</nConstraintValue>
+			<nConstrDigits>4</nConstrDigits>
+		</Constraint>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<eComponentComposition>Mole fraction</eComponentComposition>
+				</ConstraintType>
+			<RegNum>
+				<nCASRNum>50328</nCASRNum>
+			</RegNum>
+			</ConstraintID>
+			<ConstraintPhaseID>
+				<eConstraintPhase>Liquid mixture 2</eConstraintPhase>
+			</ConstraintPhaseID>
+			<nConstraintValue>0</nConstraintValue>
+			<nConstrDigits>0</nConstrDigits>
+		</Constraint>
+		<Variable>
+			<nVarNumber>1</nVarNumber>
+			<VariableID>
+				<VariableType>
+					<eTemperature>Temperature, K</eTemperature>
+				</VariableType>
+			</VariableID>
+		</Variable>
+		<NumValues>
+			<VariableValue>
+				<nVarNumber>1</nVarNumber>
+				<nVarValue>298.1</nVarValue>
+				<nVarDigits>4</nVarDigits>
+			</VariableValue>
+			<PropertyValue>
+				<nPropNumber>1</nPropNumber>
+				<nPropValue>20893</nPropValue>
+				<nPropDigits>5</nPropDigits>
+			<PropUncertainty>
+				<nUncertAssessNum>1</nUncertAssessNum>
+				<nExpandUncertValue>9307</nExpandUncertValue>
+			</PropUncertainty>
+			</PropertyValue>
+		</NumValues>
+	</PureOrMixtureData>
+	<PureOrMixtureData>
+		<Component>
+			<RegNum>
+				<nCASRNum>53703</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<Component>
+			<RegNum>
+				<nCASRNum>7732185</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<Component>
+			<RegNum>
+				<nCASRNum>304680362</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<eExpPurpose>Principal objective of the work</eExpPurpose>
+		<sCompiler>CDG</sCompiler>
+		<sContributor>TRC</sContributor>
+		<dateDateAdded>10/20/2004</dateDateAdded>
+		<Property>
+			<nPropNumber>1</nPropNumber>
+			<Property-MethodID>
+				<PropertyGroup>
+					<CompositionAtPhaseEquilibrium>
+						<ePropName>Mass concentration, kg/m3</ePropName>
+						<eMethodName>Chromatography</eMethodName>
+					</CompositionAtPhaseEquilibrium>
+				</PropertyGroup>
+			<RegNum>
+				<nCASRNum>53703</nCASRNum>
+			</RegNum>
+			</Property-MethodID>
+			<PropPhaseID>
+				<ePropPhase>Liquid mixture 1</ePropPhase>
+			</PropPhaseID>
+			<ePresentation>Ratio with the reference state, X/X(REF)</ePresentation>
+			<eRefStateType>Phase in equilibrium with primary phase at the same temperature and pressure</eRefStateType>
+			<RefPhaseID>
+				<eRefPhase>Liquid</eRefPhase>
+			<RegNum>
+				<nCASRNum>7732185</nCASRNum>
+			</RegNum>
+			</RefPhaseID>
+			<PropUncertainty>
+				<nUncertAssessNum>1</nUncertAssessNum>
+				<sUncertEvaluator>Author</sUncertEvaluator>
+				<nUncertLevOfConfid>95</nUncertLevOfConfid>
+			</PropUncertainty>
+		</Property>
+		<PhaseID>
+				<ePhase>Liquid mixture 1</ePhase>
+		</PhaseID>
+		<PhaseID>
+				<ePhase>Liquid mixture 2</ePhase>
+		</PhaseID>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<ePressure>Pressure, kPa</ePressure>
+				</ConstraintType>
+			</ConstraintID>
+			<nConstraintValue>101.3</nConstraintValue>
+			<nConstrDigits>4</nConstrDigits>
+		</Constraint>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<eComponentComposition>Mole fraction</eComponentComposition>
+				</ConstraintType>
+			<RegNum>
+				<nCASRNum>53703</nCASRNum>
+			</RegNum>
+			</ConstraintID>
+			<ConstraintPhaseID>
+				<eConstraintPhase>Liquid mixture 2</eConstraintPhase>
+			</ConstraintPhaseID>
+			<nConstraintValue>0</nConstraintValue>
+			<nConstrDigits>0</nConstrDigits>
+		</Constraint>
+		<Variable>
+			<nVarNumber>1</nVarNumber>
+			<VariableID>
+				<VariableType>
+					<eTemperature>Temperature, K</eTemperature>
+				</VariableType>
+			</VariableID>
+		</Variable>
+		<NumValues>
+			<VariableValue>
+				<nVarNumber>1</nVarNumber>
+				<nVarValue>298.1</nVarValue>
+				<nVarDigits>4</nVarDigits>
+			</VariableValue>
+			<PropertyValue>
+				<nPropNumber>1</nPropNumber>
+				<nPropValue>16982</nPropValue>
+				<nPropDigits>5</nPropDigits>
+			<PropUncertainty>
+				<nUncertAssessNum>1</nUncertAssessNum>
+				<nExpandUncertValue>8722</nExpandUncertValue>
+			</PropUncertainty>
+			</PropertyValue>
+		</NumValues>
+	</PureOrMixtureData>
+	<PureOrMixtureData>
+		<Component>
+			<RegNum>
+				<nCASRNum>191242</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<Component>
+			<RegNum>
+				<nCASRNum>7732185</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<Component>
+			<RegNum>
+				<nCASRNum>304680362</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<eExpPurpose>Principal objective of the work</eExpPurpose>
+		<sCompiler>CDG</sCompiler>
+		<sContributor>TRC</sContributor>
+		<dateDateAdded>10/20/2004</dateDateAdded>
+		<Property>
+			<nPropNumber>1</nPropNumber>
+			<Property-MethodID>
+				<PropertyGroup>
+					<CompositionAtPhaseEquilibrium>
+						<ePropName>Mass concentration, kg/m3</ePropName>
+						<eMethodName>Chromatography</eMethodName>
+					</CompositionAtPhaseEquilibrium>
+				</PropertyGroup>
+			<RegNum>
+				<nCASRNum>191242</nCASRNum>
+			</RegNum>
+			</Property-MethodID>
+			<PropPhaseID>
+				<ePropPhase>Liquid mixture 1</ePropPhase>
+			</PropPhaseID>
+			<ePresentation>Ratio with the reference state, X/X(REF)</ePresentation>
+			<eRefStateType>Phase in equilibrium with primary phase at the same temperature and pressure</eRefStateType>
+			<RefPhaseID>
+				<eRefPhase>Liquid</eRefPhase>
+			<RegNum>
+				<nCASRNum>7732185</nCASRNum>
+			</RegNum>
+			</RefPhaseID>
+			<PropUncertainty>
+				<nUncertAssessNum>1</nUncertAssessNum>
+				<sUncertEvaluator>Author</sUncertEvaluator>
+				<nUncertLevOfConfid>95</nUncertLevOfConfid>
+			</PropUncertainty>
+		</Property>
+		<PhaseID>
+				<ePhase>Liquid mixture 1</ePhase>
+		</PhaseID>
+		<PhaseID>
+				<ePhase>Liquid mixture 2</ePhase>
+		</PhaseID>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<ePressure>Pressure, kPa</ePressure>
+				</ConstraintType>
+			</ConstraintID>
+			<nConstraintValue>101.3</nConstraintValue>
+			<nConstrDigits>4</nConstrDigits>
+		</Constraint>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<eComponentComposition>Mole fraction</eComponentComposition>
+				</ConstraintType>
+			<RegNum>
+				<nCASRNum>191242</nCASRNum>
+			</RegNum>
+			</ConstraintID>
+			<ConstraintPhaseID>
+				<eConstraintPhase>Liquid mixture 2</eConstraintPhase>
+			</ConstraintPhaseID>
+			<nConstraintValue>0</nConstraintValue>
+			<nConstrDigits>0</nConstrDigits>
+		</Constraint>
+		<Variable>
+			<nVarNumber>1</nVarNumber>
+			<VariableID>
+				<VariableType>
+					<eTemperature>Temperature, K</eTemperature>
+				</VariableType>
+			</VariableID>
+		</Variable>
+		<NumValues>
+			<VariableValue>
+				<nVarNumber>1</nVarNumber>
+				<nVarValue>298.1</nVarValue>
+				<nVarDigits>4</nVarDigits>
+			</VariableValue>
+			<PropertyValue>
+				<nPropNumber>1</nPropNumber>
+				<nPropValue>19953</nPropValue>
+				<nPropDigits>5</nPropDigits>
+			<PropUncertainty>
+				<nUncertAssessNum>1</nUncertAssessNum>
+				<nExpandUncertValue>10247</nExpandUncertValue>
+			</PropUncertainty>
+			</PropertyValue>
+		</NumValues>
+	</PureOrMixtureData>
+	<PureOrMixtureData>
+		<Component>
+			<RegNum>
+				<nCASRNum>193395</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<Component>
+			<RegNum>
+				<nCASRNum>7732185</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<Component>
+			<RegNum>
+				<nCASRNum>174501645</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<eExpPurpose>Principal objective of the work</eExpPurpose>
+		<sCompiler>JCE</sCompiler>
+		<sContributor>JCE</sContributor>
+		<dateDateAdded>10/28/2004</dateDateAdded>
+		<Property>
+			<nPropNumber>1</nPropNumber>
+			<Property-MethodID>
+				<PropertyGroup>
+					<CompositionAtPhaseEquilibrium>
+						<ePropName>Mass concentration, kg/m3</ePropName>
+						<eMethodName>Chromatography</eMethodName>
+					</CompositionAtPhaseEquilibrium>
+				</PropertyGroup>
+			<RegNum>
+				<nCASRNum>193395</nCASRNum>
+			</RegNum>
+			</Property-MethodID>
+			<PropPhaseID>
+				<ePropPhase>Liquid mixture 1</ePropPhase>
+			</PropPhaseID>
+			<ePresentation>Ratio with the reference state, X/X(REF)</ePresentation>
+			<eRefStateType>Phase in equilibrium with primary phase at the same temperature and pressure</eRefStateType>
+			<RefPhaseID>
+				<eRefPhase>Liquid</eRefPhase>
+			<RegNum>
+				<nCASRNum>7732185</nCASRNum>
+			</RegNum>
+			</RefPhaseID>
+			<PropUncertainty>
+				<nUncertAssessNum>1</nUncertAssessNum>
+				<sUncertEvaluator>Author</sUncertEvaluator>
+				<nUncertLevOfConfid>95</nUncertLevOfConfid>
+			</PropUncertainty>
+		</Property>
+		<PhaseID>
+				<ePhase>Liquid mixture 1</ePhase>
+		</PhaseID>
+		<PhaseID>
+				<ePhase>Liquid mixture 2</ePhase>
+		</PhaseID>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<eComponentComposition>Mole fraction</eComponentComposition>
+				</ConstraintType>
+			<RegNum>
+				<nCASRNum>193395</nCASRNum>
+			</RegNum>
+			</ConstraintID>
+			<ConstraintPhaseID>
+				<eConstraintPhase>Liquid mixture 2</eConstraintPhase>
+			</ConstraintPhaseID>
+			<nConstraintValue>0</nConstraintValue>
+			<nConstrDigits>0</nConstrDigits>
+		</Constraint>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<ePressure>Pressure, kPa</ePressure>
+				</ConstraintType>
+			</ConstraintID>
+			<nConstraintValue>101.3</nConstraintValue>
+			<nConstrDigits>4</nConstrDigits>
+		</Constraint>
+		<Variable>
+			<nVarNumber>1</nVarNumber>
+			<VariableID>
+				<VariableType>
+					<eTemperature>Temperature, K</eTemperature>
+				</VariableType>
+			</VariableID>
+		</Variable>
+		<NumValues>
+			<VariableValue>
+				<nVarNumber>1</nVarNumber>
+				<nVarValue>298.1</nVarValue>
+				<nVarDigits>4</nVarDigits>
+			</VariableValue>
+			<PropertyValue>
+				<nPropNumber>1</nPropNumber>
+				<nPropValue>22909</nPropValue>
+				<nPropDigits>5</nPropDigits>
+			<PropUncertainty>
+				<nUncertAssessNum>1</nUncertAssessNum>
+				<nExpandUncertValue>10976</nExpandUncertValue>
+			</PropUncertainty>
+			</PropertyValue>
+		</NumValues>
+	</PureOrMixtureData>
+	<PureOrMixtureData>
+		<Component>
+			<RegNum>
+				<nCASRNum>193395</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<Component>
+			<RegNum>
+				<nCASRNum>7732185</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<Component>
+			<RegNum>
+				<nCASRNum>304680362</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<eExpPurpose>Principal objective of the work</eExpPurpose>
+		<sCompiler>JCE</sCompiler>
+		<sContributor>JCE</sContributor>
+		<dateDateAdded>10/28/2004</dateDateAdded>
+		<Property>
+			<nPropNumber>1</nPropNumber>
+			<Property-MethodID>
+				<PropertyGroup>
+					<CompositionAtPhaseEquilibrium>
+						<ePropName>Mass concentration, kg/m3</ePropName>
+						<eMethodName>Chromatography</eMethodName>
+					</CompositionAtPhaseEquilibrium>
+				</PropertyGroup>
+			<RegNum>
+				<nCASRNum>193395</nCASRNum>
+			</RegNum>
+			</Property-MethodID>
+			<PropPhaseID>
+				<ePropPhase>Liquid mixture 1</ePropPhase>
+			</PropPhaseID>
+			<ePresentation>Ratio with the reference state, X/X(REF)</ePresentation>
+			<eRefStateType>Phase in equilibrium with primary phase at the same temperature and pressure</eRefStateType>
+			<RefPhaseID>
+				<eRefPhase>Liquid</eRefPhase>
+			<RegNum>
+				<nCASRNum>7732185</nCASRNum>
+			</RegNum>
+			</RefPhaseID>
+			<PropUncertainty>
+				<nUncertAssessNum>1</nUncertAssessNum>
+				<sUncertEvaluator>Author</sUncertEvaluator>
+				<nUncertLevOfConfid>95</nUncertLevOfConfid>
+			</PropUncertainty>
+		</Property>
+		<PhaseID>
+				<ePhase>Liquid mixture 1</ePhase>
+		</PhaseID>
+		<PhaseID>
+				<ePhase>Liquid mixture 2</ePhase>
+		</PhaseID>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<eComponentComposition>Mole fraction</eComponentComposition>
+				</ConstraintType>
+			<RegNum>
+				<nCASRNum>193395</nCASRNum>
+			</RegNum>
+			</ConstraintID>
+			<ConstraintPhaseID>
+				<eConstraintPhase>Liquid mixture 2</eConstraintPhase>
+			</ConstraintPhaseID>
+			<nConstraintValue>0</nConstraintValue>
+			<nConstrDigits>0</nConstrDigits>
+		</Constraint>
+		<Constraint>
+			<ConstraintID>
+				<ConstraintType>
+					<ePressure>Pressure, kPa</ePressure>
+				</ConstraintType>
+			</ConstraintID>
+			<nConstraintValue>101.3</nConstraintValue>
+			<nConstrDigits>4</nConstrDigits>
+		</Constraint>
+		<Variable>
+			<nVarNumber>1</nVarNumber>
+			<VariableID>
+				<VariableType>
+					<eTemperature>Temperature, K</eTemperature>
+				</VariableType>
+			</VariableID>
+		</Variable>
+		<NumValues>
+			<VariableValue>
+				<nVarNumber>1</nVarNumber>
+				<nVarValue>298.1</nVarValue>
+				<nVarDigits>4</nVarDigits>
+			</VariableValue>
+			<PropertyValue>
+				<nPropNumber>1</nPropNumber>
+				<nPropValue>20417</nPropValue>
+				<nPropDigits>5</nPropDigits>
+			<PropUncertainty>
+				<nUncertAssessNum>1</nUncertAssessNum>
+				<nExpandUncertValue>10486</nExpandUncertValue>
+			</PropUncertainty>
+			</PropertyValue>
+		</NumValues>
+	</PureOrMixtureData>
+</DataReport>

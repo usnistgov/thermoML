@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataReport xmlns="http://www.iupac.org/namespaces/ThermoML"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.iupac.org/namespaces/ThermoML file:/N:/Pfeif/working/ThermoML/thermoML/ThermoML-draft%20v.pfeif.6.xsd">
+    xsi:schemaLocation="http://www.iupac.org/namespaces/ThermoML file:/N:/Pfeif/working/ThermoML/thermoML/ThermoML5.xsd">
     <!-- citation information-->
 <citation id="001">
     <label>
@@ -29,11 +29,12 @@
     <documentType>journal</documentType>
     <DOI>10.1016/j.jct.2014.02.013</DOI>
     <keyword>Calorimetry</keyword><keyword> Molar mixing enthalpy</keyword><keyword> Liquid alloys</keyword><keyword> Co-Sn</keyword>
-    <language>English</language>
+    <language>english</language>
     <title>Enthalpy of mixing of liquid Co-Sn alloys</title>
     <yearPublished>2014</yearPublished>
     <journal><journalName>J. Chem. Thermodyn.</journalName><pages>269-285</pages><volume>74</volume></journal>
 </citation>
+    
  <!-- chemical information for cobalt and tin-->
 <chemical id="10"><commonName>cobalt</commonName></chemical>
 <chemical id="11"><commonName>tin</commonName></chemical>
@@ -151,7 +152,7 @@
     
     <dataset>
         <label>Table 1 Run 1 Co 24.6900 (HXM)</label>
-            <citation ref="01"/> <system ref="42"/>
+            <citation ref="001"/> <system ref="42"/>
                 <referenceDetails id="60">
                     <label> initial material conditions</label>
                     <reference><label>initialLiquid</label><refPhase ref="20"/><refSystem ref="42"/></reference>
@@ -193,7 +194,7 @@
             <atmosphere>argon</atmosphere>
         </fixedConditions>
         
-        <!--variable conditiosn, -->
+        <!--variable conditions -->
         <variableConditions>
             <condition conditionDescription="reference condition"><refState ref="60"/> <composition><label>variable initial composition, T=1773</label><component ref="11"/><units>atomic fraction</units><phase ref="20"/></composition></condition>
             <condition conditionDescription="equilibrium condition"><refState ref="61"/> <composition><label>variable amount of added material, T=1773</label><component ref="11"/><units>amount of atoms</units><phase ref="21"/></composition></condition>

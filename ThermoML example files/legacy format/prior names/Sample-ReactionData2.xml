@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="http://www-i.boulder.nist.gov/div838/trc/ThermoMLtoHTML_devel.xsl" type="text/xsl"?>
+<!--Created by Guided Data Capture (GDC) Software (http://www.trc.nist.gov)-->
+<DataReport xmlns="http://www.iupac.org/namespaces/ThermoML" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.iupac.org/namespaces/ThermoML http://trc.nist.gov/ThermoML.xsd">
+	<Version>
+		<nVersionMajor>2</nVersionMajor>
+		<nVersionMinor>0</nVersionMinor>
+	</Version>
+	<Citation>
+		<TRCRefID>
+			<yrYrPub>2006</yrYrPub>
+			<sAuthor1>rib</sAuthor1>
+			<sAuthor2>cab</sAuthor2>
+			<nAuthorn>2</nAuthorn>
+		</TRCRefID>
+		<eType>journal</eType>
+		<eSourceType>Original</eSourceType>
+		<sAuthor>Ribeiro da Silva, M. A. V.[Manuel A. V.]</sAuthor>
+		<sAuthor>Cabral, J. I. T. A.[Joana I. T. A.]</sAuthor>
+		<sAuthor>Gomes, J. R. B.[Jose R.B.]</sAuthor>
+		<sPubName>J. Chem. Thermodyn.</sPubName>
+		<yrPubYr>2006</yrPubYr>
+		<dateCit>2006-09-11</dateCit>
+		<sTitle>Experimental and computational study on the thermochemistry of ethylpiperidines</sTitle>
+		<sKeyword>Combustion calorimetry</sKeyword>
+		<sKeyword>Calvet microcalorimetry</sKeyword>
+		<sKeyword>Enthalpy of combustion</sKeyword>
+		<sKeyword>Enthalpy of sublimation</sKeyword>
+		<sKeyword>Enthalpy of formation</sKeyword>
+		<sKeyword>1-Ethylpiperidine</sKeyword>
+		<sKeyword>2-Ethylpiperidine</sKeyword>
+		<sKeyword>3-Ethylpiperidine</sKeyword>
+		<sKeyword>4-Ethylpiperidine</sKeyword>
+		<sVol>38</sVol>
+		<sPage>1072-1078</sPage>
+	</Citation>
+	<Compound>
+		<RegNum>
+			<nCASRNum>766096</nCASRNum>
+		</RegNum>
+		<sCommonName>N-ethylpiperidine</sCommonName>
+		<sFormulaMolec>C7H15N</sFormulaMolec>
+		<Sample>
+			<nSampleNm>1</nSampleNm>
+			<eSource>Commercial source</eSource>
+			<purity>
+				<nStep>1</nStep>
+				<ePurifMethod>Fractional distillation</ePurifMethod>
+			</purity>
+			<purity>
+				<nStep>1</nStep>
+				<nPurityMol>99.811</nPurityMol>
+				<nPurityMolDigits>5</nPurityMolDigits>
+				<eAnalMeth>CO2 yield in combustion products</eAnalMeth>
+			</purity>
+		</Sample>
+	</Compound>
+	<Compound>
+		<RegNum>
+			<nCASRNum>1484806</nCASRNum>
+		</RegNum>
+		<sCommonName>2-ethylpiperidine</sCommonName>
+		<sFormulaMolec>C7H15N</sFormulaMolec>
+		<Sample>
+			<nSampleNm>1</nSampleNm>
+			<eSource>Commercial source</eSource>
+			<purity>
+				<nStep>1</nStep>
+				<ePurifMethod>Fractional distillation</ePurifMethod>
+			</purity>
+			<purity>
+				<nStep>1</nStep>
+				<nPurityMol>99.983</nPurityMol>
+				<nPurityMolDigits>5</nPurityMolDigits>
+				<eAnalMeth>CO2 yield in combustion products</eAnalMeth>
+			</purity>
+		</Sample>
+	</Compound>
+	<Compound>
+		<RegNum>
+			<nCASRNum>124389</nCASRNum>
+		</RegNum>
+		<sCommonName>carbon dioxide</sCommonName>
+		<sFormulaMolec>CO2</sFormulaMolec>
+	</Compound>
+	<Compound>
+		<RegNum>
+			<nCASRNum>7727379</nCASRNum>
+		</RegNum>
+		<sCommonName>nitrogen</sCommonName>
+		<sFormulaMolec>N2</sFormulaMolec>
+	</Compound>
+	<Compound>
+		<RegNum>
+			<nCASRNum>7732185</nCASRNum>
+		</RegNum>
+		<sCommonName>water</sCommonName>
+		<sFormulaMolec>H2O</sFormulaMolec>
+	</Compound>
+	<Compound>
+		<RegNum>
+			<nCASRNum>7782447</nCASRNum>
+		</RegNum>
+		<sCommonName>oxygen</sCommonName>
+		<sFormulaMolec>O2</sFormulaMolec>
+	</Compound>
+	<PureOrMixtureData>
+		<Component>
+			<RegNum>
+				<nCASRNum>766096</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<eExpPurpose>Principal objective of the work</eExpPurpose>
+		<sCompiler>JCE</sCompiler>
+		<sContributor>JCE</sContributor>
+		<dateDateAdded>7/19/2006</dateDateAdded>
+		<Property>
+			<nPropNumber>1</nPropNumber>
+			<Property-MethodID>
+				<PropertyGroup>
+					<HeatCapacityAndDerivedProp>
+						<ePropName>Molar enthalpy, kJ/mol</ePropName>
+						<sMethodName>Calvet microcalorimetry</sMethodName>
+					</HeatCapacityAndDerivedProp>
+				</PropertyGroup>
+			</Property-MethodID>
+			<PropPhaseID>
+				<ePropPhase>Gas</ePropPhase>
+			</PropPhaseID>
+			<ePresentation>Difference with the reference state, X-X(REF)</ePresentation>
+			<eRefStateType>Reference phase with the same composition at fixed temperature and pressure</eRefStateType>
+			<nRefTemp>298.15</nRefTemp>
+			<nRefTempDigits>5</nRefTempDigits>
+			<nRefPressure>100</nRefPressure>
+			<nRefPressureDigits>3</nRefPressureDigits>
+			<RefPhaseID>
+				<eRefPhase>Liquid</eRefPhase>
+			</RefPhaseID>
+			<PropRepeatability>
+				<sRepeatEvaluator>Author</sRepeatEvaluator>
+				<eRepeatMethod>Standard deviation of the mean</eRepeatMethod>
+			</PropRepeatability>
+		</Property>
+		<PhaseID>
+				<ePhase>Gas</ePhase>
+		</PhaseID>
+		<Variable>
+			<nVarNumber>1</nVarNumber>
+			<VariableID>
+				<VariableType>
+					<eTemperature>Temperature, K</eTemperature>
+				</VariableType>
+			</VariableID>
+		</Variable>
+		<Variable>
+			<nVarNumber>2</nVarNumber>
+			<VariableID>
+				<VariableType>
+					<ePressure>Pressure, kPa</ePressure>
+				</VariableType>
+			</VariableID>
+		</Variable>
+		<NumValues>
+			<VariableValue>
+				<nVarNumber>1</nVarNumber>
+				<nVarValue>334.3</nVarValue>
+				<nVarDigits>4</nVarDigits>
+			</VariableValue>
+			<VariableValue>
+				<nVarNumber>2</nVarNumber>
+				<nVarValue>100</nVarValue>
+				<nVarDigits>3</nVarDigits>
+			</VariableValue>
+			<PropertyValue>
+				<nPropNumber>1</nPropNumber>
+				<nPropValue>45.01</nPropValue>
+				<nPropDigits>4</nPropDigits>
+			<PropRepeatability>
+				<nPropRepeatValue>.16</nPropRepeatValue>
+				<nRepetitions>5</nRepetitions>
+			</PropRepeatability>
+			</PropertyValue>
+		</NumValues>
+	</PureOrMixtureData>
+	<PureOrMixtureData>
+		<Component>
+			<RegNum>
+				<nCASRNum>1484806</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+		</Component>
+		<eExpPurpose>Principal objective of the work</eExpPurpose>
+		<sCompiler>JCE</sCompiler>
+		<sContributor>JCE</sContributor>
+		<dateDateAdded>7/19/2006</dateDateAdded>
+		<Property>
+			<nPropNumber>1</nPropNumber>
+			<Property-MethodID>
+				<PropertyGroup>
+					<HeatCapacityAndDerivedProp>
+						<ePropName>Molar enthalpy, kJ/mol</ePropName>
+						<sMethodName>Calvet microcalorimetry</sMethodName>
+					</HeatCapacityAndDerivedProp>
+				</PropertyGroup>
+			</Property-MethodID>
+			<PropPhaseID>
+				<ePropPhase>Gas</ePropPhase>
+			</PropPhaseID>
+			<ePresentation>Difference with the reference state, X-X(REF)</ePresentation>
+			<eRefStateType>Reference phase with the same composition at fixed temperature and pressure</eRefStateType>
+			<nRefTemp>298.15</nRefTemp>
+			<nRefTempDigits>5</nRefTempDigits>
+			<nRefPressure>100</nRefPressure>
+			<nRefPressureDigits>3</nRefPressureDigits>
+			<RefPhaseID>
+				<eRefPhase>Liquid</eRefPhase>
+			</RefPhaseID>
+			<PropRepeatability>
+				<sRepeatEvaluator>Author</sRepeatEvaluator>
+				<eRepeatMethod>Standard deviation of the mean</eRepeatMethod>
+			</PropRepeatability>
+		</Property>
+		<PhaseID>
+				<ePhase>Gas</ePhase>
+		</PhaseID>
+		<Variable>
+			<nVarNumber>1</nVarNumber>
+			<VariableID>
+				<VariableType>
+					<eTemperature>Temperature, K</eTemperature>
+				</VariableType>
+			</VariableID>
+		</Variable>
+		<Variable>
+			<nVarNumber>2</nVarNumber>
+			<VariableID>
+				<VariableType>
+					<ePressure>Pressure, kPa</ePressure>
+				</VariableType>
+			</VariableID>
+		</Variable>
+		<NumValues>
+			<VariableValue>
+				<nVarNumber>1</nVarNumber>
+				<nVarValue>334.3</nVarValue>
+				<nVarDigits>4</nVarDigits>
+			</VariableValue>
+			<VariableValue>
+				<nVarNumber>2</nVarNumber>
+				<nVarValue>100</nVarValue>
+				<nVarDigits>3</nVarDigits>
+			</VariableValue>
+			<PropertyValue>
+				<nPropNumber>1</nPropNumber>
+				<nPropValue>54.39</nPropValue>
+				<nPropDigits>4</nPropDigits>
+			<PropRepeatability>
+				<nPropRepeatValue>.3</nPropRepeatValue>
+				<nRepetitions>5</nRepetitions>
+			</PropRepeatability>
+			</PropertyValue>
+		</NumValues>
+	</PureOrMixtureData>
+	<ReactionData>
+		<Participant>
+			<RegNum>
+				<nCASRNum>766096</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+			<nStoichiometricCoef>-1</nStoichiometricCoef>
+			<ePhase>Liquid</ePhase>
+		</Participant>
+		<Participant>
+			<RegNum>
+				<nCASRNum>124389</nCASRNum>
+			</RegNum>
+			<nSampleNm>0</nSampleNm>
+			<nStoichiometricCoef>7</nStoichiometricCoef>
+			<ePhase>Gas</ePhase>
+		</Participant>
+		<Participant>
+			<RegNum>
+				<nCASRNum>7727379</nCASRNum>
+			</RegNum>
+			<nSampleNm>0</nSampleNm>
+			<nStoichiometricCoef>0.5</nStoichiometricCoef>
+			<ePhase>Gas</ePhase>
+		</Participant>
+		<Participant>
+			<RegNum>
+				<nCASRNum>7732185</nCASRNum>
+			</RegNum>
+			<nSampleNm>0</nSampleNm>
+			<nStoichiometricCoef>7.5</nStoichiometricCoef>
+			<ePhase>Liquid</ePhase>
+		</Participant>
+		<Participant>
+			<RegNum>
+				<nCASRNum>7782447</nCASRNum>
+			</RegNum>
+			<nStoichiometricCoef>-10.75</nStoichiometricCoef>
+			<ePhase>Gas</ePhase>
+		</Participant>
+		<eExpPurpose>Principal objective of the work</eExpPurpose>
+		<sCompiler>JCE</sCompiler>
+		<sContributor>JCE</sContributor>
+		<dateDateAdded>7/19/2006</dateDateAdded>
+		<eReactionType>Combustion with oxygen</eReactionType>
+		<Property>
+			<nPropNumber>1</nPropNumber>
+			<Property-MethodID>
+				<PropertyGroup>
+					<ReactionStateChangeProp>
+						<ePropName>Specific internal energy of reaction at constant volume, J/g</ePropName>
+						<eMethodName>Static bomb calorimetry</eMethodName>
+					</ReactionStateChangeProp>
+				</PropertyGroup>
+			</Property-MethodID>
+			<nTemperature-K>298.15</nTemperature-K>
+			<nTemperatureDigits>5</nTemperatureDigits>
+			<nPressure-kPa>100</nPressure-kPa>
+			<nPressureDigits>3</nPressureDigits>
+			<PropUncertainty>
+				<nUncertAssessNum>1</nUncertAssessNum>
+				<sUncertEvaluator>Author</sUncertEvaluator>
+			</PropUncertainty>
+			<PropDeviceSpec>
+				<eDeviceSpecMethod>Calibrated by the experimentalist</eDeviceSpecMethod>
+			</PropDeviceSpec>
+		</Property>
+		<NumValues>
+			<PropertyValue>
+				<nPropNumber>1</nPropNumber>
+				<nPropValue>-42125.8</nPropValue>
+				<nPropDigits>6</nPropDigits>
+			<PropUncertainty>
+				<nUncertAssessNum>1</nUncertAssessNum>
+				<nStdUncertValue>4.5</nStdUncertValue>
+			</PropUncertainty>
+			<nPropDeviceSpecValue>-2.54252985718345</nPropDeviceSpecValue>
+			</PropertyValue>
+		</NumValues>
+	</ReactionData>
+	<ReactionData>
+		<Participant>
+			<RegNum>
+				<nCASRNum>1484806</nCASRNum>
+			</RegNum>
+			<nSampleNm>1</nSampleNm>
+			<nStoichiometricCoef>-1</nStoichiometricCoef>
+			<ePhase>Liquid</ePhase>
+		</Participant>
+		<Participant>
+			<RegNum>
+				<nCASRNum>124389</nCASRNum>
+			</RegNum>
+			<nSampleNm>0</nSampleNm>
+			<nStoichiometricCoef>7</nStoichiometricCoef>
+			<ePhase>Gas</ePhase>
+		</Participant>
+		<Participant>
+			<RegNum>
+				<nCASRNum>7727379</nCASRNum>
+			</RegNum>
+			<nSampleNm>0</nSampleNm>
+			<nStoichiometricCoef>0.5</nStoichiometricCoef>
+			<ePhase>Gas</ePhase>
+		</Participant>
+		<Participant>
+			<RegNum>
+				<nCASRNum>7732185</nCASRNum>
+			</RegNum>
+			<nSampleNm>0</nSampleNm>
+			<nStoichiometricCoef>7.5</nStoichiometricCoef>
+			<ePhase>Liquid</ePhase>
+		</Participant>
+		<Participant>
+			<RegNum>
+				<nCASRNum>7782447</nCASRNum>
+			</RegNum>
+			<nStoichiometricCoef>-10.75</nStoichiometricCoef>
+			<ePhase>Gas</ePhase>
+		</Participant>
+		<eExpPurpose>Principal objective of the work</eExpPurpose>
+		<sCompiler>JCE</sCompiler>
+		<sContributor>JCE</sContributor>
+		<dateDateAdded>7/19/2006</dateDateAdded>
+		<eReactionType>Combustion with oxygen</eReactionType>
+		<Property>
+			<nPropNumber>1</nPropNumber>
+			<Property-MethodID>
+				<PropertyGroup>
+					<ReactionStateChangeProp>
+						<ePropName>Specific internal energy of reaction at constant volume, J/g</ePropName>
+						<eMethodName>Static bomb calorimetry</eMethodName>
+					</ReactionStateChangeProp>
+				</PropertyGroup>
+			</Property-MethodID>
+			<nTemperature-K>298.15</nTemperature-K>
+			<nTemperatureDigits>5</nTemperatureDigits>
+			<nPressure-kPa>100</nPressure-kPa>
+			<nPressureDigits>3</nPressureDigits>
+			<PropUncertainty>
+				<nUncertAssessNum>1</nUncertAssessNum>
+				<sUncertEvaluator>Author</sUncertEvaluator>
+			</PropUncertainty>
+			<PropDeviceSpec>
+				<eDeviceSpecMethod>Calibrated by the experimentalist</eDeviceSpecMethod>
+			</PropDeviceSpec>
+		</Property>
+		<NumValues>
+			<PropertyValue>
+				<nPropNumber>1</nPropNumber>
+				<nPropValue>-41803.2</nPropValue>
+				<nPropDigits>6</nPropDigits>
+			<PropUncertainty>
+				<nUncertAssessNum>1</nUncertAssessNum>
+				<nStdUncertValue>3</nStdUncertValue>
+			</PropUncertainty>
+			<nPropDeviceSpecValue>-2.02331442134469</nPropDeviceSpecValue>
+			</PropertyValue>
+		</NumValues>
+	</ReactionData>
+</DataReport>

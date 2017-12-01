@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dataReport xmlns="http://www.iupac.org/namespaces/ThermoML" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.iupac.org/namespaces/ThermoML file:/N:/Pfeif/working/ThermoML/thermoML/ThermoML-draft%20v.pfeif.6.xsd">
+<dataReport xmlns="http://www.iupac.org/namespaces/ThermoML" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.iupac.org/namespaces/ThermoML file:/N:/Pfeif/working/ThermoML/thermoML/ThermoML5.xsd">
 
 
     <citation id="1">
@@ -15,7 +15,6 @@
         <TRCRefID><yearPub>1965</yearPub><author1>ker</author1><author2>bel</author2><authorN>0</authorN></TRCRefID>
         <author>Kerr, H.</author><author>Bell, J.A.</author><author>Winegard, W.C.</author>
         <documentType>journal</documentType>
-        <language>German</language>
         <title>Solidification of Binary and Ternary Eutectics</title>
         <yearPublished>1965</yearPublished>
         <journal><journalName>J. Aust. Inst. Met.</journalName><pages>64-69</pages><volume>10</volume></journal>
@@ -62,6 +61,7 @@
             <component><system ref="51"/></component>
             <component><system ref="52"/></component>
         </multiComponent></system>
+    
     <system id="57"><label>Zn,Sn,Pb alloyed specimen, no details on specimens *system id's 23,24,25* </label>
         <multiComponent multiComponentType="alloy" compositionBasis="mass fraction">
             <component><system ref="53"/></component>
@@ -94,8 +94,8 @@
                 <method>DSC/DTA</method>
             </phaseTransitionConditions>
         </property>
-        <point><phaseField ref="56"/>
-            <var/>
+        <point><phaseField ref="41"/>
+           <var/>
             <prop><v>850.35</v><unc><expandedUncertainty><v>3</v> </expandedUncertainty></unc></prop></point>
     </dataset>
     

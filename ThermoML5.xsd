@@ -470,14 +470,6 @@
                 xpath="dataReport/dataset/property/thermodynamic/cryoscopicConstant/molalityFractionCryoscopicConstant/solvent"/>
             <xsd:field xpath="@ref"/>
         </xsd:keyref>
-        <xsd:keyref name="dataset-amountDensity-chemicalKeyRef" refer="tml:chemicalIDKey">
-            <xsd:annotation>
-                <xsd:documentation>key reference to describe the amount denity component</xsd:documentation>
-            </xsd:annotation>
-            <xsd:selector
-                xpath="dataReport/dataset/property/thermodynamic/density/amountDensity/component"/>
-            <xsd:field xpath="@ref"/>
-        </xsd:keyref>
         <xsd:keyref name="dataset-apparentMolarEnthlapySolute-chemicalKeyRef"
             refer="tml:chemicalIDKey">
             <xsd:annotation>
@@ -1663,6 +1655,24 @@
                 xpath="dataReport/dataset/property/entropy/molarEntropyOfVaporizationOrSublimation/phase"/>
             <xsd:field xpath="@ref"/>
         </xsd:keyref>
+        <xsd:keyref name="system-partialPressureFixed-phaseKeyRef" refer="tml:phaseIDKey">
+            <xsd:annotation>
+                <xsd:documentation>key reference for phase id for fixed patial pressure</xsd:documentation>
+            </xsd:annotation>
+            <xsd:selector
+                xpath="dataReport/dataset/fixedConditions/condition/pressure/partial/phase"/>
+            <xsd:field xpath="@ref"/>
+        </xsd:keyref>
+        <xsd:keyref name="system-partialPressureVariable-phaseKeyRef" refer="tml:phaseIDKey">
+            <xsd:annotation>
+                <xsd:documentation>key reference for phase id for variable patial pressure</xsd:documentation>
+            </xsd:annotation>
+            <xsd:selector
+                xpath="dataReport/dataset/variableConditions/condition/pressure/partial/phase"/>
+            <xsd:field xpath="@ref"/>
+        </xsd:keyref>
+
+
 
         <!-- ******************************** -->
         <!-- phaseField key references -->
@@ -2260,7 +2270,7 @@
                     </xsd:complexType>
                 </xsd:element>
             </xsd:choice>
-            <xsd:element minOccurs="0" name="note" type="xsd:string">
+            <xsd:element minOccurs="0" name="note" type="xsd:string" maxOccurs="unbounded">
                 <xsd:annotation>
                     <xsd:documentation>any notes about reference that are not captured anywhere else.</xsd:documentation>
                 </xsd:annotation>
@@ -4295,7 +4305,7 @@ or processing (of characterized components/samples)</xsd:documentation>
             </xsd:element>
             <xsd:element name="spaceGroup" minOccurs="0">
                 <xsd:annotation>
-                    <xsd:documentation>description of symmetry of phase.</xsd:documentation>
+                    <xsd:documentation>description of symmetry of phase using space group, shorthand version.</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -4535,6 +4545,9 @@ or processing (of characterized components/samples)</xsd:documentation>
                 </xsd:simpleType>
             </xsd:element>
             <xsd:element minOccurs="0" name="spaceGroupNumber">
+                <xsd:annotation>
+                    <xsd:documentation>assignment of symmetry in crystal by space group number.</xsd:documentation>
+                </xsd:annotation>
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:positiveInteger">
                         <xsd:maxInclusive value="230"/>
@@ -7120,7 +7133,7 @@ source of the ThermoML file</xsd:documentation>
                 </xsd:annotation>
             </xsd:element>
             <xsd:choice>
-                <xsd:element name="amountDensity" type="tml:amountConcentrationType"/>
+                <xsd:element name="amountConcentration" type="tml:amountConcentrationType"/>
                 <xsd:element name="composition" type="tml:compositionType"/>
                 <!--added  variables-->
                 <xsd:element name="enthalpy" type="tml:enthalpyType"/>
@@ -7140,6 +7153,82 @@ source of the ThermoML file</xsd:documentation>
                 <xsd:element name="specificVolume" type="tml:specificVolumeType"/>
                 <xsd:element name="temperature" type="tml:temperatureType"/>
                 <xsd:element name="waveLength" type="tml:waveLengthType"/>
+                <xsd:element name="solventComposition">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:choice>
+                                <xsd:element name="amountConcentration"
+                                    type="tml:amountConcentrationType">
+                                    <!-- example unit: mol/m^3 -->
+                                    <xsd:annotation>
+                                        <xsd:documentation>Amount of a constituent divided by the volume of the mixture. Also called amount-of-substance concentration, substance concentration (in clinical chemistry) and in older literature molarity. For entities B it is often denoted by  B. The common unit is mole per cubic decimeter (mole dm −3) or mole per litre(mole L −1) sometimes denoted by M. Commonly called molarity of solution</xsd:documentation>
+                                    </xsd:annotation>
+                                </xsd:element>
+                                <xsd:element name="amountRatioOfSoluteToSolvent"
+                                    type="tml:compositionRatioType">
+                                    <!-- example unit: dimensionless?  -->
+                                    <xsd:annotation>
+                                        <xsd:documentation>equilibrium ratio of solute to solvent (mole/mole)</xsd:documentation>
+                                    </xsd:annotation>
+                                </xsd:element>
+                                <xsd:element name="massConcentration"
+                                    type="tml:massPerVolumeSolutionType">
+                                    <!-- example unit: kg/m^3  -->
+                                    <xsd:annotation>
+                                        <xsd:documentation>Mass of a constituent divided by the volume of the mixture</xsd:documentation>
+                                    </xsd:annotation>
+                                </xsd:element>
+                                <xsd:element name="massFraction" type="tml:massFractionType">
+                                    <xsd:annotation>
+                                        <xsd:documentation>mass of a constituent of a mixture divided by the sum of mass of all constituents prior to mixing</xsd:documentation>
+                                    </xsd:annotation>
+                                </xsd:element>
+                                <xsd:element name="massRatioOfSoluteToSolvent"
+                                    type="tml:massFractionType">
+                                    <xsd:annotation>
+                                        <xsd:documentation>Ratio of mass of solute to mass of a solution
+</xsd:documentation>
+                                    </xsd:annotation>
+                                </xsd:element>
+                                <xsd:element name="molality" type="tml:molalityType">
+                                    <xsd:annotation>
+                                        <xsd:documentation>Amount of entities of a solute divided by the mass of the solvent
+</xsd:documentation>
+                                    </xsd:annotation>
+                                </xsd:element>
+                                <xsd:element name="moleFraction" type="tml:moleFractionType">
+                                    <xsd:annotation>
+                                        <xsd:documentation>Amount of a constituent divided by the total amount of all constituents in the mixture. It is also called mole fraction. Amount fraction is equal to the number fraction: the number of entities of one constituent divided by the total number of entities in the mixture</xsd:documentation>
+                                    </xsd:annotation>
+                                </xsd:element>
+                                <xsd:element name="ratioOfAmountOfSoluteToMassOfSolution"
+                                    type="tml:molalityType">
+                                    <xsd:annotation>
+                                        <xsd:documentation>Ratio of amount of a solute (moles) to mass of a solution
+</xsd:documentation>
+                                    </xsd:annotation>
+                                </xsd:element>
+                                <xsd:element name="volumeFraction" type="tml:volumeFractionType">
+                                    <xsd:annotation>
+                                        <xsd:documentation>Volume of a constituent of a mixture divided by the sum of volumes of all constituents prior to mixing</xsd:documentation>
+                                    </xsd:annotation>
+                                </xsd:element>
+                                <xsd:element name="volumeRatioOfSoluteToSolvent"
+                                    type="tml:volumeRatioOfSoluteToSolventType">
+                                    <!-- example unit: m^3/m^3  -->
+                                    <xsd:annotation>
+                                        <xsd:documentation>Ratio of volume of solute to solvent. Ratio of partial pressure to molarity</xsd:documentation>
+                                    </xsd:annotation>
+                                </xsd:element>
+                            </xsd:choice>
+                            <xsd:element name="solvent" type="tml:chemicalRefType">
+                                <xsd:annotation>
+                                    <xsd:documentation>subsystem for which the composition is defined. </xsd:documentation>
+                                </xsd:annotation>
+                            </xsd:element>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
             </xsd:choice>
         </xsd:sequence>
         <xsd:attribute name="conditionDescription" use="required">
@@ -7152,6 +7241,7 @@ source of the ThermoML file</xsd:documentation>
                     <xsd:enumeration value="equilibrium condition"/>
                     <xsd:enumeration value="high condition value of average"/>
                     <xsd:enumeration value="low condition value of average"/>
+                    <xsd:enumeration value="non-equilibrium"/>
                 </xsd:restriction>
             </xsd:simpleType>
         </xsd:attribute>
@@ -7610,13 +7700,6 @@ gamma_± = = gamma_+^(mu_+)+gamma_-^(mu_-)	Note that for an individual ion, neit
                                         <xsd:element name="massDensity" type="tml:massDensityType">
                                             <xsd:annotation>
                                                 <xsd:documentation>Mass of a sample or body divided by its volume. Also known as specific density
-</xsd:documentation>
-                                            </xsd:annotation>
-                                        </xsd:element>
-                                        <xsd:element name="amountDensity"
-                                            type="tml:amountConcentrationType">
-                                            <xsd:annotation>
-                                                <xsd:documentation>the amount of substance (mole) divided by the volume
 </xsd:documentation>
                                             </xsd:annotation>
                                         </xsd:element>
@@ -8199,7 +8282,7 @@ or mole undergoing the transition. "
                                         <!-- example unit:	dimensionless 		-->
                                         <!-- example unit:	m^3/mol 			-->
                                         <xsd:element name="relativePermittivityAtZeroFrequency"
-                                            type="tml:relativePermittivityType">
+                                            type="tml:permittivityType">
                                             <xsd:annotation>
                                                 <xsd:documentation>Ratio of the electric field strength in vacuum to that in a given medium at zero frequency. It was formerly called the dielectric constant</xsd:documentation>
                                             </xsd:annotation>
@@ -9482,24 +9565,24 @@ Values and descriptive attributes as defined in the "Guide to the Expression of 
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
                         <!--unsure if this should be dimensionless or wt/at percent/fraction-->
-                        <xsd:enumeration value="atomic fraction"/>
-                        <xsd:enumeration value="atomic percent"/>
-                        <xsd:enumeration value="weight fraction"/>
-                        <xsd:enumeration value="weight percent"/>
-                        <xsd:enumeration value="Molality, mol/kg"/>
+                        <xsd:enumeration value="mole fraction"/>
+                        <xsd:enumeration value="mole percent"/>
+                        <xsd:enumeration value="mass fraction"/>
+                        <xsd:enumeration value="mass percent"/>
+                        <xsd:enumeration value="molality, mol/kg"/>
                         <xsd:enumeration
-                            value="Ratio of amount of solute to mass of solution, mol/kg"/>
+                            value="ratio of amount of solute to mass of solution, mol/kg"/>
                         <xsd:enumeration
-                            value="Ratio of mass of solute to volume of solution, kg/m3"/>
-                        <xsd:enumeration value="Amount ratio of solute to solvent"/>
-                        <xsd:enumeration value="Mass ratio of solute to solvent"/>
-                        <xsd:enumeration value="Volume ratio of solute to solvent"/>
-                        <xsd:enumeration value="Initial mole fraction of solute"/>
-                        <xsd:enumeration value="Final mole fraction of solute"/>
-                        <xsd:enumeration value="Initial mass fraction of solute"/>
-                        <xsd:enumeration value="Final mass fraction of solute"/>
-                        <xsd:enumeration value="Initial molality of solute, mol/kg"/>
-                        <xsd:enumeration value="Final molality of solute, mol/kg"/>
+                            value="ratio of mass of solute to volume of solution, kg/m3"/>
+                        <xsd:enumeration value="amount ratio of solute to solvent"/>
+                        <xsd:enumeration value="mass ratio of solute to solvent"/>
+                        <xsd:enumeration value="volume ratio of solute to solvent"/>
+                        <xsd:enumeration value="initial mole fraction of solute"/>
+                        <xsd:enumeration value="final mole fraction of solute"/>
+                        <xsd:enumeration value="initial mass fraction of solute"/>
+                        <xsd:enumeration value="final mass fraction of solute"/>
+                        <xsd:enumeration value="initial molality of solute, mol/kg"/>
+                        <xsd:enumeration value="final molality of solute, mol/kg"/>
                         <xsd:enumeration value="amount of atoms"/>
                     </xsd:restriction>
                 </xsd:simpleType>
@@ -9525,23 +9608,23 @@ Values and descriptive attributes as defined in the "Guide to the Expression of 
                     </xsd:annotation>
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
-                            <xsd:enumeration value="Mass spectroscopy"/>
-                            <xsd:enumeration value="Energy dispersive spectroscopy"/>
-                            <xsd:enumeration value="Electron probe microganalysis"/>
-                            <xsd:enumeration value="Secondary ion mass spectroscopy"/>
-                            <xsd:enumeration value="Wave dispersive spectroscopy"/>
-                            <xsd:enumeration value="Optical Emission Spectroscopy"/>
-                            <xsd:enumeration value="Spark Emission Spectroscopy"/>
-                            <xsd:enumeration value="Electron energy loss spectroscopy"/>
-                            <xsd:enumeration value="X-ray photoelectron spectroscopy"/>
-                            <xsd:enumeration value="X-ray fluorescence"/>
-                            <xsd:enumeration value="Gas chromatography"/>
-                            <xsd:enumeration value="Chemical analysis"/>
+                            <xsd:enumeration value="mass spectroscopy"/>
+                            <xsd:enumeration value="energy dispersive spectroscopy"/>
+                            <xsd:enumeration value="electron probe microganalysis"/>
+                            <xsd:enumeration value="secondary ion mass spectroscopy"/>
+                            <xsd:enumeration value="wave dispersive spectroscopy"/>
+                            <xsd:enumeration value="optical emission spectroscopy"/>
+                            <xsd:enumeration value="spark emission spectroscopy"/>
+                            <xsd:enumeration value="electron energy loss spectroscopy"/>
+                            <xsd:enumeration value="x-ray photoelectron spectroscopy"/>
+                            <xsd:enumeration value="x-ray fluorescence"/>
+                            <xsd:enumeration value="gas chromatography"/>
+                            <xsd:enumeration value="chemical analysis"/>
                             <xsd:enumeration value="NMR"/>
-                            <xsd:enumeration value="Acid-base titration"/>
+                            <xsd:enumeration value="acid-base titration"/>
                             <xsd:enumeration value="other type of titration"/>
-                            <xsd:enumeration value="Atom probe tomography"/>
-                            <xsd:enumeration value="Dissolution/Filtration experiment"/>
+                            <xsd:enumeration value="atom probe tomography"/>
+                            <xsd:enumeration value="dissolution/filtration experiment"/>
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
@@ -9573,14 +9656,14 @@ Values and descriptive attributes as defined in the "Guide to the Expression of 
                     </xsd:annotation>
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
-                            <xsd:enumeration value="Inductive pick up coils"/>
-                            <xsd:enumeration value="Vibrating sample magnetometer"/>
-                            <xsd:enumeration value="Pulsed field extraction"/>
-                            <xsd:enumeration value="Torque magnetometer"/>
-                            <xsd:enumeration value="Faraday magnetometer"/>
-                            <xsd:enumeration value="Optical magnetometer"/>
-                            <xsd:enumeration value="Hall effect magnetometer"/>
-                            <xsd:enumeration value="Superconducing quantum interference device"/>
+                            <xsd:enumeration value="inductive pick up coils"/>
+                            <xsd:enumeration value="vibrating sample magnetometer"/>
+                            <xsd:enumeration value="pulsed field extraction"/>
+                            <xsd:enumeration value="torque magnetometer"/>
+                            <xsd:enumeration value="faraday magnetometer"/>
+                            <xsd:enumeration value="optical magnetometer"/>
+                            <xsd:enumeration value="hall effect magnetometer"/>
+                            <xsd:enumeration value="superconducing quantum interference device"/>
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
@@ -9612,14 +9695,14 @@ Values and descriptive attributes as defined in the "Guide to the Expression of 
                     </xsd:annotation>
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
-                            <xsd:enumeration value="Inductive pick up coils"/>
-                            <xsd:enumeration value="Vibrating sample magnetometer"/>
-                            <xsd:enumeration value="Pulsed field extraction"/>
-                            <xsd:enumeration value="Torque magnetometer"/>
-                            <xsd:enumeration value="Faraday magnetometer"/>
-                            <xsd:enumeration value="Optical magnetometer"/>
-                            <xsd:enumeration value="Hall effect magnetometer"/>
-                            <xsd:enumeration value="Superconducing quantum interference device"/>
+                            <xsd:enumeration value="inductive pick up coils"/>
+                            <xsd:enumeration value="vibrating sample magnetometer"/>
+                            <xsd:enumeration value="pulsed field extraction"/>
+                            <xsd:enumeration value="torque magnetometer"/>
+                            <xsd:enumeration value="faraday magnetometer"/>
+                            <xsd:enumeration value="optical magnetometer"/>
+                            <xsd:enumeration value="hall effect magnetometer"/>
+                            <xsd:enumeration value="superconducing quantum interference device"/>
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
@@ -9655,38 +9738,38 @@ Values and descriptive attributes as defined in the "Guide to the Expression of 
                     </xsd:annotation>
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
-                            <xsd:enumeration value="Burnett expansion method"/>
-                            <xsd:enumeration value="Bellows volumetry"/>
+                            <xsd:enumeration value="burnett expansion method"/>
+                            <xsd:enumeration value="bellows volumetry"/>
                             <xsd:enumeration
-                                value="Buoyancy - magnetic float or magnetic suspension"/>
+                                value="buoyancy - magnetic float or magnetic suspension"/>
                             <xsd:enumeration
-                                value="Buoyancy - hydrostatic balance with magnetic float"/>
+                                value="buoyancy - hydrostatic balance with magnetic float"/>
                             <xsd:enumeration
-                                value="Buoyancy - hydrostatic balance with magnetic suspension - one sinker"/>
+                                value="buoyancy - hydrostatic balance with magnetic suspension - one sinker"/>
                             <xsd:enumeration
-                                value="Buoyancy - hydrostatic balance with magnetic suspension - two sinkers"/>
-                            <xsd:enumeration value="Calculated with densities of this investigation"/>
+                                value="buoyancy - hydrostatic balance with magnetic suspension - two sinkers"/>
+                            <xsd:enumeration value="calculated with densities of this investigation"/>
                             <xsd:enumeration
-                                value="Calculated with a solvent density reported elsewhere"/>
-                            <xsd:enumeration value="Density floats method"/>
-                            <xsd:enumeration value="Derived analytically"/>
+                                value="calculated with a solvent density reported elsewhere"/>
+                            <xsd:enumeration value="density floats method"/>
+                            <xsd:enumeration value="derived analytically"/>
                             <xsd:enumeration
-                                value="Derived from from index of refraction callibration"/>
+                                value="derived from from index of refraction callibration"/>
                             <xsd:enumeration
-                                value="Derived from shadow graph volume and levitated droplet mass"/>
-                            <xsd:enumeration value="Derived from speed of sound"/>
-                            <xsd:enumeration value="Derived graphically"/>
-                            <xsd:enumeration value="Direct dilatometry"/>
-                            <xsd:enumeration value="Hydrometer"/>
-                            <xsd:enumeration value="Isochoric PVT measurement"/>
-                            <xsd:enumeration value="Laser pulse heating"/>
-                            <xsd:enumeration value="Other PVT measurement"/>
-                            <xsd:enumeration value="Piezometry"/>
-                            <xsd:enumeration value="Piezometry, constant-volume"/>
-                            <xsd:enumeration value="Pycnometric method"/>
-                            <xsd:enumeration value="Resistive pulse heating"/>
-                            <xsd:enumeration value="Vibrating tube method"/>
-                            <xsd:enumeration value="X-ray diffraction"/>
+                                value="derived from shadow graph volume and levitated droplet mass"/>
+                            <xsd:enumeration value="derived from speed of sound"/>
+                            <xsd:enumeration value="derived graphically"/>
+                            <xsd:enumeration value="direct dilatometry"/>
+                            <xsd:enumeration value="hydrometer"/>
+                            <xsd:enumeration value="isochoric PVT measurement"/>
+                            <xsd:enumeration value="laser pulse heating"/>
+                            <xsd:enumeration value="other PVT measurement"/>
+                            <xsd:enumeration value="piezometry"/>
+                            <xsd:enumeration value="piezometry, constant-volume"/>
+                            <xsd:enumeration value="pycnometric method"/>
+                            <xsd:enumeration value="resistive pulse heating"/>
+                            <xsd:enumeration value="vibrating tube method"/>
+                            <xsd:enumeration value="x-ray diffraction"/>
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
@@ -9734,18 +9817,18 @@ Values and descriptive attributes as defined in the "Guide to the Expression of 
                     </xsd:annotation>
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
-                            <xsd:enumeration value="By X=Y"/>
-                            <xsd:enumeration value="By T or P extreme"/>
-                            <xsd:enumeration value="Chromatography"/>
-                            <xsd:enumeration value="Spectrophotometry"/>
-                            <xsd:enumeration value="Density calibration data"/>
-                            <xsd:enumeration value="Index of refraction calibration data"/>
-                            <xsd:enumeration value="Speed of sound calibration data"/>
-                            <xsd:enumeration value="Calculated by Gibbs-Duhem equation"/>
-                            <xsd:enumeration value="Titration method"/>
-                            <xsd:enumeration value="Phase equilibration"/>
-                            <xsd:enumeration value="Derived from phase diagram analysis"/>
-                            <xsd:enumeration value="Photoacoustic method"/>
+                            <xsd:enumeration value="by X=Y"/>
+                            <xsd:enumeration value="by T or P extreme"/>
+                            <xsd:enumeration value="calculated by Gibbs-Duhem equation"/>
+                            <xsd:enumeration value="chromatography"/>
+                            <xsd:enumeration value="density calibration data"/>
+                            <xsd:enumeration value="derived from phase diagram analysis"/>
+                            <xsd:enumeration value="index of refraction calibration data"/>
+                            <xsd:enumeration value="phase equilibration"/>
+                            <xsd:enumeration value="photoacoustic method"/>
+                            <xsd:enumeration value="spectrophotometry"/>
+                            <xsd:enumeration value="speed of sound calibration data"/>
+                            <xsd:enumeration value="titration method"/>
                             <xsd:enumeration value="Other"/>
                         </xsd:restriction>
                     </xsd:simpleType>
@@ -9787,11 +9870,11 @@ Values and descriptive attributes as defined in the "Guide to the Expression of 
                     </xsd:annotation>
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
-                            <xsd:enumeration value="Statistical analysis of micrographs"/>
                             <xsd:enumeration value="iterative polishing/micrograph reconstruction"/>
-                            <xsd:enumeration value="X-ray diffraction"/>
-                            <xsd:enumeration value="x-ray tomography"/>
                             <xsd:enumeration value="iterative EBSD/polishing reconstruction"/>
+                            <xsd:enumeration value="statistical analysis of micrographs"/>
+                            <xsd:enumeration value="x-ray diffraction"/>
+                            <xsd:enumeration value="x-ray tomography"/>
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
@@ -9831,13 +9914,13 @@ Values and descriptive attributes as defined in the "Guide to the Expression of 
                     </xsd:annotation>
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
-                            <xsd:enumeration value="Manometer"/>
+                            <xsd:enumeration value="aneroid gage"/>
+                            <xsd:enumeration value="cold cathode"/>
+                            <xsd:enumeration value="hot cathode"/>
                             <xsd:enumeration value="hydrostatic guage"/>
-                            <xsd:enumeration value="Aneroid gage"/>
-                            <xsd:enumeration value="Thermocouple gage"/>
-                            <xsd:enumeration value="Ionization gage"/>
-                            <xsd:enumeration value="Hot cathode"/>
-                            <xsd:enumeration value="Cold cathode"/>
+                            <xsd:enumeration value="ionization gage"/>
+                            <xsd:enumeration value="manometer"/>
+                            <xsd:enumeration value="thermocouple gage"/>
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
@@ -9856,6 +9939,7 @@ Values and descriptive attributes as defined in the "Guide to the Expression of 
                                 <xsd:documentation>solvent component(s) linked to property</xsd:documentation>
                             </xsd:annotation>
                         </xsd:element>
+                        <xsd:element name="phase" type="tml:phaseRefType"/>
                     </xsd:sequence>
                 </xsd:complexType>
             </xsd:element>
@@ -9945,15 +10029,15 @@ Values and descriptive attributes as defined in the "Guide to the Expression of 
                     </xsd:annotation>
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
-                            <xsd:enumeration value="Chromatography"/>
-                            <xsd:enumeration value="Differential ebuilliometry"/>
-                            <xsd:enumeration value="Static method"/>
-                            <xsd:enumeration value="Mass-spectrometry"/>
-                            <xsd:enumeration value="NMR spectrometry"/>
-                            <xsd:enumeration value="Calculated from electrochemical cell potential"/>
+                            <xsd:enumeration value="calculated from electrochemical cell potential"/>
                             <xsd:enumeration
-                                value="Chemical equilibriation / Heterogeneous Equilibration"/>
+                                value="chemical equilibriation / Heterogeneous Equilibration"/>
+                            <xsd:enumeration value="chromatography"/>
+                            <xsd:enumeration value="differential ebuilliometry"/>
                             <xsd:enumeration value="gas chromatography"/>
+                            <xsd:enumeration value="mass-spectrometry"/>
+                            <xsd:enumeration value="NMR spectrometry"/>
+                            <xsd:enumeration value="static method"/>
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
@@ -9994,21 +10078,21 @@ Values and descriptive attributes as defined in the "Guide to the Expression of 
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
                             <xsd:enumeration value="AC calorimetry"/>
-                            <xsd:enumeration value="Closed cup calorimetry"/>
-                            <xsd:enumeration value="Drop calorimetry"/>
-                            <xsd:enumeration value="Drop ice or diphenyl ether calorimetry"/>
+                            <xsd:enumeration value="closed cup calorimetry"/>
+                            <xsd:enumeration value="drop calorimetry"/>
+                            <xsd:enumeration value="drop ice or diphenyl ether calorimetry"/>
                             <xsd:enumeration value="DSC"/>
                             <xsd:enumeration value="DTA"/>
-                            <xsd:enumeration value="Flow calorimeter"/>
-                            <xsd:enumeration value="Large scale scanning calorimetry"/>
-                            <xsd:enumeration value="Laser pulse heating method"/>
-                            <xsd:enumeration value="Open cup calorimetry"/>
-                            <xsd:enumeration value="Resistive pulse heating"/>
-                            <xsd:enumeration value="Resistive pulse heating-millisecond"/>
-                            <xsd:enumeration value="Resistive pulse heating-microsecond"/>
-                            <xsd:enumeration value="Small adiabatic calorimetry"/>
-                            <xsd:enumeration value="Thin film calorimetry"/>
-                            <xsd:enumeration value="Vacuum adiabatic calorimetry"/>
+                            <xsd:enumeration value="flow calorimeter"/>
+                            <xsd:enumeration value="large scale scanning calorimetry"/>
+                            <xsd:enumeration value="laser pulse heating method"/>
+                            <xsd:enumeration value="open cup calorimetry"/>
+                            <xsd:enumeration value="resistive pulse heating"/>
+                            <xsd:enumeration value="resistive pulse heating-millisecond"/>
+                            <xsd:enumeration value="resistive pulse heating-microsecond"/>
+                            <xsd:enumeration value="small adiabatic calorimetry"/>
+                            <xsd:enumeration value="thin film calorimetry"/>
+                            <xsd:enumeration value="vacuum adiabatic calorimetry"/>
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
@@ -10122,13 +10206,13 @@ Values and descriptive attributes as defined in the "Guide to the Expression of 
                     </xsd:annotation>
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
-                            <xsd:enumeration value="Parallel plate capacitor"/>
-                            <xsd:enumeration value="Coaxial cylinder capacitor"/>
-                            <xsd:enumeration value="Cross capacitor"/>
-                            <xsd:enumeration value="Reentrant cavity resonator"/>
-                            <xsd:enumeration value="Coaxial line"/>
-                            <xsd:enumeration value="Wave guide"/>
-                            <xsd:enumeration value="Far infrared free space"/>
+                            <xsd:enumeration value="parallel plate capacitor"/>
+                            <xsd:enumeration value="coaxial cylinder capacitor"/>
+                            <xsd:enumeration value="cross capacitor"/>
+                            <xsd:enumeration value="reentrant cavity resonator"/>
+                            <xsd:enumeration value="coaxial line"/>
+                            <xsd:enumeration value="wave guide"/>
+                            <xsd:enumeration value="far infrared free space"/>
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
@@ -10166,18 +10250,18 @@ Values and descriptive attributes as defined in the "Guide to the Expression of 
                     </xsd:annotation>
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
-                            <xsd:enumeration value="By X=Y"/>
-                            <xsd:enumeration value="By T or P extreme"/>
-                            <xsd:enumeration value="Chromatography"/>
-                            <xsd:enumeration value="Spectrophotometry"/>
-                            <xsd:enumeration value="Density calibration data"/>
-                            <xsd:enumeration value="Index of refraction calibration data"/>
-                            <xsd:enumeration value="Speed of sound calibration data"/>
-                            <xsd:enumeration value="Calculated by Gibbs-Duhem equation"/>
-                            <xsd:enumeration value="Titration method"/>
-                            <xsd:enumeration value="Phase equilibration"/>
-                            <xsd:enumeration value="Derived from phase diagram analysis"/>
-                            <xsd:enumeration value="Photoacoustic method"/>
+                            <xsd:enumeration value="by X=Y"/>
+                            <xsd:enumeration value="by T or P extreme"/>
+                            <xsd:enumeration value="calculated by Gibbs-Duhem equation"/>
+                            <xsd:enumeration value="chromatography"/>
+                            <xsd:enumeration value="density calibration data"/>
+                            <xsd:enumeration value="derived from phase diagram analysis"/>
+                            <xsd:enumeration value="index of refraction calibration data"/>
+                            <xsd:enumeration value="phase equilibration"/>
+                            <xsd:enumeration value="photoacoustic method"/>
+                            <xsd:enumeration value="spectrophotometry"/>
+                            <xsd:enumeration value="speed of sound calibration data"/>
+                            <xsd:enumeration value="titration method"/>
                             <xsd:enumeration value="Other"/>
                         </xsd:restriction>
                     </xsd:simpleType>
@@ -10226,11 +10310,11 @@ Values and descriptive attributes as defined in the "Guide to the Expression of 
                     </xsd:annotation>
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
-                            <xsd:enumeration value="Isochoric PVT measurement"/>
-                            <xsd:enumeration value="Other PVT measurement"/>
-                            <xsd:enumeration value="Burnett expansion method"/>
-                            <xsd:enumeration value="Constant-volume piezometry"/>
-                            <xsd:enumeration value="Derived from speed of sound"/>
+                            <xsd:enumeration value="burnett expansion method"/>
+                            <xsd:enumeration value="constant-volume piezometry"/>
+                            <xsd:enumeration value="derived from speed of sound"/>
+                            <xsd:enumeration value="isochoric PVT measurement"/>
+                            <xsd:enumeration value="other PVT measurement"/>
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
@@ -10267,10 +10351,10 @@ Values and descriptive attributes as defined in the "Guide to the Expression of 
                     </xsd:annotation>
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
-                            <xsd:enumeration value="Isochoric PVT measurement"/>
-                            <xsd:enumeration value="Other PVT measurement"/>
-                            <xsd:enumeration value="Burnett expansion method"/>
-                            <xsd:enumeration value="Constant-volume piezometry"/>
+                            <xsd:enumeration value="burnett expansion method"/>
+                            <xsd:enumeration value="constant-volume piezometry"/>
+                            <xsd:enumeration value="isochoric PVT measurement"/>
+                            <xsd:enumeration value="other PVT measurement"/>
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
@@ -10380,16 +10464,16 @@ Values and descriptive attributes as defined in the "Guide to the Expression of 
                     </xsd:annotation>
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
-                            <xsd:enumeration value="Dispersion"/>
-                            <xsd:enumeration value="Diaphragm cell"/>
-                            <xsd:enumeration value="Closed capillary"/>
-                            <xsd:enumeration value="Taylor dispersion model"/>
+                            <xsd:enumeration value="closed capillary"/>
+                            <xsd:enumeration value="derived from speed of sound"/>
+                            <xsd:enumeration value="dispersion"/>
+                            <xsd:enumeration value="diaphragm cell"/>
                             <xsd:enumeration value="NMR spin-echo technique"/>
-                            <xsd:enumeration value="Open capillary"/>
-                            <xsd:enumeration value="Optical method"/>
-                            <xsd:enumeration value="Lamb interferometer"/>
-                            <xsd:enumeration value="Oscillating sinker"/>
-                            <xsd:enumeration value="Derived from speed of sound"/>
+                            <xsd:enumeration value="open capillary"/>
+                            <xsd:enumeration value="optical method"/>
+                            <xsd:enumeration value="oscillating sinker"/>
+                            <xsd:enumeration value="lamb interferometer"/>
+                            <xsd:enumeration value="taylor dispersion model"/>
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
@@ -10436,10 +10520,10 @@ Values and descriptive attributes as defined in the "Guide to the Expression of 
                     </xsd:annotation>
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
-                            <xsd:enumeration value="Alternating current cell with electrodes"/>
-                            <xsd:enumeration value="Direct cell with electrodes"/>
+                            <xsd:enumeration value="alternating current cell with electrodes"/>
+                            <xsd:enumeration value="direct cell with electrodes"/>
                             <xsd:enumeration
-                                value="Voltage change across transformer (no electrode)"/>
+                                value="voltage change across transformer (no electrode)"/>
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
@@ -10477,18 +10561,18 @@ Values and descriptive attributes as defined in the "Guide to the Expression of 
                     </xsd:annotation>
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
-                            <xsd:enumeration value="Resistive pulse heating"/>
-                            <xsd:enumeration value="High frequency levitating drop"/>
-                            <xsd:enumeration value="Resistive pulse heating - microsecond"/>
-                            <xsd:enumeration value="Resistive pulse heating - millisecond"/>
                             <xsd:enumeration value="AC bridge method"/>
                             <xsd:enumeration value="AC potentiometric method"/>
                             <xsd:enumeration value="DC bridge method"/>
                             <xsd:enumeration value="DC potentiometric method"/>
-                            <xsd:enumeration value="Eddy current decay method"/>
-                            <xsd:enumeration value="Mutual induction method"/>
-                            <xsd:enumeration value="Voltmeter/Ammeter direct reading"/>
-                            <xsd:enumeration value="Four point probe"/>
+                            <xsd:enumeration value="eddy current decay method"/>
+                            <xsd:enumeration value="four point probe"/>
+                            <xsd:enumeration value="high frequency levitating drop"/>
+                            <xsd:enumeration value="mutual induction method"/>
+                            <xsd:enumeration value="resistive pulse heating"/>
+                            <xsd:enumeration value="resistive pulse heating - microsecond"/>
+                            <xsd:enumeration value="resistive pulse heating - millisecond"/>
+                            <xsd:enumeration value="voltmeter/Ammeter direct reading"/>
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
@@ -10532,21 +10616,21 @@ Values and descriptive attributes as defined in the "Guide to the Expression of 
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
                             <xsd:enumeration value="AC calorimetry"/>
-                            <xsd:enumeration value="Closed cup calorimetry"/>
-                            <xsd:enumeration value="Drop calorimetry"/>
-                            <xsd:enumeration value="Drop ice or diphenyl ether calorimetry"/>
+                            <xsd:enumeration value="closed cup calorimetry"/>
+                            <xsd:enumeration value="drop calorimetry"/>
+                            <xsd:enumeration value="drop ice or diphenyl ether calorimetry"/>
                             <xsd:enumeration value="DSC"/>
                             <xsd:enumeration value="DTA"/>
-                            <xsd:enumeration value="Flow calorimeter"/>
-                            <xsd:enumeration value="Large scale scanning calorimetry"/>
-                            <xsd:enumeration value="Laser pulse heating method"/>
-                            <xsd:enumeration value="Open cup calorimetry"/>
-                            <xsd:enumeration value="Resistive pulse heating"/>
-                            <xsd:enumeration value="Resistive pulse heating-millisecond"/>
-                            <xsd:enumeration value="Resistive pulse heating-microsecond"/>
-                            <xsd:enumeration value="Small adiabatic calorimetry"/>
-                            <xsd:enumeration value="Thin film calorimetry"/>
-                            <xsd:enumeration value="Vacuum adiabatic calorimetry"/>
+                            <xsd:enumeration value="flow calorimeter"/>
+                            <xsd:enumeration value="large scale scanning calorimetry"/>
+                            <xsd:enumeration value="laser pulse heating method"/>
+                            <xsd:enumeration value="open cup calorimetry"/>
+                            <xsd:enumeration value="resistive pulse heating"/>
+                            <xsd:enumeration value="resistive pulse heating-millisecond"/>
+                            <xsd:enumeration value="resistive pulse heating-microsecond"/>
+                            <xsd:enumeration value="small adiabatic calorimetry"/>
+                            <xsd:enumeration value="thin film calorimetry"/>
+                            <xsd:enumeration value="vacuum adiabatic calorimetry"/>
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
@@ -10584,22 +10668,22 @@ Values and descriptive attributes as defined in the "Guide to the Expression of 
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
                             <xsd:enumeration value="AC calorimetry"/>
-                            <xsd:enumeration value="Closed cup calorimetry"/>
-                            <xsd:enumeration value="Drop calorimetry"/>
-                            <xsd:enumeration value="Drop ice or diphenyl ether calorimetry"/>
+                            <xsd:enumeration value="closed cup calorimetry"/>
+                            <xsd:enumeration value="drop calorimetry"/>
+                            <xsd:enumeration value="drop ice or diphenyl ether calorimetry"/>
                             <xsd:enumeration value="DSC"/>
                             <xsd:enumeration value="DTA"/>
-                            <xsd:enumeration value="Flow calorimeter"/>
-                            <xsd:enumeration value="Large scale (1g) scanning calorimetry"/>
-                            <xsd:enumeration value="Laser pulse heating method"/>
-                            <xsd:enumeration value="Open cup calorimetry"/>
-                            <xsd:enumeration value="Resistive pulse heating"/>
-                            <xsd:enumeration value="Resistive pulse heating-millisecond"/>
-                            <xsd:enumeration value="Resistive pulse heating-microsecond"/>
-                            <xsd:enumeration value="Small sample (50mg) scanning calorimetry"/>
-                            <xsd:enumeration value="Small (less than 1g) adiabatic calorimetry"/>
-                            <xsd:enumeration value="Thin film calorimetry"/>
-                            <xsd:enumeration value="Vacuum adiabatic calorimetry"/>
+                            <xsd:enumeration value="flow calorimeter"/>
+                            <xsd:enumeration value="large scale (1g) scanning calorimetry"/>
+                            <xsd:enumeration value="laser pulse heating method"/>
+                            <xsd:enumeration value="open cup calorimetry"/>
+                            <xsd:enumeration value="resistive pulse heating"/>
+                            <xsd:enumeration value="resistive pulse heating-millisecond"/>
+                            <xsd:enumeration value="resistive pulse heating-microsecond"/>
+                            <xsd:enumeration value="small sample (50mg) scanning calorimetry"/>
+                            <xsd:enumeration value="small (less than 1g) adiabatic calorimetry"/>
+                            <xsd:enumeration value="thin film calorimetry"/>
+                            <xsd:enumeration value="vacuum adiabatic calorimetry"/>
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
@@ -10638,21 +10722,21 @@ Values and descriptive attributes as defined in the "Guide to the Expression of 
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
                             <xsd:enumeration value="AC calorimetry"/>
-                            <xsd:enumeration value="Closed cup calorimetry"/>
-                            <xsd:enumeration value="Drop calorimetry"/>
-                            <xsd:enumeration value="Drop ice or diphenyl ether calorimetry"/>
+                            <xsd:enumeration value="closed cup calorimetry"/>
+                            <xsd:enumeration value="drop calorimetry"/>
+                            <xsd:enumeration value="drop ice or diphenyl ether calorimetry"/>
                             <xsd:enumeration value="DSC"/>
                             <xsd:enumeration value="DTA"/>
-                            <xsd:enumeration value="Flow calorimeter"/>
-                            <xsd:enumeration value="Large scale scanning calorimetry"/>
-                            <xsd:enumeration value="Laser pulse heating method"/>
-                            <xsd:enumeration value="Open cup calorimetry"/>
-                            <xsd:enumeration value="Resistive pulse heating"/>
-                            <xsd:enumeration value="Resistive pulse heating-millisecond"/>
-                            <xsd:enumeration value="Resistive pulse heating-microsecond"/>
-                            <xsd:enumeration value="Small adiabatic calorimetry"/>
-                            <xsd:enumeration value="Thin film calorimetry"/>
-                            <xsd:enumeration value="Vacuum adiabatic calorimetry"/>
+                            <xsd:enumeration value="flow calorimeter"/>
+                            <xsd:enumeration value="large scale scanning calorimetry"/>
+                            <xsd:enumeration value="laser pulse heating method"/>
+                            <xsd:enumeration value="open cup calorimetry"/>
+                            <xsd:enumeration value="resistive pulse heating"/>
+                            <xsd:enumeration value="resistive pulse heating-millisecond"/>
+                            <xsd:enumeration value="resistive pulse heating-microsecond"/>
+                            <xsd:enumeration value="small adiabatic calorimetry"/>
+                            <xsd:enumeration value="thin film calorimetry"/>
+                            <xsd:enumeration value="vacuum adiabatic calorimetry"/>
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
@@ -10823,11 +10907,11 @@ Values and descriptive attributes as defined in the "Guide to the Expression of 
                     </xsd:annotation>
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
-                            <xsd:enumeration value="Capillary tube (Ostwald, Ubbelohde) method"/>
-                            <xsd:enumeration value="Cone and plate viscometry"/>
-                            <xsd:enumeration value="Concentric cylinder viscometry"/>
-                            <xsd:enumeration value="Falling or Rolling Sphere viscometry"/>
-                            <xsd:enumeration value="Moving piston method"/>
+                            <xsd:enumeration value="capillary tube (Ostwald, Ubbelohde) method"/>
+                            <xsd:enumeration value="cone and plate viscometry"/>
+                            <xsd:enumeration value="concentric cylinder viscometry"/>
+                            <xsd:enumeration value="falling or rolling sphere viscometry"/>
+                            <xsd:enumeration value="moving piston method"/>
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
@@ -10871,8 +10955,8 @@ Values and descriptive attributes as defined in the "Guide to the Expression of 
                     </xsd:annotation>
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
-                            <xsd:enumeration value="Knudson effusion mass spectrometry"/>
-                            <xsd:enumeration value="Calculated from Knudson effusion weight loss"/>
+                            <xsd:enumeration value="calculated from knudson effusion weight loss"/>
+                            <xsd:enumeration value="knudson effusion mass spectrometry"/>
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
@@ -10916,8 +11000,8 @@ Values and descriptive attributes as defined in the "Guide to the Expression of 
                     </xsd:annotation>
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
-                            <xsd:enumeration value="Knudson effusion mass spectrometry"/>
-                            <xsd:enumeration value="Calculated from Knudson effusion weight loss"/>
+                            <xsd:enumeration value="knudson effusion mass spectrometry"/>
+                            <xsd:enumeration value="calculated from knudson effusion weight loss"/>
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
@@ -10964,21 +11048,21 @@ Values and descriptive attributes as defined in the "Guide to the Expression of 
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
                             <xsd:enumeration value="AC calorimetry"/>
-                            <xsd:enumeration value="Closed cup calorimetry"/>
-                            <xsd:enumeration value="Drop calorimetry"/>
-                            <xsd:enumeration value="Drop ice or diphenyl ether calorimetry"/>
+                            <xsd:enumeration value="closed cup calorimetry"/>
+                            <xsd:enumeration value="drop calorimetry"/>
+                            <xsd:enumeration value="drop ice or diphenyl ether calorimetry"/>
                             <xsd:enumeration value="DSC"/>
                             <xsd:enumeration value="DTA"/>
-                            <xsd:enumeration value="Flow calorimeter"/>
-                            <xsd:enumeration value="Large scale scanning calorimetry"/>
-                            <xsd:enumeration value="Laser pulse heating method"/>
-                            <xsd:enumeration value="Open cup calorimetry"/>
-                            <xsd:enumeration value="Resistive pulse heating"/>
-                            <xsd:enumeration value="Resistive pulse heating-millisecond"/>
-                            <xsd:enumeration value="Resistive pulse heating-microsecond"/>
-                            <xsd:enumeration value="Small adiabatic calorimetry"/>
-                            <xsd:enumeration value="Thin film calorimetry"/>
-                            <xsd:enumeration value="Vacuum adiabatic calorimetry"/>
+                            <xsd:enumeration value="flow calorimeter"/>
+                            <xsd:enumeration value="large scale scanning calorimetry"/>
+                            <xsd:enumeration value="laser pulse heating method"/>
+                            <xsd:enumeration value="open cup calorimetry"/>
+                            <xsd:enumeration value="resistive pulse heating"/>
+                            <xsd:enumeration value="resistive pulse heating-millisecond"/>
+                            <xsd:enumeration value="resistive pulse heating-microsecond"/>
+                            <xsd:enumeration value="small adiabatic calorimetry"/>
+                            <xsd:enumeration value="thin film calorimetry"/>
+                            <xsd:enumeration value="vacuum adiabatic calorimetry"/>
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
@@ -11023,10 +11107,10 @@ Values and descriptive attributes as defined in the "Guide to the Expression of 
                     </xsd:annotation>
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
-                            <xsd:enumeration value="Radiometry"/>
-                            <xsd:enumeration value="Electrostatic levitation radiometry"/>
-                            <xsd:enumeration value="Resistive pulse heating with radiometry"/>
-                            <xsd:enumeration value="Laser pulse heating with radiometry"/>
+                            <xsd:enumeration value="electrostatic levitation radiometry"/>
+                            <xsd:enumeration value="laser pulse heating with radiometry"/>
+                            <xsd:enumeration value="radiometry"/>
+                            <xsd:enumeration value="resistive pulse heating with radiometry"/>
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
@@ -11063,8 +11147,8 @@ Values and descriptive attributes as defined in the "Guide to the Expression of 
                     </xsd:annotation>
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
-                            <xsd:enumeration value="derived from speed of sound"/>
                             <xsd:enumeration value="derived from equation of state"/>
+                            <xsd:enumeration value="derived from speed of sound"/>
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
@@ -11097,20 +11181,20 @@ Values and descriptive attributes as defined in the "Guide to the Expression of 
                     </xsd:annotation>
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
-                            <xsd:enumeration value="Platinum resistance thermometer"/>
-                            <xsd:enumeration value="Thermistor"/>
-                            <xsd:enumeration value="Thermocouple"/>
-                            <xsd:enumeration value="Thermocouple J -Fe/Constantan"/>
-                            <xsd:enumeration value="Thermocouple K -Chromel/Alumel"/>
-                            <xsd:enumeration value="Thermocouple E -Chromel/Constantan"/>
-                            <xsd:enumeration value="Thermocouple T -Cu/Constantin"/>
-                            <xsd:enumeration value="Thermocouple N -Nicrosil/Nisil"/>
-                            <xsd:enumeration value="Thermocouple B -Pt/Pt-30%Rh"/>
-                            <xsd:enumeration value="Thermocouple S -Pt/Pt-10%Rh"/>
-                            <xsd:enumeration value="Thermocouple R -Pt/Pt-13%Rh"/>
-                            <xsd:enumeration value="Thermocouple U -Cu/Cu-Ni"/>
-                            <xsd:enumeration value="Optical pyrometer"/>
-                            <xsd:enumeration value="determiend by radiance (Radiance Temperature)"/>
+                            <xsd:enumeration value="platinum resistance thermometer"/>
+                            <xsd:enumeration value="thermistor"/>
+                            <xsd:enumeration value="thermocouple"/>
+                            <xsd:enumeration value="thermocouple J -Fe/Constantan"/>
+                            <xsd:enumeration value="thermocouple K -Chromel/Alumel"/>
+                            <xsd:enumeration value="thermocouple E -Chromel/Constantan"/>
+                            <xsd:enumeration value="thermocouple T -Cu/Constantin"/>
+                            <xsd:enumeration value="thermocouple N -Nicrosil/Nisil"/>
+                            <xsd:enumeration value="thermocouple B -Pt/Pt-30%Rh"/>
+                            <xsd:enumeration value="thermocouple S -Pt/Pt-10%Rh"/>
+                            <xsd:enumeration value="thermocouple R -Pt/Pt-13%Rh"/>
+                            <xsd:enumeration value="thermocouple U -Cu/Cu-Ni"/>
+                            <xsd:enumeration value="optical pyrometer"/>
+                            <xsd:enumeration value="determiend by radiance (radiance temperature)"/>
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
@@ -11356,15 +11440,15 @@ Values and descriptive attributes as defined in the "Guide to the Expression of 
                     </xsd:annotation>
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
-                            <xsd:enumeration value="Capillary tube (Ostwald Ubbelohde) method"/>
-                            <xsd:enumeration value="Cone and plate viscometery"/>
-                            <xsd:enumeration value="Concentric cylinder viscometery"/>
-                            <xsd:enumeration value="Falling or rolling sphere viscometery"/>
-                            <xsd:enumeration value="Vibrating wire viscometery"/>
+                            <xsd:enumeration value="capillary tube (Ostwald Ubbelohde) method"/>
+                            <xsd:enumeration value="cone and plate viscometery"/>
+                            <xsd:enumeration value="concentric cylinder viscometery"/>
+                            <xsd:enumeration value="draining crucible"/>
+                            <xsd:enumeration value="falling or rolling sphere viscometery"/>
                             <xsd:enumeration value="Oscillating droplet dampening method"/>
                             <xsd:enumeration value="Oscillating viscometer"/>
-                            <xsd:enumeration value="Surface laser light scattering (SLLS)"/>
-                            <xsd:enumeration value="Draining crucible"/>
+                            <xsd:enumeration value="surface laser light scattering (SLLS)"/>
+                            <xsd:enumeration value="vibrating wire viscometery"/>
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
@@ -11401,9 +11485,9 @@ Values and descriptive attributes as defined in the "Guide to the Expression of 
                     </xsd:annotation>
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
-                            <xsd:enumeration value="Transmission electron microscopy analysis"/>
-                            <xsd:enumeration value="XRD analysis"/>
-                            <xsd:enumeration value="Neutron diffraction analysis"/>
+                            <xsd:enumeration value="neutron diffraction analysis"/>
+                            <xsd:enumeration value="transmission electron microscopy analysis"/>
+                            <xsd:enumeration value="xRD analysis"/>
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
@@ -11414,6 +11498,11 @@ Values and descriptive attributes as defined in the "Guide to the Expression of 
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
+            <xsd:element name="phase" minOccurs="1" type="tml:phaseRefType">
+                <xsd:annotation>
+                    <xsd:documentation>phase linked to property</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
         </xsd:sequence>
     </xsd:complexType>
     <xsd:complexType name="latticeParameterType">
@@ -11440,9 +11529,9 @@ Values and descriptive attributes as defined in the "Guide to the Expression of 
                     </xsd:annotation>
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
-                            <xsd:enumeration value="X-ray diffraction"/>
-                            <xsd:enumeration value="Transmission electron microscopy"/>
-                            <xsd:enumeration value="Neutron diffraction"/>
+                            <xsd:enumeration value="neutron diffraction"/>
+                            <xsd:enumeration value="x-ray diffraction"/>
+                            <xsd:enumeration value="transmission electron microscopy"/>
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
@@ -11453,6 +11542,11 @@ Values and descriptive attributes as defined in the "Guide to the Expression of 
                     </xsd:annotation>
                 </xsd:element>
             </xsd:choice>
+            <xsd:element name="phase" minOccurs="1" type="tml:phaseRefType">
+                <xsd:annotation>
+                    <xsd:documentation>phase linked to property</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
         </xsd:sequence>
     </xsd:complexType>
     <xsd:complexType name="linearExpansionCoefficientType">
@@ -11478,11 +11572,11 @@ Values and descriptive attributes as defined in the "Guide to the Expression of 
                     </xsd:annotation>
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
-                            <xsd:enumeration value="Push-rod dilatometery"/>
-                            <xsd:enumeration value="Shadow graph"/>
-                            <xsd:enumeration value="X-ray diffraction"/>
-                            <xsd:enumeration value="Interferometry"/>
-                            <xsd:enumeration value="Gamma attenuation method"/>
+                            <xsd:enumeration value="gamma attenuation method"/>
+                            <xsd:enumeration value="interferometry"/>
+                            <xsd:enumeration value="push-rod dilatometery"/>
+                            <xsd:enumeration value="shadow graph"/>
+                            <xsd:enumeration value="x-ray diffraction"/>
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
@@ -11521,13 +11615,13 @@ Values and descriptive attributes as defined in the "Guide to the Expression of 
                     </xsd:annotation>
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
+                            <xsd:enumeration value="bridge method"/>
+                            <xsd:enumeration value="fahy simplex permeameter"/>
+                            <xsd:enumeration value="fahy low mu permeameter"/>
+                            <xsd:enumeration value="high H permeameter"/>
+                            <xsd:enumeration value="magnetic balance method"/>
                             <xsd:enumeration value="MH permeameter"/>
-                            <xsd:enumeration value="High H permeameter"/>
-                            <xsd:enumeration value="Fahy simplex permeameter"/>
-                            <xsd:enumeration value="Fahy low mu permeameter"/>
-                            <xsd:enumeration value="Bridge method"/>
-                            <xsd:enumeration value="Split coil permeameter"/>
-                            <xsd:enumeration value="Magnetic balance method"/>
+                            <xsd:enumeration value="split coil permeameter"/>
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
@@ -11578,18 +11672,18 @@ Values and descriptive attributes as defined in the "Guide to the Expression of 
                     </xsd:annotation>
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
-                            <xsd:enumeration value="By X=Y"/>
-                            <xsd:enumeration value="By T or P extreme"/>
-                            <xsd:enumeration value="Chromatography"/>
-                            <xsd:enumeration value="Spectrophotometry"/>
-                            <xsd:enumeration value="Density calibration data"/>
-                            <xsd:enumeration value="Index of refraction calibration data"/>
-                            <xsd:enumeration value="Speed of sound calibration data"/>
-                            <xsd:enumeration value="Calculated by Gibbs-Duhem equation"/>
-                            <xsd:enumeration value="Titration method"/>
-                            <xsd:enumeration value="Phase equilibration"/>
-                            <xsd:enumeration value="Derived from phase diagram analysis"/>
-                            <xsd:enumeration value="Photoacoustic method"/>
+                            <xsd:enumeration value="by X=Y"/>
+                            <xsd:enumeration value="by T or P extreme"/>
+                            <xsd:enumeration value="calculated by Gibbs-Duhem equation"/>
+                            <xsd:enumeration value="chromatography"/>
+                            <xsd:enumeration value="density calibration data"/>
+                            <xsd:enumeration value="derived from phase diagram analysis"/>
+                            <xsd:enumeration value="index of refraction calibration data"/>
+                            <xsd:enumeration value="phase equilibration"/>
+                            <xsd:enumeration value="photoacoustic method"/>
+                            <xsd:enumeration value="spectrophotometry"/>
+                            <xsd:enumeration value="speed of sound calibration data"/>
+                            <xsd:enumeration value="titration method"/>
                             <xsd:enumeration value="Other"/>
                         </xsd:restriction>
                     </xsd:simpleType>
@@ -11638,18 +11732,18 @@ Values and descriptive attributes as defined in the "Guide to the Expression of 
                     </xsd:annotation>
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
-                            <xsd:enumeration value="By X=Y"/>
-                            <xsd:enumeration value="By T or P extreme"/>
-                            <xsd:enumeration value="Chromatography"/>
-                            <xsd:enumeration value="Spectrophotometry"/>
-                            <xsd:enumeration value="Density calibration data"/>
-                            <xsd:enumeration value="Index of refraction calibration data"/>
-                            <xsd:enumeration value="Speed of sound calibration data"/>
-                            <xsd:enumeration value="Calculated by Gibbs-Duhem equation"/>
-                            <xsd:enumeration value="Titration method"/>
-                            <xsd:enumeration value="Phase equilibration"/>
-                            <xsd:enumeration value="Derived from phase diagram analysis"/>
-                            <xsd:enumeration value="Photoacoustic method"/>
+                            <xsd:enumeration value="by X=Y"/>
+                            <xsd:enumeration value="by T or P extreme"/>
+                            <xsd:enumeration value="calculated by Gibbs-Duhem equation"/>
+                            <xsd:enumeration value="chromatography"/>
+                            <xsd:enumeration value="density calibration data"/>
+                            <xsd:enumeration value="derived from phase diagram analysis"/>
+                            <xsd:enumeration value="index of refraction calibration data"/>
+                            <xsd:enumeration value="phase equilibration"/>
+                            <xsd:enumeration value="photoacoustic method"/>
+                            <xsd:enumeration value="spectrophotometry"/>
+                            <xsd:enumeration value="speed of sound calibration data"/>
+                            <xsd:enumeration value="titration method"/>
                             <xsd:enumeration value="Other"/>
                         </xsd:restriction>
                     </xsd:simpleType>
@@ -11739,37 +11833,37 @@ Values and descriptive attributes as defined in the "Guide to the Expression of 
                     </xsd:annotation>
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
-                            <xsd:enumeration value="Burnett expansion method"/>
-                            <xsd:enumeration value="Bellows volumetry"/>
+                            <xsd:enumeration value="burnett expansion method"/>
+                            <xsd:enumeration value="bellows volumetry"/>
                             <xsd:enumeration
-                                value="Buoyancy - magnetic float or magnetic suspension"/>
+                                value="buoyancy - magnetic float or magnetic suspension"/>
                             <xsd:enumeration
-                                value="Buoyancy - hydrostatic balance with magnetic float"/>
+                                value="buoyancy - hydrostatic balance with magnetic float"/>
                             <xsd:enumeration
-                                value="Buoyancy - hydrostatic balance with magnetic suspension - one sinker"/>
+                                value="buoyancy - hydrostatic balance with magnetic suspension - one sinker"/>
                             <xsd:enumeration
-                                value="Buoyancy - hydrostatic balance with magnetic suspension - two sinkers"/>
-                            <xsd:enumeration value="Calculated with densities of this investigation"/>
+                                value="buoyancy - hydrostatic balance with magnetic suspension - two sinkers"/>
+                            <xsd:enumeration value="calculated with densities of this investigation"/>
                             <xsd:enumeration
-                                value="Calculated with a solvent density reported elsewhere"/>
-                            <xsd:enumeration value="Density floats method"/>
-                            <xsd:enumeration value="Derived analytically"/>
+                                value="calculated with a solvent density reported elsewhere"/>
+                            <xsd:enumeration value="density floats method"/>
+                            <xsd:enumeration value="derived analytically"/>
                             <xsd:enumeration
-                                value="Derived from from index of refraction callibration"/>
+                                value="derived from from index of refraction callibration"/>
                             <xsd:enumeration
-                                value="Derived from shadow graph volume and levitated droplet mass"/>
-                            <xsd:enumeration value="Derived from speed of sound"/>
-                            <xsd:enumeration value="Derived graphically"/>
-                            <xsd:enumeration value="Direct dilatometry"/>
-                            <xsd:enumeration value="Hydrometer"/>
-                            <xsd:enumeration value="Isochoric PVT measurement"/>
-                            <xsd:enumeration value="Laser pulse heating"/>
-                            <xsd:enumeration value="Other PVT measurement"/>
-                            <xsd:enumeration value="Piezometry"/>
-                            <xsd:enumeration value="Piexometry, constant-volume"/>
-                            <xsd:enumeration value="Pycnometric method"/>
-                            <xsd:enumeration value="Resistive pulse heating"/>
-                            <xsd:enumeration value="Vibrating tube method"/>
+                                value="derived from shadow graph volume and levitated droplet mass"/>
+                            <xsd:enumeration value="derived from speed of sound"/>
+                            <xsd:enumeration value="derived graphically"/>
+                            <xsd:enumeration value="direct dilatometry"/>
+                            <xsd:enumeration value="hydrometer"/>
+                            <xsd:enumeration value="isochoric PVT measurement"/>
+                            <xsd:enumeration value="laser pulse heating"/>
+                            <xsd:enumeration value="other PVT measurement"/>
+                            <xsd:enumeration value="piezometry"/>
+                            <xsd:enumeration value="piexometry, constant-volume"/>
+                            <xsd:enumeration value="pycnometric method"/>
+                            <xsd:enumeration value="resistive pulse heating"/>
+                            <xsd:enumeration value="vibrating tube method"/>
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
@@ -11806,49 +11900,34 @@ Values and descriptive attributes as defined in the "Guide to the Expression of 
                     </xsd:annotation>
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
-                            <xsd:enumeration value="Bellows volumetry"/>
-                            <xsd:enumeration value="Buoyancy - hydrostatic balance"/>
+                            <xsd:enumeration value="bellows volumetry"/>
+                            <xsd:enumeration value="buoyancy - hydrostatic balance"/>
                             <xsd:enumeration
-                                value="Buoyancy - hydrostatic balance with magnetic float"/>
+                                value="buoyancy - hydrostatic balance with magnetic float"/>
                             <xsd:enumeration
-                                value="Buoyancy - hydrostatic balance with magnetic suspension - one sinker"/>
+                                value="buoyancy - hydrostatic balance with magnetic suspension - one sinker"/>
                             <xsd:enumeration
-                                value="Buoyancy - hydrostatic balance with magnetic suspension - two sinkers"/>
+                                value="buoyancy - hydrostatic balance with magnetic suspension - two sinkers"/>
                             <xsd:enumeration
-                                value="Buoyancy - magnetic float or magnetic suspension"/>
-                            <xsd:enumeration value="Burnett expansion method"/>
-                            <xsd:enumeration value="Constant-volume piezometry"/>
-                            <xsd:enumeration value="Derived analytically"/>
-                            <xsd:enumeration value="Derived from speed of sound"/>
-                            <xsd:enumeration value="Derived graphically"/>
-                            <xsd:enumeration value="Direct dilatometry"/>
-                            <xsd:enumeration value="Calculated with densities of this investigation"/>
+                                value="buoyancy - magnetic float or magnetic suspension"/>
+                            <xsd:enumeration value="burnett expansion method"/>
+                            <xsd:enumeration value="calculated with densities of this investigation"/>
                             <xsd:enumeration
-                                value="Calculated with a solvent density reported elsewhere"/>
-                            <xsd:enumeration value="Hydrostatic balance"/>
-                            <xsd:enumeration value="Isochoric PVT measurement"/>
-                            <xsd:enumeration value="Laser pulse heating"/>
-                            <!--unsure-->
-                            <xsd:enumeration value="Levitation methods"/>
-                            <!--unsure-->
+                                value="calculated with a solvent density reported elsewhere"/>
+                            <xsd:enumeration value="constant-volume piezometry"/>
+                            <xsd:enumeration value="derived analytically"/>
+                            <xsd:enumeration value="derived from speed of sound"/>
+                            <xsd:enumeration value="derived graphically"/>
+                            <xsd:enumeration value="direct dilatometry"/>
+                            <xsd:enumeration value="hydrostatic balance"/>
+                            <xsd:enumeration value="isochoric PVT measurement"/>
                             <xsd:enumeration value="Other PVT measurement"/>
-                            <xsd:enumeration value="Pycnometric method"/>
-                            <xsd:enumeration value="Resistive pulse heating"/>
-                            <!--unsure-->
-                            <xsd:enumeration value="Vibrating tube method"/>
-                            <xsd:enumeration value="X-ray diffraction"/>
-                            <!--unsure-->
-                            <xsd:enumeration value="Shadow graph method"/>
-                            <!--unsure-->
-                            <xsd:enumeration value="Vibrating plate densiometer"/>
-                            <!--unsure-->
-                            <xsd:enumeration value="Vibrating wire densiometer"/>
-                            <!--unsure-->
-                            <xsd:enumeration value="Maximum bubble pressure"/>
-                            <!--unsure-->
-                            <xsd:enumeration value="Sessile drop method"/>
-                            <!--unsure-->
-
+                            <xsd:enumeration value="pycnometric method"/>
+                            <xsd:enumeration value="shadow graph method"/>
+                            <xsd:enumeration value="vibrating plate densiometer"/>
+                            <xsd:enumeration value="vibrating tube method"/>
+                            <xsd:enumeration value="vibrating wire densiometer"/>
+                            <xsd:enumeration value="x-ray diffraction"/>
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
@@ -11957,39 +12036,39 @@ Values and descriptive attributes as defined in the "Guide to the Expression of 
                     </xsd:annotation>
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
-                            <xsd:enumeration value="Bellows volumetry"/>
-                            <xsd:enumeration value="Buoyancy - hydrostatic balance"/>
+                            <xsd:enumeration value="bellows volumetry"/>
+                            <xsd:enumeration value="buoyancy - hydrostatic balance"/>
                             <xsd:enumeration
-                                value="Buoyancy - hydrostatic balance with magnetic float"/>
+                                value="buoyancy - hydrostatic balance with magnetic float"/>
                             <xsd:enumeration
-                                value="Buoyancy - hydrostatic balance with magnetic suspension - one sinker"/>
+                                value="buoyancy - hydrostatic balance with magnetic suspension - one sinker"/>
                             <xsd:enumeration
-                                value="Buoyancy - hydrostatic balance with magnetic suspension - two sinkers"/>
+                                value="buoyancy - hydrostatic balance with magnetic suspension - two sinkers"/>
                             <xsd:enumeration
-                                value="Buoyancy - magnetic float or magnetic suspension"/>
-                            <xsd:enumeration value="Burnett expansion method"/>
-                            <xsd:enumeration value="Constant-volume piezometry"/>
-                            <xsd:enumeration value="Derived analytically"/>
-                            <xsd:enumeration value="Derived from speed of sound"/>
-                            <xsd:enumeration value="Derived graphically"/>
-                            <xsd:enumeration value="Direct dilatometry"/>
-                            <xsd:enumeration value="Calculated with densities of this investigation"/>
+                                value="buoyancy - magnetic float or magnetic suspension"/>
+                            <xsd:enumeration value="burnett expansion method"/>
+                            <xsd:enumeration value="calculated with densities of this investigation"/>
                             <xsd:enumeration
-                                value="Calculated with a solvent density reported elsewhere"/>
-                            <xsd:enumeration value="Hydrostatic balance"/>
-                            <xsd:enumeration value="Isochoric PVT measurement"/>
-                            <xsd:enumeration value="Laser pulse heating"/>
-                            <xsd:enumeration value="Levitation methods"/>
-                            <xsd:enumeration value="Other PVT measurement"/>
-                            <xsd:enumeration value="Pycnometric method"/>
-                            <xsd:enumeration value="Resistive pulse heating"/>
-                            <xsd:enumeration value="Vibrating tube method"/>
-                            <xsd:enumeration value="X-ray diffraction"/>
-                            <xsd:enumeration value="Shadow graph method"/>
-                            <xsd:enumeration value="Vibrating plate densiometer"/>
-                            <xsd:enumeration value="Vibrating wire densiometer"/>
-                            <xsd:enumeration value="Maximum bubble pressure"/>
-                            <xsd:enumeration value="Sessile drop method"/>
+                                value="calculated with a solvent density reported elsewhere"/>
+                            <xsd:enumeration value="constant-volume piezometry"/>
+                            <xsd:enumeration value="derived analytically"/>
+                            <xsd:enumeration value="derived from speed of sound"/>
+                            <xsd:enumeration value="derived graphically"/>
+                            <xsd:enumeration value="direct dilatometry"/>
+                            <xsd:enumeration value="hydrostatic balance"/>
+                            <xsd:enumeration value="isochoric PVT measurement"/>
+                            <xsd:enumeration value="laser pulse heating"/>
+                            <xsd:enumeration value="levitation methods"/>
+                            <xsd:enumeration value="maximum bubble pressure"/>
+                            <xsd:enumeration value="other PVT measurement"/>
+                            <xsd:enumeration value="pycnometric method"/>
+                            <xsd:enumeration value="resistive pulse heating"/>
+                            <xsd:enumeration value="sessile drop method"/>
+                            <xsd:enumeration value="shadow graph method"/>
+                            <xsd:enumeration value="vibrating plate densiometer"/>
+                            <xsd:enumeration value="vibrating tube method"/>
+                            <xsd:enumeration value="vibrating wire densiometer"/>
+                            <xsd:enumeration value="x-ray diffraction"/>
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
@@ -12034,18 +12113,18 @@ Values and descriptive attributes as defined in the "Guide to the Expression of 
                     </xsd:annotation>
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
-                            <xsd:enumeration value="By X=Y"/>
-                            <xsd:enumeration value="By T or P extreme"/>
-                            <xsd:enumeration value="Chromatography"/>
-                            <xsd:enumeration value="Spectrophotometry"/>
-                            <xsd:enumeration value="Density calibration data"/>
-                            <xsd:enumeration value="Index of refraction calibration data"/>
-                            <xsd:enumeration value="Speed of sound calibration data"/>
-                            <xsd:enumeration value="Calculated by Gibbs-Duhem equation"/>
-                            <xsd:enumeration value="Titration method"/>
-                            <xsd:enumeration value="Phase equilibration"/>
-                            <xsd:enumeration value="Derived from phase diagram analysis"/>
-                            <xsd:enumeration value="Photoacoustic method"/>
+                            <xsd:enumeration value="by X=Y"/>
+                            <xsd:enumeration value="by T or P extreme"/>
+                            <xsd:enumeration value="calculated by Gibbs-Duhem equation"/>
+                            <xsd:enumeration value="chromatography"/>
+                            <xsd:enumeration value="density calibration data"/>
+                            <xsd:enumeration value="derived from phase diagram analysis"/>
+                            <xsd:enumeration value="index of refraction calibration data"/>
+                            <xsd:enumeration value="phase equilibration"/>
+                            <xsd:enumeration value="photoacoustic method"/>
+                            <xsd:enumeration value="spectrophotometry"/>
+                            <xsd:enumeration value="speed of sound calibration data"/>
+                            <xsd:enumeration value="titration method"/>
                             <xsd:enumeration value="Other"/>
                         </xsd:restriction>
                     </xsd:simpleType>
@@ -12307,13 +12386,13 @@ Values and descriptive attributes as defined in the "Guide to the Expression of 
                     </xsd:annotation>
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
-                            <xsd:enumeration value="Parallel plate capacitor"/>
-                            <xsd:enumeration value="Coaxial cylinder capacitor"/>
-                            <xsd:enumeration value="Cross capacitor"/>
-                            <xsd:enumeration value="Reentrant cavity resonator"/>
-                            <xsd:enumeration value="Coaxial line"/>
-                            <xsd:enumeration value="Wave guide"/>
-                            <xsd:enumeration value="Far infrared free space"/>
+                            <xsd:enumeration value="coaxial cylinder capacitor"/>
+                            <xsd:enumeration value="coaxial line"/>
+                            <xsd:enumeration value="cross capacitor"/>
+                            <xsd:enumeration value="far infrared free space"/>
+                            <xsd:enumeration value="parallel plate capacitor"/>
+                            <xsd:enumeration value="reentrant cavity resonator"/>
+                            <xsd:enumeration value="wave guide"/>
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
@@ -12350,23 +12429,23 @@ Values and descriptive attributes as defined in the "Guide to the Expression of 
                     </xsd:annotation>
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
-                            <xsd:enumeration value="Calorimetry measurements"/>
+                            <xsd:enumeration value="calorimetry measurements"/>
                             <xsd:enumeration
-                                value="Characterized using X-ray absorption spectroscopy"/>
-                            <xsd:enumeration value="Characterized using Neutron diffraction"/>
-                            <xsd:enumeration value="Characterized using X-ray diffraction"/>
-                            <xsd:enumeration value="Characterized using X-ray tomography"/>
-                            <xsd:enumeration value="Determined from cooling curves"/>
-                            <xsd:enumeration value="Determined from DSC"/>
-                            <xsd:enumeration value="Determined from DTA"/>
-                            <xsd:enumeration value="Determined from Dilatometry"/>
-                            <xsd:enumeration value="Determined from Interferometry"/>
-                            <xsd:enumeration value="Determined from resistivity changes"/>
-                            <xsd:enumeration value="Determined from permeability changes"/>
-                            <xsd:enumeration value="Determined from volume changes"/>
-                            <xsd:enumeration value="Metallographic inspection- Optical microsciopy"/>
+                                value="characterized using X-ray absorption spectroscopy"/>
+                            <xsd:enumeration value="characterized using Neutron diffraction"/>
+                            <xsd:enumeration value="characterized using X-ray diffraction"/>
+                            <xsd:enumeration value="characterized using X-ray tomography"/>
+                            <xsd:enumeration value="determined from cooling curves"/>
+                            <xsd:enumeration value="determined from DSC"/>
+                            <xsd:enumeration value="determined from DTA"/>
+                            <xsd:enumeration value="determined from dilatometry"/>
+                            <xsd:enumeration value="determined from Interferometry"/>
+                            <xsd:enumeration value="determined from resistivity changes"/>
+                            <xsd:enumeration value="determined from permeability changes"/>
+                            <xsd:enumeration value="determined from volume changes"/>
+                            <xsd:enumeration value="metallographic inspection- optical microsciopy"/>
                             <xsd:enumeration
-                                value="Metallographic inspection- Tranmission electron microscopy"/>
+                                value="metallographic inspection- tranmission electron microscopy"/>
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
@@ -12534,11 +12613,11 @@ Values and descriptive attributes as defined in the "Guide to the Expression of 
                     </xsd:annotation>
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
-                            <xsd:enumeration value="Push-rod dilatometery"/>
-                            <xsd:enumeration value="Shadow graph"/>
-                            <xsd:enumeration value="X-ray diffraction"/>
-                            <xsd:enumeration value="Interferometry"/>
-                            <xsd:enumeration value="Gamma attenuation method"/>
+                            <xsd:enumeration value="interferometry"/>
+                            <xsd:enumeration value="gamma attenuation method"/>
+                            <xsd:enumeration value="push-rod dilatometery"/>
+                            <xsd:enumeration value="shadow graph"/>
+                            <xsd:enumeration value="x-ray diffraction"/>
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
@@ -12576,13 +12655,13 @@ Values and descriptive attributes as defined in the "Guide to the Expression of 
                     </xsd:annotation>
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
-                            <xsd:enumeration value="Inductive pick up coils"/>
-                            <xsd:enumeration value="Vibrating sample magnetometer"/>
-                            <xsd:enumeration value="Pulsed filed extraction"/>
-                            <xsd:enumeration value="Optical magnetometer"/>
-                            <xsd:enumeration value="Torque magnetometer"/>
+                            <xsd:enumeration value="hall effect method"/>
+                            <xsd:enumeration value="inductive pick up coils"/>
+                            <xsd:enumeration value="optical magnetometer"/>
+                            <xsd:enumeration value="pulsed filed extraction"/>
                             <xsd:enumeration value="SQUID"/>
-                            <xsd:enumeration value="Hall effect method"/>
+                            <xsd:enumeration value="torque magnetometer"/>
+                            <xsd:enumeration value="vibrating sample magnetometer"/>
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
@@ -12630,38 +12709,38 @@ Values and descriptive attributes as defined in the "Guide to the Expression of 
                     </xsd:annotation>
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
-                            <xsd:enumeration value="Bellows volumetry"/>
-                            <xsd:enumeration value="Buoyancy - hydrostatic balance"/>
+                            <xsd:enumeration value="bellows volumetry"/>
+                            <xsd:enumeration value="buoyancy - hydrostatic balance"/>
                             <xsd:enumeration
-                                value="Buoyancy - hydrostatic balance with magnetic float"/>
+                                value="buoyancy - hydrostatic balance with magnetic float"/>
                             <xsd:enumeration
-                                value="Buoyancy - hydrostatic balance with magnetic suspension - one sinker"/>
+                                value="buoyancy - hydrostatic balance with magnetic suspension - one sinker"/>
                             <xsd:enumeration
-                                value="Buoyancy - hydrostatic balance with magnetic suspension - two sinkers"/>
+                                value="buoyancy - hydrostatic balance with magnetic suspension - two sinkers"/>
                             <xsd:enumeration
-                                value="Buoyancy - magnetic float or magnetic suspension"/>
-                            <xsd:enumeration value="Burnett expansion method"/>
-                            <xsd:enumeration value="Constant-volume piezometry"/>
-                            <xsd:enumeration value="Derived analytically"/>
-                            <xsd:enumeration value="Derived from speed of sound"/>
-                            <xsd:enumeration value="Derived graphically"/>
-                            <xsd:enumeration value="Direct dilatometry"/>
-                            <xsd:enumeration value="Calculated with densities of this investigation"/>
+                                value="buoyancy - magnetic float or magnetic suspension"/>
+                            <xsd:enumeration value="burnett expansion method"/>
+                            <xsd:enumeration value="constant-volume piezometry"/>
+                            <xsd:enumeration value="derived analytically"/>
+                            <xsd:enumeration value="derived from speed of sound"/>
+                            <xsd:enumeration value="derived graphically"/>
+                            <xsd:enumeration value="direct dilatometry"/>
+                            <xsd:enumeration value="calculated with densities of this investigation"/>
                             <xsd:enumeration
-                                value="Calculated with a solvent density reported elsewhere"/>
-                            <xsd:enumeration value="Isochoric PVT measurement"/>
-                            <xsd:enumeration value="Laser pulse heating"/>
-                            <xsd:enumeration value="Levitation methods"/>
-                            <xsd:enumeration value="Other PVT measurement"/>
-                            <xsd:enumeration value="Pycnometric method"/>
-                            <xsd:enumeration value="Resistive pulse heating"/>
-                            <xsd:enumeration value="Vibrating tube method"/>
-                            <xsd:enumeration value="X-ray diffraction"/>
-                            <xsd:enumeration value="Shadow graph method"/>
-                            <xsd:enumeration value="Vibrating plate densiometer"/>
-                            <xsd:enumeration value="Vibrating wire densiometer"/>
-                            <xsd:enumeration value="Maximum bubble pressure"/>
-                            <xsd:enumeration value="Sessile drop method"/>
+                                value="calculated with a solvent density reported elsewhere"/>
+                            <xsd:enumeration value="isochoric PVT measurement"/>
+                            <xsd:enumeration value="laser pulse heating"/>
+                            <xsd:enumeration value="levitation methods"/>
+                            <xsd:enumeration value="other PVT measurement"/>
+                            <xsd:enumeration value="pycnometric method"/>
+                            <xsd:enumeration value="resistive pulse heating"/>
+                            <xsd:enumeration value="vibrating tube method"/>
+                            <xsd:enumeration value="x-ray diffraction"/>
+                            <xsd:enumeration value="shadow graph method"/>
+                            <xsd:enumeration value="vibrating plate densiometer"/>
+                            <xsd:enumeration value="vibrating wire densiometer"/>
+                            <xsd:enumeration value="maximum bubble pressure"/>
+                            <xsd:enumeration value="sessile drop method"/>
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
@@ -12706,13 +12785,13 @@ Values and descriptive attributes as defined in the "Guide to the Expression of 
                     </xsd:annotation>
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
-                            <xsd:enumeration value="Parallel plate capacitor"/>
-                            <xsd:enumeration value="Coaxial cylinder capacitor"/>
-                            <xsd:enumeration value="Cross capacitor"/>
-                            <xsd:enumeration value="Reentrant cavity resonator"/>
-                            <xsd:enumeration value="Coaxial line"/>
-                            <xsd:enumeration value="Wave guide"/>
-                            <xsd:enumeration value="Far infrared free space"/>
+                            <xsd:enumeration value="coaxial cylinder capacitor"/>
+                            <xsd:enumeration value="coaxial line"/>
+                            <xsd:enumeration value="cross capacitor"/>
+                            <xsd:enumeration value="far infrared free space"/>
+                            <xsd:enumeration value="parallel plate capacitor"/>
+                            <xsd:enumeration value="reentrant cavity resonator"/>
+                            <xsd:enumeration value="wave guide"/>
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
@@ -12748,11 +12827,11 @@ Values and descriptive attributes as defined in the "Guide to the Expression of 
                     </xsd:annotation>
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
-                            <xsd:enumeration value="Push-rod dilatometery"/>
-                            <xsd:enumeration value="Shadow graph"/>
-                            <xsd:enumeration value="X-ray diffraction"/>
-                            <xsd:enumeration value="Interferometry"/>
-                            <xsd:enumeration value="Gamma attenuation method"/>
+                            <xsd:enumeration value="interferometry"/>
+                            <xsd:enumeration value="gamma attenuation method"/>
+                            <xsd:enumeration value="push-rod dilatometery"/>
+                            <xsd:enumeration value="shadow graph"/>
+                            <xsd:enumeration value="x-ray diffraction"/>
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
@@ -12837,8 +12916,6 @@ Values and descriptive attributes as defined in the "Guide to the Expression of 
                         <xsd:restriction base="xsd:string">
                             <xsd:enumeration value="annular interferometer"/>
                             <xsd:enumeration value="linear variable-path acoustic interferometer"/>
-                            <xsd:enumeration
-                                value="sing-around technique in a fixed-path interferometer"/>
                             <xsd:enumeration value="light diffraction method"/>
                             <xsd:enumeration value="pulse-echo method (single path)"/>
                             <xsd:enumeration value="pulse-echo method (dual path)"/>
@@ -12846,6 +12923,8 @@ Values and descriptive attributes as defined in the "Guide to the Expression of 
                             <xsd:enumeration value="resonance method, cylindrical cavity"/>
                             <xsd:enumeration value="resonance method, spherical cavity"/>
                             <xsd:enumeration value="resonance method, toroidal cavity"/>
+                            <xsd:enumeration
+                                value="sing-around technique in a fixed-path interferometer"/>
                             <xsd:enumeration value="spherical resonator"/>
                         </xsd:restriction>
                     </xsd:simpleType>
@@ -12882,27 +12961,27 @@ Values and descriptive attributes as defined in the "Guide to the Expression of 
                     </xsd:annotation>
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
-                            <xsd:enumeration value="pycnometric method"/>
-                            <xsd:enumeration value="vibrating tube method"/>
-                            <xsd:enumeration value="isochoric PVT measurement"/>
-                            <xsd:enumeration value="other PVT measurement"/>
-                            <xsd:enumeration value="Burnett expansion method"/>
-                            <xsd:enumeration value="constant volume piezometry"/>
+                            <xsd:enumeration value="bellows volumetry"/>
+                            <xsd:enumeration value="burnett expansion method"/>
                             <xsd:enumeration value="buouyancy- hydrostatic balance"/>
                             <xsd:enumeration
                                 value="buouyancy- hydrostatic balance with magnetic suspension - one sinker"/>
                             <xsd:enumeration
                                 value="buouyancy- hydrostatic balance with magnetic suspension - two sinkers"/>
-                            <xsd:enumeration value="bellows volumetry"/>
+                            <xsd:enumeration value="constant volume piezometry"/>
                             <xsd:enumeration value="drived from speed of sound"/>
-                            <xsd:enumeration value="s-ray diffraction"/>
-                            <xsd:enumeration value="shadow graph"/>
-                            <xsd:enumeration value="vibrating plate densiometer"/>
-                            <xsd:enumeration value="vibrating wire densiometer"/>
                             <xsd:enumeration value="gamma attenuation method"/>
+                            <xsd:enumeration value="isochoric PVT measurement"/>
                             <xsd:enumeration value="maximum bubble pressure method"/>
+                            <xsd:enumeration value="other PVT measurement"/>
+                            <xsd:enumeration value="pycnometric method"/>
                             <xsd:enumeration value="resistance pulse heating method"/>
                             <xsd:enumeration value="sessile drop method"/>
+                            <xsd:enumeration value="shadow graph"/>
+                            <xsd:enumeration value="vibrating plate densiometer"/>
+                            <xsd:enumeration value="vibrating tube method"/>
+                            <xsd:enumeration value="vibrating wire densiometer"/>
+                            <xsd:enumeration value="x-ray diffraction"/>
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
@@ -12932,7 +13011,7 @@ Values and descriptive attributes as defined in the "Guide to the Expression of 
                     </xsd:restriction>
                 </xsd:simpleType>
             </xsd:element>
-            <xsd:element name="wavelength" type="tml:waveLengthType" minOccurs="0">
+            <xsd:element name="wavelength" type="tml:waveLengthType" minOccurs="1">
                 <!-- needs to be set for wavelength-->
                 <xsd:annotation>
                     <xsd:documentation>wavelength associated with
@@ -12947,10 +13026,10 @@ Values and descriptive attributes as defined in the "Guide to the Expression of 
                     </xsd:annotation>
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
-                            <xsd:enumeration value="Integrating (Ulbricht) sphere"/>
-                            <xsd:enumeration value="Ellipsometry"/>
-                            <xsd:enumeration value="Radiance comparison"/>
-                            <xsd:enumeration value="Division of amplitude photopolarimeter"/>
+                            <xsd:enumeration value="integrating (Ulbricht) sphere"/>
+                            <xsd:enumeration value="ellipsometry"/>
+                            <xsd:enumeration value="radiance comparison"/>
+                            <xsd:enumeration value="division of amplitude photopolarimeter"/>
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
@@ -12980,7 +13059,7 @@ Values and descriptive attributes as defined in the "Guide to the Expression of 
                     </xsd:restriction>
                 </xsd:simpleType>
             </xsd:element>
-            <xsd:element name="wavelength" type="tml:waveLengthType" minOccurs="0">
+            <xsd:element name="wavelength" type="tml:waveLengthType" minOccurs="1">
                 <!-- needs to be set for wavelength-->
                 <xsd:annotation>
                     <xsd:documentation>wavelength associated with
@@ -13132,14 +13211,14 @@ Values and descriptive attributes as defined in the "Guide to the Expression of 
                     </xsd:annotation>
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
-                            <xsd:enumeration value="parallel plate method"/>
                             <xsd:enumeration value="coaxial cylinder method"/>
-                            <xsd:enumeration value="hot wire method"/>
-                            <xsd:enumeration value="optical interferometry"/>
-                            <xsd:enumeration value="laser flash apparatus"/>
                             <xsd:enumeration value="derived from speed of sound"/>
-                            <xsd:enumeration value="modulated light beam heating"/>
                             <xsd:enumeration value="electron bombardment heating"/>
+                            <xsd:enumeration value="hot wire method"/>
+                            <xsd:enumeration value="laser flash apparatus"/>
+                            <xsd:enumeration value="modulated light beam heating"/>
+                            <xsd:enumeration value="optical interferometry"/>
+                            <xsd:enumeration value="parallel plate method"/>
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
@@ -13302,10 +13381,10 @@ Values and descriptive attributes as defined in the "Guide to the Expression of 
                     </xsd:annotation>
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
-                            <xsd:enumeration value="integrating (Ulbricht) sphere"/>
-                            <xsd:enumeration value="ellipsometry"/>
-                            <xsd:enumeration value="radiance comparison"/>
                             <xsd:enumeration value="division of amplitude photopolarimeter"/>
+                            <xsd:enumeration value="ellipsometry"/>
+                            <xsd:enumeration value="integrating (Ulbricht) sphere"/>
+                            <xsd:enumeration value="radiance comparison"/>
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
